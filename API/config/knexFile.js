@@ -7,7 +7,7 @@ module.exports = {
         min: 0,
         max: 10
     },
-    /* migrations: {
+    migrations: {
         tableName: 'knex_migrations' // Tabela de migração
-    } */
+    }
 }

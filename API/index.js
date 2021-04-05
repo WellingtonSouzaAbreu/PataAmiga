@@ -12,8 +12,8 @@ consign()
 app.get('/teste', (req, res) => res.send('Isso aqui está testado!'))
 
 app.get('/teste-db', async (req, res) => {
-    await app.db('alunos')
-        .then(alunos => res.send(alunos))
+    await app.db('adoption')
+        .then(adoptions => res.send(adoptions))
         .catch(err => {
             console.log(err)
             res.send(err)
