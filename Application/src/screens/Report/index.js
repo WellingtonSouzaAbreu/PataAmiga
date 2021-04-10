@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, Image} from 'react-native'
 import { Input, Button,Radio  } from 'galio-framework';
 import Icon from 'react-native-vector-icons/Feather'
 
+import styles from './styles.js'
+
 export default class Report extends Component {
     render(){
         return(
@@ -22,27 +24,3 @@ export default class Report extends Component {
         
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-
-    boxElement: {
-        alignSelf: 'stretch',
-        height: 250,
-       
-        
-    },
-
-    boxFormReport: {
-        alignSelf: 'stretch',
-        backgroundColor: 'white',
-        alignItems: 'center',
-        padding: 10,
-        height: 400
-    },
-
-})

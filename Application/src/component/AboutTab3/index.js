@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { createPortal } from 'react-dom'
 import { Text, View, StyleSheet} from 'react-native'
 
-
-
+import styles from './styles.js'
 
 export default class AboutTab3 extends Component{
     render(){
@@ -22,26 +20,3 @@ Sua ligação pode salvar uma vida.</Text>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10
-    },
-
-    txtTitle: {
-        fontSize: 19,
-        color: 'grey',
-        fontWeight: '600',
-        textAlign: 'center'
-    },
-
-    txtText: {
-        fontSize: 17,
-        color: 'gray',
-        textAlign: 'center',
-        marginVertical: 10
-    },
-})

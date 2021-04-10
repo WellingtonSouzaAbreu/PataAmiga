@@ -1,14 +1,15 @@
 import  React, {Component} from "react";
-import { View, Text, StyleSheet, Image} from "react-native";
+import { View, Text, Image} from "react-native";
 import { Input, Button  } from 'galio-framework';
 import Icon from 'react-native-vector-icons/Feather'
 
+import styles from './styles'
 
 export default class Login extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Image style={styles.logoImg} source={require('./../assets/images/Logo.png')}/>
+        <Image style={styles.logoImg} source={require('./../../assets/imgs/Logo.png')}/>
         <Text style={styles.txtLoginElement}>Ajude a salvar um a vida de um cãozinho. Adote.</Text>
         
         <View style={styles.containerLoginForm}>
@@ -32,37 +33,3 @@ export default class Login extends Component {
   
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'space-around',
-      backgroundColor: '#EEE8AA',
-      paddingHorizontal: 8
-    },
-
-    logoImg: {
-      width: 160,
-      height: 160,
-      resizeMode: 'contain'
-    },
-
-    txtLoginElement: {
-      fontSize: 15,
-    },
-
-    containerLoginForm: {
-      backgroundColor: '#ffffff',
-      alignSelf: 'stretch',
-      height: 300,
-      borderRadius: 5,
-      paddingHorizontal: 20,
-      paddingVertical: 10,
-      alignItems: 'center'
-    },
-
-    buttons: {
-      width: 350
-    },
-
-})
