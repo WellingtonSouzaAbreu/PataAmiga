@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `adoption` (
+CREATE TABLE IF NOT EXISTS `adoptions` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     dateAdoption DATE NOT NULL,
     adaptationPeriod BOOLEAN DEFAULT('false'),
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `adoption` (
     /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `collaborators-involved-in-rescue` (
+CREATE TABLE IF NOT EXISTS `collaborators-involveds-in-rescue` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     collaboratorId INT(11) UNSIGNED NOT NULL,
     rescueId INT(11) UNSIGNED NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `collaborators` (
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `animal` (
+CREATE TABLE IF NOT EXISTS `animals` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     color VARCHAR(20) NOT NULL,
     name VARCHAR(30),
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `animal` (
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `temporary-home` (
+CREATE TABLE IF NOT EXISTS `temporary-homes` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     data DATE NOT NULL,
     adopter VARCHAR(50) NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `temporary-home` (
     /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `interested-images` (
+CREATE TABLE IF NOT EXISTS `interesteds-pictures` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     imageURL VARCHAR(100) NOT NULL,
     interestedsInAdoptionId INT(11) UNSIGNED NOT NULL, 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `interesteds-in-adoption` (
     /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `animal-images` (
+CREATE TABLE IF NOT EXISTS `animal-pictures` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     imageURL VARCHAR(100) NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `visits` (
     /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `remoteMonitoring` (
+CREATE TABLE IF NOT EXISTS `remote-monitorings` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     date DATE NOT NULL,
     observations VARCHAR(200),
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `remoteMonitoring` (
     /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `images-of-remote-monitoring` (
+CREATE TABLE IF NOT EXISTS `remote-monitorings-pictures` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     imageURL VARCHAR(100) NOT NULL,
     remoteMonitoringId INT(11) UNSIGNED NOT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `publications` (
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `publication-images` (
+CREATE TABLE IF NOT EXISTS `publications-pictures` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     imageURL VARCHAR(100) NOT NULL,
     publicationId INT(11) UNSIGNED NOT NULL,
