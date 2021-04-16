@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -12,11 +12,11 @@ export default function AboutNavigation() {
     return (
         <NavigationContainer>
             <Tab.Navigator
-            /* initialRouteName="Quem somos?"
-            tabBarOptions={{
-                activeTintColor: '#5DC7C7',
-                inactiveTintColor: '#777',
-            }} */
+                initialRouteName="Quem somos?"
+                tabBarOptions={{
+                    activeTintColor: '#5DC7C7',
+                    inactiveTintColor: '#777',
+                }}
             >
                 <Tab.Screen name="Quem somos?" component={AboutTab1} />
                 <Tab.Screen name="O Que fazemos?" component={AboutTab2} />

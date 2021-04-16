@@ -6,19 +6,10 @@ app.db = require('./config/db.js')
 
 consign()
     .then('./config/middlewares.js')
+    .then('./api/validation.js')
+    .then('./api')
+    .then('./config/routes.js')
     .into(app)
-
-
-app.get('/teste', (req, res) => res.send('Isso aqui está testado!'))
-
-app.get('/teste-db', async (req, res) => {
-    await app.db('adoption')
-        .then(adoptions => res.send(adoptions))
-        .catch(err => {
-            console.log(err)
-            res.send(err)
-        })
-})
 
 app.listen(port, () => {
     console.log(`Server running in port ${port}`)

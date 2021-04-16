@@ -4,7 +4,6 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-
 import Home from '../screens/Home/index.js'
 import Report from '../screens/Report/index.js'
 import DogInfo from '../screens/DogInfo/index.js'
@@ -55,10 +54,10 @@ const menuDrawerRoutes = {
     About: {
         name: 'About',
         screen: About,
-        navigationOptions: {
+        navigationOptions: {  
             title: 'About'
         }
-    },
+    },  
 }
 
 const menuDrawer = createDrawerNavigator(menuDrawerRoutes, menuDrawerConfig)
