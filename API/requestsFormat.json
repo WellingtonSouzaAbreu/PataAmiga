@@ -30,7 +30,8 @@
         "donation": { //save
             "donationType": "money",
             "description": "Vou doar meu filho, não presta para nada",
-            "specimenValue": 220.25
+            "specimenValue": 220.25,
+            "userId": 1 // header
         }
     },
     {
@@ -71,8 +72,33 @@
         "adoption": { //save
             "dateAdoption": "1995-08-12",
             "animalId": 1,
-            "userId": 3,
-            "collaboratorId": 2
+            "collaboratorId": 2,
+            "userId": 3 // header
         }
-    }
+    },
+    {
+        "rescue": {
+            "dateOfRescue": "1995-08-12",
+            "forwardedToKennel": true,
+            "policeSupport": true,
+            "locale": "Debaixo da ponte",
+            "BONumber": "25559944-85",
+            "address": "Av. José Josias Jáque Tupeida",
+            "veterinaryCareId": 3,
+            "animalId": 3
+        }
+    },
+    {
+        "rescue": {
+            "dateOfRescue": "1995-08-12",
+            "forwardedToKennel": true,
+            "policeSupport": true,
+            "locale": "Debaixo da ponte",
+            "BONumber": "25559944-85",
+            "address": "Av. José Josias Jáque Tupeida",
+            "veterinaryCareId": 3,
+            "animalId": 3,
+            "collaboratorsId": []
+        }
+    } //Interested-adoptions - interesteds-pictures
 ]

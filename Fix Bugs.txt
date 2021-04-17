@@ -1,1 +1,1 @@
- -> Adicionar campo de descrição em 'interested-in-adoption'
+ -> Substituir o campo interestedsInAdoptionId por interestedInAdoptionId na tabela 'interesteds-pictures'

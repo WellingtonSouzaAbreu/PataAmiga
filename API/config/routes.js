@@ -15,5 +15,11 @@ module.exports = app => {
 
     app.post('/adoption', app.api.adoption.save)
 
+    app.post('/rescue', app.api.rescue.save)
+
+    app.post('/interested-in-adoption', app.api.interestedInAdoption.save)
+
+    app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
+
 
 }

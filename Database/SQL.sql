@@ -24,9 +24,6 @@ CREATE TABLE IF NOT EXISTS `adoptions` (
     animalId INT(11) UNSIGNED NOT NULL,
     userId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `collaborators-involveds-in-rescue` (
@@ -34,8 +31,6 @@ CREATE TABLE IF NOT EXISTS `collaborators-involveds-in-rescue` (
     collaboratorId INT(11) UNSIGNED NOT NULL,
     rescueId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `rescues` (
@@ -49,9 +44,6 @@ CREATE TABLE IF NOT EXISTS `rescues` (
     veterinaryCareId INT(11) UNSIGNED,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `costs-veterinaries`(
@@ -103,24 +95,21 @@ CREATE TABLE IF NOT EXISTS `temporary-homes` (
     cellNumber VARCHAR(20) NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `interesteds-pictures` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     imageURL VARCHAR(100) NOT NULL,
-    interestedsInAdoptionId INT(11) UNSIGNED NOT NULL,
+    interestedInAdoptionId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `interesteds-in-adoption` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    description VARCHAR(200) NOT NULL,
     userId INT(11) UNSIGNED NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `animal-pictures` (
@@ -128,13 +117,12 @@ CREATE TABLE IF NOT EXISTS `animal-pictures` (
     imageURL VARCHAR(100) NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `donations` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     donationType ENUM('money', 'assets') NOT NULL,
-    description VARCHAR(200) ,
+    description VARCHAR(200),
     dateTime DATETIME NOT NULL,
     specimenValue FLOAT(10, 2),
     name VARCHAR(50) NOT NULL,
@@ -148,7 +136,6 @@ CREATE TABLE IF NOT EXISTS `visits` (
     date DATE NOT NULL,
     adoptionId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `remote-monitorings` (
@@ -157,7 +144,6 @@ CREATE TABLE IF NOT EXISTS `remote-monitorings` (
     observations VARCHAR(200),
     adoptionId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `remote-monitorings-pictures` (
@@ -165,7 +151,6 @@ CREATE TABLE IF NOT EXISTS `remote-monitorings-pictures` (
     imageURL VARCHAR(100) NOT NULL,
     remoteMonitoringId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `publications` (
@@ -186,7 +171,6 @@ CREATE TABLE IF NOT EXISTS `publications-pictures` (
     imageURL VARCHAR(100) NOT NULL,
     publicationId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `complaints` (
