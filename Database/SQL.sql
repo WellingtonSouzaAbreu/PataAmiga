@@ -1,4 +1,4 @@
-CREATE eASE friend_paw DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE friend_paw DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 USE friend_paw;
 

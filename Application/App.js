@@ -5,12 +5,12 @@ import Icon from 'react-native-vector-icons/Feather'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import HomeScreen from './src/views/HomeScreen'
-import AboutScreen from './src/views/AboutScreen'
-import DonationScreen from './src/views/DonationScreen'
-import InfoDogScreen from './src/views/InfoDogScreen'
-import Report from './src/views/ReportScreen'
-import Login from './src/views/Login'
+import Home from './src/screens/Home'
+import About from './src/screens/About'
+import Donation from './src/screens/Donation'
+import DogInfo from './src/screens/DogInfo'
+import Report from './src/screens/Report'
+import Auth from './src/screens/Auth'
 
 
 const Tab = createBottomTabNavigator();
@@ -57,15 +57,12 @@ export default function App() {
               
            
           }}>
-          <Tab.Screen name="Inicio" component={HomeScreen} />
-          <Tab.Screen name="Sobre" component={AboutScreen} />
-          <Tab.Screen name="Doação" component={DonationScreen} />
-          <Tab.Screen name="Info" component={InfoDogScreen} />
+          <Tab.Screen name="Inicio" component={Home} />
+          <Tab.Screen name="Sobre" component={About} />
+          <Tab.Screen name="Doação" component={Donation} />
+          <Tab.Screen name="Info" component={DogInfo} />
          <Tab.Screen name="Denuncia" component={Report} />
-          <Tab.Screen name="Login" component={Login} />
-       
-
-         
+          <Tab.Screen name="Login" component={Auth} />
         </Tab.Navigator>
     </NavigationContainer>
      

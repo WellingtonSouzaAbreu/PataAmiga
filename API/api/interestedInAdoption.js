@@ -1,9 +1,8 @@
 const multer = require('multer') // Interpretar o arquivo que vem do upload
 
-
 module.exports = app => {
 
-    const save = async (req, res) => {
+    const save = async(req, res) => {
         const { existsOrError } = app.api.validation
 
         const userId = req.headers.userid ? req.headers.userid : res.status(400).send('Usuário não informado')
@@ -28,13 +27,13 @@ module.exports = app => {
             })
     }
 
-    const savePicture = async (req, res) => {
+    const savePicture = async(req, res) => {
 
         const storage = multer.diskStorage({ // Objeto para configurar a pasta de salvamento e o nome 
-            destination: function (req, file, callback) {
+            destination: function(req, file, callback) {
                 callback(null, './_interestedsPictures') // Pasta de destino
             },
-            filename: function (req, file, callback) {
+            filename: function(req, file, callback) {
                 callback(null, `${Date.now()}_${file.originalname}`)
             }
         })
@@ -66,4 +65,3 @@ module.exports = app => {
 
     return { save, savePicture }
 }
-

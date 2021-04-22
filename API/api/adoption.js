@@ -1,9 +1,9 @@
 module.exports = app => {
 
-    const save = async (req, res) => {
+    const save = async(req, res) => {
         const { existsOrError } = app.api.validation
 
-        const userId = req.headers.userid ? req.headers.userid : res.status(400).send('Usuário não informado')
+        // const userId = req.headers.userid ? req.headers.userid : res.status(400).send('Usuário não informado')
         const adoption = req.body.adoption ? req.body.adoption : res.status(400).send('Dados da adoção não informados')
 
         try {
@@ -26,4 +26,3 @@ module.exports = app => {
 
     return { save }
 }
-

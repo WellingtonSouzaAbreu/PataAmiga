@@ -1,5 +1,4 @@
-[
-    {
+[{
         "user": { //save
             "city": "Rolim de Moura",
             "address": "Av. Brasil",
@@ -56,8 +55,7 @@
             "dateOfVeterinaryCare": "1995-08-12",
             "anamnese": "Lembro de nada",
             "veterinaryName": "Golias Davi de Judá",
-            "costsVeterinaries": [
-                {
+            "costsVeterinaries": [{
                     "medicament": "Dipirona",
                     "value": 12
                 },
@@ -77,7 +75,7 @@
         }
     },
     {
-        "rescue": {
+        "rescue": { // save
             "dateOfRescue": "1995-08-12",
             "forwardedToKennel": true,
             "policeSupport": true,
@@ -89,7 +87,7 @@
         }
     },
     {
-        "rescue": {
+        "rescue": {  // save
             "dateOfRescue": "1995-08-12",
             "forwardedToKennel": true,
             "policeSupport": true,
@@ -100,5 +98,24 @@
             "animalId": 3,
             "collaboratorsId": []
         }
-    } //Interested-adoptions - interesteds-pictures
+    },
+    {
+        "interestedInAdoption": { // save
+            "description": "É um canil, é perfeito!",
+            "animalId": 1,
+            "userId": 1 // header
+        }
+    },
+    /*  
+    const image = {
+        uri: image.uri,
+        type: 'image/' + image.filename.split('.')[1],
+        name: image.filename
+    }
+
+    let imageData = new FormData()
+        imageData.append('interestedPicture', image)
+        imageData.append('interestedInAdoptionId', interestedInAdoptionId)
+    */
+    {}
 ]

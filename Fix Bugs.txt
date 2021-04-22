@@ -1,1 +1,0 @@
- -> Substituir o campo interestedsInAdoptionId por interestedInAdoptionId na tabela 'interesteds-pictures'
