@@ -27,10 +27,10 @@ const menuDrawerConfig = {
     drawerStyle: {
         backgroundColor: 'green'
     },
-    // contentComponent: Report,     //Aqui vai o componente que irá aparecer no Drawer
+    //contentComponent: Report,     //Aqui vai o componente que irá aparecer no Drawer
     contentOptions: {
-        // activeTintColor: 'white',
-        // activeBackgroundColor: 'red',
+         activeTintColor: 'white',
+        activeBackgroundColor: 'red',
         // inactiveTintColor: 'blue',
         // inactiveBackgroundColor: 'lightgray',
     }
