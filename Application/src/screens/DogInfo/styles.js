@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     },
 
     boxImage: {
-        alignSelf: 'stretch',
+        width: '100%',
         height: 250,
         justifyContent: 'center',
         alignItems: 'center',
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
 
     DogImage: {
-        alignSelf: 'stretch',
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         height: 250,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
     boxInfoBasic: {
         height: 110,
-        alignSelf: 'stretch',
+        width: '100%',
         flexDirection: 'row',
         margin: 5,
         borderRadius: 5,
@@ -44,34 +44,35 @@ const styles = StyleSheet.create({
     },
 
     boxInfoDetailed: {
-        alignSelf: 'stretch',
+        width: '100%',
         margin: 5,
         height: 150,
         alignItems: 'center'
     },
 
     txtDetail: {
-        alignSelf: 'stretch',
+        width: '100%',
         margin: 1,
         color: 'dimgray',
         textAlign: 'center',
         fontSize: 15,
-        maxHeight: 150,
-        minHeight: 150,
+        padding: 10
 
     },
 
     boxExtraDetail: {
-        alignSelf: 'stretch',
+        width: '100%',
         height: 50,
+        padding: 10,
         margin: 5,
         borderColor: 'lightblue',
         borderRightWidth: 2
     },
 
     buttons: {
-        width: 250,
-        height: 35
+        width: '90%',
+        height: 35,
+        
     }
 })
 

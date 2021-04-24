@@ -3,16 +3,16 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFD04A',
+        backgroundColor: '#ffffff',
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 30,
     },
 
     dogCard: {
-        alignSelf: 'stretch',
+        width: '100%',
         height: 160,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#f2f3f5',
         borderRadius: 2,
         justifyContent: 'center',
         alignItems: 'center',
@@ -21,10 +21,9 @@ const styles = StyleSheet.create({
 
     dogInfo: {
         flex: 1,
-        alignSelf: 'stretch',
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center'
-
     },
 
     dogImageContainer: {
@@ -41,13 +40,12 @@ const styles = StyleSheet.create({
     infoDogContainer: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         height: 160,
         padding: 5
     },
 
     groupInfoIcon: {
-
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 2
@@ -59,12 +57,12 @@ const styles = StyleSheet.create({
 
 
     flatlistDogs: {
-        alignSelf: 'stretch',
+        width: '100%',
         flex: 1,
     },
 
     buttonDetail: {
-        width: 140,
+        width : '100%',
         height: 30,
         alignSelf: 'center'
     },

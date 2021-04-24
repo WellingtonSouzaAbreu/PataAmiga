@@ -16,7 +16,7 @@ export default class Report extends Component {
 
                     <Input placeholder="regular" label="Endereço" />
                     <Input style={{height:100}} placeholder="regular" label="Informações adicionais"/>
-                    <Button color="#FA5252">DENUNICIAR</Button>
+                    <Button color="#FA5252" style={{width: '100%'}}>DENUNICIAR</Button>
                    
                </View>
             </View>
