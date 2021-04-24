@@ -4,7 +4,7 @@ USE friend_paw;
 
 CREATE TABLE IF NOT EXISTS `users` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    city VARCHAR(40),
+    city VARCHAR(40) NOT NULL,
     address VARCHAR(100) NOT NULL,
     houseNumber VARCHAR(10) NOT NULL,
     email VARCHAR(50),
@@ -19,14 +19,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `adoptions` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     dateAdoption DATE NOT NULL,
-    adaptationPeriod BOOLEAN DEFAULT('false'),
+    adaptationPeriod BOOLEAN DEFAULT false,
     collaboratorId INT(11) UNSIGNED NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     userId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `collaborators-involveds-in-rescue` (
@@ -34,24 +31,19 @@ CREATE TABLE IF NOT EXISTS `collaborators-involveds-in-rescue` (
     collaboratorId INT(11) UNSIGNED NOT NULL,
     rescueId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `rescues` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    forwardedToKennel BOOLEAN DEFAULT('false'),
+    forwardedToKennel BOOLEAN DEFAULT false,
     dateOfRescue DATE NOT NULL,
-    policeSupport BOOLEAN DEFAULT('false'),
+    policeSupport BOOLEAN DEFAULT false,
     locale VARCHAR(100),
     BONumber VARCHAR(60),
     address VARCHAR(150) NOT NULL,
     veterinaryCareId INT(11) UNSIGNED,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `costs-veterinaries`(
@@ -64,8 +56,8 @@ CREATE TABLE IF NOT EXISTS `costs-veterinaries`(
 
 CREATE TABLE IF NOT EXISTS `veterinary-cares` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    needOfHospitalization BOOLEAN DEFAULT('false'),
-    needOfMedication BOOLEAN DEFAULT('false'),
+    needOfHospitalization BOOLEAN DEFAULT false,
+    needOfMedication BOOLEAN DEFAULT false,
     dateOfVeterinaryCare DATE NOT NULL,
     totalCostOfTreatment FLOAT(7, 2),
     anamnese VARCHAR(1000),
@@ -87,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `animals` (
     color VARCHAR(20) NOT NULL,
     name VARCHAR(30),
     aproximateAge VARCHAR(10) NOT NULL,
-    castrated BOOLEAN ,
+    castrated BOOLEAN,
     specie VARCHAR(30) NOT NULL,
     breed VARCHAR(10) DEFAULT('Vira-lata') NOT NULL,
     surname VARCHAR(20),
@@ -98,28 +90,26 @@ CREATE TABLE IF NOT EXISTS `animals` (
 
 CREATE TABLE IF NOT EXISTS `temporary-homes` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    data DATE NOT NULL,
-    adopter VARCHAR(50) NOT NULL,
+    date DATE NOT NULL,
+    adopterName VARCHAR(50) NOT NULL,
+    cellNumber VARCHAR(20) NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `interesteds-pictures` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     imageURL VARCHAR(100) NOT NULL,
-    interestedsInAdoptionId INT(11) UNSIGNED NOT NULL, 
+    interestedInAdoptionId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `interesteds-in-adoption` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    description VARCHAR(200) NOT NULL,
     userId INT(11) UNSIGNED NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `animal-pictures` (
@@ -127,15 +117,14 @@ CREATE TABLE IF NOT EXISTS `animal-pictures` (
     imageURL VARCHAR(100) NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `donations` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     donationType ENUM('money', 'assets') NOT NULL,
-    description VARCHAR(200) NOT NULL,
+    description VARCHAR(200),
     dateTime DATETIME NOT NULL,
-    specimenValue FLOAT(10, 2) NOT NULL,
+    specimenValue FLOAT(10, 2),
     name VARCHAR(50) NOT NULL,
     cellNumber VARCHAR(20) NOT NULL,
     PRIMARY KEY(id)
@@ -147,7 +136,6 @@ CREATE TABLE IF NOT EXISTS `visits` (
     date DATE NOT NULL,
     adoptionId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `remote-monitorings` (
@@ -156,7 +144,6 @@ CREATE TABLE IF NOT EXISTS `remote-monitorings` (
     observations VARCHAR(200),
     adoptionId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `remote-monitorings-pictures` (
@@ -164,7 +151,6 @@ CREATE TABLE IF NOT EXISTS `remote-monitorings-pictures` (
     imageURL VARCHAR(100) NOT NULL,
     remoteMonitoringId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `publications` (
@@ -185,7 +171,6 @@ CREATE TABLE IF NOT EXISTS `publications-pictures` (
     imageURL VARCHAR(100) NOT NULL,
     publicationId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)
-    /*falha: chave estrangeira*/
 ) DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `complaints` (
@@ -193,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `complaints` (
     description VARCHAR(500) NOT NULL,
     address VARCHAR(100) NOT NULL,
     date DATE NOT NULL,
-    verified BOOLEAN DEFAULT('false'),
+    verified BOOLEAN DEFAULT false,
     locale VARCHAR(200),
     complaintType VARCHAR(15) NOT NULL,
     city VARCHAR(40) NOT NULL,

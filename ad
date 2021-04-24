@@ -1,0 +1,88 @@
+[33mcommit 67ebe6d5e3b024e46e7fb86627f385f813bf55ec[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Sat Apr 10 19:00:35 2021 -0400
+
+    Díretórios estruturados
+
+[33mcommit 9d1e0cca34d1ff87c6a729c36b8d025ce887406d[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Sat Apr 10 14:55:54 2021 -0400
+
+    Fixed bugs on Database SQL
+
+[33mcommit 84432030c979ae6dbb4e2623704959e25415e272[m
+Author: LucasMartinsSi4 <54088999+LucasMartinsSi4@users.noreply.github.com>
+Date:   Sat Apr 10 15:51:17 2021 -0300
+
+    Application v1
+
+[33mcommit 4e08ae2128efee221234cf88308a9c1608bf9934[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Mon Apr 5 16:23:42 2021 -0400
+
+    Add database SQL
+
+[33mcommit 5f252f7014442ba05724151074fe141bd1922b92[m
+Merge: 17b02db c5d2ac5
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Mon Apr 5 10:26:48 2021 -0400
+
+    Merge branch 'main' of https://github.com/WellingtonSouzaAbreu/PataAmiga into main
+
+[33mcommit 17b02db34386dc2abb2d2d5dbfa8919b1b55e4c0[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Mon Apr 5 10:12:53 2021 -0400
+
+    Add basic structure of API
+
+[33mcommit c5d2ac509e64effe1a0ce5aac3fbdd8196be4a88[m
+Author: LucasMartinsSi4 <54088999+LucasMartinsSi4@users.noreply.github.com>
+Date:   Sat Apr 3 20:14:40 2021 -0300
+
+    Design Telas
+
+[33mcommit 49aea85f767dcad42d2e2543ad52eb5d71844701[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Thu Apr 1 20:43:10 2021 -0400
+
+    Add outline of logic model
+    
+    Fixed bugs
+
+[33mcommit 23de6a57396f88e3bf0976845bdb1fd7ab443968[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Sat Mar 27 19:29:01 2021 -0400
+
+    Create Conceptual Model.brm
+
+[33mcommit 72da1532609e71fdd6fd9c1d39b602eccd23f280[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Sat Mar 27 15:51:04 2021 -0400
+
+    Update Requeriments
+
+[33mcommit 047050d588b5921dd918fe724e6e040a7cc47924[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Sat Mar 27 14:53:13 2021 -0400
+
+    Update Diagrams
+    
+    Add Requeriments
+
+[33mcommit c50122b8d9d7e1f2aa60e443c43b34807b172fe9[m
+Author: Wellington Souza <wellingtonsouza.wsa100@gmail.com>
+Date:   Tue Mar 23 19:49:01 2021 -0400
+
+    Update log-teste
+
+[33mcommit 5ddbd205308e4f2111557b543e36e78551cb9b02[m
+Author: LucasMartinsSi4 <54088999+LucasMartinsSi4@users.noreply.github.com>
+Date:   Tue Mar 23 19:46:57 2021 -0300
+
+    testev1
+
+[33mcommit 8577c42c97741d86ed733ff5bab1f7cee3a6c559[m
+Author: LucasMartinsSi4 <54088999+LucasMartinsSi4@users.noreply.github.com>
+Date:   Tue Mar 23 19:42:43 2021 -0300
+
+    Initial commit

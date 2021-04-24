@@ -71,8 +71,12 @@ const styles = StyleSheet.create({
 
     buttons: {
         width: '90%',
+<<<<<<< HEAD
         height: 35,
         
+=======
+        height: 35
+>>>>>>> b1a672dca791a7486b6e98a6b8df5599d931fabd
     }
 })
 
