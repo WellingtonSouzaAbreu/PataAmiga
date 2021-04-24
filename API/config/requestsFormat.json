@@ -1,4 +1,5 @@
-[{
+[
+    {
         "user": { //save
             "city": "Rolim de Moura",
             "address": "Av. Brasil",
@@ -55,7 +56,8 @@
             "dateOfVeterinaryCare": "1995-08-12",
             "anamnese": "Lembro de nada",
             "veterinaryName": "Golias Davi de Judá",
-            "costsVeterinaries": [{
+            "costsVeterinaries": [
+                {
                     "medicament": "Dipirona",
                     "value": 12
                 },
@@ -71,7 +73,7 @@
             "dateAdoption": "1995-08-12",
             "animalId": 1,
             "collaboratorId": 2,
-            "userId": 3 // header
+            "userId": 3
         }
     },
     {
@@ -87,7 +89,7 @@
         }
     },
     {
-        "rescue": {  // save
+        "rescue": { // save
             "dateOfRescue": "1995-08-12",
             "forwardedToKennel": true,
             "policeSupport": true,
@@ -106,7 +108,7 @@
             "userId": 1 // header
         }
     },
-    /*  
+    /*  interested-in-adoption
     const image = {
         uri: image.uri,
         type: 'image/' + image.filename.split('.')[1],
@@ -117,5 +119,70 @@
         imageData.append('interestedPicture', image)
         imageData.append('interestedInAdoptionId', interestedInAdoptionId)
     */
+    {
+        "animal": {
+            "color": "Red",
+            "name": "Rin-tin-tin sem rin",
+            "aproximateAge": "2-4 meses",
+            "specie": "Cão",
+            "castrated": true,
+            "breed": "Xiuaua",
+            "surname": "Tchuthuca",
+            "sex": "F",
+            "othersCharacteristics": "Ele é fanho"
+        }
+    },
+    /*  animal-pictures
+    const image = {
+        uri: image.uri,
+        type: 'image/' + image.filename.split('.')[1],
+        name: image.filename
+    }
+
+    let imageData = new FormData()
+        imageData.append('animalPicture', image)
+        imageData.append('animalId', animalId)
+    */
+    {
+        "remoteMonitoring": { // save
+            "observations": "Ele tem agido estranho ultimamente, miando, joganto GTA 5 no meu play 4. E eu nem tenho um PS4",
+            "adoptionId": 5
+        }
+    },
+    /*  remote-monitoring-pictures
+    const image = {
+        uri: image.uri,
+        type: 'image/' + image.filename.split('.')[1],
+        name: image.filename
+    }
+
+    let imageData = new FormData()
+        imageData.append('remoteMonitoringPicture', image)
+        imageData.append('remoteMonitoringId', remoteMonitoringId)
+    */
+    {
+        "publication": { //save
+            "title": "Show do Milhão!",
+            "description": "Jogue os jogos e ganhe um cão!",
+            "reference": "Perto de algum lugar",
+            "dateTime": "2020-12-25",
+            "address": "Av. Jośe R. dos Reis Filho",
+            "city": 5,
+            "publicationType": "event",
+            "district": "Miolo da Cidade"
+        }
+    },
+    /*  publication-pictures
+    const image = {
+        uri: image.uri,
+        type: 'image/' + image.filename.split('.')[1],
+        name: image.filename
+    }
+
+    let imageData = new FormData()
+        imageData.append('publicationPicture', image)
+        imageData.append('publicationId', publicationId)
+    */
     {}
+
 ]

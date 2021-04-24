@@ -5,25 +5,23 @@ module.exports = app => {
     const save = async(req, res) => {
         const { existsOrError } = app.api.validation
 
-        const userId = req.headers.userid ? req.headers.userid : res.status(400).send('Usuário não informado')
-
-        let interestedInAdoption = req.body.interestedInAdoption ? req.body.interestedInAdoption : res.status(400).send('Dados do interesse não informados')
-        interestedInAdoption.userId = userId
+        const remoteMonitoring = req.body.remoteMonitoring ? req.body.remoteMonitoring : res.status(400).send('Dados do monitoramento remoto não informados')
+        remoteMonitoring.date = new Date()
 
         try {
-            existsOrError(interestedInAdoption.description, 'Descrição não informada')
-            existsOrError(interestedInAdoption.userId, 'Usuário não informado')
-            existsOrError(interestedInAdoption.animalId, 'Animal não informado')
+            existsOrError(remoteMonitoring.date, 'Data não informada')
+            existsOrError(remoteMonitoring.observations, 'Observações não informadas')
+            existsOrError(remoteMonitoring.adoptionId, 'Adoção não informada')
         } catch (err) {
             return res.status(400).send(err)
         }
 
-        await app.db('interesteds-in-adoption')
-            .insert(interestedInAdoption)
+        await app.db('remote-monitorings')
+            .insert(remoteMonitoring)
             .then(id => res.status(200).json(id[0]))
             .catch(err => {
                 console.log(err)
-                res.status(500).send('Erro ao cadastrar interesse na adoção')
+                res.status(500).send('Erro ao cadastrar monitoramento remoto')
             })
     }
 
@@ -31,14 +29,14 @@ module.exports = app => {
 
         const storage = multer.diskStorage({ // Objeto para configurar a pasta de salvamento e o nome 
             destination: function(req, file, callback) {
-                callback(null, './_interestedsPictures') // Pasta de destino
+                callback(null, './_remoteMonitoringPictures') // Pasta de destino
             },
             filename: function(req, file, callback) {
                 callback(null, `${Date.now()}_${file.originalname}`)
             }
         })
 
-        const upload = multer({ storage }).single('interestedPicture')
+        const upload = multer({ storage }).single('remoteMonitoringPicture')
 
         upload(req, res, err => {
             if (err) {
@@ -47,13 +45,13 @@ module.exports = app => {
 
             console.log(req.body)
 
-            let interestedPicture = {
+            let remoteMonitoringPicture = {
                 imageURL: req.file.filename,
-                interestedInAdoptionId: req.body.interestedInAdoptionId
+                remoteMonitoringId: req.body.remoteMonitoringId
             }
 
-            app.db('interesteds-pictures')
-                .insert(interestedPicture)
+            app.db('remote-monitoring-pictures')
+                .insert(remoteMonitoringPicture)
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
@@ -61,6 +59,7 @@ module.exports = app => {
                 })
 
         })
+
     }
 
     return { save, savePicture }

@@ -1,7 +1,9 @@
 module.exports = app => {
     app.post('/signup', app.api.user.save)
 
-    app.post('/complaint', app.api.complaint.save)
+    app.route('/complaint')
+        .get(app.api.complaint.getComplaints)
+        .post(app.api.complaint.save)
 
     app.post('/visit', app.api.visit.save)
 
@@ -21,5 +23,17 @@ module.exports = app => {
 
     app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
 
+    app.route('/animal')
+        .get(app.api.animal.getAnimals)
+        .post(app.api.animal.save)
 
+    app.post('/animal/picture', app.api.animal.savePicture)
+
+    app.post('/remote-monitoring', app.api.remoteMonitoring.save)
+
+    app.post('/remote-monitoring/picture', app.api.remoteMonitoring.savePicture)
+
+    app.post('/publication', app.api.publication.save)
+
+    app.post('/publication/picture', app.api.publication.savePicture)
 }

@@ -18,7 +18,7 @@ const homeStack = createStackNavigator({
     },
     DogInfo: {
         screen: DogInfo
-    },
+    }, 
 }, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {

@@ -78,10 +78,10 @@ CREATE TABLE IF NOT EXISTS `animals` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     color VARCHAR(20) NOT NULL,
     name VARCHAR(30),
-    aproximateAge VARCHAR(10) NOT NULL,
-    castrated BOOLEAN,
+    aproximateAge VARCHAR(15) NOT NULL,
+    castrated BOOLEAN DEFAULT false,
     specie VARCHAR(30) NOT NULL,
-    breed VARCHAR(10) DEFAULT('Vira-lata') NOT NULL,
+    breed VARCHAR(10) DEFAULT 'Vira-lata' NOT NULL,
     surname VARCHAR(20),
     sex ENUM('M', 'F') NOT NULL,
     othersCharacteristics VARCHAR(300),
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `remote-monitorings` (
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 
-CREATE TABLE IF NOT EXISTS `remote-monitorings-pictures` (
+CREATE TABLE IF NOT EXISTS `remote-monitoring-pictures` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     imageURL VARCHAR(100) NOT NULL,
     remoteMonitoringId INT(11) UNSIGNED NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `publications` (
     dateTime DATETIME NOT NULL,
     title VARCHAR(50) NOT NULL,
     description VARCHAR(500) NOT NULL,
-    mainImageURL VARCHAR(100) NOT NULL,
+    reference VARCHAR(100),
     address VARCHAR(100) NOT NULL,
     city VARCHAR(40) NOT NULL,
     publicationType ENUM('event', 'done') NOT NULL,

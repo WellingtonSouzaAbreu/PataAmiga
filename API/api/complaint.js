@@ -1,5 +1,14 @@
 module.exports = app => {
 
+    const getComplaints = async (req, res) => {
+        await app.db('complaints')
+            .then(complaints => res.status(200).send(complaints))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
@@ -26,5 +35,5 @@ module.exports = app => {
             })
     }
 
-    return { save }
+    return { getComplaints, save }
 }
