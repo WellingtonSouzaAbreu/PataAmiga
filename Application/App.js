@@ -5,12 +5,17 @@ import Icon from 'react-native-vector-icons/Feather'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Home from './src/screens/Home'
-import About from './src/screens/About'
-import Donation from './src/screens/Donation'
-import DogInfo from './src/screens/DogInfo'
+import HomeScreen from './src/screens/Home'
+import AboutScreen from './src/screens/About'
+import DonationScreen from './src/screens/Donation'
+import InfoDogScreen from './src/screens/DogInfo'
 import Report from './src/screens/Report'
-import Auth from './src/screens/Auth'
+import FaqScreen from './src/screens/Faq'
+import EventScreen from './src/screens/Events'
+import ProfileScreen from './src/screens/Profile'
+import LastAdoptionsScreen from './src/screens/latestAdoptions'
+import RegularReportScreen from './src/screens/RegularReport'
+import HomeRequestSreen from './src/screens/HomeRequest'
 
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +32,7 @@ export default function App() {
                 case 'Inicio':
                   iconName = 'home'
                   break;
-                case 'Sobre': 
+                case 'Eventos': 
                   iconName = 'info'
                   break; 
                 case 'Doação': 
@@ -39,9 +44,7 @@ export default function App() {
                 case 'Denuncia':
                   iconName= 'alert-circle'
                   break;
-                case 'Login' : 
-                  iconName= 'gift'
-                  break;
+              
               }
               return <Icon name={iconName} size={size} color={color} />;
             },
@@ -57,6 +60,14 @@ export default function App() {
               
            
           }}>
+          <Tab.Screen name="Inicio" component={LastAdoptionsScreen} />
+          <Tab.Screen name="Eventos" component={FaqScreen} />
+          <Tab.Screen name="Doação" component={RegularReportScreen} />
+          <Tab.Screen name="Info" component={HomeRequestSreen} />
+         <Tab.Screen name="evtn" component={EventScreen} />
+
+
+         
           <Tab.Screen name="Inicio" component={Home} />
           <Tab.Screen name="Sobre" component={About} />
           <Tab.Screen name="Doação" component={Donation} />

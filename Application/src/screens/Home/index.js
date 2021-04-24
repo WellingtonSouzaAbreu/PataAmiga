@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import { Text, View, FlatList, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 import { Button } from 'galio-framework';
+//import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles.js'
+
+import DogInfo from './../DogInfo'
 
 const DATA = [
     {
@@ -31,12 +34,18 @@ const DATA = [
         sex: 'Macho'
     },
 
+    {
+        id: '5',
+        raça: 'Chihuahua',
+        age: '10 ~ 13 Meses',
+        sex: 'Macho'
+    },
+
 ]
 
-const DogInfo = ({ raça, age, sex }) => (
+const DogInfox = ({ raça, age, sex }) => (
     <View></View>
 );
-
 
 
 export default class HomeScreen extends Component {

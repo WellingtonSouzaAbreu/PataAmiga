@@ -1,0 +1,56 @@
+import {StyleSheet} from 'react-native'
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'white'
+    },
+
+    boxContainer: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 220,
+        borderBottomColor: 'lightblue',
+        borderBottomWidth: 2
+    },
+    imgDefine: {
+        width: 150,
+        height: 150,
+        resizeMode: 'contain',
+        
+    },
+
+    title: {
+        fontSize: 19
+    },
+
+    scrollQuestionList: {
+        width: '100%',  
+    },
+
+    boxQuestion: {
+        padding: 3,
+        margin: 10,
+        justifyContent: 'center', 
+        alignItems: 'center',
+        
+    },
+    txtQuestion: {
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: 'bold',
+
+    },
+
+    txtAnswer: {
+        fontSize: 16, 
+        textAlign: 'center',
+        
+
+    }
+})
+
+export default styles

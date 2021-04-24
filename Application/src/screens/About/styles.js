@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
 
     AboutTopElement: {
-        alignSelf: 'stretch',
+        width: '100%',
         height: 200,
         justifyContent: 'center',
         alignItems: 'center'
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     containerTabs: {
         flex: 1,
-        alignSelf: 'stretch'
+        width: '100%'
     }
 })
 

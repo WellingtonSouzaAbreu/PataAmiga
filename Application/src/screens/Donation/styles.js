@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
     },
 
     donationImage: {
-        width: 170,
+        width: '100%',
         height: 170,
         resizeMode: 'contain'
     },
 
     boxInfoBancaria: {
-        width: 370,
+        width: '100%',
         height: 160,
         backgroundColor: '#ffffff',
         marginTop: 10,
@@ -31,11 +31,12 @@ const styles = StyleSheet.create({
     },
 
     boxRequest: {
-        width: 370,
+        width: '100%',
         height: 300,
         backgroundColor: '#ffffff',
         alignItems: 'center',
         paddingVertical: 15,
+        paddingHorizontal: 10
     }
 })
 
