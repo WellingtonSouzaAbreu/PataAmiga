@@ -2,8 +2,37 @@ const multer = require('multer')
 
 module.exports = app => {
 
-    const save = async(req, res) => {
-        const { existsOrError} = app.api.validation
+    const getById = async (req, res) => {
+        const idPublication = req.params.id ? req.params.id : res.status(400).send('Identificação da publicação não informada')
+
+        await app.db('publications')
+            .where({ id: idPublication })
+            .first()
+            .then(async (publication) => {
+                publication.imagesURL = await getAllPulicationPictures(idPublication)
+                console.log(publication)
+                res.status(200).send(publication)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const getAllPulicationPictures = async (idPublication) => {
+        return await app.db('publications-pictures')
+            .select('id','imageURL')
+            .where({ publicationId: idPublication })
+            .then(imagesURL => imagesURL)
+            .catch(err => {
+                console.log(err)
+                throw err
+            })
+
+    }
+
+    const save = async (req, res) => {
+        const { existsOrError } = app.api.validation
 
         const publication = req.body.publication ? req.body.publication : res.status(400).send('Dados da publicação remoto não informados')
         publication.dateTime = new Date()
@@ -28,13 +57,13 @@ module.exports = app => {
             })
     }
 
-    const savePicture = async(req, res) => {
+    const savePicture = async (req, res) => {
 
         const storage = multer.diskStorage({ // Objeto para configurar a pasta de salvamento e o nome 
-            destination: function(req, file, callback) {
+            destination: function (req, file, callback) {
                 callback(null, './_publicationPictures') // Pasta de destino
             },
-            filename: function(req, file, callback) {
+            filename: function (req, file, callback) {
                 callback(null, `${Date.now()}_${file.originalname}`)
             }
         })
@@ -65,5 +94,5 @@ module.exports = app => {
 
     }
 
-    return { save, savePicture }
+    return { getById, /* getPublications, */save, savePicture }
 }

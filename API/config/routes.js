@@ -27,13 +27,20 @@ module.exports = app => {
         .get(app.api.animal.getAnimals)
         .post(app.api.animal.save)
 
+    app.route('/animal/:id')
+        .get(app.api.animal.getById)
+
     app.post('/animal/picture', app.api.animal.savePicture)
 
     app.post('/remote-monitoring', app.api.remoteMonitoring.save)
 
     app.post('/remote-monitoring/picture', app.api.remoteMonitoring.savePicture)
 
-    app.post('/publication', app.api.publication.save)
+    app.route('/publication')
+        .post(app.api.publication.save)
+
+    app.route('/publication/:id')
+        .get(app.api.publication.getById)
 
     app.post('/publication/picture', app.api.publication.savePicture)
 }
