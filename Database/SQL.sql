@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     name VARCHAR(50) NOT NULL,
     RG VARCHAR(15),
     district VARCHAR(30) NOT NULL,
+    password VARCHAR(15) NOT NULL
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 

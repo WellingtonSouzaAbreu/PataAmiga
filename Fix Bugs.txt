@@ -4,6 +4,7 @@
  -> Trocar o nome da tabela 'remote-monitorings-pictures para 'remote-monitoring-pictures'
  -> Remover o campo 'mainImageURL' da tabela 'publications'
  -> Adicionar o campo 'reference VARCHAR(100)' à tabela 'publications'
+ -> Adicionar o campo password à tabela 'user'
  
  *** Application ***
 

@@ -1,5 +1,10 @@
 module.exports = app => {
+
     app.post('/signup', app.api.user.save)
+
+    app.post('/signin', app.api.user.signin)
+
+    app.post('/validate-token', app.api.user.validateToken)
 
     app.route('/complaint')
         .get(app.api.complaint.getComplaints)
@@ -24,6 +29,7 @@ module.exports = app => {
     app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
 
     app.route('/animal')
+        .all(app.api.user.validateToken) // Setar isso para todas as requisições que necessitam de validação
         .get(app.api.animal.getAnimals)
         .post(app.api.animal.save)
 
@@ -39,6 +45,10 @@ module.exports = app => {
     app.route('/publication')
         .post(app.api.publication.save)
 
+    app.get('/publication/event', app.api.publication.getEvents)
+
+    app.get('/publication/done', app.api.publication.getDones)
+ 
     app.route('/publication/:id')
         .get(app.api.publication.getById)
 

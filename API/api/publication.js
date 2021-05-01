@@ -1,3 +1,4 @@
+const { response } = require('express')
 const multer = require('multer')
 
 module.exports = app => {
@@ -21,14 +22,54 @@ module.exports = app => {
 
     const getAllPulicationPictures = async (idPublication) => {
         return await app.db('publications-pictures')
-            .select('id','imageURL')
+            .select('id', 'imageURL')
             .where({ publicationId: idPublication })
             .then(imagesURL => imagesURL)
             .catch(err => {
                 console.log(err)
                 throw err
             })
+    }
 
+    const getEvents = async (req, res) => {
+        await app.db('publications')
+            .where({ publicationType: 'event' })
+            .then(async events => {
+                events = await browseEvents(events)
+                res.status(200).send(events)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const browseEvents = async (events) => {
+        for (event of events) {
+            event.imagesURL = await getAllPulicationPictures(event.id)
+        }
+        return events
+    }
+
+    const getDones = async (req, res) => {
+        await app.db('publications')
+            .where({ publicationType: 'done' })
+            .then(async dones => {
+                console.log(dones)
+                dones = await browseDones(dones)
+                res.status(200).send(dones)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const browseDones = async (dones) => {
+        for (done of dones) {
+            done.imagesURL = await getAllPulicationPictures(done.id)
+        }
+        return dones
     }
 
     const save = async (req, res) => {
@@ -94,5 +135,5 @@ module.exports = app => {
 
     }
 
-    return { getById, /* getPublications, */save, savePicture }
+    return { getById, getEvents, getDones, save, savePicture }
 }

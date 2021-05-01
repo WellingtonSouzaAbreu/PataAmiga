@@ -8,8 +8,15 @@
             "phone": "69 984465997",
             "cellNumber": "69 959977089",
             "name": "Luiz Inácio",
-            "district": "Centro"
+            "district": "Centro",
+            "password": "12345",
+            "confirmPassword": "12345"
         }
+    },
+    // singin
+    {
+        "cellNumber": "9 5997-7088",
+        "password": "12345"
     },
     {
         "complaint": { //save
