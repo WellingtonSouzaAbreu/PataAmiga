@@ -5,6 +5,7 @@ const port = 500
 app.db = require('./config/db.js')
 
 consign()
+    .include('./config/passport.js')
     .then('./config/middlewares.js')
     .then('./api/validation.js')
     .then('./api')

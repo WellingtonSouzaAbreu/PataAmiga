@@ -87,7 +87,7 @@ module.exports = app => {
                 if (tokenFromHeader) {
                     const token = jwt.decode(tokenFromHeader, authSecret)
                     console.log(token)
-                    return next()
+                    return res.status(200).send(true)
                 }
             } catch (e) {
                 // problema com o token
