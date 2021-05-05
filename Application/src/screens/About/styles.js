@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 
     AboutTopElement: {
         width: '100%',
-        height: 200,
+        height: 150,
         justifyContent: 'center',
         alignItems: 'center'
     },

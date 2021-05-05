@@ -25,7 +25,16 @@ const styles = StyleSheet.create({
         position: 'relative',
         borderRadius: 10,
         padding: 5,
-        alignItems: 'center'
+        alignItems: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.32,
+        shadowRadius: 3.46,
+        elevation: 4,
+        borderRadius: 5
     },
 
     txtTitle: {
@@ -45,7 +54,9 @@ const styles = StyleSheet.create({
 
     containerInfos: {
         width: '95%',
-        height: 300, 
+
+        flex: 1,
+      
         
     },
 
@@ -66,7 +77,7 @@ const styles = StyleSheet.create({
 
     contentBoxInfo: {
         width: '100%',
-        height: 110,
+        height: '100%',
         backgroundColor: 'white'
     },
 })

@@ -6,17 +6,26 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 30,
+        paddingTop: 0,
     },
 
     dogCard: {
         width: '100%',
         height: 160,
-        backgroundColor: '#f2f3f5',
+        backgroundColor: '#ffffff',
         borderRadius: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1, paddingHorizontal: 5
+        flex: 1, paddingHorizontal: 5,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.32,
+        shadowRadius: 3.46,
+        elevation: 4,
+
     },
 
     dogInfo: {

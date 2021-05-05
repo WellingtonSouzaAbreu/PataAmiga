@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
 
     elementBox: {
-        height: 220,
+        height: 150,
         alignSelf: 'stretch',
         backgroundColor: '#DCDCDC',
         justifyContent: 'center',
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
     donationImage: {
         width: '100%',
-        height: 170,
+        height: 120,
         resizeMode: 'contain'
     },
 

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 
     headerElement: {
         width: '100%',
-        height: 220,
+        height: 150,
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 2,
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     },
 
     imgElement: {
-        width: 180,
-        height: 180,
+        width: 120,
+        height: 120,
         justifyContent: 'center',
         alignItems: 'center',
         resizeMode: 'contain',

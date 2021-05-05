@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 220,
+        height: 180,
         borderBottomColor: 'lightblue',
         borderBottomWidth: 2
     },
     imgDefine: {
-        width: 150,
-        height: 150,
+        width: 120,
+        height: 120,
         resizeMode: 'contain',
         
     },
