@@ -12,10 +12,10 @@ export default class EventScreen extends Component {
             <View style={styles.container}>
                 <View style={styles.headerElement}>
                     <Image style={styles.eventImageBanner} source={require('./../../assets/imgs/events2.png')}/>
-                    <Text style={styles.title}>Confira aqui nossos proximos eventos</Text> 
+                    <Text style={styles.title}>Confira aqui nossos proximos edventos</Text> 
                 </View>
                 <View style={styles.containerScroll}>
-                    <ScrollView>
+                    <ScrollView showsVerticalScrollIndicator= {false}>
                         <View style={styles.cardContainer}>
                             <Image style={styles.imgEvent} source={require('./../../assets/imgs/img2.jpg')}/>
                             <View style={styles.eventDescription}>

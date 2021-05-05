@@ -10,7 +10,9 @@ export default class AboutTab1 extends Component{
                 <Text style={styles.txtStatic}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </Text>
                 <Image style={styles.AboutImg1} source={require('./../../assets/imgs/img2.jpg')}/>
                 <Text style={styles.txtStatic}>Lorem ipsum dolor sit amet, consectetur adipiscing elit  Lorem ipsum dolor sit amet, consectetur adipiscing elit,</Text>
-                <ScrollView horizontal={true} style={styles.aboutScroll}>
+                <ScrollView horizontal={true} style={styles.aboutScroll} 
+                    showsHorizontalScrollIndicator = {false}    
+                >
                  <Image style={styles.AboutImgScroll} source={require('./../../assets/imgs/img1.jpg')}/>
                  <Image style={styles.AboutImgScroll} source={require('./../../assets/imgs/img2.jpg')}/>
                  <Image style={styles.AboutImgScroll} source={require('./../../assets/imgs/img3.jpg')}/>

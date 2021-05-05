@@ -65,7 +65,7 @@ export default class HomeScreen extends Component {
                                     <Text>Vira Lata</Text>
                                 </View>
                                 <View style={styles.groupInfoIcon}>
-                                    <Icon name="gitlab" size={20} color='#cdcdcd' style={{ marginRight: 5 }} />
+                                    <Icon name="gitlab" size={20} color='#F2C879' style={{ marginRight: 5 }} />
                                     <Text>3 a 5 Messdfs</Text>
                                 </View>
                                 <View style={styles.groupInfoIcon}>
@@ -74,7 +74,7 @@ export default class HomeScreen extends Component {
                                 </View>
                             </View>
 
-                            <Button color="#667eea" style={styles.buttonDetail} onPress={() => this.props.navigation.navigate('DogInfo')}>
+                            <Button color="#F1987A" style={styles.buttonDetail} onPress={() => this.props.navigation.navigate('DogInfo')}>
                                 Detalhes
                             </Button>
                         </View>

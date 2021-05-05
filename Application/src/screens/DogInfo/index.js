@@ -21,7 +21,7 @@ export default class DogInfo extends Component {
                     <View style={styles.itemInfo}>
                         <Icon name="anchor" size={25} color='lightblue' style={{marginVertical: 2}}/>
                         <Text style={{fontSize: 17, color: 'gray'}}>Idade</Text>
-                        <Text style={{color: 'gray'}}>6 a 9 Meses</Text>
+                        <Text style={{color: 'gray'}}>6 a 90 Meses</Text>
                     </View>
                     <View style={styles.itemInfo}>
                         <Icon name="anchor" size={25} color='lightblue' style={{marginVertical: 2}}/>
@@ -40,7 +40,7 @@ export default class DogInfo extends Component {
                      <Text style={{color: 'gray'}}>Exercicios regulares</Text>
                  </View>
 
-                 <Button style={styles.buttons} color="#4682B4">MANIFESTAR INTERESSE</Button>
+                 <Button style={styles.buttons} color="#4682B4" onPress={() => this.props.navigation.navigate('RequestAdoption')}>MANIFESTAR INTERESSE</Button>
                  <Button style={styles.buttons} color="#6495ED">COMPARTILHAR</Button>
             </View>
         )
