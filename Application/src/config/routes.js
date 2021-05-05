@@ -37,13 +37,10 @@ const homeStack = createStackNavigator({
     },
     
     DogInfo: {
+        name: 'DogInfo',
         screen: DogInfo
-<<<<<<< HEAD
     }, 
-=======
         
-    },
-
     About: {
         screen: About,
         navigationOptions:{
@@ -93,14 +90,6 @@ const homeStack = createStackNavigator({
             headerTitle: 'Meu Perfil'
         }
     }
-
-
-
-
-
-    
-
->>>>>>> 6b3f8166a5c85c5db19e4af8a1f36133a616a127
 }, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {
@@ -112,11 +101,8 @@ const menuDrawerConfig = {
     },
     //contentComponent: Report,     //Aqui vai o componente que irá aparecer no Drawer
     contentOptions: {
-<<<<<<< HEAD
          activeTintColor: 'white',
-=======
         activeTintColor: 'white',
->>>>>>> 6b3f8166a5c85c5db19e4af8a1f36133a616a127
         activeBackgroundColor: 'red',
         // inactiveTintColor: 'blue',
         // inactiveBackgroundColor: 'lightgray',
@@ -130,8 +116,6 @@ const menuDrawerRoutes = {
         navigationOptions: {
             title: 'INICIO'
         },
-    
-        
     },
     Report: {
         name: 'Report',
@@ -195,8 +179,8 @@ const menuDrawerRoutes = {
         }
     },
 
-    DogInfor: {
-        name: 'InfoDog',
+    DogInfo: {
+        name: 'DogInfo',
         screen: DogInfo,
         navigationOptions: {
             title: 'DOG INFO'
