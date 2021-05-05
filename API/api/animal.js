@@ -2,7 +2,7 @@ const multer = require('multer')
 
 module.exports = app => {
 
-    const getById = async (req, res) => {
+    const getAnimalById = async (req, res) => {
         const idAnimal = req.params.id ? req.params.id : res.status(400).send('Identificação do animal não informada')
 
         await app.db('animals')
@@ -120,5 +120,5 @@ module.exports = app => {
 
     }
 
-    return { getById, getAnimals, save, savePicture }
+    return { getAnimalById, getAnimals, save, savePicture }
 }

@@ -1,10 +1,11 @@
-*** Database ***
+*** API ***
 
  -> Aumentar o tamanho do campo 'aproximateAge' na tabela 'animals' - (15)
  -> Trocar o nome da tabela 'remote-monitorings-pictures para 'remote-monitoring-pictures'
  -> Remover o campo 'mainImageURL' da tabela 'publications'
  -> Adicionar o campo 'reference VARCHAR(100)' à tabela 'publications'
- -> Adicionar o campo password à tabela 'user'
+ -> Adicionar o campo password à tabela 'users'
+ -> Remover o campo 'RG' da tabela 'users' 
  
  *** Application ***
 

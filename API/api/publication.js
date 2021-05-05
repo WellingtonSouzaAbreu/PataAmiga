@@ -3,7 +3,7 @@ const multer = require('multer')
 
 module.exports = app => {
 
-    const getById = async (req, res) => {
+    const getPublicationById = async (req, res) => {
         const idPublication = req.params.id ? req.params.id : res.status(400).send('Identificação da publicação não informada')
 
         await app.db('publications')
@@ -11,7 +11,6 @@ module.exports = app => {
             .first()
             .then(async (publication) => {
                 publication.imagesURL = await getAllPulicationPictures(idPublication)
-                console.log(publication)
                 res.status(200).send(publication)
             })
             .catch(err => {
@@ -45,7 +44,7 @@ module.exports = app => {
     }
 
     const browseEvents = async (events) => {
-        for (event of events) {
+        for (let event of events) {
             event.imagesURL = await getAllPulicationPictures(event.id)
         }
         return events
@@ -53,9 +52,9 @@ module.exports = app => {
 
     const getDones = async (req, res) => {
         await app.db('publications')
+            .select('id', 'title', 'dateTime')
             .where({ publicationType: 'done' })
             .then(async dones => {
-                console.log(dones)
                 dones = await browseDones(dones)
                 res.status(200).send(dones)
             })
@@ -116,8 +115,6 @@ module.exports = app => {
                 return res.end('Erro ao fazer upload da(s) imagem(s)')
             }
 
-            console.log(req.body)
-
             let publicationPicture = {
                 imageURL: req.file.filename,
                 publicationId: req.body.publicationId
@@ -135,5 +132,5 @@ module.exports = app => {
 
     }
 
-    return { getById, getEvents, getDones, save, savePicture }
+    return { getPublicationById, getEvents, getDones, save, savePicture }
 }

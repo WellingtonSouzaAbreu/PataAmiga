@@ -1,8 +1,12 @@
 module.exports = app => {
 
     app.post('/signup', app.api.user.save)
-
     app.post('/signin', app.api.user.signin)
+
+    app.route('/user/:id')
+        // .all(app.config.passport.authenticate())
+        .get(app.api.user.getUserById)
+        .put(app.api.user.save)
 
     app.post('/validate-token', app.api.user.validateToken)
 
@@ -34,7 +38,7 @@ module.exports = app => {
         .post(app.api.animal.save)
 
     app.route('/animal/:id')
-        .get(app.api.animal.getById)
+        .get(app.api.animal.getAnimalById)
 
     app.post('/animal/picture', app.api.animal.savePicture)
 
@@ -48,9 +52,9 @@ module.exports = app => {
     app.get('/publication/event', app.api.publication.getEvents)
 
     app.get('/publication/done', app.api.publication.getDones)
- 
+
     app.route('/publication/:id')
-        .get(app.api.publication.getById)
+        .get(app.api.publication.getPublicationById)
 
     app.post('/publication/picture', app.api.publication.savePicture)
 }

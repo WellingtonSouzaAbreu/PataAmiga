@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS `users` (
     phone VARCHAR(20),
     cellNumber VARCHAR(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
-    RG VARCHAR(15),
     district VARCHAR(30) NOT NULL,
     password VARCHAR(15) NOT NULL
     PRIMARY KEY(id)
