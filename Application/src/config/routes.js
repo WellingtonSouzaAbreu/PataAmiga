@@ -17,6 +17,7 @@ import RegularReportScreen from '../screens/RegularReport'
 import MainScreen from '../screens/NewHome'
 import HomeRequestSreen from '../screens/HomeRequest'
 import ProfileScreen from '../screens/Profile'
+import AuthScreen from './../screens/Auth'
 
 
 import HeaderMain from '../components/HaeaderMain'
@@ -184,6 +185,13 @@ const menuDrawerRoutes = {
         screen: DogInfo,
         navigationOptions: {
             title: 'DOG INFO'
+        }
+    },
+    Auth: {
+        name: 'Auth',
+        screen: AuthScreen,
+        navigationOptions: {
+            title: 'AUTH'
         }
     },
 
