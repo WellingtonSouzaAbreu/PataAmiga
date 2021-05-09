@@ -7,5 +7,5 @@ module.exports = app => {
     app.use(cors({
         origin: '*'
     }))
-    app.use('/interesteds-pictures', express.static('./_interestedsPictures'))
+    app.use('/animal-pictures', express.static('./_animalPictures'))
 }

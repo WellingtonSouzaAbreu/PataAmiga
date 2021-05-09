@@ -2,14 +2,13 @@ import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
-import AboutTab1 from '../component/AboutTab1'
-import LastAdoptionsScreen from '../screens/latestAdoptions'
-import HomeScreen from '../screens/Home'
+import LastAdoptions from '../screens/latestAdoptions'
+import Animals from '../screens/Animals'
 
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function HomeTabNavigation() {
+export default function HomeTabNavigation(props) {
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -21,9 +20,8 @@ export default function HomeTabNavigation() {
                     
                 }}
             >
-                <Tab.Screen name="ADOTAR" component={HomeScreen} />
-                <Tab.Screen name="ADOTADOS" component={LastAdoptionsScreen} />
-               
+                <Tab.Screen name="ADOTAR" component={() => <Animals onNavigateToDogInfo={props.onNavigateToDogInfo}/>} />
+                <Tab.Screen name="ADOTADOS" component={LastAdoptions} />
 
             </Tab.Navigator>
         </NavigationContainer>

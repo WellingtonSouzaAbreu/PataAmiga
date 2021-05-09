@@ -32,7 +32,7 @@ module.exports = app => {
 
     const getAnimals = async (req, res) => {
         await app.db('animals')
-            .select('id', 'name', 'aproximateAge', 'sex')
+            .select('id', 'breed', 'aproximateAge', 'sex')
             .then(async (animals) => {
                 // animals = JSON.parse(JSON.stringify(animals))
                 animals = await getAnimalMainPicture(animals)
@@ -65,6 +65,7 @@ module.exports = app => {
 
         const animal = req.body.animal ? req.body.animal : res.status(400).send('Dados do animal não informados')
 
+        console.log('foi request')
         try {
             existsOrError(animal.color, 'Cor não informada')
             animal.name ? existsOrError(animal.name, 'Nome não informado') : existsOrError(animal.surname, 'Apelido não informado')

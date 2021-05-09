@@ -1,99 +1,56 @@
-import React, { Component } from 'react'
-import { Text, View, FlatList, Image } from 'react-native'
-import Icon from 'react-native-vector-icons/Feather'
-import { Button } from 'galio-framework';
-//import Icon from 'react-native-vector-icons/FontAwesome';
+import React,{Component} from 'react'
+import { View, Text, ScrollView, Image,TouchableOpacity} from 'react-native'
+import styles from './styles'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-import styles from './styles.js'
+import HomeTabNavigation from '../../config/HomeTabNavigation'
 
-import DogInfo from './../DogInfo'
+export default class Home extends Component{
 
-const DATA = [
-    {
-        id: '1',
-        raça: 'Poddle',
-        age: '5 ~ 9 Meses',
-        sex: 'Macho'
-    },
-    {
-        id: '2',
-        raça: 'Pastor Alemão',
-        age: '10 ~ 13 Meses',
-        sex: 'Femea'
-    },
-    {
-        id: '3',
-        raça: 'Chihuahua',
-        age: '10 ~ 13 Meses',
-        sex: 'Macho'
-    },
-    {
-        id: '4',
-        raça: 'Chihuahua',
-        age: '10 ~ 13 Meses',
-        sex: 'Macho'
-    },
+    navigateToDogInfo = (id) => {
+        this.props.navigation.navigate('DogInfo', {id})
+    }
 
-    {
-        id: '5',
-        raça: 'Chihuahua',
-        age: '10 ~ 13 Meses',
-        sex: 'Macho'
-    },
-
-]
-
-const DogInfox = ({ raça, age, sex }) => (
-    <View></View>
-);
-
-
-export default class HomeScreen extends Component {
-    render() {
-
-        const renderItem = ({ item }) => (
-            <View style={styles.containerListCards}>
-                <View style={styles.dogCard}>
-                    <View style={styles.dogInfo}>
-                        <View style={styles.dogImageContainer}>
-                            <Image style={styles.dogImage} source={require('./../../assets/imgs/cao1.jpg')}/>
-                        </View>
-                        <View style={styles.infoDogContainer}>
-                            <View>
-                                <View style={styles.groupInfoIcon}>
-                                    <Icon name="gitlab" size={20} color='#cdcdcd' style={{ marginRight: 5 }} />
-                                    <Text>Vira Lata</Text>
-                                </View>
-                                <View style={styles.groupInfoIcon}>
-                                    <Icon name="gitlab" size={20} color='#F2C879' style={{ marginRight: 5 }} />
-                                    <Text>3 a 5 Messdfs</Text>
-                                </View>
-                                <View style={styles.groupInfoIcon}>
-                                    <Icon name="meh" size={20} color='#cdcdcd' style={{ marginRight: 5 }} />
-                                    <Text>Macho</Text>
-                                </View>
-                            </View>
-
-                            <Button color="#F1987A" style={styles.buttonDetail} onPress={() => this.props.navigation.navigate('DogInfo')}>
-                                Detalhes
-                            </Button>
-                        </View>
+    render(){
+        return(
+            <View style={styles.container}>
+                <View style={styles.btnGridContainer}>
+                    <View style={styles.gridButton}>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('About')}>
+                            <Icon name="question" size={20} color='black' style={{marginVertical: 2}}/>
+                            <Text>Sobre nós</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('Events')}>
+                            <Icon name="calendar" size={20} color='black' style={{marginVertical: 2}}/>
+                            <Text>Eventos</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('Donation')}>
+                            <Icon name="money-bill" size={20} color='black' style={{marginVertical: 2}}/>
+                            <Text>Doações</Text>
+                        </TouchableOpacity>
                     </View>
+
+                    <View style={styles.gridButton}>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('Report')}>
+                            <Icon name="bullhorn" size={20} color='black' style={{marginVertical: 2}}/>
+                            <Text>Denunciar</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('Profile')}>
+                            <Icon name="shopping-cart" size={20} color='black' style={{marginVertical: 2}}/>
+                            <Text>Loja</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('RegularReport')}>
+                            <Icon name="sticky-note" size={20} color='black' style={{marginVertical: 2}}/>
+                            <Text>Relatório</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </View> 
+                <View style={styles.containerTabNavigationHome}>
+                    <HomeTabNavigation onNavigateToDogInfo={this.navigateToDogInfo}/>
                 </View>
             </View>
-        );
-
-        return (
-            <View style={styles.container}>
-                <FlatList
-                    style={styles.flatlistDogs}
-                    data={DATA}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
-
-            </View>
+          
         )
-
     }
 }

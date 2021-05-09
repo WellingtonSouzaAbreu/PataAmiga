@@ -1,11 +1,9 @@
-import React,{Component} from 'react'
+import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import Home from '../screens/Home/index.js'
+// import Animals from '../screens/Animals/index.js'
 import Report from '../screens/Report/index.js'
 import DogInfo from '../screens/DogInfo'
 import About from '../screens/About'
@@ -14,10 +12,15 @@ import EventScreen from '../screens/Events'
 import FaqScreen from '../screens/Faq'
 import LastAdoptionsScreen from '../screens/latestAdoptions'
 import RegularReportScreen from '../screens/RegularReport'
-import MainScreen from '../screens/NewHome'
+import Home from '../screens/Home'
 import HomeRequestSreen from '../screens/HomeRequest'
 import ProfileScreen from '../screens/Profile'
 import AuthScreen from './../screens/Auth'
+import CompleteProfile from './../screens/Profile/CompleteProfile'
+import EditProfile from './../screens/Profile/EditProfile'
+import ChangePassword from './../screens/Profile/ChangePassword'
+
+import Animals from './../screens/Animals' // Vinculado somente para poder navegar no AnimalCard
 
 
 import HeaderMain from '../components/HaeaderMain'
@@ -27,20 +30,27 @@ import AboutTab3 from './../component/AboutTab3' */
 
 const homeStack = createStackNavigator({
     Home: {
-        screen: MainScreen,
+        screen: Home,
         navigationOptions:({navigation}) => {
             return{
                 headerTitle: () => <HeaderMain navigation={navigation}/>
             }
         }
-        
-        
     },
     
     DogInfo: {
         name: 'DogInfo',
         screen: DogInfo
     }, 
+
+
+    Animals:{
+        name: 'Animals',
+        screen: Animals,
+        navigationOptions:{
+            headerTitle:'Animals'
+        }
+    },
         
     About: {
         screen: About,
@@ -71,7 +81,6 @@ const homeStack = createStackNavigator({
     },
 
     RegularReport: {
-        
         screen: RegularReportScreen,
         navigationOptions:{
             headerTitle:'Enviar Relatório '
@@ -90,6 +99,28 @@ const homeStack = createStackNavigator({
         navigationOptions: {
             headerTitle: 'Meu Perfil'
         }
+    },
+    CompleteProfile: {
+        screen: CompleteProfile,
+        navigationOptions: {
+            headerTitle: 'Informações Complementares'
+        }
+    },
+
+    EditProfile: {
+        screen: EditProfile,
+        navigationOptions: {
+            headerTitle: 'Editar Perfil'
+        }
+
+    },
+
+    ChangePassword: {
+        screen: ChangePassword,
+        navigationOptions: {
+            headerTitle: 'Alterar Senha'
+        }
+
     }
 }, { initialRouteName: 'Home' })
 
@@ -125,6 +156,7 @@ const menuDrawerRoutes = {
             title: 'DENUNCIAR'
         }
     },
+    
     About: {
         name: 'About',
         screen: About,
@@ -172,14 +204,6 @@ const menuDrawerRoutes = {
         }
     },
 
-    Main: {
-        name: 'MainPage',
-        screen: MainScreen,
-        navigationOptions: {
-            title: 'MENU'
-        }
-    },
-
     DogInfo: {
         name: 'DogInfo',
         screen: DogInfo,
@@ -195,17 +219,12 @@ const menuDrawerRoutes = {
         }
     },
 
-
- 
     
 
 
 }
 
-
-
 const menuDrawer = createDrawerNavigator(menuDrawerRoutes, menuDrawerConfig)
-
 
 
 export default createAppContainer(menuDrawer)

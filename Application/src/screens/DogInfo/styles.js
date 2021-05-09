@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
@@ -7,20 +7,19 @@ const styles = StyleSheet.create({
     },
 
     boxImage: {
-        width: '100%',
-        height: 250,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height * 0.4,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'gray'
+        backgroundColor: 'lightgray'
     },
 
-    DogImage: {
+    dogImage: {
         width: '100%',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 250,
-        resizeMode: 'stretch',
-
+        resizeMode: 'contain',
     },
 
     boxInfoBasic: {

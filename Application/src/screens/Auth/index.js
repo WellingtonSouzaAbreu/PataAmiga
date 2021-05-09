@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { View, Text, Image, Alert } from "react-native";
 import { Input, Button } from 'galio-framework';
 import axios from "axios";
+import  AsyncStorage  from '@react-native-async-storage/async-storage'
 import Icon from 'react-native-vector-icons/Feather'
+
 
 import styles from './styles'
 
@@ -32,12 +34,24 @@ class Login extends Component {
     }
 
     login = async () => {
+        
+        try{
+
         await axios.post(`${baseApiUrl}/signin`, { cellNumber: this.state.cellNumber, password: this.state.password })
-            .then(res => {
-                console.log(res.data)
-                Alert.alert('Sucesso', 'Usuário logado!')
+            .then(async res => {
+                let user = res.data
+                await AsyncStorage.setItem('user', JSON.stringify(user))
+                axios.defaults.headers.common['Authorization'] = 'bearer ' + user.token
+
+                await this.props.navigation.navigate('Home')
             })
-            .catch(err => Alert.alert('Erro', err.response.data))
+            .catch(err => {
+                Alert.alert('Erro', err.response.data)
+            })
+        }catch(error){
+            console.log(error)
+        }
+
     }
 
 
@@ -47,7 +61,8 @@ class Login extends Component {
                 <View style={styles.logoSloganArea}>
                     <Image style={styles.logoImg} source={require('./../../assets/imgs/Logo.png')} />
                     <View style={styles.sloganArea}>
-                        <Text style={styles.slogan}>Ajude a salvar um a vida de um cãozinho. Adote.</Text>
+                        <Text style={styles.slogan}>Ajude a salvar um a vida de um cãozinho</Text>
+                        <Text style={styles.slogan}>Adote.</Text>
                     </View>
                 </View>
 

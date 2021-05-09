@@ -3,20 +3,43 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 0,
+        alignItems:  'center',
+        backgroundColor: 'white'
+    
     },
 
-    dogCard: {
+    TopBar: {
         width: '100%',
-        height: 160,
+        height: 80,
+        backgroundColor: '#CDC6DA',
+        marginBottom: 5
+        
+    },
+
+    btnGridContainer: {
+        width:'100%',
+        
+        alignItems: 'center',
+        height: 150,
+
+        padding: 10
+    },
+
+    gridButton: {
+        width: '100%',
+        height: 60,
+        margin: 3,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },  
+   
+    buttonNavigate: {
+        width: '32.5%',
+        height: 60,
         backgroundColor: '#ffffff',
-        borderRadius: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1, paddingHorizontal: 5,
+        borderRadius: 5,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -24,57 +47,15 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.32,
         shadowRadius: 3.46,
+
         elevation: 4,
-
     },
-
-    dogInfo: {
-        flex: 1,
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-
-    dogImageContainer: {
-        width: 165,
-        height: 165
-    },
-
-    dogImage: {
-        width: 165,
-        height: 165,
-        resizeMode: 'contain'
-    },
-
-    infoDogContainer: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: 160,
-        padding: 5
-    },
-
-    groupInfoIcon: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 2
-    },
-
-    containerListCards: {
-        padding: 10,
-    },
-
-
-    flatlistDogs: {
+   
+    containerTabNavigationHome: {
         width: '100%',
         flex: 1,
-    },
-
-    buttonDetail: {
-        width : '100%',
-        height: 30,
-        alignSelf: 'center'
-    },
+        backgroundColor: '#cdcdcd'
+    }
 })
 
 export default styles
