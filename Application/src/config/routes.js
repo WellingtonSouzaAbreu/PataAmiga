@@ -122,7 +122,7 @@ const homeStack = createStackNavigator({
         }
 
     }
-}, { initialRouteName: 'Home' })
+}, { initialRouteName: 'Profile' })
 
 const menuDrawerConfig = {
     initialRouteName: 'Home',
