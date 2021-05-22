@@ -1,8 +1,18 @@
 module.exports = app => {
 
+    const getCollaborators = async(req, res) => {
+        await app.db('collaborators')
+        .select()
+        .then(collaborators =>  res.status(200).send(collaborators))
+        .catch(err => {
+            console.log(err)
+            res.status(500).send(err)
+        })
+    }
+
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
-
+        getCollaborators
         let collaborator = req.body.collaborator ? req.body.collaborator : res.status(400).send('Dados do colaborador não informados')
 
         try {
@@ -23,6 +33,6 @@ module.exports = app => {
             })
     }
 
-    return { save }
+    return { getCollaborators, save }
 
 }

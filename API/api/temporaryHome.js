@@ -1,5 +1,14 @@
 module.exports = app => {
 
+    const getTemporaryHomes = async(req,res) => {
+        await app.db('temporary-homes')
+            .then(temporaryHomes => res.status(200).send(temporaryHomes))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
     const save = async (req, res) => {
         const {existsOrError} = app.api.validation
 
@@ -26,5 +35,5 @@ module.exports = app => {
             })
     }
 
-    return { save }
+    return { getTemporaryHomes, save }
 }

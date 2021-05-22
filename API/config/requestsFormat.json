@@ -104,14 +104,14 @@
             "BONumber": "25559944-85",
             "address": "Av. José Josias Jáque Tupeida",
             "veterinaryCareId": 3,
-            "animalId": 3,
+            "animalId": 3, // params
             "collaboratorsId": []
         }
     },
     {
         "interestedInAdoption": { // save
             "description": "É um canil, é perfeito!",
-            "animalId": 1,
+            "animalId": 1, //params
             "userId": 1 // header
         }
     },

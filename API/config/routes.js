@@ -18,17 +18,27 @@ module.exports = app => {
 
     app.post('/donation', app.api.donation.save)
 
-    app.post('/temporary-home', app.api.temporaryHome.save)
+    app.route('/temporary-home')
+        .get(app.api.temporaryHome.getTemporaryHomes)
+        .post(app.api.temporaryHome.save)
 
-    app.post('/collaborator', app.api.collaborator.save)
+    app.route('/collaborator')
+        .get(app.api.collaborator.getCollaborators)
+        .post(app.api.collaborator.save)
 
     app.post('/veterinary-care', app.api.veterinaryCare.save)
 
-    app.post('/adoption', app.api.adoption.save)
+    app.route('/adoption')
+        .get(app.api.adoption.getAdoptions)
+        .post(app.api.adoption.save)
 
-    app.post('/rescue', app.api.rescue.save)
+    app.route('/rescue/:animalId')
+        .get(app.api.rescue.getRescue)
+        .post(app.api.rescue.save)
 
-    app.post('/interested-in-adoption', app.api.interestedInAdoption.save)
+    app.route('/interesteds-in-adoption/:animalId')
+        .get(app.api.interestedInAdoption.getInterestedsInAdoption)
+        .post(app.api.interestedInAdoption.save)
 
     app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
 
@@ -40,6 +50,9 @@ module.exports = app => {
     app.route('/animal/:id')
         .get(app.api.animal.getAnimalById)
 
+    app.route('/animal/:id/all-data')
+        .get(app.api.animal.getAllDataOfAnimalById)
+
     app.post('/animal/picture', app.api.animal.savePicture)
 
     app.post('/remote-monitoring', app.api.remoteMonitoring.save)
@@ -47,6 +60,7 @@ module.exports = app => {
     app.post('/remote-monitoring/picture', app.api.remoteMonitoring.savePicture)
 
     app.route('/publication')
+        .get(app.api.publication.getPublications)
         .post(app.api.publication.save)
 
     app.get('/publication/event', app.api.publication.getEvents)

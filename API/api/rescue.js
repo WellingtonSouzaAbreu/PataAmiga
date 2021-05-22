@@ -1,10 +1,23 @@
 module.exports = app => {
 
+    const getRescue = async(req,res) => {
+        const animalId = req.params.animalId ? req.params.animalId : res.status(400).send('Animal não identificado')
+
+        await app.db('rescues')
+            .where({animalId: animalId})
+            .first()
+            .then(rescue => res.status(200).send(rescue))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
         const rescue = req.body.rescue ? req.body.rescue : res.status(400).send('Dados do resgate não informados')
-
+        rescue.animalId = req.params.animalId ? req.params.animalId : res.status(400).send('Animal não identificado')
         let collaboratorsId = rescue.collaboratorsId
         delete rescue.collaboratorsId
 
@@ -45,6 +58,6 @@ module.exports = app => {
 
     }
 
-    return { save }
+    return {getRescue, save }
 }
 

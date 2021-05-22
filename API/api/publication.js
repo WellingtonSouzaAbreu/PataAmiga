@@ -30,6 +30,15 @@ module.exports = app => {
             })
     }
 
+    const getPublications = async(req, res) => {
+        await app.db('publications')
+            .then(publications => res.status(200).send(publications))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
     const getEvents = async (req, res) => {
         await app.db('publications')
             .where({ publicationType: 'event' })
@@ -132,5 +141,5 @@ module.exports = app => {
 
     }
 
-    return { getPublicationById, getEvents, getDones, save, savePicture }
+    return { getPublicationById, getPublications, getEvents, getDones, save, savePicture }
 }

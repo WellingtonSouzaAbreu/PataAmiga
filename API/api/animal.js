@@ -2,6 +2,59 @@ const multer = require('multer')
 
 module.exports = app => {
 
+    const getAllDataOfAnimalById = async (req, res) => {
+        const idAnimal = req.params.id ? req.params.id : res.status(400).send('Identificação do animal não informada')
+
+        await app.db('animals')
+            .where({ id: idAnimal })
+            .first()
+            .then(async (animal) => {
+                animal.imagesURL = await getAllAnimalPictures(idAnimal)
+                animal.veterinaryCare = await getVeterinaryCare(idAnimal)
+                animal.rescue = await getRescue(idAnimal)
+                res.status(200).send(animal)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const getVeterinaryCare = async (idAnimal) => {
+        return await app.db('veterinary-cares')
+            .where({ animalId: idAnimal })
+            .first()
+            .then(async veterinaryCare => {
+                veterinaryCare.costsVeterinaries = await getCostsVeterinaries(veterinaryCare.id)
+                return veterinaryCare
+            })
+            .catch(err => {
+                console.log(err)
+                throw err
+            })
+    }
+
+    const getCostsVeterinaries = async (veterinaryCareId) => {
+        return await app.db('costs-veterinaries')
+            .where({ veterinaryCareId: veterinaryCareId })
+            .then(costsVeterinaries => costsVeterinaries)
+            .catch(err => {
+                console.log(err)
+                throw err
+            })
+    }
+
+    const getRescue = async (animalId) => {
+        return await app.db('rescues')
+            .where({ animalId: animalId })
+            .first()
+            .then(rescue => rescue)
+            .catch(err => {
+                console.log(err)
+                throw err
+            })
+    }
+
     const getAnimalById = async (req, res) => {
         const idAnimal = req.params.id ? req.params.id : res.status(400).send('Identificação do animal não informada')
 
@@ -21,7 +74,7 @@ module.exports = app => {
 
     const getAllAnimalPictures = async (idAnimal) => {
         return await app.db('animal-pictures')
-            .select('id','imageURL')
+            .select('id', 'imageURL')
             .where({ animalId: idAnimal })
             .then(imagesURL => imagesURL)
             .catch(err => {
@@ -116,10 +169,8 @@ module.exports = app => {
                     console.log(err)
                     res.status(500).send(err)
                 })
-
         })
-
     }
 
-    return { getAnimalById, getAnimals, save, savePicture }
+    return { getAnimalById, getAllDataOfAnimalById, getAnimals, save, savePicture }
 }
