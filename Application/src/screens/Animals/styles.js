@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
     flatlistDogs: {
         width: '100%',
         flex: 1,
+        padding: 5,
+       
     },
 })
 

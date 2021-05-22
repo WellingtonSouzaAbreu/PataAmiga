@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
-import Icon from 'react-native-vector-icons/Feather'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import { Button } from 'galio-framework';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -20,25 +20,25 @@ const AnimalCard = (props) => {
                     <Image style={styles.dogImage} source={{ uri: `${baseApiUrl}/animal-pictures/${props.imageURL}` }} />
                 </View>
                 <View style={styles.infoDogContainer}>
-                    <View>
+                    <View style={styles.previewInfos}>
                         <View style={styles.groupInfoIcon}>
-                            <Icon name="gitlab" size={20} color='#cdcdcd' style={{ marginRight: 5 }} />
-                            <Text>{props.breed}</Text>
+                            <Icon name="paw" size={20} color='#979DA6' style={{ marginRight: 5 }} />
+                            <Text style={styles.txtPreviewInfo}>{props.breed}</Text>
                         </View>
                         <View style={styles.groupInfoIcon}>
-                            <Icon name="gitlab" size={20} color='#F2C879' style={{ marginRight: 5 }} />
-                            <Text>{props.aproximateAge}</Text>
+                            <Icon name="dog" size={20} color='#979DA6' style={{ marginRight: 5 }} />
+                            <Text style={styles.txtPreviewInfo}>{props.aproximateAge}</Text>
                         </View>
                         <View style={styles.groupInfoIcon}>
-                            <Icon name="meh" size={20} color='#cdcdcd' style={{ marginRight: 5 }} />
-                            <Text>{props.sex == 'F' ? 'Fêmea' : 'Macho'}</Text>
+                            <Icon name="venus-mars" size={20} color='#979DA6' style={{ marginRight: 5 }} />
+                            <Text style={styles.txtPreviewInfo}>{props.sex == 'F' ? 'Fêmea' : 'Macho'}</Text>
                         </View>
                     </View>
 
-                    <TouchableOpacity onPress={navigateToDogInfo}>
-                        <Button color="#F1987A" style={styles.buttonDetail} >
+                    <TouchableOpacity style={styles.buttonDetail} onPress={navigateToDogInfo}>
+                        <Text style={{color: '#fff', fontWeight: 'bold'}}>
                             Detalhes
-                    </Button>
+                        </Text>           
                     </TouchableOpacity>
                 </View>
             </View>

@@ -14,8 +14,9 @@ export default function AboutNavigation() {
             <Tab.Navigator
                 initialRouteName="Quem somos?"
                 tabBarOptions={{
-                    activeTintColor: '#5DC7C7',
-                    inactiveTintColor: '#777',
+                    activeTintColor: '#F28749',
+                    inactiveTintColor: '#64718C',
+                  
                 }}
             >
                 <Tab.Screen name="Quem somos?" component={AboutTab1} />

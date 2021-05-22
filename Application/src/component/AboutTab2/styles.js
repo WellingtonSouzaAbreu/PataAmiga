@@ -11,7 +11,8 @@ const styles = {
     txtStatic: {
         textAlign: 'center',
         fontSize: 17,
-        color: 'gray'
+        color: '#979DA6',
+        fontWeight: 'bold'
     },
 
     imgAboutDo: {

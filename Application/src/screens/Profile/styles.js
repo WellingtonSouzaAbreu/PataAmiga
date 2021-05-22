@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
 
     txtH1: {
         fontSize: 19,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#64718C'
     },
 
     containerName: {
@@ -77,9 +78,13 @@ const styles = StyleSheet.create({
     containerAlert: {
         width:'95%',
         height: '10%',
-        backgroundColor: '#D9D9D9',
+        backgroundColor: '#fff',
         flexDirection: 'row',
-        marginBottom: 10
+        marginBottom: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderLeftWidth: 2,
+        borderLeftColor: '#F27F3D'
     },
 
     txtAlert: {
@@ -88,7 +93,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
         padding: 10,
-        
+        color: '#64718C',
+        fontWeight: 'bold'
         
     },
 
@@ -97,7 +103,7 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#6593A6',
+        backgroundColor: '#E6E6E6',
        
     },
 
@@ -105,10 +111,22 @@ const styles = StyleSheet.create({
         width: '95%',
         height: '60%',
         padding: 5,
-      
         backgroundColor: 'white'
-        
+      
     },
+
+    txtInfo: {
+        fontSize: 15,
+        color: '#64718C',
+        marginRight: 15
+    },
+
+    txtInfoNameIndicador: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: '#64718C'
+    },
+
 
     boxOtherInfos: {
         width: '100%',
@@ -119,16 +137,13 @@ const styles = StyleSheet.create({
         borderBottomColor: '#cdcdcd',
         borderBottomWidth: 1
     
-     
 
     },
 
     boxOtherInfosAndress: {
         width: '100%',
         height: '50%',
-      
        
-        
         
     },
 
@@ -154,12 +169,18 @@ const styles = StyleSheet.create({
     btnEditProfile: {
         width: '45%',
         height: '100%',
-        backgroundColor: '#D9D9D9',
+        backgroundColor: '#f2f2f2',
+        borderRadius: 4,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row'
         
-    }
+    },
+
+    txtBtn: {
+        fontWeight: 'bold',
+        color: 'dimgray'
+    },
 
 
 })

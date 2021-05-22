@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 2,
-        borderBottomColor: 'lightblue'
+        borderBottomColor: '#F27F3D'
 
     },
 
@@ -56,15 +56,34 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
 
-    btSelectImage: {
+    btnSelectImage: {
         width: '100%',
         height: 45,
         justifyContent: 'center',
-        alignItems: 'center'
+        borderRadius: 3,
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#64718C',
+        marginBottom: 10
     },
-    buttonUpload: {
-        width: '100%'
+
+    btnUploadImage: {
+        width: '100%',
+        height: 45,
+        justifyContent: 'center',
+        borderRadius: 3,
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#F27F3D',
+        marginBottom: 10 
     },
+
+    txtBtn: {
+        fontWeight: 'bold',
+        color: '#fff',
+        fontSize: 15
+    },
+ 
 })
 
 export default styles

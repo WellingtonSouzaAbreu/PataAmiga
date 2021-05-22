@@ -14,9 +14,14 @@ export default function HomeTabNavigation(props) {
             <Tab.Navigator
                 initialRouteName="Quem somos?"
                 tabBarOptions={{
-                    activeTintColor: '#F53669',
-                    inactiveTintColor: '#777',
-                    indicatorStyle: '#F53669'
+                    activeTintColor: '#F27F3D',
+                    inactiveTintColor: '#64718C',
+                    indicatorStyle: '#F53669',
+                    pressColor : '#F27F3D',
+                    tabStyle : {
+                   
+                    }
+                    
                     
                 }}
             >

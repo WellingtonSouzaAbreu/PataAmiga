@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 15,
-        borderColor: 'lightblue',
-        borderWidth: 1,
+        borderBottomWidth: 2,
+        borderBottomColor: '#F27F3D',
         marginBottom: 10
     },
 
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         fontWeight: 'bold',
-        marginVertical: 2
+        marginVertical: 2,
+        color: '#64718C'
        
     },
     subtitle: {
@@ -44,57 +45,6 @@ const styles = StyleSheet.create({
 
     },
 
-    cardContainer: {
-        width: '100%',
-        height: 300,
-        backgroundColor: 'white',
-        marginVertical: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.32,
-        shadowRadius: 3.46,
-        elevation: 4,
-        borderRadius: 5
-    },
-
-    imgEvent: {
-        resizeMode: 'cover',
-        width: '100%',
-        height: '70%',  
-
-    },
-
-    eventDescription: {
-        paddingHorizontal: 10
-    },
-
-    
-    infoLocationDate: {
-        width: '100%',
-        flexDirection: 'column',
-        height: '25%'
-
-    },
-
-    groupInfo: {
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginVertical: 3
-       
-        
-    },
-
-
-    info1: {
-        width: '40%',
-        alignItems: 'center',
-        flexDirection: 'row',
-       
-    },
    
 })
 
