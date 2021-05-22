@@ -1,14 +1,7 @@
-import {StyleSheet}  from 'react-native'
+import {Dimensions, StyleSheet}  from 'react-native'
 import commonStyles from './../../common/commonStyles.js'
 
 const styles = StyleSheet.create({
-
-    container: {
-        flex: 1,
-        padding: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
 
     dogCard: {
         width: '98%',
@@ -17,20 +10,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        flex: 1, 
+        height: 180,
         paddingHorizontal: 5,
-        marginBottom: 5,
+        marginVertical: 10,
         shadowColor: "#000",
-        shadowRadius: 3.46,
-        elevation: 2,
-        ...commonStyles.boxShadow,
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.29,
+        shadowRadius: 4.65,
+        elevation: 5,
+        
+        
+       
     },
 
     dogInfo: {
         flex: 1,
         width: '100%',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        
+        
     },
 
     imageContainer: {
@@ -44,10 +46,24 @@ const styles = StyleSheet.create({
     },
 
     infoDogContainer: {
-        flex: 1,
+        height: '100%',
+        width: '50%',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: 10
+        padding: 10,
+        
+    },
+
+    previewInfos: {
+        width: '100%',
+        height: '70%',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        
+    },
+
+    txtPreviewInfo: {
+        color: '#68788C'
     },
 
     groupInfoIcon: {
@@ -59,7 +75,14 @@ const styles = StyleSheet.create({
     buttonDetail: {
         width : '100%',
         height: 30,
-        alignSelf: 'center'
+        borderRadius: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F28749',
+        
+        
+
+        
     }
 })
 

@@ -55,7 +55,12 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
         backgroundColor: '#cdcdcd'
-    }
+    },
+
+    txtButton: {
+        color: 'dimgray',
+        fontWeight: 'bold'
+    },
 })
 
 export default styles

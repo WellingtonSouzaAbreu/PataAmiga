@@ -13,18 +13,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 180,
-        borderBottomColor: 'lightblue',
+        borderBottomColor: '#F28749',
         borderBottomWidth: 2
     },
     imgDefine: {
         width: 120,
         height: 120,
         resizeMode: 'contain',
-        
     },
 
     title: {
-        fontSize: 19
+        fontSize: 19,
+        color: 'dimgray',
+        fontWeight: 'bold'
     },
 
     scrollQuestionList: {
@@ -42,12 +43,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 18,
         fontWeight: 'bold',
+        color: 'dimgray'
+        
 
     },
 
     txtAnswer: {
         fontSize: 16, 
         textAlign: 'center',
+        color: '#64718C'
         
 
     }

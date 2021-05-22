@@ -6,12 +6,13 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,
-
+        backgroundColor: '#fff'
     },
 
     txtStatic: {
         fontSize: 17,
-        color: 'gray',
+        color: '#979DA6',
+        fontWeight: 'bold',
         textAlign: 'center'
     },
 

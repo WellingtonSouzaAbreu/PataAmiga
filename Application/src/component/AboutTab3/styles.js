@@ -5,13 +5,13 @@ const styles = {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10
+        paddingHorizontal: 10
     },
 
     txtTitle: {
         fontSize: 19,
-        color: 'grey',
-        fontWeight: '600',
+        color: '#979DA6',
+        fontWeight: 'bold',
         textAlign: 'center'
     },
 

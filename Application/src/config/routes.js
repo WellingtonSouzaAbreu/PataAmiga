@@ -2,6 +2,7 @@ import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createStackNavigator } from 'react-navigation-stack'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 // import Animals from '../screens/Animals/index.js'
 import Report from '../screens/Report/index.js'
@@ -19,10 +20,9 @@ import AuthScreen from './../screens/Auth'
 import CompleteProfile from './../screens/Profile/CompleteProfile'
 import EditProfile from './../screens/Profile/EditProfile'
 import ChangePassword from './../screens/Profile/ChangePassword'
-
 import Animals from './../screens/Animals' // Vinculado somente para poder navegar no AnimalCard
 
-
+import CustomDrawer from '../components/CustomDrawer/CustomDrawer'
 import HeaderMain from '../components/HaeaderMain'
 /* import AboutTab1 from '../component/AboutTab1'
 import AboutTab2 from './../component/AboutTab2'
@@ -122,7 +122,7 @@ const homeStack = createStackNavigator({
         }
 
     }
-}, { initialRouteName: 'Profile' })
+}, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {
     initialRouteName: 'Home',
@@ -131,12 +131,11 @@ const menuDrawerConfig = {
     drawerStyle: {
         backgroundColor: 'green'
     },
-    //contentComponent: Report,     //Aqui vai o componente que irá aparecer no Drawer
+    contentComponent: CustomDrawer,     //Aqui vai o componente que irá aparecer no Drawer
     contentOptions: {
-         activeTintColor: 'white',
-        activeTintColor: 'white',
-        activeBackgroundColor: 'red',
-        // inactiveTintColor: 'blue',
+        activeTintColor: '#FFFF',
+        activeBackgroundColor: '#64718C',
+        inactiveTintColor: '#64718C',
         // inactiveBackgroundColor: 'lightgray',
     }
 }
@@ -146,22 +145,36 @@ const menuDrawerRoutes = {
         name: 'Home',
         screen: homeStack,
         navigationOptions: {
-            title: 'INICIO'
+            title: 'INICIO',
+            drawerIcon: ({ tintColor }) => (
+                
+                <Icon name="home" size={20} color='#F28749' style={{marginVertical: 2}}/>
+              )
         },
+        
     },
     Report: {
         name: 'Report',
         screen: Report,
         navigationOptions: {
-            title: 'DENUNCIAR'
-        }
+            title: 'DENUNCIAR',
+            drawerIcon:({tintColor}) => (
+                <Icon name="bullhorn" size={20} color='#F28749' style={{marginVertical: 2}}/>
+            )
+            
+        },
+        
+        
     },
     
     About: {
         name: 'About',
         screen: About,
         navigationOptions: {  
-            title: 'SOBRE NÓS'
+            title: 'SOBRE NÓS',
+            drawerIcon:({tintColor}) => (
+                <Icon name="bullhorn" size={20} color='#F28749' style={{marginVertical: 2}}/>
+            )
         }
     },
 
@@ -169,7 +182,10 @@ const menuDrawerRoutes = {
         name: 'Donation',
         screen: DonationScreen,
         navigationOptions: {
-            title: 'DOAÇÕES'
+            title: 'DOAÇÕES',
+            drawerIcon:({tintColor}) => (
+                <Icon name="hand-holding-usd" size={20} color='#F28749' style={{marginVertical: 2}}/>
+            )
         }
     },
 
@@ -177,40 +193,47 @@ const menuDrawerRoutes = {
         name: 'Events',
         screen: EventScreen,
         navigationOptions: {
-            title: 'EVENTOS'
+            title: 'EVENTOS',
+            drawerIcon:({tintColor}) => (
+                <Icon name="calendar-alt" size={20} color='#F28749' style={{marginVertical: 2}}/>
+            )
         }
     },
 
-    Faqs: {
-        name: 'Faqs',
-        screen: FaqScreen,
-        navigationOptions: {
-            title: 'PERGUNTAS FREQUENTES'
-        }
-    },
 
     LastAdopion: {
         name: 'LastAdoption',
         screen: LastAdoptionsScreen,
         navigationOptions: {
-            title: 'UTIMAS ADOÇÕES'
+            title: 'UTIMAS ADOÇÕES',
+            drawerIcon:({tintColor}) => (
+                <Icon name="dog" size={20} color='#F28749' style={{marginVertical: 2}}/>
+            )
         }
     },
     RegularReport: {
         name: 'RegularReport',
         screen: RegularReportScreen,
         navigationOptions: {
-            title: 'ACOMPANHAMENTO'
+            title: 'ACOMPANHAMENTO',
+            drawerIcon:({tintColor}) => (
+                <Icon name="file-alt" size={20} color='#F28749' style={{marginVertical: 2}}/>
+            )
         }
     },
 
-    DogInfo: {
-        name: 'DogInfo',
-        screen: DogInfo,
+  
+    Faqs: {
+        name: 'Faqs',
+        screen: FaqScreen,
         navigationOptions: {
-            title: 'DOG INFO'
+            title: 'PERGUNTAS FREQUENTES',
+            drawerIcon:({tintColor}) => (
+                <Icon name="question-circle" size={20} color='#F28749' style={{marginVertical: 2}}/>
+            )
         }
     },
+    
     Auth: {
         name: 'Auth',
         screen: AuthScreen,
@@ -219,12 +242,16 @@ const menuDrawerRoutes = {
         }
     },
 
+
+    
+
     
 
 
 }
 
 const menuDrawer = createDrawerNavigator(menuDrawerRoutes, menuDrawerConfig)
+
 
 
 export default createAppContainer(menuDrawer)

@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
 
     txtTitle: {
         fontWeight:'bold',
-        fontSize: 20
+        fontSize: 20,
+        color: '#64718C'
     },
 
     logoImg: {

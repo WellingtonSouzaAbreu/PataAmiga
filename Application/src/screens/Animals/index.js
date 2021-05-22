@@ -66,7 +66,7 @@ export default class Animals extends Component {
             <View style={styles.container}>
                 <FlatList
                     style={styles.flatlistDogs}
-                    data={this.state.animals} //this.state.animals TO DO
+                    data={animalsOfflineData} //this.state.animals TO DO
                     renderItem={({item}) => <AnimalCard {...item} onNavigateToDogInfo={this.props.onNavigateToDogInfo}/>}
                     keyExtractor={item => item.id}
                 />

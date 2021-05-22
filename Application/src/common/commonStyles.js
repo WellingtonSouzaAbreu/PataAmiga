@@ -23,7 +23,11 @@ const styles = StyleSheet.create({
     activeBorders: {
         borderColor: 'red',
         borderWidth: 1
-    }
+    },
+
+ 
+
+
 })
 
 export default styles

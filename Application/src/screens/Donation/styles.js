@@ -7,37 +7,70 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f2f2'
     },
 
-    elementBox: {
-        height: 150,
-        alignSelf: 'stretch',
-        backgroundColor: '#DCDCDC',
+    scrollContainer: {
+        width: '100%',
+        height: '100%',
+        paddingHorizontal: 10
+        
+        
+    },
+
+    imgContainer: {
+        width: '100%',
         justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-    donationImage: {
-        width: '100%',
-        height: 120,
-        resizeMode: 'contain'
-    },
-
-    boxInfoBancaria: {
-        width: '100%',
-        height: 160,
-        backgroundColor: '#ffffff',
-        marginTop: 10,
-        paddingVertical: 10,
         alignItems: 'center'
     },
 
-    boxRequest: {
+    imgDonation:{
+        resizeMode: 'contain',
+        width: 150,
+        height: 150,
+    },
+
+    containerInfoBank: {
         width: '100%',
-        height: 300,
-        backgroundColor: '#ffffff',
+        padding: 5,
+        borderRadius: 4,
+        height: 200,
+        backgroundColor: '#fff',
         alignItems: 'center',
-        paddingVertical: 15,
-        paddingHorizontal: 10
+        justifyContent: 'space-between',
+        
+    },
+
+    txtTitle: {
+        fontSize: 17,
+        color: '#64718C',
+        fontWeight: 'bold'
+    },
+
+    containerInfoDonate : {
+        width: '100%',
+        height: 60,
+        flexDirection: 'row',
+        borderRightWidth: 3,
+        borderRightColor: '#F27F3D',
+        borderBottomColor: '#F27F3D',
+        borderBottomWidth: 1
+    },
+
+    iconContainer: {
+        width: '15%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+    },
+
+    infos: {
+        width: '75%',
+        height: '100%',
+        padding: 5
+        
     }
+
+    
+    
 })
 
 export default styles

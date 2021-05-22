@@ -1,7 +1,7 @@
 import  React, {Component} from "react";
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity} from "react-native";
 import {  Button  } from 'galio-framework';
-import Icon from 'react-native-vector-icons/Feather'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import styles from './styles'
 
@@ -11,12 +11,12 @@ export default class RegularReportScreen extends Component {
       <View style={styles.container}>
           <View style={styles.headerElement}>
                 <Image style={styles.imgElement} source={require('./../../assets/imgs/upload.png')}/>
-                <Text style={{fontWeight: 'bold', fontSize: 22}}>Relatório Quinzenal</Text>
+                <Text style={{fontWeight: 'bold', fontSize: 22, color: '#64718C'}}>Relatório Quinzenal</Text>
           </View>
           <View style={styles.containerUpload}>
 
               <View style={styles.formUpload}>
-                    <Text style={{fontSize: 16, fontWeight: 'bold'}}>Enviar Relátorio</Text>
+                   
                     <TextInput 
                         placeholder="Observações"
                         style={styles.input}
@@ -24,12 +24,16 @@ export default class RegularReportScreen extends Component {
                         numberOfLines={4}
                     />
 
-                 
-                    <Button  icon="camera" iconFamily="feather" iconSize={25} color="warning" iconColor="#fff" style={styles.btSelectImage}>Escolher Imagem</Button>
+                  <TouchableOpacity style={styles.btnSelectImage}>
+                     <Icon name="phone" size={15} color='#FFF' style={{marginRight: 15}}/>
+                     <Text style={styles.txtBtn}>Selecionar imagem</Text>
+                  </TouchableOpacity> 
 
-                        
-                    
-                <Button color="info" style={styles.buttonUpload}>Enviar</Button>    
+                  <TouchableOpacity style={styles.btnUploadImage}>
+                     <Icon name="upload" size={15} color='#FFF' style={{marginRight: 15}}/>
+                     <Text style={styles.txtBtn}>Enviar</Text>
+                  </TouchableOpacity> 
+            
               </View>
 
 
