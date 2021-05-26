@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#f2f2f2'
+        backgroundColor: '#fff'
     },
 
     scrollContainer: {
@@ -35,13 +35,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'space-between',
+     
         
     },
 
     txtTitle: {
         fontSize: 17,
         color: '#64718C',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
 
     containerInfoDonate : {
@@ -51,7 +53,8 @@ const styles = StyleSheet.create({
         borderRightWidth: 3,
         borderRightColor: '#F27F3D',
         borderBottomColor: '#F27F3D',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+
     },
 
     iconContainer: {
@@ -67,6 +70,35 @@ const styles = StyleSheet.create({
         height: '100%',
         padding: 5
         
+    },
+
+    formRequest: {
+        width: '100%',
+        height: 200,
+        backgroundColor: '#fff',
+        marginTop: 20,
+        borderRadius: 4,
+        alignItems: 'center',
+        padding: 5,
+        justifyContent: 'space-around',
+       
+    },
+
+    inputRequest: {
+        width: '100%',
+        height: 40,
+        backgroundColor: '#f2f2f2',
+        textAlign: 'center'
+    },
+
+    btRequest: {
+        width: '100%',
+        height: 40,
+        backgroundColor: '#64718c',
+        borderRadius: 2,
+        justifyContent: 'center',
+        alignItems: 'center'
+
     }
 
     

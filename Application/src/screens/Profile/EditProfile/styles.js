@@ -47,7 +47,12 @@ const styles = StyleSheet.create({
     },
 
     btSave: {
-        width: '95%'
+        width: '95%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 45,
+        backgroundColor: '#64718C',
+        borderRadius: 2
     }
 
 })

@@ -21,9 +21,9 @@ import CompleteProfile from './../screens/Profile/CompleteProfile'
 import EditProfile from './../screens/Profile/EditProfile'
 import ChangePassword from './../screens/Profile/ChangePassword'
 import Animals from './../screens/Animals' // Vinculado somente para poder navegar no AnimalCard
-
 import CustomDrawer from '../components/CustomDrawer/CustomDrawer'
 import HeaderMain from '../components/HaeaderMain'
+
 /* import AboutTab1 from '../component/AboutTab1'
 import AboutTab2 from './../component/AboutTab2'
 import AboutTab3 from './../component/AboutTab3' */
@@ -121,7 +121,10 @@ const homeStack = createStackNavigator({
             headerTitle: 'Alterar Senha'
         }
 
-    }
+    },
+
+
+
 }, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {

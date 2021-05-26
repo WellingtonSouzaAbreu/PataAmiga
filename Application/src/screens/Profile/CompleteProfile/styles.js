@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     },
 
     imgAsset:{
-        width: 150,
-        height: 150,
+        width: 120,
+        height: 120,
         resizeMode: 'cover',
         marginVertical: 10,
       
@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
   
     formCompletePefil: {
         width: '100%',
-        height: '50%',
+        height: '60%',
         paddingHorizontal: 10,
         marginBottom: 15,
-
-        justifyContent: 'center'
+        justifyContent: 'center',
+     
         
 
     },
@@ -42,11 +42,16 @@ const styles = StyleSheet.create({
         width: '48%',
         height: 50,
         borderBottomWidth: 1, 
-        borderBottomColor: '#cdcdcd'
+        borderBottomColor: '#f2f2f2'
     },
 
     btSave: {
-        width: '95%'
+        width: '95%',
+        height: 45,
+        backgroundColor: '#64718C',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 2
     }
 
 })

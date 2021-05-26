@@ -1,78 +1,100 @@
 import React, { Component } from 'react'
 import { Text, View, Image, Alert } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/Feather'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import { Button } from 'galio-framework';
 import axios from 'axios'
 
 import styles from './styles'
 import { baseApiUrl } from '../../common/baseApiUrl';
 
-const initialState = {
-    animal: {
-        imagesURL: [
-            { imageURL: 'cao1.jpeg' }
-        ]
-    },
-    renderImage: false
-}
 
 export default class DogInfo extends Component {
-
-    state = { ...initialState }
-
-    componentDidMount = async () => {
-        let idAnimal = this.props.navigation.state.params.id
-        await axios.get(`${baseApiUrl}/animal/${idAnimal}`)
-            .then(res => {
-                this.setState({ animal: res.data, renderImage: true })
-            })
-            .catch(err => Alert.alert('Erro', err))
-    }
-
 
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor: '#fff'}}>
                 <View style={styles.container}>
                     <View style={styles.boxImage}>
-                        {this.state.renderImage &&
-                            <Image style={styles.dogImage} source={{ uri: `${baseApiUrl}/animal-pictures/${this.state.animal.imagesURL[0].imageURL}` }} />
-                        }
-
+                       
                     </View>
-                    <View style={styles.boxInfoBasic}>
-                        <View style={styles.itemInfo}>
-                            <Icon name="anchor" size={25} color='lightblue' style={{ marginVertical: 2 }} />
-                            <Text style={{ fontSize: 17, color: 'gray' }}>Raça</Text>
-                            <Text style={{ color: 'gray' }}>{this.state.animal.breed}</Text>
+                    <View style={styles.boxBasicInfos}>
+                        <View style={styles.nameOfAnimal}>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                <Icon name="dog" size={17} color='#64718C' style={{marginRight: 5}}/>
+                                <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17}}>Berenice</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                <Icon name="paw" size={17} color='#64718C' style={{marginRight: 5}}/>
+                                <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17, }}>Pitbull</Text>
+                            </View>
+                            
+                            
+                            
                         </View>
-                        <View style={styles.itemInfo}>
-                            <Icon name="anchor" size={25} color='lightblue' style={{ marginVertical: 2 }} />
-                            <Text style={{ fontSize: 17, color: 'gray' }}>Idade</Text>
-                            <Text style={{ color: 'gray' }}>{this.state.animal.aproximateAge}</Text>
+                        <View style={styles.containerInfos}>
+                            <View style={styles.InfoGroup}>
+                                <View style={styles.info}>
+                                    <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17}}>Castrado</Text>
+                                    <Icon name="check" size={17} color='gray' style={{marginRight: 5}}/>  
+                                </View>
+                                <View style={styles.info}>
+                                    <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17}}>Vacinado</Text>
+                                    <Icon name="times" size={17} color='gray' style={{marginRight: 5}}/>  
+                                </View>
+                                <View style={styles.info}>
+                                    <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17}}>Sexo</Text>
+                                    <Text style={{fontWeight: 'bold', color: 'gray' ,fontSize: 16 }}>F</Text>
+                                </View>
+                                
+                            </View>
                         </View>
-                        <View style={styles.itemInfo}>
-                            <Icon name="anchor" size={25} color='lightblue' style={{ marginVertical: 2 }} />
-                            <Text style={{ fontSize: 17, color: 'gray' }}>Sexo</Text>
-                            <Text style={{ color: 'gray' }}>{this.state.animal.sex == 'F' ? 'Fêmea' : 'Macho'}</Text>
+
+                        <View style={styles.boxOtherInfos}>
+                            <View style={{height: 85, width:'75%', justifyContent: 'space-between', }}>
+                                <View style={styles.otherInfoGroup}>
+                                    <Icon name="paw" size={17} color='gray' style={{marginRight: 5}}/>
+                                    <Text style={{color: 'gray', fontWeight: 'bold', fontSize: 17}}>Especie: </Text> 
+                                    <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17}}>Cão</Text>   
+                                </View>
+                                <View style={styles.otherInfoGroup}>
+                                    <Icon name="palette" size={17} color='gray' style={{marginRight: 5}}/>
+                                    <Text style={{color: 'gray', fontWeight: 'bold', fontSize: 17}}>Cor: </Text> 
+                                    <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17}}>Marrom</Text>   
+                                </View>
+                                <View style={styles.otherInfoGroup}>
+                                    <Icon name="clock" size={17} color='gray' style={{marginRight: 5}}/>
+                                    <Text style={{color: 'gray', fontWeight: 'bold', fontSize: 17}}>Idade aproximada: </Text> 
+                                    <Text style={{color: '#64718C', fontWeight: 'bold', fontSize: 17}}>15 Meses</Text>   
+                                </View>
+                            </View>
+                            <View style={{height: 85,justifyContent: 'center', alignItems: 'center', width: '25%'}}>
+                                <TouchableOpacity style={styles.btnShare}>
+                                    <Text style={{ color:'#64718C', fontWeight: '600'}}>Compartilhar</Text>
+                                    <Icon name="share-alt" size={20} color='#64718C' style={{marginRight: 5}}/>
+                                </TouchableOpacity>
+                            </View>
+                            
                         </View>
+                       
+                        
                     </View>
-                    <View style={styles.boxInfoDetailed}>
-                        <Text style={{ fontSize: 17, color: 'gray', marginBottom: 10 }}>Informações Adicionais</Text>
-                        <Text style={styles.txtDetail}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                    </Text>
-                    </View>
-                    <View style={styles.boxExtraDetail}>
-                        <Text style={{ fontSize: 17, color: 'gray' }}>Cuidados especiais: </Text>
-                        <Text style={{ color: 'gray' }}>Exercicios regulares</Text>
+                    <View style={styles.descriptionBox}>
+                        <Text style={styles.txtTitle}>Informações adicionais</Text>
+                        <Text style={styles.txtDescription}>
+                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho, 
+                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho
+                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho
+                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho
+                        </Text>
                     </View>
 
-                    <Button style={styles.buttons} color="#4682B4" onPress={() => this.props.navigation.navigate('RequestAdoption')}>MANIFESTAR INTERESSE</Button>
-                    <Button style={styles.buttons} color="#6495ED">COMPARTILHAR</Button>
-
+                    <View style={styles.containerButtons}>
+                        <TouchableOpacity style={styles.btnInteress} onPress={() => this.props.navigation.navigate('RequestAdoption')}>
+                            <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 16}}>Manifestar interesse</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ScrollView>
         )

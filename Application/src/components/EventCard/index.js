@@ -1,16 +1,41 @@
 import React, {Component}from 'react'
-import { Text, View, TouchableOpacity, Image } from 'react-native'
-import { Input, Button } from 'galio-framework';
+import { Text,Modal, View, TouchableOpacity, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import ModalContentEventDetail from './../ModalEventDetails'
+
 
 import styles from './styles.js'
 
+
+
 export default class CardEvent extends Component {
+    state = {
+        modalVisible: false
+    }
+
+    setModalVisible= (visible)  => {
+        this.setState({ modalVisible: visible})
+    }
+
     render(){
+       const { modalVisible } = this.state
         return(
             <View style={styles.cardContainer}>
+                <Modal
+                    animationType= "slide"
+                    visible= {modalVisible}
+                    style={styles.modalContainer}
+                    onRequestClose={() => {
+                        this.setModalVisible(!modalVisible);
+                    }}
+                 >
+                    <ModalContentEventDetail/>
+                    
+                </Modal>
+               
+                   
                 <Image style={styles.imgEvent} source={require('./../../assets/imgs/img2.jpg')}    />
-                    <TouchableOpacity style={styles.eventDescription}>
+                    <TouchableOpacity style={styles.eventDescription} onPress={() => this.setModalVisible(true)} >
                         <Text style={styles.titleCard}>Feira de Adoção</Text>
                             <View style={styles.infoLocationDate}>
                                 <View style={styles.groupInfo}>
@@ -30,6 +55,7 @@ export default class CardEvent extends Component {
                                 <Text style={{marginRight:3, color: 'dimgray'}}>Av T N° 5710 Cidade Alta - Rolim de Moura </Text>
                             </View>                                 
                         </View>
+                        
                     </TouchableOpacity>
              </View>
         )
