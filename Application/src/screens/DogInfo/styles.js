@@ -1,17 +1,19 @@
+import commonStyles from './../../common/commonStyles.js'
 import { StyleSheet, Dimensions } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#fff'
     },
-
-    boxImage: {
+    
+    imageContainer: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height * 0.4,
+        height: Dimensions.get('window').height * 0.3,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'lightgray'
+        backgroundColor: 'lightgray',
     },
 
     dogImage: {
@@ -19,59 +21,158 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        resizeMode: 'contain',
+        resizeMode: 'contain' // TODO Retirar atributo e colocar modal
     },
 
-    boxInfoBasic: {
-        height: 110,
-        width: '100%',
-        flexDirection: 'row',
-        margin: 5,
+    basicInfosContainer: {
+        width: '97%',
         borderRadius: 5,
-        justifyContent: 'space-around',
+        height: 200,
+        marginVertical: 10,
+        backgroundColor: '#fff',
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+
+    headerInfos: {
+        width: '100%',
+        alignItems: 'center',
+        paddingHorizontal: 15,
+        flexDirection: 'row',
+        height: 30,
+        borderBottomColor: '#f2f2f2',
+        borderBottomWidth: 1,
+        justifyContent: 'space-between',
+    },
+
+    headerInfo: {
+        flexDirection: 'row',
         alignItems: 'center'
     },
 
-    itemInfo: {
-        height: 100,
-        width: 120,
+    iconStyle: {
+        marginRight: 5 // TODO Margin obsoleta
+    },
+
+    infoCardsContainer: {
+        width: '100%',
+        padding: 5,
+    },
+
+    InfoGroup: {
+        justifyContent: 'space-between',
+        width: '100%',
+        flexDirection: 'row'
+    },
+
+    cardInfo: {
+        width: '32%',
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 2,
-        borderBottomColor: 'lightblue',
-        borderBottomWidth: 2
+        backgroundColor: '#f2f2f2',
+        borderRadius: 5
     },
 
-    boxInfoDetailed: {
+    infoLabel: {
+        color: 'gray',
+        fontWeight: 'bold',
+        fontSize: 17
+    },
+
+    infoValue: {
+        color: '#64718C',
+        fontWeight: 'bold',
+        fontSize: 17
+    },
+
+    otherInfosContainer: {
         width: '100%',
-        margin: 5,
-        height: 150,
+        padding: 10,
+        flexDirection: 'row',
+        height: 100,
+        justifyContent: 'space-between'
+    },
+
+    infoArea: {
+        width: '65%',
+        justifyContent: 'space-between'
+    },
+
+    otherInfoGroup: {
+        marginVertical: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
+    shareArea: {
+        height: 85,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        width: '35%',
+        padding: 10
+    },
+
+    shareButton: {
+        justifyContent: 'center',
         alignItems: 'center'
     },
 
-    txtDetail: {
+    descriptionContainer: {
         width: '100%',
-        margin: 1,
-        color: 'dimgray',
+        padding: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    descriptionLabel: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#64718C',
+        width: '100%',
         textAlign: 'center',
+        marginBottom: 5
+
+    },
+
+    descriptionValue: {
         fontSize: 15,
-        padding: 10
-
+        fontWeight: '600',
+        color: 'gray',
+        paddingVertical: 10,
+        textAlign: 'center',
+        borderBottomColor: '#f2f2f2',
+        borderBottomWidth: 1,
+        borderTopColor: '#f2f2f2',
+        borderTopWidth: 1,
     },
 
-    boxExtraDetail: {
+    buttonContainer: {
         width: '100%',
-        height: 50,
-        padding: 10,
-        margin: 5,
-        borderColor: 'lightblue',
-        borderRightWidth: 2
+        padding: 15,
     },
 
-    buttons: {
-        width: '90%',
-        height: 35
+    buttonExpressInterest: {
+        width: '100%',
+        height: 45,
+        justifyContent: 'center', alignItems: 'center',
+        backgroundColor: '#64718C',
+        borderRadius: 2,
+    },
+
+    buttonLabel: {
+        fontWeight: 'bold',
+        color: '#fff',
+        fontSize: 16
     }
+
 })
 
 export default styles

@@ -2,9 +2,9 @@ import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
-import AboutTab1 from '../component/AboutTab1'
-import AboutTab2 from '../component/AboutTab2'
-import AboutTab3 from '../component/AboutTab3'
+import AboutTab1 from '../components/AboutTab1'
+import AboutTab2 from '../components/AboutTab2'
+import AboutTab3 from '../components/AboutTab3'
 
 const Tab = createMaterialTopTabNavigator();
 

@@ -8,7 +8,6 @@ const OpenMenu = ()=> {
     navigation.openDrawer()
 }
 
-
 export default function HeaderMain({ navigation}) {
     
         return(

@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems:  'center',
-
+        
         paddingVertical: 30
     },
 
   
+ 
     formChangeMailPassword: {
         width: '100%',
    
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     txtTitleCard: {
         fontSize: 17,
         marginBottom: 10,
-       
+        color: '#64718C',
         fontWeight: 'bold',
         height: 35
     },
@@ -57,6 +57,13 @@ const styles = StyleSheet.create({
 
     btChange: {
         width: '100%',
+        height: 45,
+        backgroundColor: '#64718C',
+        justifyContent: 'center', 
+        alignItems: 'center',
+        borderRadius: 2,
+        margin: 15
+    
     }
 })
 

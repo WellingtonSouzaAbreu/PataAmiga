@@ -1,6 +1,5 @@
 import React, {Component}from 'react'
-import { Text, View, StyleSheet, Image, ScrollView} from 'react-native'
-import { Input, Button } from 'galio-framework';
+import { Text, View, TextInput, Image, ScrollView,TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import styles from './styles.js'
@@ -33,6 +32,17 @@ export default class DonationScreen extends Component {
                                 <Text style={{fontSize: 15, color: 'dimgray'}}>884184112-14</Text>
                             </View>
                         </View>
+                    </View>
+
+                    <View style={styles.formRequest}>
+                        <Text style={styles.txtTitle}>Precisa-se também de panos velhos, ração e remédios.</Text>
+                        <TextInput
+                            style={styles.inputRequest}
+                            placeholder="Item para doação"
+                        />
+                        <TouchableOpacity style={styles.btRequest}>
+                            <Text style={{fontWeight: 'bold', color: '#fff'}}>Solicitar</Text>   
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
                 

@@ -1,3 +1,3 @@
-const baseApiUrl = 'http://192.168.0.112:500'
+const baseApiUrl = 'http://192.168.1.104:500'
 
 export {baseApiUrl}

@@ -47,8 +47,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 2,
+        
+    },
+
     
-    }
 
 })
 export default styles

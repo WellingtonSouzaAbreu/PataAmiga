@@ -1,51 +1,44 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems:  'center',
-    
+        alignItems: 'center',
+        padding: 5
     },
 
-    headerElement: {
+    header: {
         width: '100%',
-        height: 150,
+        height: Dimensions.get('window').height * 0.22,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 15,
-        borderBottomWidth: 2,
-        borderBottomColor: '#F27F3D',
-        marginBottom: 10
     },
 
-    eventImageBanner: {
-        width: 120,
-        height: 120,
-        resizeMode: 'contain',
+    headerImage: {
+        height: '100%',
+        width: '60%',
+        resizeMode: 'cover',
     },
- 
 
-    title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginVertical: 2,
-        color: '#64718C'
-       
-    },
-    subtitle: {
+    headerText: {
         fontSize: 16,
-        textAlign: 'center',
+        fontWeight: 'bold',
+        marginVertical: 2
     },
 
-    containerScroll: {
+    line: {
+        width: '70%',
+        padding: 1,
+        marginTop: 20,
+        marginBottom: 20,
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 1,
+    },
+
+    flatlistEvents: {
         width: '100%',
-        flex: 1,
-        padding: 10,
- 
-
-    },
-
-   
+        flex: 1
+    }
 })
 
 export default styles

@@ -9,6 +9,7 @@ import styles from './styles.js'
 import {baseApiUrl} from './../../common/baseApiUrl.js'
 
 const AnimalCard = (props) => {
+    
     const navigateToDogInfo = () => {
         props.onNavigateToDogInfo(props.id)
     }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, FlatList, Image, Alert } from 'react-native'
 import axios from 'axios';
-//import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles.js'
 
@@ -44,7 +43,6 @@ const animalsOfflineData = [
         aproximateAge: '10 ~ 13 Meses',
         sex: 'Macho'
     },
-
 ]
 
 export default class Animals extends Component {
@@ -61,12 +59,11 @@ export default class Animals extends Component {
     }
     
     render() {
-
         return (
             <View style={styles.container}>
                 <FlatList
                     style={styles.flatlistDogs}
-                    data={animalsOfflineData} //this.state.animals TO DO
+                    data={this.state.animals} // animalsOfflineData TO DO
                     renderItem={({item}) => <AnimalCard {...item} onNavigateToDogInfo={this.props.onNavigateToDogInfo}/>}
                     keyExtractor={item => item.id}
                 />

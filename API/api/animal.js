@@ -103,10 +103,11 @@ module.exports = app => {
                 .select('imageURL')
                 .where({ animalId: animal.id })
                 .first()
-                .then(imageURL => animal.imageURL = imageURL.imageURL)
+                .then(imageURL => animal.imageURL = imageURL ? imageURL.imageURL : null)
                 .catch(err => {
-                    console.log('Erro o obter imagem do animal')
-                    res.status(500).send(err)
+                    console.log(err)
+                    throw 'Erro o obter imagem do animal'
+                    // res.status(500).send(err)
                 })
         }
 

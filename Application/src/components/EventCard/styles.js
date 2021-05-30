@@ -1,13 +1,14 @@
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
+import commonStyles from './../../common/commonStyles.js'
 
 const styles = StyleSheet.create({
-    
-    cardContainer: {
+    container: {
         width: '100%',
-        height: 300,
+        height: '73%',
         backgroundColor: 'white',
-        marginVertical: 10,
-        shadowColor: "#000",
+        // marginBottom: 10,
+
+        shadowColor: "#000", // TODO 
         shadowOffset: {
             width: 0,
             height: 4,
@@ -15,56 +16,53 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.32,
         shadowRadius: 3.46,
         elevation: 4,
-        borderRadius: 5
+        borderRadius: 5,
     },
-
-    titleCard: {
+    
+    title: {
         color: '#64718C',
+        fontSize: 16,
         fontWeight: 'bold',
-        fontSize: 15
+        marginTop: 5,
+        marginBottom: 2,
     },
-
-    subTitleCard: {
-        marginRight: 3,
-        fontSize: 14,
-        color: 'dimgray'
-    },
-
-    imgEvent: {
+    
+    eventImage: {
         resizeMode: 'cover',
         width: '100%',
-        height: '70%',  
-
+        height: '50%', // TODO Regular tamanho da imagem
     },
-
-    eventDescription: {
-        paddingHorizontal: 10,
-       
-    },
-
     
-    infoLocationDate: {
-        width: '100%',
-        flexDirection: 'column',
-        height: '25%'
-
+    eventInfo: {
+        paddingHorizontal: 10,
+        // height: '50%', // TODO Regular tamanho da descrição
     },
-
-    groupInfo: {
+    
+    scroll:{
+    },
+    
+    
+    infoRow: {
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 3
-       
+        marginVertical: 2,
     },
-
-
-    info1: {
-        width: '40%',
+    
+    iconStyle: {
+        marginRight: 7,
+    },
+    
+    infoItem: {
         alignItems: 'center',
         flexDirection: 'row',
-       
     },
+    
+    infoValue: {
+        marginRight: 20,
+        color: '#64718C',
+    }
+    
 })
 
 export default styles
