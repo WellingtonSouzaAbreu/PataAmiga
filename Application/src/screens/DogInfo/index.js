@@ -8,14 +8,6 @@ import axios from 'axios'
 import styles from './styles'
 import { baseApiUrl } from '../../common/baseApiUrl';
 
-const initialState = {
-    animal: {
-        imagesURL: [
-            { imageURL: 'cao1.jpeg' }
-        ]
-    },
-    renderImage: false
-}
 
 export default class DogInfo extends Component {
 
@@ -97,6 +89,8 @@ export default class DogInfo extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
+                       
+                        
                     </View>
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.descriptionLabel}>Informações adicionais</Text>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Text, Modal, View, TouchableOpacity, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import ModalContentEventDetail from './../ModalEventDetails'
+
 
 import styles from './styles.js'
 
