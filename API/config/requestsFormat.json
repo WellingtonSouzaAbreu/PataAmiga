@@ -176,7 +176,10 @@
             "address": "Av. Jośe R. dos Reis Filho",
             "city": 5,
             "publicationType": "event",
-            "district": "Miolo da Cidade"
+            "district": "Miolo da Cidade",
+            "animalName": "Auau",
+            "history": "Foi resgatado No lixo",
+            "reasonRescue": "Abandono"
         }
     },
     /*  publication-pictures

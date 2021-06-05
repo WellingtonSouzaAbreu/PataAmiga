@@ -164,6 +164,7 @@ CREATE TABLE IF NOT EXISTS `publications` (
     city VARCHAR(40) NOT NULL,
     publicationType ENUM('event', 'done') NOT NULL,
     district VARCHAR(30),
+    animalId INT(11),
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 

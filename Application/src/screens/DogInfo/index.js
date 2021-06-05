@@ -8,6 +8,9 @@ import axios from 'axios'
 import styles from './styles'
 import { baseApiUrl } from '../../common/baseApiUrl';
 
+const initialState = {
+    animal:{}
+}
 
 export default class DogInfo extends Component {
 

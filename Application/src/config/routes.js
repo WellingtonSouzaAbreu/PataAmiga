@@ -11,7 +11,7 @@ import About from '../screens/About'
 import DonationScreen from '../screens/Donation'
 import EventScreen from '../screens/Events'
 import FaqScreen from '../screens/Faq'
-import LastAdoptionsScreen from '../screens/latestAdoptions'
+import LastAdoptionsScreen from '../screens/LatestAdoptions'
 import RegularReportScreen from '../screens/RegularReport'
 import Home from '../screens/Home'
 import HomeRequestSreen from '../screens/HomeRequest'
@@ -125,7 +125,7 @@ const homeStack = createStackNavigator({
 
 
 
-}, { initialRouteName: 'Events' })
+}, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {
     initialRouteName: 'Home',

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-    cardAdoption: {
+    container: {
         width: '100%',
         height: 240,
         backgroundColor: 'white',
@@ -18,39 +18,35 @@ const styles = StyleSheet.create({
 
     },  
 
-    txtDate: {
-        fontSize: 16, 
-        fontWeight: 'bold',
-        color: '#979DA6'
-    },
-    imgAdoption: {
+    adoptedImage: {
         width: '100%',
         resizeMode: 'cover',
         height: '80%'
-
     },
-    groupInfoAdoption: {
+
+    groupInfoAdopted: {
         width: '100%',
         height: '20%',
         flexDirection: 'row',
         padding: 5,
         alignItems: 'center',
         justifyContent: 'space-between'
-
-        
     },
 
-    btMoreInfo: {
+    infoLabel: {
+        fontSize: 16, 
+        fontWeight: 'bold',
+        color: '#979DA6'
+    },
+
+    historyButton: {
         width: 100,
         height:30,
         backgroundColor: '#F28749',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 2,
-        
-    },
-
+    }
     
-
 })
 export default styles

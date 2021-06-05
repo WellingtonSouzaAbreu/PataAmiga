@@ -1,23 +1,30 @@
-import React, {Component,useState} from 'react'
+import React, { Component, useState } from 'react'
 import { SliderBox } from "react-native-image-slider-box";
+import { baseApiUrl } from '../../../common/baseApiUrl';
 
-export default class SliderImg extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            images: [
-                require('./../../../assets/imgs/img1.jpg'),
-                require('./../../../assets/imgs/img2.jpg')
-            ]
-        }
+export default function Slider(props) {
+
+
+
+    const setImagesURL = () => {
+        let imagesURL = []
+
+        Object.values(props).forEach(object => {
+            imagesURL.push(`${baseApiUrl}/publication-pictures/${object.imageURL}`)
+        })
+
+        console.log(imagesURL)
+
+        return imagesURL
     }
-    render(){
-        return(
-            <SliderBox 
-                dotColor="#F28749"
-                autoplay
-                circleLoop
-                images={this.state.images} />
-        )
-    }
+
+    let imagesURL = setImagesURL()
+
+    return (
+        <SliderBox
+            dotColor="#F28749"
+            autoplay
+            circleLoop
+            images={imagesURL} />
+    )
 }

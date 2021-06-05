@@ -6,7 +6,10 @@
  -> Adicionar o campo 'reference VARCHAR(100)' à tabela 'publications'
  -> Adicionar o campo password à tabela 'users'
  -> Remover o campo 'RG' da tabela 'users' 
- -> Adicionar o campo 'animalId INT NOT NULL' à tabela 'veterinary-cares'
+ -> Adicionar o campo 'animalId INT(11) NOT NULL' à tabela 'veterinary-cares'
+ -> Adicionar o campo 'animalId INT(11)' à tabela 'publications'
+ -> Adicionar o campo 'history TEXT(2000)' à tabela 'publications'
+ -> Adicionar o campo 'reasonRescue VARCHAR(20)' à tabela 'publications'
  
  *** Application ***
 

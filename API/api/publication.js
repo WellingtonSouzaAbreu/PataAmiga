@@ -61,10 +61,11 @@ module.exports = app => {
 
     const getDones = async (req, res) => {
         await app.db('publications')
-            .select('id', 'title', 'dateTime')
+            .select('id', 'title', 'dateTime', 'history', 'reasonRescue', 'animalName')
             .where({ publicationType: 'done' })
             .then(async dones => {
                 dones = await browseDones(dones)
+                console.log(dones)
                 res.status(200).send(dones)
             })
             .catch(err => {
@@ -79,7 +80,6 @@ module.exports = app => {
         }
         return dones
     }
-
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 

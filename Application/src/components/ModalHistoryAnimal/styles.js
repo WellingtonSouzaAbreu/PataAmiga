@@ -1,12 +1,11 @@
-import {StyleSheet} from 'react-native' 
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-    modalContainer: {
+    container: {
         flex: 1
-
     },
 
-    HeaderModal: {
+    header: {
         width: '100%',
         height: 50,
         flexDirection: 'row',
@@ -17,47 +16,74 @@ const styles = StyleSheet.create({
         paddingVertical: 10
     },
 
-    txtNameAnimal: {
-        fontSize: 18, 
+    headerRow: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    animalName: {
+        fontSize: 18,
         fontWeight: 'bold',
         color: 'dimgray',
+    },
+
+    closeIcon: {
+        width: 25,
+        height: '100%'
     },
 
     modalContent: {
         height: '100%',
         width: '100%',
-        justifyContent: 'center',  
-    },
-
-    sliderContainer:{
-
+        justifyContent: 'center',
     },
 
     rescueDetailsScroll: {
         padding: 10
     },
 
-    BoxDetailsOfRescue: {
+    rescueDetails: {
         width: '100%',
         height: 70,
         padding: 5,
         borderRadius: 3,
         borderRightWidth: 3,
         borderRightColor: '#F28749',
-        borderBottomWidth: 1, 
+        borderBottomWidth: 1,
         borderBottomColor: '#F28749',
         backgroundColor: '#ffff'
+    },
+
+    infoRow: {
+        flexDirection: 'row',
+        height: 30,
+        alignItems: 'center'
+    },
+
+    infoLabel: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: '#64718C'
     },
 
     containerHistory: {
         width: '100%',
         padding: 5,
-        
+
     },
 
-    txtHistory: {
+    historyLabel: {
         color: 'dimgray',
-        fontWeight: '600', 
+        fontSize: 20,
+        fontWeight: 'bold',
+        borderBottomColor: '#f2f2f2',
+        borderBottomWidth: 1
+    },
+
+    historyValue: {
+        marginTop: 5,
+        color: 'dimgray',
+        fontWeight: '600',
         fontSize: 15,
         textAlign: 'justify'
     }

@@ -8,4 +8,5 @@ module.exports = app => {
         origin: '*'
     }))
     app.use('/animal-pictures', express.static('./_animalPictures'))
+    app.use('/publication-pictures', express.static('./_publicationPictures'))
 }
