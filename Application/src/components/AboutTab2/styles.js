@@ -1,31 +1,35 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 4,
+        padding: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10
+        backgroundColor: '#fff'
     },
 
     txtStatic: {
+        width: Dimensions.get('window').width - 10, // padding do container
         textAlign: 'center',
         fontSize: 17,
         color: '#979DA6',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     imgAboutDo: {
-        height: 180,
-        width: 380,
-        marginVertical: 10,
-        resizeMode: 'cover'
+        height: Dimensions.get('window').height * 0.3,
+        width: '100%',
+        resizeMode: 'cover',
+        marginVertical: 10
     },
 
     imgAboutDoVetor: {
-        width: 150,
-        height: 150
+        width: '100%',
+        height: Dimensions.get('window').height * 0.4,
+        resizeMode: 'contain'
     },
-}
+})
 
 export default styles

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import commonStyles from './../../common/commonStyles.js'
 
 const styles = StyleSheet.create({
     container: {
@@ -11,8 +12,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         paddingHorizontal: 10
-        
-        
     },
 
     imgContainer: {
@@ -21,40 +20,27 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-    imgDonation:{
+    imgDonation: {
         resizeMode: 'contain',
         width: 150,
         height: 150,
     },
-
-    containerInfoBank: {
-        width: '100%',
-        padding: 5,
-        borderRadius: 4,
-        height: 200,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-     
-        
-    },
-
-    txtTitle: {
+    
+    title: {
         fontSize: 17,
         color: '#64718C',
         fontWeight: 'bold',
         textAlign: 'center'
     },
-
-    containerInfoDonate : {
+    
+    bankInfoContainer: {
         width: '100%',
         height: 60,
+        marginTop: 10,
         flexDirection: 'row',
-        borderRightWidth: 3,
-        borderRightColor: '#F27F3D',
-        borderBottomColor: '#F27F3D',
+        borderLeftWidth: 3,
         borderBottomWidth: 1,
-
+        borderColor: '#F27F3D',
     },
 
     iconContainer: {
@@ -62,14 +48,14 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        
+        marginLeft: 10
     },
 
-    infos: {
+    infoGroup: {
         width: '75%',
         height: '100%',
         padding: 5
-        
+
     },
 
     formRequest: {
@@ -81,17 +67,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5,
         justifyContent: 'space-around',
-       
+
     },
 
-    inputRequest: {
+    requestInput: {
         width: '100%',
         height: 40,
         backgroundColor: '#f2f2f2',
         textAlign: 'center'
     },
 
-    btRequest: {
+    requestButton: {
         width: '100%',
         height: 40,
         backgroundColor: '#64718c',
@@ -101,8 +87,8 @@ const styles = StyleSheet.create({
 
     }
 
-    
-    
+
+
 })
 
 export default styles

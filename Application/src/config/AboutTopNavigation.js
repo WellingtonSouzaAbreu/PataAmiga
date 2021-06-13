@@ -8,7 +8,7 @@ import AboutTab3 from '../components/AboutTab3'
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function AboutNavigation() {
+const About = () => {
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -16,7 +16,6 @@ export default function AboutNavigation() {
                 tabBarOptions={{
                     activeTintColor: '#F28749',
                     inactiveTintColor: '#64718C',
-                  
                 }}
             >
                 <Tab.Screen name="Quem somos?" component={AboutTab1} />
@@ -27,3 +26,5 @@ export default function AboutNavigation() {
         </NavigationContainer>
     )
 }
+
+export default About

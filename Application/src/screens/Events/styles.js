@@ -1,10 +1,12 @@
 import { StyleSheet, Dimensions } from 'react-native'
+import commonStyles from './../../common/commonStyles.js'
 
 const styles = StyleSheet.create({
+
     container: {
         flex: 1,
         alignItems: 'center',
-        padding: 5
+        padding: 5,
     },
 
     header: {
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
 
     flatlistEvents: {
         width: '100%',
-        flex: 1
+        flex: 1,
     }
 })
 

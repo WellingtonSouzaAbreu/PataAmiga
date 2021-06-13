@@ -17,15 +17,16 @@ module.exports = app => {
             .catch(err => console.log('Erro ao consultar dados do usuário'))
 
         try {
-            existsOrError(donation.donationType, 'Tipo de doação não informado')
+            // existsOrError(donation.donationType, 'Tipo de doação não informado')
             existsOrError(donation.name, 'Nome do doador não informado')
             existsOrError(donation.cellNumber, 'Celular do doador não informado')
             existsOrError(donation.dateTime, 'Data e hora não informada')
+            existsOrError(donation.description, 'Descrição não informada')
 
-            donation.donationType == 'assets' ? existsOrError(donation.description, 'Descrição não infomada') : existsOrError(donation.specimenValue, 'Valor em espécime não infomado')
+            // donation.donationType == 'assets' ? existsOrError(donation.description, 'Descrição não infomada') : existsOrError(donation.specimenValue, 'Valor em espécime não infomado')
 
         } catch (err) {
-            return res.status(400).send(err)
+            return res.status(400).send(err) // TODO Erro the dois res no mesmo fluxo
         }
 
         await app.db('donations')

@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Image} from 'react-native'
 import styles from './styles'
 
 
-export default class FaqScreen extends Component{
+export default class Faq extends Component{
     render(){
         return(
             <View style={styles.container}>
@@ -56,7 +56,6 @@ export default class FaqScreen extends Component{
                         <Text style={styles.txtQuestion}>O quê preciso para adotar um cão? </Text>
                         <Text style={styles.txtAnswer}>Deve gostar de cães, ser responsável e pussuir um ambiente adequado.</Text>
                     </View> 
-
                 </ScrollView>
                 
             </View>

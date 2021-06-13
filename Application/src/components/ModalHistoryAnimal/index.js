@@ -8,6 +8,7 @@ import {formatDate} from './../../common/commonFunctions.js'
 import Slider from './Slider'
 
 export default function ModalContentHistory(props) {
+
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -20,7 +21,7 @@ export default function ModalContentHistory(props) {
                 </TouchableOpacity>
             </View>
             <View style={styles.sliderContainer}>
-                <Slider {...props.imagesURL}/>
+                <Slider {...props.imagesURL} imageSource='publication'/>
                 </View>
                     <ScrollView style={styles.rescueDetailsScroll}>
                         <View style={styles.rescueDetails}>

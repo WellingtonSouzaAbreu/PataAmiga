@@ -4,11 +4,11 @@ import commonStyles from './../../common/commonStyles.js'
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: '73%',
+        height: Dimensions.get('window').height * 0.50,
         backgroundColor: 'white',
-        // marginBottom: 10,
+        marginBottom: 20,
 
-        shadowColor: "#000", // TODO 
+        shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 4,
@@ -30,15 +30,16 @@ const styles = StyleSheet.create({
     eventImage: {
         resizeMode: 'cover',
         width: '100%',
-        height: '50%', // TODO Regular tamanho da imagem
+        height: '60%',
     },
     
     eventInfo: {
         paddingHorizontal: 10,
-        // height: '50%', // TODO Regular tamanho da descrição
+        height: '40%',
     },
     
     scroll:{
+        flex: 1
     },
     
     

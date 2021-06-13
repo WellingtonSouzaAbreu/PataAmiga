@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         elevation: 4,
         borderRadius: 5
 
-    },  
+    },
 
     adoptedImage: {
         width: '100%',
@@ -34,19 +34,24 @@ const styles = StyleSheet.create({
     },
 
     infoLabel: {
-        fontSize: 16, 
+        fontSize: 16,
         fontWeight: 'bold',
         color: '#979DA6'
     },
 
     historyButton: {
         width: 100,
-        height:30,
+        height: 30,
         backgroundColor: '#F28749',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 2,
+    },
+
+    buttonLabel: {
+        color: '#fff',
+        fontWeight: 'bold'
     }
-    
+
 })
 export default styles

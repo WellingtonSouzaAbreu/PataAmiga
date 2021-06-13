@@ -29,9 +29,8 @@ export default class CardAdopted extends Component {
                     animationType="slide"
                     visible={this.state.modalVisible}
                     style={styles.modalContainer}
-                    onCloseModal={this.closeModal} // TODO Close modal não funciona
                 >
-                    <ModalContentHistory {...this.props}/>
+                    <ModalContentHistory {...this.props} onCloseModal={this.closeModal}/>
                 </Modal>
 
 
@@ -44,7 +43,7 @@ export default class CardAdopted extends Component {
                     </View>
 
                     <TouchableOpacity style={styles.historyButton} onPress={this.showModal} >
-                        <Text style={{ color: '#fff', fontWeight: 'bold' }}>
+                        <Text style={styles.buttonLabel}>
                             História
                         </Text>
                     </TouchableOpacity>

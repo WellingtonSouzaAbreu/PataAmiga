@@ -14,3 +14,4 @@
  *** Application ***
 
 -> Adicionar placeholder aos inputs de 'Auth'
+-> Adicionar "hover" a tela 'DogInfo'

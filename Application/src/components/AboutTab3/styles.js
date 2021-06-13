@@ -5,17 +5,19 @@ const styles = {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 10
+        padding: 5,
+        marginTop: 4,
+        backgroundColor: '#fff',
     },
 
-    txtTitle: {
+    title: {
         fontSize: 19,
         color: '#979DA6',
         fontWeight: 'bold',
         textAlign: 'center'
     },
 
-    txtText: {
+    text: {
         fontSize: 17,
         color: 'gray',
         textAlign: 'center',

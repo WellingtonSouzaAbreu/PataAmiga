@@ -5,7 +5,7 @@ import styles from './styles'
 
 import AboutNavigation from '../../config/AboutTopNavigation'
 
-export default class AboutScreen extends Component {
+export default class About extends Component {
     render() {
         return (
             <View style={styles.container}>

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        resizeMode: 'contain' // TODO Retirar atributo e colocar modal
+        resizeMode: 'cover' // TODO Retirar atributo e colocar modal
     },
 
     basicInfosContainer: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
 
     iconStyle: {
-        marginRight: 5 // TODO Margin obsoleta
+        marginRight: 5
     },
 
     infoCardsContainer: {

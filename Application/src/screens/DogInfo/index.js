@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import styles from './styles'
 import { baseApiUrl } from '../../common/baseApiUrl';
+import Slider from './../../components/ModalHistoryAnimal/Slider'
 
 const initialState = {
     animal:{}
@@ -20,6 +21,7 @@ export default class DogInfo extends Component {
         let idAnimal = this.props.navigation.state.params.id
         await axios.get(`${baseApiUrl}/animal/${idAnimal}`)
             .then(res => {
+                console.log(res.data)
                 this.setState({ animal: res.data, renderImage: true })
             })
             .catch(err => Alert.alert('Erro', err))
@@ -31,7 +33,8 @@ export default class DogInfo extends Component {
                 <View style={styles.container}>
                     <View style={styles.imageContainer}>
                         {this.state.renderImage &&
-                            <Image style={styles.dogImage} source={{ uri: `${baseApiUrl}/animal-pictures/${this.state.animal.imagesURL[0] && this.state.animal.imagesURL[0].imageURL}` }} />
+                            // <Image style={styles.dogImage} source={{ uri: `${baseApiUrl}/animal-pictures/${this.state.animal.imagesURL[0] && this.state.animal.imagesURL[0].imageURL}` }} />
+                            <Slider {...this.state.animal.imagesURL} imageSource='animal'/>
                         }
                     </View>
                     <View style={styles.basicInfosContainer}>
@@ -49,7 +52,7 @@ export default class DogInfo extends Component {
                             <View style={styles.InfoGroup}>
                                 <View style={styles.cardInfo}>
                                     <Text style={styles.infoLabel}>Castrado</Text>
-                                    {this.state.animal.castrated // TODO A informação de castrado não está no banco
+                                    {this.state.animal.castrated
                                         ? <Icon name="check" size={17} color='#64718C' style={styles.iconStyle} />
                                         : <Icon name="times" size={17} color='#64718C' style={styles.iconStyle} />
                                     }
@@ -98,10 +101,7 @@ export default class DogInfo extends Component {
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.descriptionLabel}>Informações adicionais</Text>
                         <Text style={styles.descriptionValue}>
-                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho,
-                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho
-                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho
-                            Berenice é uma Pitbull docil, que gosta de brincar e de receber atenção e carinho
+                            {this.state.animal.othersCharacteristics}
                         </Text>
                     </View>
                     <View style={styles.buttonContainer}>
