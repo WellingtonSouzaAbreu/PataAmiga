@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 import styles from './styles.js'
 
-import Slider from './../../components/ModalHistoryAnimal/Slider'
+import Slider from './../../components/Slider'
 import { formatDate, formatHour } from './../../common/commonFunctions.js'
 import EventDetails from '../EventDetails'
 

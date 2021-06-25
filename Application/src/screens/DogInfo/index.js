@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import styles from './styles'
 import { baseApiUrl } from '../../common/baseApiUrl';
-import Slider from './../../components/ModalHistoryAnimal/Slider'
+import Slider from './../../components/Slider'
 
 const initialState = {
     animal:{}

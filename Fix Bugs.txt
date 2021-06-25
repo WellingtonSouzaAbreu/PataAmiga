@@ -10,8 +10,12 @@
  -> Adicionar o campo 'animalId INT(11)' à tabela 'publications'
  -> Adicionar o campo 'history TEXT(2000)' à tabela 'publications'
  -> Adicionar o campo 'reasonRescue VARCHAR(20)' à tabela 'publications'
+ -> Remover o campo 'donationType' da tabela 'donations'
+ -> Remover o campo 'especimenValue' da tabela 'donations'
+
  
  *** Application ***
 
 -> Adicionar placeholder aos inputs de 'Auth'
--> Adicionar "hover" a tela 'DogInfo'
+-> Adicionar "hover" a tela 'DogInfo' 
+-> Placeholder da tela 'Complaint' some ao deslizar o dedo

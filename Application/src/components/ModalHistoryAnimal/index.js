@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import styles from './styles'
 
 import {formatDate} from './../../common/commonFunctions.js'
-import Slider from './Slider'
+import Slider from './../Slider'
 
 export default function ModalContentHistory(props) {
 

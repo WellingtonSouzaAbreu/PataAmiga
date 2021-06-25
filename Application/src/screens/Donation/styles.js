@@ -35,6 +35,16 @@ const styles = StyleSheet.create({
     
     bankInfoContainer: {
         width: '100%',
+        height: 80,
+        marginTop: 10,
+        flexDirection: 'row',
+        borderLeftWidth: 3,
+        borderBottomWidth: 1,
+        borderColor: '#F27F3D',
+    },
+
+    pixInfoContainer: {
+        width: '100%',
         height: 60,
         marginTop: 10,
         flexDirection: 'row',
@@ -44,7 +54,7 @@ const styles = StyleSheet.create({
     },
 
     iconContainer: {
-        width: '15%',
+        width: '20%',
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',

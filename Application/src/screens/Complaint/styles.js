@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
         borderLeftWidth: 4,
         borderBottomColor: '#F28749',
         borderBottomWidth: 1,
-        borderLeftColor: '#F28749'
+        borderLeftColor: '#F28749',
+        padding: 5
     },
 
     inputForm: {
         width : '100%',
-        height: 250,
         padding: 10,
         alignItems: 'center',
         backgroundColor: '#f2f2f2',
@@ -51,21 +51,23 @@ const styles = StyleSheet.create({
         
     },
 
-    inputAndress: {
+    smallInput: {
         width: '100%',
         height: 40,
+        marginBottom: 10,
         backgroundColor: '#fff',
         textAlign: 'center'
     },
 
-    inputDetailsReport: {
+    descriptionInput: {
         width: '100%',
         height: 100,
         backgroundColor: '#fff',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 10,
     },
 
-    btnReport: {
+    reportButton: {
         width: '100%',
         height: 40,
         borderRadius: 3,

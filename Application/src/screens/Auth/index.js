@@ -11,7 +11,7 @@ import styles from './styles'
 import { baseApiUrl } from './../../common/baseApiUrl.js'
 
 const initialState = {
-    cellNumber: '9 5997-7089',
+    cellNumber: '9 8446-5997',
     password: '12345'
 }
 

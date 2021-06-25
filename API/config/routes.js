@@ -4,7 +4,7 @@ module.exports = app => {
     app.post('/signin', app.api.user.signin)
 
     app.route('/user/:id')
-        // .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())  // Setar isso para todas as requisições que necessitam de validação
         .get(app.api.user.getUserById)
         .put(app.api.user.save)
 
@@ -16,7 +16,9 @@ module.exports = app => {
 
     app.post('/visit', app.api.visit.save)
 
-    app.post('/donation', app.api.donation.save)
+    app.route('/donation')
+        .all(app.config.passport.authenticate())
+        .post(app.api.donation.save)
 
     app.route('/temporary-home')
         .get(app.api.temporaryHome.getTemporaryHomes)

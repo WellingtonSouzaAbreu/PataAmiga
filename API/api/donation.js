@@ -3,11 +3,18 @@ const user = require("./user")
 module.exports = app => {
 
     const save = async (req, res) => {
-        const {existsOrError} = app.api.validation
+        const { existsOrError } = app.api.validation
 
-        // variáveis vindas pelo header ficam low case
-        const userId = req.headers.userid ? req.headers.userid : res.status(400).send('Doador não informado')
-        let donation = req.body.donation ? req.body.donation : res.status(400).send('Dados da doação não informados')
+        const userId = req.user.id // Passport
+        let donation = req.body
+        console.log(req.body)
+
+        try {
+            existsOrError(donation, 'Dados da doação não informados')
+        } catch (err) {
+            return res.status(400).send()
+        }
+
         donation.dateTime = new Date()
 
         await app.db('users')
@@ -26,7 +33,7 @@ module.exports = app => {
             // donation.donationType == 'assets' ? existsOrError(donation.description, 'Descrição não infomada') : existsOrError(donation.specimenValue, 'Valor em espécime não infomado')
 
         } catch (err) {
-            return res.status(400).send(err) // TODO Erro the dois res no mesmo fluxo
+            return res.status(400).send(err)
         }
 
         await app.db('donations')

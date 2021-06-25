@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 // import Animals from '../screens/Animals/index.js'
-import Report from '../screens/Report/index.js'
+import Complaint from '../screens/Complaint/index.js'
 import DogInfo from '../screens/DogInfo'
 import About from '../screens/About'
 import DonationScreen from '../screens/Donation'
@@ -16,7 +16,7 @@ import RegularReportScreen from '../screens/RegularReport'
 import Home from '../screens/Home'
 import HomeRequestSreen from '../screens/HomeRequest'
 import ProfileScreen from '../screens/Profile'
-import AuthScreen from './../screens/Auth'
+import Auth from './../screens/Auth'
 import CompleteProfile from './../screens/Profile/CompleteProfile'
 import EditProfile from './../screens/Profile/EditProfile'
 import ChangePassword from './../screens/Profile/ChangePassword'
@@ -43,7 +43,6 @@ const homeStack = createStackNavigator({
         screen: DogInfo
     }, 
 
-
     Animals:{
         name: 'Animals',
         screen: Animals,
@@ -66,8 +65,8 @@ const homeStack = createStackNavigator({
         }
     },
 
-    Report: {
-        screen: Report,
+    Complaint: {
+        screen: Complaint,
         navigationOptions:{
             headerTitle:'Denunciar'
         }
@@ -100,6 +99,7 @@ const homeStack = createStackNavigator({
             headerTitle: 'Meu Perfil'
         }
     },
+
     CompleteProfile: {
         screen: CompleteProfile,
         navigationOptions: {
@@ -124,8 +124,7 @@ const homeStack = createStackNavigator({
     },
 
 
-
-}, { initialRouteName: 'Home' })
+}, { initialRouteName: 'Complaint' })
 
 const menuDrawerConfig = {
     initialRouteName: 'Home',
@@ -156,9 +155,9 @@ const menuDrawerRoutes = {
         },
         
     },
-    Report: {
-        name: 'Report',
-        screen: Report,
+    Complaint: {
+        name: 'Complaint',
+        screen: Complaint,
         navigationOptions: {
             title: 'DENUNCIAR',
             drawerIcon:({tintColor}) => (
@@ -239,17 +238,11 @@ const menuDrawerRoutes = {
     
     Auth: {
         name: 'Auth',
-        screen: AuthScreen,
+        screen: Auth,
         navigationOptions: {
             title: 'AUTH'
         }
     },
-
-
-    
-
-    
-
 
 }
 
