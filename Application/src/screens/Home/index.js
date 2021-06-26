@@ -34,7 +34,7 @@ export default class Home extends Component{
                     </View>
 
                     <View style={styles.gridButton}>
-                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('Report')}>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('Complaint')}>
                             <Icon name="bullhorn" size={20} color='#64718C' style={{marginVertical: 2}}/>
                             <Text style={styles.txtButton}>Denunciar</Text>
                         </TouchableOpacity>

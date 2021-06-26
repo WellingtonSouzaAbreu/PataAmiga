@@ -121,7 +121,7 @@ const homeStack = createStackNavigator({
 }, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {
-    initialRouteName: 'Home',
+    initialRouteName: 'Auth',
     drawerType: 'front',
     
     drawerStyle: {

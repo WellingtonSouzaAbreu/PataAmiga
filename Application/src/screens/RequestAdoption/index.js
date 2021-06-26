@@ -12,7 +12,6 @@ import { baseApiUrl } from "../../common/baseApiUrl.js";
 
 const initialState = {
 	description: 'Tem muitos gatos para ele brincar',
-	image: null,
 	imagesPack: [],
 
 	imageBrowserVisible: false
@@ -31,15 +30,27 @@ export default class RequestAdoption extends Component {
 		this.setState({ imageBrowserVisible: !this.state.imageBrowserVisible })
 	}
 
-	sendRequestAdoption = async = () => {
-		Alert.alert('Aoba', 'Foi')
+	sendRequestAdoption = async () => {
+
+		// this.checkIfImagesAreSelected()
+
+		const animalId = this.props.navigation.state.params.animalId
+
+		await axios.post(`${baseApiUrl}/interesteds-in-adoption/${animalId}`, { interestedInAdoption: { description: this.state.description } })
+			.then(res => {
+				console.log(res.data)
+				const interestedInAdoptionId = res.data
+				this.saveImages(animalId)
+			})
+			.catch(err => {
+				console.log(err)
+				Alert.alert('Ops', 'Ocorreu um erro ao manifestar interesse')
+			})
 	}
 
 	saveImages = async (interestedInAdoptionId) => {
-		if (this.state.imagesPack.length < 1) {
-			Alert.alert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
-			return
-		}
+
+		this.checkIfImagesAreSelected()
 
 		let picturesUploaded = [true]
 		this.state.imagesPack.map(async image => {
@@ -61,9 +72,16 @@ export default class RequestAdoption extends Component {
 
 		let valid = /*  picturesUploaded.reduce((total = true, current) => total && current)  */ true
 		if (valid) {
-			Alert.alert('Sucesso!', 'Imagens salvas!')
+			Alert.alert('Oba!', 'Você é um candidato à adoção, aguarde que a ONG entrará em contato contigo')
 		} else {
 			Alert.alert('Erro!', 'Ocorreu um erro ao salvar as imagens!')
+		}
+	}
+
+	checkIfImagesAreSelected = () => {
+		if (this.state.imagesPack.length < 1) {
+			Alert.alert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
+			return
 		}
 	}
 
@@ -151,7 +169,8 @@ export default class RequestAdoption extends Component {
 
 							<Button color="info" style={styles.buttonUpload}
 								onPress={this.sendRequestAdoption}
-							>Enviar
+							>
+								Enviar
 							</Button>
 
 						</View>

@@ -39,13 +39,14 @@ module.exports = app => {
         .post(app.api.rescue.save)
 
     app.route('/interesteds-in-adoption/:animalId')
+        .all(app.config.passport.authenticate())
         .get(app.api.interestedInAdoption.getInterestedsInAdoption)
         .post(app.api.interestedInAdoption.save)
 
     app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
 
     app.route('/animal')
-        // .all(app.config.passport.authenticate()) // Setar isso para todas as requisições que necessitam de validação
+        .all(app.config.passport.authenticate()) // Setar isso para todas as requisições que necessitam de validação
         .get(app.api.animal.getAnimals)
         .post(app.api.animal.save)
 

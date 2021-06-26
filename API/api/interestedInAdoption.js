@@ -50,17 +50,18 @@ module.exports = app => {
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
-        const userId = req.headers.userid ? req.headers.userid : res.status(400).send('Usuário não informado')
+        const userId = req.user.id // Passport
 
         let interestedInAdoption = req.body.interestedInAdoption ? req.body.interestedInAdoption : res.status(400).send('Dados do interesse não informados')
         interestedInAdoption.userId = userId
-        interestedInAdoption.animalId = req.params.animalId ? req.params.animalId : res.status(400).send('Animal não identificado')
+        interestedInAdoption.animalId = req.params.animalId
 
         try {
             existsOrError(interestedInAdoption.description, 'Descrição não informada')
             existsOrError(interestedInAdoption.userId, 'Usuário não informado')
             existsOrError(interestedInAdoption.animalId, 'Animal não informado')
         } catch (err) {
+            console.log(err)
             return res.status(400).send(err)
         }
 
@@ -77,7 +78,7 @@ module.exports = app => {
 
         const storage = multer.diskStorage({ // Objeto para configurar a pasta de salvamento e o nome 
             destination: function (req, file, callback) {
-                callback(null, './_interestedsPictures') // Pasta de destino
+                callback(null, './_interestedPictures') // Pasta de destino
             },
             filename: function (req, file, callback) {
                 callback(null, `${Date.now()}_${file.originalname}`)
