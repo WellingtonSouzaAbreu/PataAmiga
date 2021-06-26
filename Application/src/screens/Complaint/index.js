@@ -1,24 +1,36 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import {  RadioButton } from 'react-native-paper';
+import axios from 'axios'
 
 import styles from './styles.js'
 
+import {baseApiUrl} from './../../common/baseApiUrl.js'
+
 const initialState = {
-    description: '',
-    address: '',
-    complaintType: '',
-    city: '',
-    district: ''
+    description: 'Tem um mendigo comendo um cahorro',
+    address: 'Av. José R. dos Reis Filho',
+    complaintType: 'Maus tratos',
+    city: 'Novo Horizonte',
+    district: 'Centro',
+    locale: 'Casa abandonada'
 }
 
 export default class Report extends Component {
 
     state = {...initialState}
 
-    requestReport = () => {
-        console.log(this.state)
+    requestReport = async() => {
+        await axios.post(`${baseApiUrl}/complaint`, {complaint: this.state})
+            .then(res => {
+                Alert.alert('Oba', 'Denúncia realizada com sucesso!')
+                this.setState({...initialState})
+            })
+            .catch(err => {
+                console.log(err.response.data)
+                Alert.alert('Ops!', 'Ocorreu um erro ao realizar denúncia.')
+            })
     }
 
     render() {
@@ -34,19 +46,19 @@ export default class Report extends Component {
                             <View style={styles.radioComponent}>
                                 <View style={styles.radioContainer}>
                                     <RadioButton
-                                        value='abandonment'
+                                        value='Abandono'
                                         color="#F28749"
-                                        status={this.state.complaintType === 'abandonment' ? 'checked' : 'unchecked'}
-                                        onPress={() => this.setState({complaintType: 'abandonment'})}
+                                        status={this.state.complaintType === 'Abandono' ? 'checked' : 'unchecked'}
+                                        onPress={() => this.setState({complaintType: 'Abandono'})}
                                     />
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'dimgray' }}>Abandono</Text>
                                 </View>
                                 <View style={styles.radioContainer}>
                                     <RadioButton
-                                        value="mistreatment"
+                                        value="Maus tratos"
                                         color="#F28749"
-                                        status={this.state.complaintType === 'mistreatment' ? 'checked' : 'unchecked'}
-                                        onPress={() => this.setState({complaintType: 'mistreatment'})}
+                                        status={this.state.complaintType === 'Maus tratos' ? 'checked' : 'unchecked'}
+                                        onPress={() => this.setState({complaintType: 'Maus tratos'})}
                                     />
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'dimgray' }}>Maus tratos</Text>
                                 </View>
@@ -71,6 +83,12 @@ export default class Report extends Component {
                             value={this.state.address}
                             placeholder='Endereço do ocorrido'
                             onChangeText={(address) => this.setState({address})}
+                        />
+                        <TextInput
+                            style={styles.smallInput}
+                            value={this.state.locale}
+                            placeholder='Local'
+                            onChangeText={(locale) => this.setState({locale})}
                         />
                         <TextInput
                             style={styles.descriptionInput}

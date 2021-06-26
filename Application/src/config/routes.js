@@ -14,7 +14,7 @@ import FaqScreen from '../screens/Faq'
 import LastAdoptionsScreen from '../screens/LatestAdoptions'
 import RegularReportScreen from '../screens/RegularReport'
 import Home from '../screens/Home'
-import HomeRequestSreen from '../screens/HomeRequest'
+import RequestAdoption from './../screens/RequestAdoption'
 import ProfileScreen from '../screens/Profile'
 import Auth from './../screens/Auth'
 import CompleteProfile from './../screens/Profile/CompleteProfile'
@@ -23,10 +23,6 @@ import ChangePassword from './../screens/Profile/ChangePassword'
 import Animals from './../screens/Animals' // Vinculado somente para poder navegar no AnimalCard
 import CustomDrawer from '../components/CustomDrawer/CustomDrawer'
 import HeaderMain from '../components/HaeaderMain'
-
-/* import AboutTab1 from '../component/AboutTab1'
-import AboutTab2 from './../component/AboutTab2'
-import AboutTab3 from './../component/AboutTab3' */
 
 const homeStack = createStackNavigator({
     Home: {
@@ -87,7 +83,7 @@ const homeStack = createStackNavigator({
     },
 
     RequestAdoption: {
-        screen: HomeRequestSreen,
+        screen: RequestAdoption,
         navigationOptions:{
             headerTitle: 'Formulário de Adoção'
         }
@@ -112,7 +108,6 @@ const homeStack = createStackNavigator({
         navigationOptions: {
             headerTitle: 'Editar Perfil'
         }
-
     },
 
     ChangePassword: {
@@ -120,11 +115,10 @@ const homeStack = createStackNavigator({
         navigationOptions: {
             headerTitle: 'Alterar Senha'
         }
-
     },
 
 
-}, { initialRouteName: 'Complaint' })
+}, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {
     initialRouteName: 'Home',
@@ -248,35 +242,4 @@ const menuDrawerRoutes = {
 
 const menuDrawer = createDrawerNavigator(menuDrawerRoutes, menuDrawerConfig)
 
-
-
 export default createAppContainer(menuDrawer)
-
-// Ignora isso, vou ver depois kkj
-
-// const aboutTabs = createMaterialTopTabNavigator({
-//     AboutTab1: {
-//         name: 'AboutTab1',
-//         screen: AboutTab1,
-//         navigationOptions: {
-//             title: 'AboutTab1',
-//             /* tabBarIcon: ({ tintColor }) =>
-//                 <Icon name='home' size={30} color={tintColor} /> */
-//         }
-//     },
-//     AboutTab2: {
-//         name: 'AboutTab2',
-//         screen: AboutTab2,
-//         navigationOptions: {
-//             title: 'AboutTab2',
-//             /* tabBarIcon: ({ tintColor }) =>
-//                 <Icon name='home' size={30} color={tintColor} /> */
-//         }
-//     }
-// }, {
-//     initialRouteName: 'AboutTab2',
-//     tabBarOptions: {
-//         tabBarPosition: 'top',
-//         showLabel: true,
-//     }
-// })

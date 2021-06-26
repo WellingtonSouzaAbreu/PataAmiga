@@ -1,0 +1,165 @@
+import React, { Component } from "react";
+import { View, Text, Image, TextInput, Modal, StatusBar, ScrollView, TouchableOpacity, Alert } from "react-native";
+import { Button } from 'galio-framework';
+import axios from 'axios'
+import { ImageBrowser } from 'expo-image-picker-multiple'
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+import styles from './styles.js'
+
+import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
+import { baseApiUrl } from "../../common/baseApiUrl.js";
+
+const initialState = {
+	description: 'Tem muitos gatos para ele brincar',
+	image: null,
+	imagesPack: [],
+
+	imageBrowserVisible: false
+}
+
+export default class RequestAdoption extends Component {
+
+	state = { ...initialState }
+
+	componentDidMount = () => {
+		console.log(this.props.navigation.state.params.animalId) // Params
+	}
+
+	toggleImageBrowserVisibility = () => {
+		console.log(!this.state.imageBrowserVisible)
+		this.setState({ imageBrowserVisible: !this.state.imageBrowserVisible })
+	}
+
+	sendRequestAdoption = async = () => {
+		Alert.alert('Aoba', 'Foi')
+	}
+
+	saveImages = async (interestedInAdoptionId) => {
+		if (this.state.imagesPack.length < 1) {
+			Alert.alert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
+			return
+		}
+
+		let picturesUploaded = [true]
+		this.state.imagesPack.map(async image => {
+
+			let imageData = new FormData()
+			imageData.append('interestedPicture', image)
+			imageData.append('interestedInAdoptionId', interestedInAdoptionId)
+
+			await axios.post(`${baseApiUrl}/interested-in-adoption/picture`, imageData)
+				.then(res => {
+					console.log('foi')
+					picturesUploaded.push(true)
+				})
+				.catch(err => {
+					picturesUploaded.push(false)
+					console.log('não foi')
+				})
+		})
+
+		let valid = /*  picturesUploaded.reduce((total = true, current) => total && current)  */ true
+		if (valid) {
+			Alert.alert('Sucesso!', 'Imagens salvas!')
+		} else {
+			Alert.alert('Erro!', 'Ocorreu um erro ao salvar as imagens!')
+		}
+	}
+
+	render() {
+		return (
+			<View style={styles.container}>
+				<StatusBar />
+				<Modal
+					animationType='slide'
+					visible={this.state.imageBrowserVisible}
+					onRequestClose={this.toggleImageBrowserVisibility}
+				>
+					<View style={styles.imageBrowserContainer}>
+						<ImageBrowser max={3}
+							loadCount={20}
+							renderSelectedComponent={
+								(num) => < PhotoSelectIndicator value={num}
+								/>}
+							onChange={
+								(num, onSubmit) => {
+									onSubmit(num)
+								}
+							}
+							callback={
+								(imagesSelected) => {
+									let imagesPack = []
+
+									console.log(imagesSelected._W)
+
+									imagesSelected._W.map(image => {
+										let imageData = {
+											uri: image.uri,
+											type: 'image/' + image.filename.split('.')[1],
+											name: image.filename
+										}
+										imagesPack.push(imageData)
+									})
+
+									console.log(imagesPack)
+
+									this.setState({ imagesPack })
+								}
+							}
+						/>
+
+					</View>
+					<View style={styles.browserConfirmArea}>
+						<TouchableOpacity onPress={this.toggleImageBrowserVisibility}>
+							<Icon name='check-circle' size={60} color='black' />
+						</TouchableOpacity>
+					</View>
+
+					<TouchableOpacity style={{ flex: 1 }} onPress={this.toggleImageBrowserVisibility}>
+						<View style={styles.browserFooter} >
+							<Icon name='angle-down' size={30} color='black' style={styles.angleDownIcon} />
+						</View>
+					</TouchableOpacity>
+				</Modal>
+
+				<ScrollView style={{ flex: 1, width: '100%' }}>
+					<View style={styles.headerElement}>
+						<Image style={styles.imgElement} source={require('./../../assets/imgs/homerequest.png')} />
+						<Text style={{ fontWeight: 'bold', fontSize: 22 }}>Onde ele vai morar?</Text>
+					</View>
+					<View style={styles.containerUpload}>
+						<View style={styles.formUpload}>
+
+							<Text style={{ fontSize: 16, fontWeight: 'bold' }}>Enviar Descrição</Text>
+							<TextInput
+								value={this.state.description}
+								placeholder="Detalhes"
+								style={styles.descriptionInput}
+								multiline={true}
+								numberOfLines={5}
+								onChangeText={(description) => this.setState({ description })}
+							/>
+
+							<Button icon="camera" iconFamily="feather"
+								iconSize={25} color="warning" iconColor="#fff"
+								style={styles.btSelectImage}
+								onPress={this.toggleImageBrowserVisibility}
+							>
+								Escolher Imagem
+							</Button>
+
+							<Button color="info" style={styles.buttonUpload}
+								onPress={this.sendRequestAdoption}
+							>Enviar
+							</Button>
+
+						</View>
+					</View>
+				</ScrollView>
+			</View>
+		);
+	}
+
+}
+

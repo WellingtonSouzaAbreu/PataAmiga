@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert } from 'react-native'
-import axios from 'axios'
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import axios from 'axios'
 
 import styles from './styles.js'
 
@@ -9,7 +9,7 @@ import { baseApiUrl } from './../../common/baseApiUrl.js'
 
 const initialState = {
     donation: {
-        description: 'a'
+        description: 'Panos velhos'
     }
 }
 
@@ -18,10 +18,10 @@ class Donation extends Component {
     state = { ...initialState }
 
     requestCollect = async () => {
-        console.log(this.state.description)
         await axios.post(`${baseApiUrl}/donation`, this.state.donation)
             .then(_ => Alert.alert('Eba!', 'Solicitação realizada com sucesso!'))
             .catch(err => {
+                console.log(err.response.data)
                 Alert.alert('Ops', 'Ocorreu um erro ao solicitar coleta!')
             })
     }

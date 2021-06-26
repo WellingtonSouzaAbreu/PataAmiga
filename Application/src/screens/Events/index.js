@@ -41,26 +41,26 @@ export default class EventScreen extends Component {
 
     componentDidMount = async () => {
         await axios(`${baseApiUrl}/publication/event`)
-            .then(res => this.setState({events: res.data}))
+            .then(res => this.setState({ events: res.data }))
             .catch(err => Alert.alert('Erro', 'Não foi possível obter os eventos!'))
     }
 
     render() {
         return (
             <ScrollView showsVerticalScrollIndicIator={false}>
-            <View style={styles.container}>
-                <View style={styles.header}>
+                <View style={styles.container}>
+                    <View style={styles.header}>
                         <Image style={styles.headerImage} source={require('./../../assets/imgs/events2.png')} />
                         <Text style={styles.headerText}>Confira aqui nossos proximos eventos</Text>
                     </View>
                     <View style={styles.line}></View>
-                <FlatList
-                            style={styles.flatlistEvents}
-                            data={this.state.events} 
-                            renderItem={({ item }) => <EventCard {...item} />}
-                            keyExtractor={item => item.id}
-                        />
-            </View>
+                    <FlatList
+                        style={styles.flatlistEvents}
+                        data={this.state.events}
+                        renderItem={({ item }) => <EventCard {...item} />}
+                        keyExtractor={item => item.id}
+                    />
+                </View>
             </ScrollView>
         )
     }

@@ -2,8 +2,11 @@ import React,{Component} from 'react'
 import { View, Text, ScrollView, Image,TouchableOpacity} from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import axios from 'axios'
+
 
 import HomeTabNavigation from '../../config/HomeTabNavigation'
+
 
 export default class Home extends Component{
 
