@@ -55,7 +55,10 @@ export default class Animals extends Component {
                 console.log(res.data)
                 this.setState({animals: res.data})
             })
-            .catch(err => Alert.alert('Erro', 'Não foi possível obter o animais'))
+            .catch(err => {
+                console.log(err.response.data)
+                Alert.alert('Erro', 'Não foi possível obter o animais')
+            })
     }
     
     render() {
@@ -63,7 +66,7 @@ export default class Animals extends Component {
             <View style={styles.container}>
                 <FlatList
                     style={styles.flatlistDogs}
-                    data={this.state.animals} // animalsOfflineData TO DO
+                    data={this.state.animals} 
                     renderItem={({item}) => <AnimalCard {...item} onNavigateToDogInfo={this.props.onNavigateToDogInfo}/>}
                     keyExtractor={item => item.id}
                 />

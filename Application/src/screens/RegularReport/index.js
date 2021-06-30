@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { View, Text, Image, TextInput, TouchableOpacity, StatusBar, Modal, ScrollView, Alert } from "react-native";
-import { Button } from 'galio-framework';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { ImageBrowser } from 'expo-image-picker-multiple'
 import axios from 'axios'
@@ -45,6 +44,10 @@ export default class RegularReport extends Component {
 
 	closeAdoptionSelection = () => {
 		this.setState({ selectAnimalAdoptedVisible: false })
+	}
+
+	navigateToBack = () => {
+		this.props.navigation.goBack()
 	}
 
 	toggleImageBrowserVisibility = () => {
@@ -111,18 +114,6 @@ export default class RegularReport extends Component {
 
 	render() {
 
-		const WarnWithoutAdoptions = () => {
-			return (
-				<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-					<Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>Ops! Você ainda não realizou nenhuma adoção!</Text>
-					<Text style={{ textAlign: 'center' }}>Faça uma adoção para poder enviar relatórios.</Text>
-					<Button color='orange' onPress={() => this.props.navigation.goBack()}>
-						<Icon name='arrow-left' size={30} color='black' />
-					</Button>
-				</View>
-			)
-		}
-
 		return (
 			<View style={styles.container}>
 				<StatusBar />
@@ -131,12 +122,10 @@ export default class RegularReport extends Component {
 					visible={this.state.selectAnimalAdoptedVisible}
 					onRequestClose={() => this.props.navigation.goBack()}
 				>
-					{
-						this.state.numberOfAdoptios == 0
-							? <WarnWithoutAdoptions />
-							: <SelectAnimalAdopted onSelectAdoption={this.selectAdoption} />
-					}
-
+					<SelectAnimalAdopted onSelectAdoption={this.selectAdoption} 
+					numberOfAdoptions={this.state.numberOfAdoptions} 
+					onNavigateToBack={this.navigateToBack}
+					/>
 				</Modal>
 
 				<Modal

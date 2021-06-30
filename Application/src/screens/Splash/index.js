@@ -5,6 +5,10 @@ import axios from 'axios'
 
 
 const Splash = () => {
+    
+    const redirectToAuthOrHome = () => {
+
+    }
 
     return (
         <View>
@@ -13,8 +17,6 @@ const Splash = () => {
     )
 }
 
-const redirectToAuthOrHome = () => {
 
-}
 
 export default Splash
