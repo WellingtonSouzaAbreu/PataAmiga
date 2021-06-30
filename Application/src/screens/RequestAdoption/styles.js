@@ -7,18 +7,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    imageBrowserContainer: {
-        backgroundColor: 'ghostwhite', //TODO Efeito de transparência
-        height: '70%',
-        padding: 20
-    },
-
+    // TODO tranformar em componente
     browserConfirmArea: {
         padding: 10,
         flexDirection: 'row',
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
         backgroundColor: 'ghostwhite',
+        position: 'absolute',
+        backgroundColor: 'transparent',
+        alignSelf: 'flex-end',
+        top: '83%'
+    },
+
+    checkIcon: {
+        backgroundColor: 'black',
+        borderRadius: 60,
+        paddingHorizontal: 4,
+        color: 'white'
     },
 
     browserFooter: {
@@ -26,6 +32,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
 
     headerElement: {
         width: '100%',

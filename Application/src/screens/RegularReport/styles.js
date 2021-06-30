@@ -1,11 +1,46 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
+import commonStyles from './../../common/commonStyles.js'
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-       
     },
+
+    // TODO tranformar em componente
+    imageBrowserContainer: {
+        backgroundColor: 'ghostwhite', //TODO Efeito de transparência
+        height: '90%',
+        padding: 0,
+        borderColor: 'white',
+        borderWidth: 1
+    },
+
+    browserConfirmArea: {
+        padding: 10,
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+        backgroundColor: 'ghostwhite',
+        position: 'absolute',
+        backgroundColor: 'transparent',
+        alignSelf: 'flex-end',
+        top: '83%'
+    },
+
+    checkIcon: {
+        backgroundColor: 'black',
+        borderRadius: 60,
+        paddingHorizontal: 4,
+        color: 'white'
+    },
+
+    browserFooter: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+
 
     headerElement: {
         width: '100%',
@@ -23,37 +58,40 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         resizeMode: 'contain',
-       
+
     },
 
     containerUpload: {
         width: '100%',
+        height: '100%',
         flex: 1,
-     
         alignItems: 'center',
         justifyContent: 'space-around',
-        padding: 15,
         borderRadius: 5,
-        
     },
-
 
     formUpload: {
         width: '100%',
-        height: '75%',
         padding: 10,
         alignItems: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        justifyContent: 'space-between',
+
     },
 
-    input: {
+    observationsInput: {
         width: '100%',
         borderColor: '#f2f2f2',
         borderWidth: 1,
         backgroundColor: '#f2f2f2',
         textAlign: 'center',
+        marginVertical: 40,
+        height: '20%'
+    },
+
+    areaButtons: {
+        width: '100%',
         height: '50%',
-        marginBottom: 20
     },
 
     btnSelectImage: {
@@ -75,7 +113,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: '#F27F3D',
-        marginBottom: 10 
+        marginBottom: 10
     },
 
     txtBtn: {
@@ -83,7 +121,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 15
     },
- 
+
 })
 
 export default styles

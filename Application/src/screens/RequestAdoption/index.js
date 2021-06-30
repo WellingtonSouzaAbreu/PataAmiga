@@ -7,8 +7,8 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 import styles from './styles.js'
 
-import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
 import { baseApiUrl } from "../../common/baseApiUrl.js";
+import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
 
 const initialState = {
 	description: 'Tem muitos gatos para ele brincar',
@@ -21,19 +21,16 @@ export default class RequestAdoption extends Component {
 
 	state = { ...initialState }
 
-	componentDidMount = () => {
-		console.log(this.props.navigation.state.params.animalId) // Params
-	}
-
 	toggleImageBrowserVisibility = () => {
-		console.log(!this.state.imageBrowserVisible)
 		this.setState({ imageBrowserVisible: !this.state.imageBrowserVisible })
 	}
 
 	sendRequestAdoption = async () => {
 
-		// this.checkIfImagesAreSelected()
-
+		if (!this.checkIfImagesAreSelected()) {
+			return
+		}
+		
 		const animalId = this.props.navigation.state.params.animalId
 
 		await axios.post(`${baseApiUrl}/interesteds-in-adoption/${animalId}`, { interestedInAdoption: { description: this.state.description } })
@@ -49,8 +46,6 @@ export default class RequestAdoption extends Component {
 	}
 
 	saveImages = async (interestedInAdoptionId) => {
-
-		this.checkIfImagesAreSelected()
 
 		let picturesUploaded = [true]
 		this.state.imagesPack.map(async image => {
@@ -70,7 +65,7 @@ export default class RequestAdoption extends Component {
 				})
 		})
 
-		let valid = /*  picturesUploaded.reduce((total = true, current) => total && current)  */ true
+		let valid = picturesUploaded.reduce((total = true, current) => total && current)
 		if (valid) {
 			Alert.alert('Oba!', 'Você é um candidato à adoção, aguarde que a ONG entrará em contato contigo')
 		} else {
@@ -81,7 +76,9 @@ export default class RequestAdoption extends Component {
 	checkIfImagesAreSelected = () => {
 		if (this.state.imagesPack.length < 1) {
 			Alert.alert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
-			return
+			return false
+		} else {
+			return true
 		}
 	}
 
@@ -126,17 +123,16 @@ export default class RequestAdoption extends Component {
 								}
 							}
 						/>
-
-					</View>
-					<View style={styles.browserConfirmArea}>
-						<TouchableOpacity onPress={this.toggleImageBrowserVisibility}>
-							<Icon name='check-circle' size={60} color='black' />
-						</TouchableOpacity>
+						<View style={styles.browserConfirmArea}>
+							<TouchableOpacity onPress={this.toggleImageBrowserVisibility}>
+								<Icon name='check-circle' size={60} style={styles.checkIcon} />
+							</TouchableOpacity>
+						</View>
 					</View>
 
 					<TouchableOpacity style={{ flex: 1 }} onPress={this.toggleImageBrowserVisibility}>
 						<View style={styles.browserFooter} >
-							<Icon name='angle-down' size={30} color='black' style={styles.angleDownIcon} />
+							<Icon name='angle-down' size={30} color='black' />
 						</View>
 					</TouchableOpacity>
 				</Modal>

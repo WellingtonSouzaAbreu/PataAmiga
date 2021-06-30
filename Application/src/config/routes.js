@@ -8,11 +8,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import Complaint from '../screens/Complaint/index.js'
 import DogInfo from '../screens/DogInfo'
 import About from '../screens/About'
-import DonationScreen from '../screens/Donation'
-import EventScreen from '../screens/Events'
-import FaqScreen from '../screens/Faq'
-import LastAdoptionsScreen from '../screens/LatestAdoptions'
-import RegularReportScreen from '../screens/RegularReport'
+import Donation from '../screens/Donation'
+import Event from '../screens/Events'
+import Faq from '../screens/Faq'
+import LastAdoptions from '../screens/LatestAdoptions'
+import RegularReport from '../screens/RegularReport'
 import Home from '../screens/Home'
 import RequestAdoption from './../screens/RequestAdoption'
 import ProfileScreen from '../screens/Profile'
@@ -55,7 +55,7 @@ const homeStack = createStackNavigator({
     },
 
     Events: {
-        screen: EventScreen,
+        screen: Event,
         navigationOptions:{
             headerTitle:'Eventos'
         }
@@ -69,14 +69,14 @@ const homeStack = createStackNavigator({
     },
 
     Donation: {
-        screen: DonationScreen,
+        screen: Donation,
         navigationOptions:{
             headerTitle:'Doações'
         }
     },
 
     RegularReport: {
-        screen: RegularReportScreen,
+        screen: RegularReport,
         navigationOptions:{
             headerTitle:'Enviar Relatório '
         }
@@ -121,7 +121,7 @@ const homeStack = createStackNavigator({
 }, { initialRouteName: 'Home' })
 
 const menuDrawerConfig = {
-    initialRouteName: 'Auth',
+    initialRouteName: 'Home',
     drawerType: 'front',
     
     drawerStyle: {
@@ -176,7 +176,7 @@ const menuDrawerRoutes = {
 
     Donation: {
         name: 'Donation',
-        screen: DonationScreen,
+        screen: Donation,
         navigationOptions: {
             title: 'DOAÇÕES',
             drawerIcon:({tintColor}) => (
@@ -187,7 +187,7 @@ const menuDrawerRoutes = {
 
     Event: {
         name: 'Events',
-        screen: EventScreen,
+        screen: Event,
         navigationOptions: {
             title: 'EVENTOS',
             drawerIcon:({tintColor}) => (
@@ -199,7 +199,7 @@ const menuDrawerRoutes = {
 
     LastAdopion: {
         name: 'LastAdoption',
-        screen: LastAdoptionsScreen,
+        screen: LastAdoptions,
         navigationOptions: {
             title: 'UTIMAS ADOÇÕES',
             drawerIcon:({tintColor}) => (
@@ -209,7 +209,7 @@ const menuDrawerRoutes = {
     },
     RegularReport: {
         name: 'RegularReport',
-        screen: RegularReportScreen,
+        screen: RegularReport,
         navigationOptions: {
             title: 'ACOMPANHAMENTO',
             drawerIcon:({tintColor}) => (
@@ -221,7 +221,7 @@ const menuDrawerRoutes = {
   
     Faqs: {
         name: 'Faqs',
-        screen: FaqScreen,
+        screen: Faq,
         navigationOptions: {
             title: 'PERGUNTAS FREQUENTES',
             drawerIcon:({tintColor}) => (

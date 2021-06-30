@@ -34,6 +34,14 @@ module.exports = app => {
         .get(app.api.adoption.getAdoptions)
         .post(app.api.adoption.save)
 
+    app.route('/adoption/animal-select')
+        // .all(app.config.passport.authenticate())
+        .get(app.api.adoption.getAnimalsByUserAdoption)
+
+    app.route('/adoption/number-by-user')
+        // .all(app.config.passport.authenticate())
+        .get(app.api.adoption.getNumberOfAdoptionsByUser)
+
     app.route('/rescue/:animalId')
         .get(app.api.rescue.getRescue)
         .post(app.api.rescue.save)
