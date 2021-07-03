@@ -5,9 +5,17 @@ const bcrypt = require('bcrypt-nodejs')
 module.exports = app => {
 
     const getUserById = async (req, res) => {
+        let idUser
+
+        if (Number.isInteger(req.params.id)) { // Quando não é passado parâmetros pela URL, pega-se o vindo de passport
+            idUser = req.params.id
+        } else {
+            idUser = req.user.id
+        }
+
         await app.db('users')
             .select('id', 'name', 'cellNumber', 'email', 'city', 'district', 'address', 'houseNumber', 'phone',)
-            .where({ id: req.user.id })
+            .where({ id: idUser })
             .first()
             .then(user => res.status(200).send(user))
             .catch(err => {
@@ -27,10 +35,12 @@ module.exports = app => {
 
         if (!user) return res.status(400).send('Usuário não encontrado!')
 
+        console.log(req.body.password, user.password)
         const passwordsAreEquals = bcrypt.compareSync(req.body.password, user.password)
         if (!passwordsAreEquals) return res.status(401).send('Email/Senha inválidos!')
 
-        const currentDateInSeconds = Math.floor(Date.now() / 1000)
+
+        // const currentDateInSeconds = Math.floor(Date.now() / 1000)
 
         const payload = {
             id: user.id,
@@ -50,34 +60,37 @@ module.exports = app => {
         const { existsOrError } = app.api.validation
 
         const user = req.body.user ? req.body.user : res.status(400).send('Dados do usuário não informados')
-        const idUserFromUrl = req.params.id || null// for update
+        const idUserForUpdate = req.params.id || null// for update - from URL
 
         try {
             existsOrError(user.name, 'Nome não informado')
-            existsOrError(user.city, 'Cidade não informada')
             existsOrError(user.cellNumber, 'Celular não informado')
-            existsOrError(user.password, 'Senha não informada')
-            existsOrError(user.confirmPassword, 'Confirmação de senha não informada')
-            // existsOrError(user.district, 'Bairro não informado')
-            // existsOrError(user.address, 'Endereço não informado')
-            // existsOrError(user.houseNumber, 'Número da casa não informado')
+            if (!idUserForUpdate) existsOrError(user.password, 'Senha não informada')
+            if (!idUserForUpdate) existsOrError(user.confirmPassword, 'Confirmação de senha não informada')
+
+            console.log(user.password, user.confirmPassword)
             if (user.password != user.confirmPassword) throw 'Senhas não conferem'
 
-            const userFromDB = await app.db('users')
-                .select('id')
-                .where({ cellNumber: user.cellNumber })
-                .first()
+            if (!idUserForUpdate) {
+                const userFromDB = await app.db('users')
+                    .select('id')
+                    .where({ cellNumber: user.cellNumber })
+                    .first()
 
-            if (userFromDB && userFromDB.id == user.id) throw 'Usuário já cadastrado'
+                if (userFromDB && userFromDB.id == user.id) throw 'Usuário já cadastrado'
+            }
 
         } catch (err) {
+            console.log(err)
             return res.status(400).send(err)
         }
 
-        user.password = encryptPassword(user.password)
+        if (user.password) {
+            user.password = encryptPassword(user.password)
+        }
         delete user.confirmPassword
 
-        if (!idUserFromUrl) {
+        if (!idUserForUpdate) {
             await app.db('users')
                 .insert(user)
                 .then(_ => res.status(204).send())
@@ -89,7 +102,7 @@ module.exports = app => {
 
             await app.db('users')
                 .update(user)
-                .where({ id: idUserFromUrl })
+                .where({ id: idUserForUpdate })
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
@@ -103,7 +116,6 @@ module.exports = app => {
 
     const encryptPassword = password => {
         const salt = bcrypt.genSaltSync(10)
-        console.log(salt)
         return bcrypt.hashSync(password, salt)
     }
 

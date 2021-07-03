@@ -42,8 +42,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  formTitle: {
+    fontSize: 18,
+    marginBottom: 10
+  },
+
   button: {
     width: '100%'
+  },
+
+  registerButton: {
+    marginTop: 10,
+    marginBottom: 30
+  },
+
+  textButton: {
+    textDecorationLine: 'underline'
   }
 })
 

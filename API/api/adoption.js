@@ -27,7 +27,7 @@ module.exports = app => {
 
     const getAnimalsByUserAdoption = async (req, res) => {
 
-        const userId = /* req.body.user.id */ 1
+        const userId = /* req.user.id */ 1 // TODO
 
         await app.db('adoptions')
             .select('animalId')
@@ -38,7 +38,7 @@ module.exports = app => {
                 for ({ animalId } of animalsId) {
 
                     await app.db('animals')
-                        .select('id', 'name', 'breed')
+                        .select('id', 'name', 'breed','aproximateAge')
                         .where({ id: animalId })
                         .then(async (animals) => {
                             animalsWithPicture.push(await getAnimalMainPicture(animals))

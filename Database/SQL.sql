@@ -4,15 +4,15 @@ USE friend_paw;
 
 CREATE TABLE IF NOT EXISTS `users` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    city VARCHAR(40) NOT NULL,
-    address VARCHAR(100) NOT NULL,
-    houseNumber VARCHAR(10) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    cellNumber VARCHAR(20) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    address VARCHAR(100),
+    houseNumber VARCHAR(10),
+    city VARCHAR(40),
     email VARCHAR(50),
     phone VARCHAR(20),
-    cellNumber VARCHAR(20) NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    district VARCHAR(30) NOT NULL,
-    password VARCHAR(15) NOT NULL
+    district VARCHAR(30),
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 

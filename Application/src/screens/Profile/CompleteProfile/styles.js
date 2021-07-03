@@ -3,49 +3,54 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems:  'center',
+        alignItems: 'center',
         backgroundColor: 'white',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
 
-    imgAsset:{
+    headerImage: {
         width: 120,
         height: 120,
         resizeMode: 'cover',
         marginVertical: 10,
-      
-    },  
-  
-    formCompletePefil: {
+    },
+
+    title: {
+        textAlign: 'center',
+        fontSize: 16,
+        marginBottom: 15,
+        color: '#64718C',
+        marginHorizontal: 10
+    },
+
+    formCompleteProfile: {
         width: '100%',
         height: '60%',
         paddingHorizontal: 10,
         marginBottom: 15,
-        justifyContent: 'center',
-     
-        
-
+        justifyContent: 'space-between'
     },
-    inputEmail: {
+
+    longInput: {
         height: 50,
-        borderBottomWidth: 1, 
+        borderBottomWidth: 1,
         borderBottomColor: '#cdcdcd'
     },
 
-    containerInput: {
+    inputRow: {
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
 
-    inputAndress: {
+    shortInput: {
         width: '48%',
         height: 50,
-        borderBottomWidth: 1, 
+        borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2'
     },
 
-    btSave: {
+    saveButton: {
         width: '95%',
         height: 45,
         backgroundColor: '#64718C',

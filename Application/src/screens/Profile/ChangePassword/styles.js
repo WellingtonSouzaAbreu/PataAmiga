@@ -3,23 +3,18 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        
-        paddingVertical: 30
     },
 
-  
- 
     formChangeMailPassword: {
         width: '100%',
-   
-       height: '100%',
+        height: '100%',
         padding: 5
     },
 
-    boxChangeEmail: {
+    formCard: {
         width: '100%',
         height: '47%',
-        padding: 5,
+        padding: 10,
         backgroundColor: 'white',
         borderRadius: 5,
         shadowColor: "#000",
@@ -32,10 +27,10 @@ const styles = StyleSheet.create({
         elevation: 4,
         borderRadius: 5,
         marginBottom: 10
-      
+
     },
 
-    txtTitleCard: {
+    cardTitle: {
         fontSize: 17,
         marginBottom: 10,
         color: '#64718C',
@@ -48,23 +43,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+
     inputChange: {
         height: 50,
         width: '100%',
-        borderBottomWidth: 1, 
+        borderBottomWidth: 1,
         borderBottomColor: '#cdcdcd'
     },
 
-    btChange: {
+    saveButton: {
         width: '100%',
         height: 45,
         backgroundColor: '#64718C',
-        justifyContent: 'center', 
+        justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 2,
         margin: 15
-    
-    }
+    },
+
+    buttonText: {
+        fontSize: 15,
+        color: '#fff',
+        fontWeight: 'bold'
+    },
 })
 
 export default styles

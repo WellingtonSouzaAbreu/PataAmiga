@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, Image, Alert } from "react-native";
+import { View, Text, Image, Alert, StatusBar, TouchableOpacity } from "react-native";
 import { Input, Button } from 'galio-framework';
 import axios from "axios";
-import  AsyncStorage  from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Icon from 'react-native-vector-icons/Feather'
 
 
@@ -11,8 +11,12 @@ import styles from './styles'
 import { baseApiUrl } from './../../common/baseApiUrl.js'
 
 const initialState = {
-    cellNumber: '9 8446-5997',
-    password: '12345'
+    name: 'Wellington Souza',
+    cellNumber: '69 984465997',
+    password: '123',
+    confirmPassword: '123',
+
+    newUser: true
 }
 
 class Login extends Component {
@@ -33,10 +37,15 @@ class Login extends Component {
         this.setState({ cellNumber: formatedText })
     }
 
-    login = async () => {
-        
-        try{
+    signinOrSignup = () => {
+        if (this.state.newUser) {
+            this.signup()
+        } else {
+            this.signin()
+        }
+    }
 
+    signin = async () => {
         await axios.post(`${baseApiUrl}/signin`, { cellNumber: this.state.cellNumber, password: this.state.password })
             .then(async res => {
                 let user = res.data
@@ -48,16 +57,29 @@ class Login extends Component {
             .catch(err => {
                 Alert.alert('Erro', err.response.data)
             })
-        }catch(error){
-            console.log(error)
+    }
+
+    signup = async () => {
+        let user = {
+            name: this.state.name,
+            cellNumber: this.state.cellNumber,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword
         }
 
+        await axios.post(`${baseApiUrl}/signup`, { user })
+            .then(res => Alert.alert('Oba!', 'Seu cadastro foi realizado com sucesso!'))
+            .catch(err => {
+                console.log(err)
+                Alert.alert('Ops!', 'Ocorreu um erro ao realizar o seu cadastro.')
+            })
     }
 
 
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar />
                 <View style={styles.logoSloganArea}>
                     <Image style={styles.logoImg} source={require('./../../assets/imgs/Logo.png')} />
                     <View style={styles.sloganArea}>
@@ -67,7 +89,14 @@ class Login extends Component {
                 </View>
 
                 <View style={styles.form}>
-                    <Text style={{ fontSize: 18 }}>BEM VINDO</Text>
+                    <Text style={styles.formTitle}>{this.state.newUser ? 'Insira seus dados' : 'Bem vindo'}</Text>
+                    {
+                        this.state.newUser &&
+                        <Input placeholder="Insira seu nome...."
+                            value={this.state.name}
+                            onChangeText={(name) => this.setState({ name })}
+                        />
+                    }
                     <Input
                         placeholder="Usuário"
                         right
@@ -75,19 +104,32 @@ class Login extends Component {
                         family="antdesign"
                         iconSize={18}
                         iconColor="black"
-                        maxLength={11}
+                        maxLength={12}
                         value={this.state.cellNumber}
                         onChangeText={this.applyMaskToCellNumber}
                         keyboardType='numeric'
                     />
-                    <Input placeholder="password" password viewPass
+                    <Input placeholder="Senha..." password viewPass
                         value={this.state.password}
                         onChangeText={(password) => this.setState({ password })}
                     />
-                    <Text style={{ alignSelf: 'flex-start' }}>Esqueci minha senha.</Text>
-                    <Button style={styles.button} color="#4682B4" onPress={this.login}>Entrar</Button>
-                    <Button style={styles.button} color="#6495ED">Cadastrar</Button>
+                    {this.state.newUser &&
+                        <Input placeholder="Repita sua senha..." password viewPass
+                            value={this.state.confirmPassword}
+                            onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
+                        />
+                    }
+                    {
+                        !this.state.newUser &&
+                        <TouchableOpacity style={{ alignSelf: 'flex-start' }} onPress={() => Alert.alert('Hahaha!', 'Problema seu!')}>
+                            <Text style={{ alignSelf: 'flex-start', textDecorationLine: 'underline' }}>Esqueci minha senha.</Text>
+                        </TouchableOpacity>
+                    }
+                    <Button style={styles.button} color="#4682B4" onPress={this.signinOrSignup}>{this.state.newUser ? 'Cadastrar' : 'Entrar'}</Button>
                 </View>
+                <TouchableOpacity style={styles.registerButton} onPress={() => { this.setState({ newUser: !this.state.newUser }) }}>
+                    <Text style={styles.textButton}>{this.state.newUser ? 'Já possui conta?' : 'Ainda não possui conta?'}</Text>
+                </TouchableOpacity>
             </View>
         );
     }

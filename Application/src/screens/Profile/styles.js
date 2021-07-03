@@ -1,19 +1,22 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 import commomStyles from './../../common/commonStyles'
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-         alignItems: 'center',
-         padding: 1,
+        alignItems: 'center',
     },
 
-    myNameContainer: {
-        width: '95%',
-        height: '23%',
+    scr: {
+
+    },
+
+
+    headerContainer: {
         padding: 5,
         flexDirection: 'column',
         backgroundColor: 'white',
-        margin: 10,
+        margin: 5,
         borderRadius: 5,
         shadowColor: "#000",
         shadowOffset: {
@@ -24,165 +27,155 @@ const styles = StyleSheet.create({
         shadowRadius: 3.46,
 
         elevation: 4,
-        justifyContent: 'space-between'
-       
-        
+        // justifyContent: 'space-between',
     },
 
-    txtH1: {
-        fontSize: 19,
-        fontWeight: 'bold',
-        color: '#64718C'
-    },
-
-    containerName: {
-        width: '75%',
-        padding: 5,
-        
-    },
-
-    containerImgName: {
-        height: '50%',
+    imageAndNameContainer: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+
+    },
+
+    nameContainer: {
+        width: '75%',
+        padding: 5,
     },
 
     logoImg: {
         width: 80,
         height: 80,
-      
         resizeMode: 'cover',
         borderRadius: 0,
-        
     },
 
-    mmyContactContainer: {
-        width: '100%',
-        height: '45%',
-       
-        
+    nameLabel: {
+        fontSize: 19,
+        fontWeight: 'bold',
+        color: '#64718C'
     },
 
-
-    contactBox: {
+    contactContainer: {
         width: '100%',
-        height: '45%',
+        marginVertical: 5,
+    },
+
+    contactArea: {
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
         marginHorizontal: 5
-    },  
+    },
 
+    valueLabel: {
+        fontSize: 15,
+        color: '#64718C',
+    },
 
- 
-    containerAlert: {
-        width:'95%',
+    warningContainer: {
         height: '10%',
+        margin: 5,
         backgroundColor: '#fff',
         flexDirection: 'row',
-        marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
         borderLeftWidth: 2,
-        borderLeftColor: '#F27F3D'
+        borderLeftColor: '#F27F3D',
     },
 
-    txtAlert: {
+    warningText: {
         width: '80%',
-        height: '100%',
         fontSize: 16,
         textAlign: 'center',
         padding: 10,
         color: '#64718C',
         fontWeight: 'bold'
-        
     },
 
-    btCompleteRegister: {
-        width:'20%',
+    buttonCompleteRegister: {
+        width: '20%',
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#E6E6E6',
-       
+
     },
 
-    otherInfoContainer: {
-        width: '95%',
-        height: '60%',
+    personalInfoContainer: {
+        margin: 8,
         padding: 5,
         backgroundColor: 'white'
-      
     },
 
-    txtInfo: {
-        fontSize: 15,
-        color: '#64718C',
-        marginRight: 15
-    },
-
-    txtInfoNameIndicador: {
-        fontSize: 15,
-        fontWeight: 'bold',
-        color: '#64718C'
-    },
-
-
-    boxOtherInfos: {
+    infoArea: {
         width: '100%',
-        height: '10%',
+        padding: 2,
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 5,
         borderBottomColor: '#cdcdcd',
         borderBottomWidth: 1
-    
-
     },
 
-    boxOtherInfosAndress: {
+    infoAreaText: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        width: '90%',
+    },
+
+    label: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: '#64718C',
+    },
+
+    addressInfos: {
         width: '100%',
-        height: '50%',
-       
-        
     },
 
-    containerAndress: {
+    addressTitle: {
+        width: '50%',
+        fontSize: 17,
+        fontWeight: 'bold',
+        marginTop: 15,
+        marginBottom: 10,
+        color: '#64718C',
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 1,
+    },
+
+    addressInfoRow: {
+        paddingVertical: 3,
         width: '100%',
         borderRadius: 5,
-        height: '20%',
         alignItems: 'center',
         flexDirection: 'row',
         borderBottomColor: '#cdcdcd',
         borderBottomWidth: 1
-        
+
     },
 
-    containerButtonsProfile: {
+    profileButtonsContainer: {
         width: '100%',
-        height: '12%',
-        marginTop: 10,
+        marginTop: 15,
         flexDirection: 'row',
         justifyContent: 'space-around'
     },
 
-    btnEditProfile: {
+    editProfileButton: {
+        padding: 10,
         width: '45%',
-        height: '100%',
         backgroundColor: '#f2f2f2',
         borderRadius: 4,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row'
-        
     },
 
-    txtBtn: {
+    labelButton: {
         fontWeight: 'bold',
         color: 'dimgray'
     },
-
-
 })
 
 export default styles

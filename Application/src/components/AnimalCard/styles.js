@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        height: 180,
+        height: 130,
         paddingHorizontal: 5,
         marginVertical: 10,
         shadowColor: "#000",
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     dogImage: {
         width: '100%',
         height: '96%',
-        resizeMode: 'contain'
+        resizeMode: 'cover'
     },
 
     infoDogContainer: {

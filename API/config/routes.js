@@ -4,9 +4,11 @@ module.exports = app => {
     app.post('/signin', app.api.user.signin)
 
     app.route('/user/:id')
-        // .all(app.config.passport.authenticate())  // Setar isso para todas as requisições que necessitam de validação
+        .all(app.config.passport.authenticate())  // Setar isso para todas as requisições que necessitam de validação
         .get(app.api.user.getUserById)
         .put(app.api.user.save)
+
+    app.route('/user/:id')
 
     app.post('/validate-token', app.api.user.validateToken)
 

@@ -132,7 +132,7 @@ export default class RegularReport extends Component {
 					animationType='slide'
 					visible={this.state.imageBrowserVisible}
 					onRequestClose={this.toggleImageBrowserVisibility}
-				>
+				>	
 					<View style={styles.imageBrowserContainer}>
 						<ImageBrowser max={3}
 							loadCount={20}
