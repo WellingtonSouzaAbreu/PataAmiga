@@ -3,8 +3,6 @@ import { View, Text, Image, Alert, StatusBar, TouchableOpacity } from "react-nat
 import { Input, Button } from 'galio-framework';
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import Icon from 'react-native-vector-icons/Feather'
-
 
 import styles from './styles'
 
@@ -12,11 +10,11 @@ import { baseApiUrl } from './../../common/baseApiUrl.js'
 
 const initialState = {
     name: 'Wellington Souza',
-    cellNumber: '69 984465997',
+    cellNumber: '69 98446-5997',
     password: '123',
     confirmPassword: '123',
 
-    newUser: true
+    newUser: false
 }
 
 class Login extends Component {
@@ -26,11 +24,11 @@ class Login extends Component {
     applyMaskToCellNumber = (text) => {
         let formatedText = text
 
-        if (text.length == 1 && this.state.cellNumber.length < text.length) {
+        if (text.length == 2 && this.state.cellNumber.length < text.length) {
             formatedText += ' '
         }
 
-        if (text.length == 6 && this.state.cellNumber.length < text.length) {
+        if (text.length == 8 && this.state.cellNumber.length < text.length) {
             formatedText += '-'
         }
 
@@ -104,7 +102,7 @@ class Login extends Component {
                         family="antdesign"
                         iconSize={18}
                         iconColor="black"
-                        maxLength={12}
+                        maxLength={13}
                         value={this.state.cellNumber}
                         onChangeText={this.applyMaskToCellNumber}
                         keyboardType='numeric'

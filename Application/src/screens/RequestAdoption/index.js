@@ -92,7 +92,7 @@ export default class RequestAdoption extends Component {
 					onRequestClose={this.toggleImageBrowserVisibility}
 				>
 					<View style={styles.imageBrowserContainer}>
-						<ImageBrowser max={3}
+					<ImageBrowser max={3}
 							loadCount={20}
 							renderSelectedComponent={
 								(num) => < PhotoSelectIndicator value={num}
@@ -107,7 +107,6 @@ export default class RequestAdoption extends Component {
 									let imagesPack = []
 
 									console.log(imagesSelected._W)
-
 									imagesSelected._W.map(image => {
 										let imageData = {
 											uri: image.uri,
@@ -116,7 +115,6 @@ export default class RequestAdoption extends Component {
 										}
 										imagesPack.push(imageData)
 									})
-
 									console.log(imagesPack)
 
 									this.setState({ imagesPack })

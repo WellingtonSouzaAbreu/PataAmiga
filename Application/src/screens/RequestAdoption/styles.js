@@ -8,6 +8,15 @@ const styles = StyleSheet.create({
     },
 
     // TODO tranformar em componente
+
+    imageBrowserContainer: {
+        backgroundColor: 'ghostwhite', //TODO Efeito de transparência
+        height: '90%',
+        padding: 0,
+        borderColor: 'white',
+        borderWidth: 1
+    },
+    
     browserConfirmArea: {
         padding: 10,
         flexDirection: 'row',
