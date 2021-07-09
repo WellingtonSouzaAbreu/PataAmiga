@@ -5,7 +5,7 @@ module.exports = app => {
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
-        const userId = req.user.id // Passport
+        const userId = req.user.id 
         let donation = req.body
         console.log(req.body)
 

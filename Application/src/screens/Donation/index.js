@@ -9,7 +9,7 @@ import { baseApiUrl } from './../../common/baseApiUrl.js'
 
 const initialState = {
     donation: {
-        description: 'Panos velhos'
+        description: ''
     }
 }
 

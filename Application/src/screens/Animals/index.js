@@ -11,40 +11,6 @@ const initialState = {
     animals: []
 }
 
-const animalsOfflineData = [
-    {
-        id: '1',
-        breed: 'Poddle',
-        aproximateAge: '5 ~ 9 Meses',
-        sex: 'Macho'
-    },
-    {
-        id: '2',
-        breed: 'Pastor Alemão',
-        aproximateAge: '10 ~ 13 Meses',
-        sex: 'Fêmea'
-    },
-    {
-        id: '3',
-        breed: 'Pit Bull',
-        aproximateAge: '10 ~ 13 Meses',
-        sex: 'Macho'
-    },
-    {
-        id: '4',
-        breed: 'Chihuahua',
-        aproximateAge: '10 ~ 13 Meses',
-        sex: 'Macho'
-    },
-
-    {
-        id: '5',
-        breed: 'Pintcher',
-        aproximateAge: '10 ~ 13 Meses',
-        sex: 'Macho'
-    },
-]
-
 export default class Animals extends Component {
 
     state = {...initialState}

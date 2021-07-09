@@ -1,9 +1,7 @@
 import React,{Component} from 'react'
-import { View, Text, ScrollView, Image,TouchableOpacity} from 'react-native'
+import { View, Text, ScrollView, Image,TouchableOpacity, Alert} from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import axios from 'axios'
-
 
 import HomeTabNavigation from '../../config/HomeTabNavigation'
 
@@ -38,7 +36,7 @@ export default class Home extends Component{
                             <Icon name="bullhorn" size={20} color='#64718C' style={{marginVertical: 2}}/>
                             <Text style={styles.txtButton}>Denunciar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => this.props.navigation.navigate('Profile')}>
+                        <TouchableOpacity style={styles.buttonNavigate} onPress={() => Alert.alert('Ops!', 'Redirecionamento para  loja ainda não implementado.')}>
                             <Icon name="shopping-cart" size={20} color='#64718C' style={{marginVertical: 2}}/>
                             <Text style={styles.txtButton}>Loja</Text>
                         </TouchableOpacity>

@@ -11,8 +11,8 @@ import { baseApiUrl } from './../../common/baseApiUrl.js'
 const initialState = {
     name: 'Wellington Souza',
     cellNumber: '69 98446-5997',
-    password: '123',
-    confirmPassword: '123',
+    password: '12345',
+    confirmPassword: '12345',
 
     newUser: false
 }

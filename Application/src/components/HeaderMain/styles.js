@@ -10,29 +10,30 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
 
-    btnMenuDrawer: {
+    menuDrawerButton: {
         width: 40,
         height: 40,
         justifyContent: 'center',
         alignItems: 'center'
     },
 
-    groupLogoTitle: {
-
+    logoTitleGroup: {
         flexDirection: 'row',
         alignItems: 'center'
     },
 
-    txtTitle: {
+    
+    logoImage: {
+        width: 40,
+        height: 40
+    },
+
+    title: {
         fontWeight:'bold',
         fontSize: 20,
         color: '#64718C'
-    },
-
-    logoImg: {
-        width: 40,
-        height: 40
     }
+
 })
 
 export default styles

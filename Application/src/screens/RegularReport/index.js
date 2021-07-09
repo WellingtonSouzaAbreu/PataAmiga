@@ -6,7 +6,6 @@ import axios from 'axios'
 
 import styles from './styles'
 
-
 import { baseApiUrl } from "../../common/baseApiUrl.js";
 import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
 import SelectAnimalAdopted from "../../components/SelectAnimalAdopted";

@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
 
+    scrollReport: {
+        width: '100%',
+        height: '100%'
+    },
+
     boxElement: {
         width: '100%',
         height: 150,
@@ -32,7 +37,7 @@ const styles = StyleSheet.create({
         height: 25,
         flexDirection: 'row',
         alignItems: 'center',
-      
+
     },
     radioComponent: {
         borderLeftWidth: 4,
@@ -43,12 +48,12 @@ const styles = StyleSheet.create({
     },
 
     inputForm: {
-        width : '100%',
+        width: '100%',
         padding: 10,
         alignItems: 'center',
         backgroundColor: '#f2f2f2',
-        justifyContent:'space-around'
-        
+        justifyContent: 'space-around'
+
     },
 
     smallInput: {
@@ -74,11 +79,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#64718C'
-    },
-
-    scrollReport: {
-        width: '100%',
-        height: '100%'
     }
 })
 

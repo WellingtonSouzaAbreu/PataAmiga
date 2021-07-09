@@ -12,6 +12,11 @@ consign()
     .then('./config/routes.js')
     .into(app)
 
+app.get('/teste', (req, res) => {
+    console.log('Aoba, conectou!')
+    res.send('Conexão estabelecida')
+})
+
 app.listen(port, () => {
     console.log(`Server running in port ${port}`)
 })

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import {  RadioButton } from 'react-native-paper';
+import { RadioButton } from 'react-native-paper';
 import axios from 'axios'
 
 import styles from './styles.js'
 
-import {baseApiUrl} from './../../common/baseApiUrl.js'
+import { baseApiUrl } from './../../common/baseApiUrl.js'
 
 const initialState = {
     description: 'Tem um mendigo comendo um cahorro',
@@ -19,13 +19,13 @@ const initialState = {
 
 export default class Report extends Component {
 
-    state = {...initialState}
+    state = { ...initialState }
 
-    requestReport = async() => {
-        await axios.post(`${baseApiUrl}/complaint`, {complaint: this.state})
+    requestReport = async () => {
+        await axios.post(`${baseApiUrl}/complaint`, { complaint: this.state })
             .then(res => {
                 Alert.alert('Oba', 'Denúncia realizada com sucesso!')
-                this.setState({...initialState})
+                this.setState({ ...initialState })
             })
             .catch(err => {
                 console.log(err.response.data)
@@ -36,8 +36,10 @@ export default class Report extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ScrollView style={styles.scrollReport}>
+                {/* TODO Scrool meio travado, não é sempre que rola suave */}
+                <ScrollView style={styles.scrollReport}> 
                     <View style={styles.boxElement}>
+                        {/* TODO Aqui tinha uma imagem? */}
                     </View>
                     <View style={styles.boxFormReport}>
                         <Text style={{ fontSize: 20, color: '#64718C', margin: 5, fontWeight: 'bold' }}>Fazer uma denuncia</Text>
@@ -49,7 +51,7 @@ export default class Report extends Component {
                                         value='Abandono'
                                         color="#F28749"
                                         status={this.state.complaintType === 'Abandono' ? 'checked' : 'unchecked'}
-                                        onPress={() => this.setState({complaintType: 'Abandono'})}
+                                        onPress={() => this.setState({ complaintType: 'Abandono' })}
                                     />
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'dimgray' }}>Abandono</Text>
                                 </View>
@@ -58,7 +60,7 @@ export default class Report extends Component {
                                         value="Maus tratos"
                                         color="#F28749"
                                         status={this.state.complaintType === 'Maus tratos' ? 'checked' : 'unchecked'}
-                                        onPress={() => this.setState({complaintType: 'Maus tratos'})}
+                                        onPress={() => this.setState({ complaintType: 'Maus tratos' })}
                                     />
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'dimgray' }}>Maus tratos</Text>
                                 </View>
@@ -70,31 +72,31 @@ export default class Report extends Component {
                             style={styles.smallInput}
                             value={this.state.city}
                             placeholder='Cidade'
-                            onChangeText={(city) => this.setState({city})}
+                            onChangeText={(city) => this.setState({ city })}
                         />
                         <TextInput
                             style={styles.smallInput}
                             value={this.state.district}
                             placeholder='Bairro onde aconteceu'
-                            onChangeText={(district) => this.setState({district})}
+                            onChangeText={(district) => this.setState({ district })}
                         />
                         <TextInput
                             style={styles.smallInput}
                             value={this.state.address}
                             placeholder='Endereço do ocorrido'
-                            onChangeText={(address) => this.setState({address})}
+                            onChangeText={(address) => this.setState({ address })}
                         />
                         <TextInput
                             style={styles.smallInput}
                             value={this.state.locale}
                             placeholder='Local'
-                            onChangeText={(locale) => this.setState({locale})}
+                            onChangeText={(locale) => this.setState({ locale })}
                         />
                         <TextInput
                             style={styles.descriptionInput}
                             value={this.state.description}
                             placeholder='Forneça os detalhes do ocorrido'
-                            onChangeText={(description) => this.setState({description})}
+                            onChangeText={(description) => this.setState({ description })}
                             multiline={true}
                         />
 

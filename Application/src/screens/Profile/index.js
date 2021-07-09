@@ -48,7 +48,7 @@ export default class Profile extends Component {
         validations.push(!!this.state.city)
         validations.push(!!this.state.district)
 
-        if (!validations.reduce((total, current) => total && current)) return null
+        if (validations.reduce((total, current) => total && current)) return null
 
         return (
             <View style={styles.warningContainer}>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { View, Text, Image, FlatList, Alert } from 'react-native'
-import {Button} from 'galio-framework'
+import { Button } from 'galio-framework'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import styles from './styles.js'
@@ -22,7 +22,7 @@ class SelectAnimalAdopted extends Component {
     }
 
 
-    getAnimalsAdopted = async () => { // TODO não está executando apenas uma vez quando não há nenhum registro
+    getAnimalsAdopted = async () => {
         axios.get(`${baseApiUrl}/adoption/animal-select`)
             .then(res => this.setState({ animals: res.data }))
             .catch(err => {

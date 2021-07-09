@@ -10,6 +10,7 @@
  -> Adicionar o campo 'animalId INT(11)' à tabela 'publications'
  -> Adicionar o campo 'history TEXT(2000)' à tabela 'publications'
  -> Adicionar o campo 'reasonRescue VARCHAR(20)' à tabela 'publications'
+                       'animalName VARCHAR(50)'      
  -> Remover o campo 'donationType' da tabela 'donations'
  -> Remover o campo 'especimenValue' da tabela 'donations'
 

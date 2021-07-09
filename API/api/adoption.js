@@ -11,7 +11,7 @@ module.exports = app => {
 
     const getNumberOfAdoptionsByUser = async (req, res) => {
 
-        const userId = /* req.body.user.id */ 1 // Descomentar depois de colocar o passport
+        const userId = req.user.id
 
         await app.db('adoptions')
             .where({ userId: userId })
@@ -27,7 +27,7 @@ module.exports = app => {
 
     const getAnimalsByUserAdoption = async (req, res) => {
 
-        const userId = /* req.user.id */ 1 // TODO
+        const userId = req.user.id 
 
         await app.db('adoptions')
             .select('animalId')

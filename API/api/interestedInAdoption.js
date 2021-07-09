@@ -50,7 +50,7 @@ module.exports = app => {
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
-        const userId = req.user.id // Passport
+        const userId = req.user.id 
 
         let interestedInAdoption = req.body.interestedInAdoption ? req.body.interestedInAdoption : res.status(400).send('Dados do interesse não informados')
         interestedInAdoption.userId = userId

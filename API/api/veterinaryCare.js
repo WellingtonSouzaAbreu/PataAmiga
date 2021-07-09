@@ -44,9 +44,5 @@ module.exports = app => {
         costsVeterinaries.map(cost => totalCost += cost.value)
         return totalCost
     }
-
-
-
-
     return { save }
 }

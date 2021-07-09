@@ -25,6 +25,8 @@ module.exports = app => {
     }
 
     const signin = async (req, res) => {
+        console.log(req.body.cellNumber, req.body.password) 
+
         if (!req.body.cellNumber || !req.body.password) {
             return res.status(400).send('Informe usuário e senha!')
         }
@@ -60,7 +62,7 @@ module.exports = app => {
         const { existsOrError } = app.api.validation
 
         const user = req.body.user ? req.body.user : res.status(400).send('Dados do usuário não informados')
-        const idUserForUpdate = req.params.id || null// for update - from URL
+        const idUserForUpdate = req.params.id || null // for update - from URL
 
         try {
             existsOrError(user.name, 'Nome não informado')
@@ -73,11 +75,11 @@ module.exports = app => {
 
             if (!idUserForUpdate) {
                 const userFromDB = await app.db('users')
-                    .select('id')
+                    .select('cellNumber')
                     .where({ cellNumber: user.cellNumber })
                     .first()
 
-                if (userFromDB && userFromDB.id == user.id) throw 'Usuário já cadastrado'
+                if (userFromDB && userFromDB.cellNumber == user.cellNumber) throw 'Usuário já cadastrado'
             }
 
         } catch (err) {
@@ -88,6 +90,7 @@ module.exports = app => {
         if (user.password) {
             user.password = encryptPassword(user.password)
         }
+        
         delete user.confirmPassword
 
         if (!idUserForUpdate) {
@@ -109,9 +112,6 @@ module.exports = app => {
                     res.status(500).send('Erro ao cadastrar usuário')
                 })
         }
-
-
-
     }
 
     const encryptPassword = password => {
