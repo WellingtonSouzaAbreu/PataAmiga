@@ -1,35 +1,40 @@
 import { StyleSheet } from 'react-native'
+import commonStyles from './../../common/commonStyles.js'
+
+const b = { ...commonStyles.activeBorders }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        // width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff'
-    },
-
-    scrollReport: {
-        width: '100%',
-        height: '100%'
-    },
-
-    boxElement: {
-        width: '100%',
-        height: 150,
-
+        backgroundColor: '#fff',
     },
 
     boxFormReport: {
         width: '100%',
         padding: 5,
-        alignItems: 'center'
+        alignItems: 'center',
+    },
+
+    title: {
+        fontSize: 20,
+        color: '#64718C',
+        margin: 5,
+        fontWeight: 'bold',
+        marginBottom: 40,
     },
 
     containerRadioSelect: {
         width: '100%',
         height: 90,
         justifyContent: 'space-around',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+    },
+
+    complaintTypeLabel: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#64718c',
     },
 
     radioContainer: {
@@ -37,23 +42,32 @@ const styles = StyleSheet.create({
         height: 25,
         flexDirection: 'row',
         alignItems: 'center',
-
     },
+
     radioComponent: {
         borderLeftWidth: 4,
         borderBottomColor: '#F28749',
         borderBottomWidth: 1,
         borderLeftColor: '#F28749',
-        padding: 5
+        padding: 5,
     },
 
     inputForm: {
         width: '100%',
-        padding: 10,
+        height: '70%', // TODO deve ser relativo
+        margin: 5,
+        justifyContent: 'space-between',
+        padding: 0,
         alignItems: 'center',
         backgroundColor: '#f2f2f2',
-        justifyContent: 'space-around'
+    },
 
+    inputArea: {
+        width: '95%',
+        height: '85%',
+        paddingVertical: 20,
+        alignItems: 'center',
+        justifyContent: 'space-around',
     },
 
     smallInput: {
@@ -61,7 +75,7 @@ const styles = StyleSheet.create({
         height: 40,
         marginBottom: 10,
         backgroundColor: '#fff',
-        textAlign: 'center'
+        textAlign: 'center',
     },
 
     descriptionInput: {
@@ -73,12 +87,13 @@ const styles = StyleSheet.create({
     },
 
     reportButton: {
-        width: '100%',
-        height: 40,
+        width: '95%',
+        height: 47,
         borderRadius: 3,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#64718C'
+        backgroundColor: '#64718C',
+        marginBottom: 15
     }
 })
 

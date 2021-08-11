@@ -5,7 +5,7 @@ import axios from 'axios';
 import styles from './styles.js'
 
 import {baseApiUrl} from '../../common/baseApiUrl.js'
-import AnimalCard from '../../components/AnimalCard'
+import AnimalCard from '../AnimalCard'
 
 const initialState = {
     animals: []

@@ -6,6 +6,7 @@ import axios from 'axios'
 import styles from './styles.js'
 
 import { baseApiUrl } from './../../common/baseApiUrl.js'
+import { showAlert } from './../../common/commonFunctions.js'
 
 const initialState = {
     donation: {
@@ -19,18 +20,23 @@ class Donation extends Component {
 
     requestCollect = async () => {
         await axios.post(`${baseApiUrl}/donation`, this.state.donation)
-            .then(_ => Alert.alert('Eba!', 'Solicitação realizada com sucesso!'))
+            .then(_ => {
+                showAlert('Eba!', 'Solicitação realizada com sucesso!')
+                this.setState({ ...initialState })
+                this.props.navigation.goBack()
+            })
             .catch(err => {
                 console.log(err.response.data)
-                Alert.alert('Ops', 'Ocorreu um erro ao solicitar coleta!')
+                showAlert('Ops', 'Ocorreu um erro ao solicitar coleta!')
             })
     }
 
     render() {
         return (
-            <View style={styles.container} >
-                <ScrollView indicatorStyle={false}
-                    style={styles.scrollContainer} >
+            <ScrollView indicatorStyle={false} showsVerticalScrollIndicator={false}
+                style={styles.scrollContainer} >
+                <View style={styles.container} >
+
                     <View style={styles.imgContainer} >
                         <Image source={require('../../assets/imgs/donation.png')}
                             style={styles.imgDonation}
@@ -63,15 +69,15 @@ class Donation extends Component {
                         <TextInput style={styles.requestInput}
                             placeholder="Item para doação"
                             value={this.state.donation.description}
-                            onChangeText={(description) => this.setState({ donation: {description} })}
+                            onChangeText={(description) => this.setState({ donation: { description } })}
                         />
                         <TouchableOpacity style={styles.requestButton}
                             onPress={this.requestCollect} >
                             <Text style={{ fontWeight: 'bold', color: '#fff' }} > Solicitar</Text>
                         </TouchableOpacity>
                     </View>
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 }

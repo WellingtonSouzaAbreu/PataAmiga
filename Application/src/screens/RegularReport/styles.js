@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     },
 
 
-
     headerElement: {
         width: '100%',
         height: 150,
@@ -86,12 +85,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f2f2',
         textAlign: 'center',
         marginVertical: 40,
-        height: '20%'
+        height: '50%'
     },
 
     areaButtons: {
         width: '100%',
-        height: '50%',
+        height: '30%',
+        justifyContent: 'flex-end'
     },
 
     btnSelectImage: {

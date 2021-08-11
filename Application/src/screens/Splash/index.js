@@ -9,7 +9,7 @@ const Splash = (props) => {
     setTimeout(async () => {
         let userInAsyncStorage
         await AsyncStorage.getItem('user', (error, result) => userInAsyncStorage = result)
-
+        console.log(userInAsyncStorage)
         if (userInAsyncStorage) {
             axios.defaults.headers.common['Authorization'] = 'bearer ' + userInAsyncStorage.token
             await props.navigation.navigate('Home')

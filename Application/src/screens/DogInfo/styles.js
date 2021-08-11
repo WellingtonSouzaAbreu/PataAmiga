@@ -5,9 +5,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
     },
-    
+
+
     imageContainer: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height * 0.3,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
 
     headerInfo: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     iconStyle: {
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     InfoGroup: {
         justifyContent: 'space-between',
         width: '100%',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
 
     cardInfo: {
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#f2f2f2',
-        borderRadius: 5
+        borderRadius: 5,
     },
 
     infoLabel: {
@@ -98,12 +99,12 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         height: 100,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
 
     infoArea: {
         width: '65%',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
 
     otherInfoGroup: {
@@ -155,12 +156,12 @@ const styles = StyleSheet.create({
     },
 
     buttonContainer: {
-        width: '100%',
-        padding: 15,
+        width: '97%',
     },
 
     buttonExpressInterest: {
         width: '100%',
+        marginBottom: 10,
         height: 45,
         justifyContent: 'center', alignItems: 'center',
         backgroundColor: '#64718C',

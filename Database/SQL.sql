@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `veterinary-cares` (
     totalCostOfTreatment FLOAT(7, 2),
     anamnese VARCHAR(1000),
     veterinaryName VARCHAR(50) NOT NULL,
-    animalId INT NOT NULL
+    animalId INT NOT NULL,
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 

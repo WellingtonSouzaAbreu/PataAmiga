@@ -9,9 +9,9 @@ export default class About extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.AboutTopElement}>
+                {/* <View style={styles.AboutTopElement}>
                     <Image style={styles.LogoImg} source={require('./../../assets/imgs/Logo.png')} />
-                </View>
+                </View> */}
                 <View style={styles.containerTabs}>
                     <AboutNavigation />
                 </View>

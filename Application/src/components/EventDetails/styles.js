@@ -78,6 +78,17 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
 
+    shareButton:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 15
+    },
+
+    shareLabel:{
+        color: '#64718C',
+        marginRight: 5
+    },
+
     scrollDescription: {
         width: '100%',
         paddingVertical: 10,

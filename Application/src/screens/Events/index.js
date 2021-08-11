@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, ScrollView, FlatList, Alert } from 'react-native'
 import axios from 'axios';
-import Icon from 'react-native-vector-icons/Feather'
 
 import styles from './styles.js'
 

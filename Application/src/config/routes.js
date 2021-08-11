@@ -11,7 +11,7 @@ import About from '../screens/About'
 import Donation from '../screens/Donation'
 import Event from '../screens/Events'
 import Faq from '../screens/Faq'
-import LastAdoptions from '../screens/LatestAdoptions'
+// import LastAdoptions from '../screens/LatestAdoptions'
 import RegularReport from '../screens/RegularReport'
 import Home from '../screens/Home'
 import RequestAdoption from './../screens/RequestAdoption'
@@ -177,7 +177,7 @@ const menuDrawerRoutes = {
         }
     },
 
-    LastAdopion: {
+   /*  LastAdopion: {
         name: 'LastAdoption',
         screen: LastAdoptions,
         navigationOptions: {
@@ -186,7 +186,7 @@ const menuDrawerRoutes = {
                 <Icon name="dog" size={20} color='#F28749' style={{ marginVertical: 2 }} />
             )
         }
-    },
+    }, */
 
     RegularReport: {
         name: 'RegularReport',
@@ -247,7 +247,7 @@ const authRouter = createSwitchNavigator(
         Home: menuDrawer
     },
     {
-        initialRouteName: 'Splash'
+        initialRouteName: 'Home'
     }
 )
 

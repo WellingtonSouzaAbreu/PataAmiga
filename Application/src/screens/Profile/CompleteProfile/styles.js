@@ -1,11 +1,18 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+
+    scrollContainer: {
+        flex: 1 ,
+        borderColor: 'red', borderWidth: 1,
+        height: '100%',
+    },
+
     container: {
         flex: 1,
         alignItems: 'center',
         backgroundColor: 'white',
-        justifyContent: 'center'
+        justifyContent: 'space-between'
     },
 
     headerImage: {
@@ -25,7 +32,6 @@ const styles = StyleSheet.create({
 
     formCompleteProfile: {
         width: '100%',
-        height: '60%',
         paddingHorizontal: 10,
         marginBottom: 15,
         justifyContent: 'space-between'
@@ -51,8 +57,9 @@ const styles = StyleSheet.create({
     },
 
     saveButton: {
-        width: '95%',
-        height: 45,
+        marginTop: 100,
+        width: '100%',
+        height: 47,
         backgroundColor: '#64718C',
         justifyContent: 'center',
         alignItems: 'center',

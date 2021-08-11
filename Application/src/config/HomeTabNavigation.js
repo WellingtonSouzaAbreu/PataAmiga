@@ -2,8 +2,8 @@ import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
-import LastAdoptions from '../screens/LatestAdoptions'
-import Animals from '../screens/Animals'
+import LastAdoptions from '../components/LatestAdoptions'
+import Animals from '../components/Animals'
 
 
 const Tab = createMaterialTopTabNavigator();

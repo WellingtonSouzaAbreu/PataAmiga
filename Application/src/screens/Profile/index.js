@@ -25,6 +25,15 @@ export default class Profile extends Component {
     componentDidMount = () => {
         console.log('Fui montado') //TODO Não recarrega quando retorna da stack (https://pt.stackoverflow.com/questions/446419/atualizar-useeffect-da-p%C3%A1gina-navigation-goback)
         this.loadUserData()
+        const { navigation } = this.props;
+
+        this.focusListener = navigation.addListener('didFocus', () => {
+            this.loadUserData()
+        });
+    }
+
+    componentWillUnmount() {
+        this.focusListener.remove();
     }
 
     loadUserData = async () => {
@@ -65,88 +74,84 @@ export default class Profile extends Component {
 
     render() {
         return (
-            <ScrollView style={{ flex: 1 }}>
-                <View style={styles.container}>
-                    <View style={styles.headerContainer}>
-                        <View style={styles.imageAndNameContainer}>
-                            <Image style={styles.logoImg} source={require('./../../assets/imgs/Logo.png')} />
-                            <View style={styles.nameContainer}>
-                                <Text style={styles.nameLabel}>{this.state.name}</Text>
-                                <Text style={{ color: 'dimgray' }}>{this.state.city}</Text>
-                            </View>
-                        </View>
-
-                        <View style={styles.contactContainer}>
-                            <View style={styles.contactArea}>
-                                <Icon name="phone" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                                <Text style={styles.valueLabel}>{this.state.cellNumber}</Text>
-                            </View>
-                            <View style={styles.contactArea}>
-                                <Icon name="envelope" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                                <Text style={styles.valueLabel}>{this.state.email || '---'}</Text>
-                            </View>
-
+            <View style={styles.container}>
+                <View style={styles.headerContainer}>
+                    <View style={styles.imageAndNameContainer}>
+                        <Image style={styles.logoImg} source={require('./../../assets/imgs/Logo.png')} />
+                        <View style={styles.nameContainer}>
+                            <Text style={styles.nameLabel}>{this.state.name}</Text>
+                            <Text style={{ color: 'dimgray' }}>{this.state.city}</Text>
                         </View>
                     </View>
-                    {this.renderProfileCompletarionAlert()}
 
-                    <View style={styles.personalInfoContainer}>
-
-                        <View style={styles.infoArea}>
+                    <View style={styles.contactContainer}>
+                        <View style={styles.contactArea}>
                             <Icon name="phone" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                            <View style={styles.infoAreaText}>
-                                <Text style={styles.valueLabel}>{this.state.phone || '---'}</Text>
-                                <Text style={styles.label}>Telefone</Text>
-                            </View>
+                            <Text style={styles.valueLabel}>{this.state.cellNumber}</Text>
                         </View>
-                        <View style={styles.addressInfos}>
-                            <Text style={styles.addressTitle}>Endereço</Text>
-                            <View style={styles.addressInfoRow}>
-                                <Icon name="road" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                                <View style={styles.infoAreaText}>
-                                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                        <Text style={styles.valueLabel}>{this.state.address + ' - ' || '---'} {this.state.houseNumber} </Text>
-                                    </ScrollView>
-                                    <Text style={styles.label}>Rua</Text>
-                                </View>
-                            </View>
-                            <View style={styles.addressInfoRow}>
-                                <Icon name="map-signs" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                                <View style={styles.infoAreaText}>
-                                    <Text style={styles.valueLabel}>{this.state.district || '---'}</Text>
-                                    <Text style={styles.label}>Bairro</Text>
-                                </View>
-                            </View>
-                            <View style={styles.addressInfoRow}>
-                                <Icon name="building" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                                <View style={styles.infoAreaText}>
-                                    <Text style={styles.valueLabel}>{this.state.city || '---'}</Text>
-                                    <Text style={styles.label}>Cidade</Text>
-                                </View>
-                            </View>
-                            <View style={styles.addressInfoRow}>
-                                <Icon name="globe-americas" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                                <View style={styles.infoAreaText}>
-                                    {/* // TODO Abarcar estados? (Lucas) */}
-                                    <Text style={styles.valueLabel}>Rondônia</Text>
-                                    <Text style={styles.label}>Estado</Text>
-                                </View>
-                            </View>
+                        <View style={styles.contactArea}>
+                            <Icon name="envelope" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                            <Text style={styles.valueLabel}>{this.state.email || '---'}</Text>
                         </View>
-                        <View style={styles.profileButtonsContainer}>
-                            <TouchableOpacity style={styles.editProfileButton} onPress={() => this.props.navigation.navigate('EditProfile', { ...this.state })}>
-                                <Icon name="user-edit" size={20} color='dimgray' style={{ marginRight: 15 }} />
-                                <Text style={styles.labelButton}>Editar Perfil</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.editProfileButton} onPress={() => this.props.navigation.navigate('ChangePassword', {...this.state})}>
-                                <Icon name="key" size={20} color='dimgray' style={{ marginRight: 15 }} />
-                                <Text style={styles.labelButton}>Alterar senha</Text>
-                            </TouchableOpacity>
+
+                    </View>
+                </View>
+                {this.renderProfileCompletarionAlert()}
+                <View style={styles.personalInfoContainer}>
+
+                    <View style={styles.infoArea}>
+                        <Icon name="phone" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                        <View style={styles.infoAreaText}>
+                            <Text style={styles.valueLabel}>{this.state.phone || '---'}</Text>
+                            <Text style={styles.label}>Telefone</Text>
                         </View>
                     </View>
-
+                    <View style={styles.addressInfos}>
+                        <Text style={styles.addressTitle}>Endereço</Text>
+                        <View style={styles.addressInfoRow}>
+                            <Icon name="road" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                            <View style={styles.infoAreaText}>
+                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                    <Text style={styles.valueLabel}>{this.state.address + ' - ' || '---'} {this.state.houseNumber} </Text>
+                                </ScrollView>
+                                <Text style={styles.label}>Rua</Text>
+                            </View>
+                        </View>
+                        <View style={styles.addressInfoRow}>
+                            <Icon name="map-signs" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                            <View style={styles.infoAreaText}>
+                                <Text style={styles.valueLabel}>{this.state.district || '---'}</Text>
+                                <Text style={styles.label}>Bairro</Text>
+                            </View>
+                        </View>
+                        <View style={styles.addressInfoRow}>
+                            <Icon name="building" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                            <View style={styles.infoAreaText}>
+                                <Text style={styles.valueLabel}>{this.state.city || '---'}</Text>
+                                <Text style={styles.label}>Cidade</Text>
+                            </View>
+                        </View>
+                        <View style={styles.addressInfoRow}>
+                            <Icon name="globe-americas" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                            <View style={styles.infoAreaText}>
+                                {/* // TODO Abarcar estados? (Lucas) */}
+                                <Text style={styles.valueLabel}>Rondônia</Text>
+                                <Text style={styles.label}>Estado</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.profileButtonsContainer}>
+                        <TouchableOpacity style={styles.editProfileButton} onPress={() => this.props.navigation.navigate('EditProfile', { ...this.state })}>
+                            <Icon name="user-edit" size={20} color='dimgray' style={{ marginRight: 15 }} />
+                            <Text style={styles.labelButton}>Editar Perfil</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.editProfileButton} onPress={() => this.props.navigation.navigate('ChangePassword', { ...this.state })}>
+                            <Icon name="key" size={20} color='dimgray' style={{ marginRight: 15 }} />
+                            <Text style={styles.labelButton}>Alterar senha</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </ScrollView>
+            </View>
         )
     }
 }

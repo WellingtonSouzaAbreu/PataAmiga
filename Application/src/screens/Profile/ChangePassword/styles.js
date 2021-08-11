@@ -1,19 +1,20 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
 
     formChangeMailPassword: {
+        flex: 1,
         width: '100%',
         height: '100%',
-        padding: 5
+        padding: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
+
     },
 
     formCard: {
         width: '100%',
-        height: '47%',
+        // height: '47%',
         padding: 10,
         backgroundColor: 'white',
         borderRadius: 5,

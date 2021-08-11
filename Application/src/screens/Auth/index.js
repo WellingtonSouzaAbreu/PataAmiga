@@ -7,14 +7,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './styles'
 
 import { baseApiUrl } from './../../common/baseApiUrl.js'
+import AuthInput from "../../components/AuthInput";
 
 const initialState = {
-    name: 'Wellington Souza',
-    cellNumber: '69 98446-5997',
-    password: '12345',
-    confirmPassword: '12345',
+    name: null,
+    cellNumber: '55 55555-5555',
+    password: '5555',
+    confirmPassword: null,
 
-    newUser: false
+    newUser: false,
+    passwordHidden: true,
+    confirmPasswordHidden: true
 }
 
 class Login extends Component {
@@ -66,11 +69,23 @@ class Login extends Component {
         }
 
         await axios.post(`${baseApiUrl}/signup`, { user })
-            .then(res => Alert.alert('Oba!', 'Seu cadastro foi realizado com sucesso!'))
+            .then(res => {
+                Alert.alert('Oba!', 'Seu cadastro foi realizado com sucesso!')
+                this.setState({
+                    newUser: false,
+                    name: null,
+                    confirmPassword: null
+                })
+            })
             .catch(err => {
                 console.log(err)
-                Alert.alert('Ops!', 'Ocorreu um erro ao realizar o seu cadastro.')
+                Alert.alert('Ops!', err.response.data)
             })
+    }
+
+    cleanInputAndFocus = () => {
+        // this.nameInput.onFocus() // TODO adicionar foco
+        this.setState({ ...initialState, newUser: !this.state.newUser })
     }
 
 
@@ -90,42 +105,41 @@ class Login extends Component {
                     <Text style={styles.formTitle}>{this.state.newUser ? 'Insira seus dados' : 'Bem vindo'}</Text>
                     {
                         this.state.newUser &&
-                        <Input placeholder="Insira seu nome...."
-                            value={this.state.name}
+                        <AuthInput icon='user' placeholder='Nome....' /* autoFocus={true} */
+                            value={this.state.name} 
                             onChangeText={(name) => this.setState({ name })}
                         />
                     }
-                    <Input
-                        placeholder="Usuário"
-                        right
-                        icon="user"
-                        family="antdesign"
-                        iconSize={18}
-                        iconColor="black"
-                        maxLength={13}
+
+                    <AuthInput icon='phone' placeholder="Número de celular..." /* autoFocus={true} */
+                        keyboardType='numeric' maxLength={13}
                         value={this.state.cellNumber}
                         onChangeText={this.applyMaskToCellNumber}
-                        keyboardType='numeric'
                     />
-                    <Input placeholder="Senha..." password viewPass
-                        value={this.state.password}
+
+                    <AuthInput icon={this.state.passwordHidden ? 'eye' : 'eye-slash'} placeholder="Senha..." keyboardType='numeric'
+                        value={this.state.password} secureTextEntry={this.state.passwordHidden}
                         onChangeText={(password) => this.setState({ password })}
+                        onToggleVisibility={() => this.setState({passwordHidden: !this.state.passwordHidden})}
                     />
-                    {this.state.newUser &&
-                        <Input placeholder="Repita sua senha..." password viewPass
-                            value={this.state.confirmPassword}
+
+                    {
+                        this.state.newUser &&
+                        <AuthInput icon={this.state.confirmPasswordHidden ? 'eye' : 'eye-slash'}  placeholder="Repetir senha..." keyboardType='numeric'
+                            value={this.state.confirmPassword} secureTextEntry={this.state.confirmPasswordHidden}
                             onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
+                            onToggleVisibility={() => this.setState({confirmPasswordHidden: !this.state.confirmPasswordHidden})}
                         />
                     }
                     {
                         !this.state.newUser &&
-                        <TouchableOpacity style={{ alignSelf: 'flex-start' }} onPress={() => Alert.alert('Hahaha!', 'Problema seu!')}>
-                            <Text style={{ alignSelf: 'flex-start', textDecorationLine: 'underline' }}>Esqueci minha senha.</Text>
+                        <TouchableOpacity style={styles.forgetPassword} onPress={() => Alert.alert('Hahaha!', 'Problema seu!')}>
+                            <Text style={styles.forgetPasswordText}>Esqueci minha senha.</Text>
                         </TouchableOpacity>
                     }
                     <Button style={styles.button} color="#4682B4" onPress={this.signinOrSignup}>{this.state.newUser ? 'Cadastrar' : 'Entrar'}</Button>
                 </View>
-                <TouchableOpacity style={styles.registerButton} onPress={() => { this.setState({ newUser: !this.state.newUser }) }}>
+                <TouchableOpacity style={styles.registerButton} onPress={this.cleanInputAndFocus}>
                     <Text style={styles.textButton}>{this.state.newUser ? 'Já possui conta?' : 'Ainda não possui conta?'}</Text>
                 </TouchableOpacity>
             </View>

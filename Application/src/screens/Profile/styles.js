@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import commomStyles from './../../common/commonStyles'
 
 const styles = StyleSheet.create({
@@ -6,11 +6,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
-
-    scr: {
-
-    },
-
 
     headerContainer: {
         padding: 5,
@@ -157,7 +152,8 @@ const styles = StyleSheet.create({
 
     profileButtonsContainer: {
         width: '100%',
-        marginTop: 15,
+        marginTop: 50,
+        marginBottom: 15,
         flexDirection: 'row',
         justifyContent: 'space-around'
     },

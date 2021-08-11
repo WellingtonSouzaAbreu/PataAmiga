@@ -56,16 +56,16 @@ export default class EditProfile extends Component {
                         value={this.state.address}
                         onChangeText={(address) => this.setState({ address })}
                     />
-                    <TextInput style={styles.longInput} placeholder="Telefone"
+                    <TextInput style={styles.longInput} placeholder="Telefone" keyboardType={'number-pad'}
                         value={this.state.phone}
                         onChangeText={(phone) => this.setState({ phone })}
                     />
-                    <TextInput style={styles.longInput} placeholder="Celular"
+                    <TextInput style={styles.longInput} placeholder="Celular" keyboardType={'number-pad'}
                         value={this.state.cellNumber}
                         onChangeText={(cellNumber) => this.setState({ cellNumber })}
                     />
                     <View style={styles.containerShortInput}>
-                        <TextInput style={styles.shortInput} placeholder="Número "
+                        <TextInput style={styles.shortInput} placeholder="Número"  keyboardType={'number-pad'}
                             value={this.state.houseNumber}
                             onChangeText={(houseNumber) => this.setState({ houseNumber })}
                         />
@@ -78,11 +78,6 @@ export default class EditProfile extends Component {
                         value={this.state.city}
                         onChangeText={(city) => this.setState({ city })}
                     />
-                    {/* <TextInput style={styles.shortInput} placeholder="Estado"  // TODO à verificar
-                            value={this.state.name}
-                            onChangeText={(name) => this.setState({name})}    
-                        /> */}
-
                 </View>
                 <TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
                     <Text style={{ fontWeight: 'bold', color: '#fff', fontSize: 15 }}>Salvar</Text>

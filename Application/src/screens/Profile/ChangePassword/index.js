@@ -72,10 +72,8 @@ export default class ChangePassword extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.container}>
-
                 <View style={styles.formChangeMailPassword}>
-                    <View style={styles.formCard}>
+                    {/* <View style={styles.formCard}>
                         <Text style={styles.cardTitle}>Alterar Email</Text>
                         <View style={styles.containerInputs}>
                             <TextInput style={styles.inputChange} placeholder="Email atual" editable={false}
@@ -85,10 +83,8 @@ export default class ChangePassword extends Component {
                             <TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
                                 <Text style={styles.buttonText}>Alterar</Text>
                             </TouchableOpacity>
-
                         </View>
-
-                    </View>
+                    </View> */}
 
                     <View style={styles.formCard}>
                         <Text style={styles.cardTitle}>Alterar Senha</Text>
@@ -103,7 +99,6 @@ export default class ChangePassword extends Component {
                         </View>
                     </View>
                 </View>
-            </ScrollView>
 
         )
     }

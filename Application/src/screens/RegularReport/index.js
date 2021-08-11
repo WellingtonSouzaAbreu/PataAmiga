@@ -9,6 +9,7 @@ import styles from './styles'
 import { baseApiUrl } from "../../common/baseApiUrl.js";
 import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
 import SelectAnimalAdopted from "../../components/SelectAnimalAdopted";
+import { SliderBox } from 'react-native-image-slider-box'
 
 const initialState = {
 	adoptionId: null,
@@ -31,7 +32,7 @@ export default class RegularReport extends Component {
 				this.setState({ numberOfAdoptions: res.data })
 			})
 			.catch(err => {
-				console.log(err)
+				console.log(err.response.data)
 				Alert.alert('Ops!', 'Algo deu errado ao obter o número de adoções.')
 			})
 	}
@@ -121,9 +122,9 @@ export default class RegularReport extends Component {
 					visible={this.state.selectAnimalAdoptedVisible}
 					onRequestClose={() => this.props.navigation.goBack()}
 				>
-					<SelectAnimalAdopted onSelectAdoption={this.selectAdoption} 
-					numberOfAdoptions={this.state.numberOfAdoptions} 
-					onNavigateToBack={this.navigateToBack}
+					<SelectAnimalAdopted onSelectAdoption={this.selectAdoption}
+						numberOfAdoptions={this.state.numberOfAdoptions}
+						onNavigateToBack={this.navigateToBack}
 					/>
 				</Modal>
 
@@ -131,7 +132,7 @@ export default class RegularReport extends Component {
 					animationType='slide'
 					visible={this.state.imageBrowserVisible}
 					onRequestClose={this.toggleImageBrowserVisibility}
-				>	
+				>
 					<View style={styles.imageBrowserContainer}>
 						<ImageBrowser max={3}
 							loadCount={20}
@@ -176,36 +177,41 @@ export default class RegularReport extends Component {
 						</View>
 					</TouchableOpacity>
 				</Modal>
-				<ScrollView style={{ flex: 1, width: '100%' }}>
-					<View style={styles.headerElement}>
-						<Image style={styles.imgElement} source={require('./../../assets/imgs/upload.png')} />
-						<Text style={{ fontWeight: 'bold', fontSize: 22, color: '#64718C' }}>Relatório Quinzenal</Text>
-					</View>
-					<View style={styles.containerUpload}>
-						<View style={styles.formUpload}>
-							<TextInput
-								placeholder="Observações"
-								value={this.state.observations}
-								style={styles.observationsInput}
-								multiline={true}
-								numberOfLines={4}
-								onChangeText={(observations) => this.setState({ observations })}
-							/>
+				{
+					this.state.imagesPack == []
+						? <View style={styles.headerElement}>
+							<Image style={styles.imgElement} source={require('./../../assets/imgs/upload.png')} />
+							<Text style={{ fontWeight: 'bold', fontSize: 22, color: '#64718C' }}>Relatório Quinzenal</Text>
+						</View>
+						: <SliderBox
+							dotColor="#F28749"
+							circleLoop
+							images={['https://source.unsplash.com/1024x768/?nature']} />
+				}
+				<View style={styles.containerUpload}>
+					<View style={styles.formUpload}>
+						<TextInput
+							placeholder="Observações"
+							value={this.state.observations}
+							style={styles.observationsInput}
+							multiline={true}
+							numberOfLines={4}
+							onChangeText={(observations) => this.setState({ observations })}
+						/>
 
-							<View style={styles.areaButtons}>
-								<TouchableOpacity style={styles.btnSelectImage} onPress={this.toggleImageBrowserVisibility}>
-									<Icon name="phone" size={15} color='#FFF' style={{ marginRight: 15 }} />
-									<Text style={styles.txtBtn}>Selecionar imagem</Text>
-								</TouchableOpacity>
+						<View style={styles.areaButtons}>
+							<TouchableOpacity style={styles.btnSelectImage} onPress={this.toggleImageBrowserVisibility}>
+								<Icon name="phone" size={15} color='#FFF' style={{ marginRight: 15 }} />
+								<Text style={styles.txtBtn}>Selecionar imagem</Text>
+							</TouchableOpacity>
 
-								<TouchableOpacity style={styles.btnUploadImage} onPress={this.sendRegularReport}>
-									<Icon name="upload" size={15} color='#FFF' style={{ marginRight: 15 }} />
-									<Text style={styles.txtBtn}>Enviar</Text>
-								</TouchableOpacity>
-							</View>
+							<TouchableOpacity style={styles.btnUploadImage} onPress={this.sendRegularReport}>
+								<Icon name="upload" size={15} color='#FFF' style={{ marginRight: 15 }} />
+								<Text style={styles.txtBtn}>Enviar</Text>
+							</TouchableOpacity>
 						</View>
 					</View>
-				</ScrollView>
+				</View>
 			</View>
 		);
 	}

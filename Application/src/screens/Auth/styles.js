@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   sloganArea: {
     flex: 1,
     justifyContent: 'center',
+    marginBottom: 10
   },
 
   slogan: {
@@ -47,8 +48,23 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
 
+  forgetPassword: {
+    // borderColor: 'red',
+    // borderWidth: 1,
+    alignSelf: 'flex-start',
+    marginVertical: 15
+  },
+
+  forgetPasswordText: {
+    fontSize: 11,
+    color: 'gray',
+    alignSelf: 'flex-start',
+    textDecorationLine: 'underline'
+  },
+
   button: {
-    width: '100%'
+    width: '100%',
+    marginTop: 20
   },
 
   registerButton: {

@@ -13,10 +13,13 @@ module.exports = app => {
 
         const userId = req.user.id
 
+        console.log(userId)
+
         await app.db('adoptions')
             .where({ userId: userId })
             .count()
             .then(async ([numberOfAdoptions]) => {
+                console.log(numberOfAdoptions["count(*)"])
                 res.status(200).json(numberOfAdoptions["count(*)"])
             })
             .catch(err => {

@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { Text, View, Image, Alert } from 'react-native'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, View, Image, Alert, Share, TouchableOpacity } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { Button } from 'galio-framework';
 import axios from 'axios'
+import { Linking } from 'react-native';
 
 import styles from './styles'
 import { baseApiUrl } from '../../common/baseApiUrl';
 import Slider from './../../components/Slider'
 
 const initialState = {
-    animal:{}
+    animal: {}
 }
 
 export default class DogInfo extends Component {
@@ -27,14 +27,37 @@ export default class DogInfo extends Component {
             .catch(err => Alert.alert('Erro', err))
     }
 
+
+    sendToWhatsApp = (text) => {
+        text = `
+*E aí, que tal adotar um pet?!* 🐕
+
+Olha só essa fofura!
+Nós ${this.state.animal.sex == 'M' ? 'o' : 'a'} chamamos de ${this.state.animal.name}!
+
+Espécie: ${this.state.animal.specie}
+Raça: ${this.state.animal.breed}
+Cor: ${this.state.animal.color}
+Idade: ${this.state.animal.aproximateAge}
+Vacinado: ✅
+Castrado: ${this.state.animal.castrated ? '✅' : '❌'}
+
+Aqui estão algumas curiosidades sobre ${this.state.animal.sex == 'M' ? 'ele' : 'ela'}:
+
+${this.state.animal.othersCharacteristics}`
+
+        // url = 'http://192.168.2.183:500/animal-pictures/cao-01.jpeg'
+        Linking.openURL(`whatsapp://send?text=${text}`);
+    }
+
     render() {
         return (
-            <ScrollView style={{ backgroundColor: '#fff'}} showsVerticalScrollIndicator={false}>
+            <ScrollView style={{ backgroundColor: '#fff' }} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View style={styles.imageContainer}>
                         {this.state.renderImage &&
                             // <Image style={styles.dogImage} source={{ uri: `${baseApiUrl}/animal-pictures/${this.state.animal.imagesURL[0] && this.state.animal.imagesURL[0].imageURL}` }} />
-                            <Slider {...this.state.animal.imagesURL} imageSource='animal'/>
+                            <Slider {...this.state.animal.imagesURL} imageSource='animal' />
                         }
                     </View>
                     <View style={styles.basicInfosContainer}>
@@ -90,13 +113,11 @@ export default class DogInfo extends Component {
                                 </View>
                             </View>
                             <View style={styles.shareArea}>
-                                <TouchableOpacity style={styles.shareButton}>
+                                <TouchableOpacity style={styles.shareButton} onPress={this.sendToWhatsApp}>
                                     <Icon name="share-alt" size={20} color='#64718C' style={styles.iconStyle} />
                                 </TouchableOpacity>
                             </View>
                         </View>
-                       
-                        
                     </View>
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.descriptionLabel}>Informações adicionais</Text>
@@ -105,7 +126,7 @@ export default class DogInfo extends Component {
                         </Text>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => this.props.navigation.navigate('RequestAdoption', {animalId: this.state.animal.id})}>
+                        <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => this.props.navigation.navigate('RequestAdoption', { animalId: this.state.animal.id })}>
                             <Text style={styles.buttonLabel}>Manifestar interesse</Text>
                         </TouchableOpacity>
                     </View>
