@@ -10,10 +10,11 @@ import { baseApiUrl } from "../../common/baseApiUrl.js";
 import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
 import SelectAnimalAdopted from "../../components/SelectAnimalAdopted";
 import { SliderBox } from 'react-native-image-slider-box'
+import { showAlert } from "../../common/commonFunctions";
 
 const initialState = {
 	adoptionId: null,
-	observations: 'Ele anda comendo cocô, mas está saudável',
+	observations: null,
 	imagesPack: [],
 
 	numberOfAdoptions: 0,
@@ -27,6 +28,7 @@ export default class RegularReport extends Component {
 	state = { ...initialState }
 
 	componentDidMount = async () => {
+		console.log(axios.defaults.headers.common['Authorization'])
 		await axios.get(`${baseApiUrl}/adoption/number-by-user`)
 			.then(res => {
 				this.setState({ numberOfAdoptions: res.data })
@@ -97,9 +99,10 @@ export default class RegularReport extends Component {
 
 		let valid = picturesUploaded.reduce((total, current) => total && current, true)
 		if (valid) {
-			Alert.alert('Oba!', 'Seu relatório foi enviado com sucesso!')
+			showAlert('Sucesso!', 'Seu relatório foi enviado com sucesso!')
+			this.props.navigation.goBack()
 		} else {
-			Alert.alert('Erro!', 'Ocorreu um erro ao enviar o relatório!')
+			showAlert('Erro!', 'Ocorreu um erro ao enviar o relatório!')
 		}
 	}
 
@@ -117,7 +120,6 @@ export default class RegularReport extends Component {
 		return (
 			<View style={styles.container}>
 				<StatusBar />
-
 				<Modal animationType='slide'
 					visible={this.state.selectAnimalAdoptedVisible}
 					onRequestClose={() => this.props.navigation.goBack()}
@@ -178,7 +180,7 @@ export default class RegularReport extends Component {
 					</TouchableOpacity>
 				</Modal>
 				{
-					this.state.imagesPack == []
+					this.state.imagesPack != []
 						? <View style={styles.headerElement}>
 							<Image style={styles.imgElement} source={require('./../../assets/imgs/upload.png')} />
 							<Text style={{ fontWeight: 'bold', fontSize: 22, color: '#64718C' }}>Relatório Quinzenal</Text>
@@ -186,7 +188,8 @@ export default class RegularReport extends Component {
 						: <SliderBox
 							dotColor="#F28749"
 							circleLoop
-							images={['https://source.unsplash.com/1024x768/?nature']} />
+							images={['https://source.unsplash.com/1024x768/?nature']}
+						/>
 				}
 				<View style={styles.containerUpload}>
 					<View style={styles.formUpload}>

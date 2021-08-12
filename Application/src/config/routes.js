@@ -130,8 +130,20 @@ const menuDrawerRoutes = {
                 <Icon name="home" size={20} color='#F28749' style={{ marginVertical: 2 }} />
             )
         },
-
     },
+
+        
+    Profile: {
+        name: 'Profile',
+        screen: Profile,
+        navigationOptions: {
+            title: 'PERFIL',
+            drawerIcon: ({ tintColor }) => (
+                <Icon name="user" size={20} color='#F28749' style={{ marginVertical: 2 }} />
+            )
+        }
+    },
+
     Complaint: {
         name: 'Complaint',
         screen: Complaint,
@@ -209,16 +221,6 @@ const menuDrawerRoutes = {
             )
         }
     },
-    Profile: {
-        name: 'Profile',
-        screen: Profile,
-        navigationOptions: {
-            title: 'PERFIL',
-            drawerIcon: ({ tintColor }) => (
-                <Icon name="user" size={20} color='#F28749' style={{ marginVertical: 2 }} />
-            )
-        }
-    }
 }
 
 const menuDrawerConfig = {
@@ -247,7 +249,7 @@ const authRouter = createSwitchNavigator(
         Home: menuDrawer
     },
     {
-        initialRouteName: 'Home'
+        initialRouteName: 'Splash'
     }
 )
 

@@ -5,19 +5,28 @@ import axios from 'axios'
 
 
 const Splash = (props) => {
-    
-    setTimeout(async () => {
-        let userInAsyncStorage
-        await AsyncStorage.getItem('user', (error, result) => userInAsyncStorage = result)
-        console.log(userInAsyncStorage)
-        if (userInAsyncStorage) {
-            axios.defaults.headers.common['Authorization'] = 'bearer ' + userInAsyncStorage.token
-            await props.navigation.navigate('Home')
-        } else {
-            await props.navigation.navigate('Auth')
-        }
-    }, 1000)
 
+    const switchRoute = async() => {
+        let userInAsyncStorage = false
+
+        await AsyncStorage.getItem('user', (error, result) => {
+            if(!error) {
+                userInAsyncStorage = true
+            }
+
+            axios.defaults.headers.common['Authorization'] = 'bearer ' + JSON.parse(result).token
+        })
+
+        setTimeout(async () => {
+            if (userInAsyncStorage) {
+                await props.navigation.navigate('Home')
+            } else {
+                await props.navigation.navigate('Auth')
+            }
+        }, 1000)
+    }
+
+    switchRoute()
 
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>

@@ -9,6 +9,10 @@ module.exports = app => {
         .get(app.api.adoption.getAdoptions)
         .post(app.api.adoption.save)
 
+    app.route('/adoption/already-adopted-and-express-interest/:animalId')
+        .all(app.config.passport.authenticate())
+        .get(app.api.adoption.alreadyAdoptedAndExpressInterest)
+
     app.route('/adoption/animal-select')
         .all(app.config.passport.authenticate())
         .get(app.api.adoption.getAnimalsByUserAdoption)

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
 
     // TODO tranformar em componente
     imageBrowserContainer: {
-        backgroundColor: 'ghostwhite', //TODO Efeito de transparência
+        backgroundColor: 'rgba(0,0,0,0.1)', //TODO Efeito de transparência
         height: '90%',
         padding: 0,
         borderColor: 'white',
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
+    // ^
 
     headerElement: {
         width: '100%',
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         resizeMode: 'contain',
-
     },
 
     containerUpload: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         justifyContent: 'space-between',
-
+        
     },
 
     observationsInput: {
@@ -91,12 +91,12 @@ const styles = StyleSheet.create({
     areaButtons: {
         width: '100%',
         height: '30%',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
     },
 
     btnSelectImage: {
         width: '100%',
-        height: 45,
+        height: 47,
         justifyContent: 'center',
         borderRadius: 3,
         alignItems: 'center',
@@ -107,13 +107,15 @@ const styles = StyleSheet.create({
 
     btnUploadImage: {
         width: '100%',
-        height: 45,
+        height: 47,
         justifyContent: 'center',
         borderRadius: 3,
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: '#F27F3D',
-        marginBottom: 10
+        marginBottom: 10,
+        marginBottom: 15
+
     },
 
     txtBtn: {

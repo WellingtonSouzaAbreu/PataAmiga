@@ -9,9 +9,10 @@ import styles from './styles.js'
 
 import { baseApiUrl } from "../../common/baseApiUrl.js";
 import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
+import { showAlert } from "../../common/commonFunctions.js";
 
 const initialState = {
-	description: 'Tem muitos gatos para ele brincar',
+	description: null,
 	imagesPack: [],
 
 	imageBrowserVisible: false
@@ -41,7 +42,7 @@ export default class RequestAdoption extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				Alert.alert('Ops', 'Ocorreu um erro ao manifestar interesse')
+				showAlert('Ops', 'Ocorreu um erro ao manifestar interesse')
 			})
 	}
 
@@ -67,15 +68,16 @@ export default class RequestAdoption extends Component {
 
 		let valid = picturesUploaded.reduce((total = true, current) => total && current)
 		if (valid) {
-			Alert.alert('Oba!', 'Você é um candidato à adoção, aguarde que a ONG entrará em contato contigo')
+			showAlert('Oba!', 'Você é um candidato à adoção, aguarde que a ONG entrará em contato contigo')
+			this.props.navigation.goBack()
 		} else {
-			Alert.alert('Erro!', 'Ocorreu um erro ao salvar as imagens!')
+			showAlert('Erro!', 'Ocorreu um erro ao salvar as imagens!')
 		}
 	}
 
 	checkIfImagesAreSelected = () => {
 		if (this.state.imagesPack.length < 1) {
-			Alert.alert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
+			showAlert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
 			return false
 		} else {
 			return true
@@ -143,7 +145,7 @@ export default class RequestAdoption extends Component {
 					<View style={styles.containerUpload}>
 						<View style={styles.formUpload}>
 
-							<Text style={{ fontSize: 16, fontWeight: 'bold' }}>Enviar Descrição</Text>
+							<Text style={styles.descriptionLabel}>Enviar Descrição</Text>
 							<TextInput
 								value={this.state.description}
 								placeholder="Detalhes"

@@ -6,11 +6,16 @@ import axios from 'axios'
 import { Linking } from 'react-native';
 
 import styles from './styles'
+
 import { baseApiUrl } from '../../common/baseApiUrl';
+import { showAlert } from '../../common/commonFunctions';
 import Slider from './../../components/Slider'
 
+
 const initialState = {
-    animal: {}
+    animal: {},
+    adopted: false,
+    expressInterest: false
 }
 
 export default class DogInfo extends Component {
@@ -18,6 +23,22 @@ export default class DogInfo extends Component {
     state = { ...initialState }
 
     componentDidMount = async () => {
+
+        await this.loadAnimalData()
+        await this.checkAlreadyAdoptedAndExpressInterest()
+
+        const { navigation } = this.props;
+
+        this.focusListener = navigation.addListener('didFocus', () => {
+            this.checkAlreadyAdoptedAndExpressInterest()
+        });
+    }
+
+    componentWillUnmount() {
+        this.focusListener.remove();
+    }
+
+    loadAnimalData = async () => {
         let idAnimal = this.props.navigation.state.params.id
         await axios.get(`${baseApiUrl}/animal/${idAnimal}`)
             .then(res => {
@@ -26,6 +47,16 @@ export default class DogInfo extends Component {
             })
             .catch(err => Alert.alert('Erro', err))
     }
+
+    checkAlreadyAdoptedAndExpressInterest = async () => {
+        await axios.get(`${baseApiUrl}/adoption/already-adopted-and-express-interest/${this.state.animal.id}`)
+            .then(res => {
+                this.setState({ adopted: res.data.adopted, expressInterest: res.data.expressInterest })
+            })
+            .catch(err => showAlert('Ops', err.response.data))
+    }
+
+
 
 
     sendToWhatsApp = (text) => {
@@ -56,7 +87,6 @@ ${this.state.animal.othersCharacteristics}`
                 <View style={styles.container}>
                     <View style={styles.imageContainer}>
                         {this.state.renderImage &&
-                            // <Image style={styles.dogImage} source={{ uri: `${baseApiUrl}/animal-pictures/${this.state.animal.imagesURL[0] && this.state.animal.imagesURL[0].imageURL}` }} />
                             <Slider {...this.state.animal.imagesURL} imageSource='animal' />
                         }
                     </View>
@@ -126,9 +156,19 @@ ${this.state.animal.othersCharacteristics}`
                         </Text>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => this.props.navigation.navigate('RequestAdoption', { animalId: this.state.animal.id })}>
-                            <Text style={styles.buttonLabel}>Manifestar interesse</Text>
-                        </TouchableOpacity>
+                        {
+                            !this.state.adopted && !this.state.expressInterest
+                                ? <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => this.props.navigation.navigate('RequestAdoption', { animalId: this.state.animal.id })}>
+                                    <Text style={styles.buttonLabel}>Manifestar interesse</Text>
+                                </TouchableOpacity>
+                                : !this.state.adopted
+                                    ? <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => showAlert('Ops!', 'Você já manifestou interesse neste animal, por favor, aguarde que a Pata Amiga entrará em contato com você!')}>
+                                        <Text style={styles.buttonLabel}>Você já se candidatou</Text>
+                                    </TouchableOpacity>
+                                    : <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => showAlert('Ops!', 'Esse dog já foi adotado por você!')}>
+                                        <Text style={styles.buttonLabel}>Já adotado</Text>
+                                    </TouchableOpacity>
+                        }
                     </View>
                 </View>
             </ScrollView>

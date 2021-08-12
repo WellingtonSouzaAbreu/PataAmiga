@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         borderWidth: 1
     },
-    
+
     browserConfirmArea: {
         padding: 10,
         flexDirection: 'row',
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
+    // ^
 
     headerElement: {
         width: '100%',
@@ -49,7 +50,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 2,
-        borderBottomColor: 'lightblue'
+        borderBottomColor: 'lightblue',
+        marginBottom: 20
     },
 
     imgElement: {
@@ -66,15 +68,22 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-around',
-        padding: 10,
+        padding: 2,
+        paddingBottom: 10,
         borderRadius: 5,
     },
-    
+
     formUpload: {
         width: '100%',
         alignItems: 'center',
         backgroundColor: 'white',
         padding: 5,
+    },
+
+    descriptionLabel: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 20,
     },
 
     descriptionInput: {
@@ -86,19 +95,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         height: '40%',
         marginBottom: 20,
+        marginTop: 20,
         marginHorizontal: 2,
     },
 
     btSelectImage: {
         width: '100%',
-        height: 45,
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 10
+        marginTop: 20
     },
     buttonUpload: {
         width: '100%',
-        height: 45
+        height: 50,
+        marginBottom: 30
     },
 })
 

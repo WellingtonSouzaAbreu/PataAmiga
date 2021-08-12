@@ -9,6 +9,51 @@ module.exports = app => {
             })
     }
 
+    const alreadyAdoptedAndExpressInterest = async (req, res) => {
+        const userId = req.user.id
+        const animalId = req.params.animalId
+
+        let adopted
+        let expressInterest
+
+        await app.db('adoptions')
+            .where({ userId: userId, animalId: animalId })
+            .first()
+            .then(adoption => {
+                if (adoption) {
+                    console.log('Adotado')
+                    adopted = true
+                } else {
+                    console.log('Não adotado')
+                    adopted = false
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+
+        await app.db('interesteds-in-adoption')
+            .where({ userId: userId, animalId: animalId })
+            .first()
+            .then(interest => {
+                console.log(interest)
+                if (interest) {
+                    console.log('Manifestado')
+                    expressInterest = true
+                } else {
+                    console.log('Não manifestado')
+                    expressInterest = false
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+
+            res.status(200).json({adopted, expressInterest})
+    }
+
     const getNumberOfAdoptionsByUser = async (req, res) => {
 
         const userId = req.user.id
@@ -30,18 +75,18 @@ module.exports = app => {
 
     const getAnimalsByUserAdoption = async (req, res) => {
 
-        const userId = req.user.id 
+        const userId = req.user.id
 
         await app.db('adoptions')
             .select('animalId')
             .where({ userId: userId })
             .then(async (animalsId) => {
-                
+
                 let animalsWithPicture = []
                 for ({ animalId } of animalsId) {
 
                     await app.db('animals')
-                        .select('id', 'name', 'breed','aproximateAge')
+                        .select('id', 'name', 'breed', 'aproximateAge')
                         .where({ id: animalId })
                         .then(async (animals) => {
                             animalsWithPicture.push(await getAnimalMainPicture(animals))
@@ -101,5 +146,5 @@ module.exports = app => {
             })
     }
 
-    return { getAdoptions, getNumberOfAdoptionsByUser, getAnimalsByUserAdoption, save }
+    return { getAdoptions, alreadyAdoptedAndExpressInterest, getNumberOfAdoptionsByUser, getAnimalsByUserAdoption, save }
 }
