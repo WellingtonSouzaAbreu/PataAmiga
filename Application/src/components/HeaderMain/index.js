@@ -13,7 +13,7 @@ export default function HeaderMain({ navigation }) {
     }
 
     const navigateToSignin = async () => {
-        await AsyncStorage.setItem('user', '')
+        await AsyncStorage.removeItem('user')
         axios.defaults.headers.common['Authorization'] = ''
         navigation.navigate('Auth')
     }

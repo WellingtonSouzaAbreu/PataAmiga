@@ -99,17 +99,37 @@ const styles = StyleSheet.create({
         marginHorizontal: 2,
     },
 
-    btSelectImage: {
+    areaButtons:{
         width: '100%',
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20
+        marginTop: 30,
+        marginBottom: 30,
     },
-    buttonUpload: {
+
+    selectImageButton: {
         width: '100%',
-        height: 50,
-        marginBottom: 30
+        height: 47,
+        justifyContent: 'center',
+        borderRadius: 3,
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#64718C',
+        marginBottom: 10,
+    },
+
+    uploadImageButton: {
+        width: '100%',
+        height: 47,
+        justifyContent: 'center',
+        borderRadius: 3,
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#F27F3D',
+    },
+
+    buttonText: {
+        fontWeight: 'bold',
+        color: '#fff',
+        fontSize: 15
     },
 })
 

@@ -203,14 +203,14 @@ export default class RegularReport extends Component {
 						/>
 
 						<View style={styles.areaButtons}>
-							<TouchableOpacity style={styles.btnSelectImage} onPress={this.toggleImageBrowserVisibility}>
-								<Icon name="phone" size={15} color='#FFF' style={{ marginRight: 15 }} />
-								<Text style={styles.txtBtn}>Selecionar imagem</Text>
+							<TouchableOpacity style={styles.selectImageButton} onPress={this.toggleImageBrowserVisibility}>
+								<Icon name="camera" size={15} color='#FFF' style={{ marginRight: 15 }} />
+								<Text style={styles.buttonText}>Selecionar imagem</Text>
 							</TouchableOpacity>
 
-							<TouchableOpacity style={styles.btnUploadImage} onPress={this.sendRegularReport}>
+							<TouchableOpacity style={styles.uploadImageButton} onPress={this.sendRegularReport}>
 								<Icon name="upload" size={15} color='#FFF' style={{ marginRight: 15 }} />
-								<Text style={styles.txtBtn}>Enviar</Text>
+								<Text style={styles.buttonText}>Enviar</Text>
 							</TouchableOpacity>
 						</View>
 					</View>

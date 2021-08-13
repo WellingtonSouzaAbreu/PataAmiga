@@ -8,6 +8,7 @@ import styles from './styles'
 
 import { baseApiUrl } from './../../common/baseApiUrl.js'
 import AuthInput from "../../components/AuthInput";
+import { showAlert } from "../../common/commonFunctions";
 
 const initialState = {
     name: null,
@@ -36,6 +37,23 @@ class Login extends Component {
         }
 
         this.setState({ cellNumber: formatedText })
+    }
+
+    sendSms = async () => {
+        showAlert('Opa', 'Descomente a função sendSms')
+        /* const sms = await axios({
+            url: 'https://voice-app.zenvia.com/sms',
+            method: 'post',
+            headers: {
+                'Access-Token': '5c56b53fb97341dd8b1db520cced00fc'
+            },
+            data:{
+                'numero_destino': '5569992550949',
+                'mensagem': `Aqui é a Pata Amiga`
+            }
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err.response.data)) */
     }
 
     signinOrSignup = () => {
@@ -83,7 +101,7 @@ class Login extends Component {
             })
     }
 
-    cleanInputAndFocus = () => {
+    cleanInputs = () => {
         // this.nameInput.onFocus() // TODO adicionar foco
         this.setState({ ...initialState, newUser: !this.state.newUser })
     }
@@ -106,7 +124,7 @@ class Login extends Component {
                     {
                         this.state.newUser &&
                         <AuthInput icon='user' placeholder='Nome....' /* autoFocus={true} */
-                            value={this.state.name} 
+                            value={this.state.name}
                             onChangeText={(name) => this.setState({ name })}
                         />
                     }
@@ -120,26 +138,26 @@ class Login extends Component {
                     <AuthInput icon={this.state.passwordHidden ? 'eye' : 'eye-slash'} placeholder="Senha..." keyboardType='numeric'
                         value={this.state.password} secureTextEntry={this.state.passwordHidden}
                         onChangeText={(password) => this.setState({ password })}
-                        onToggleVisibility={() => this.setState({passwordHidden: !this.state.passwordHidden})}
+                        onToggleVisibility={() => this.setState({ passwordHidden: !this.state.passwordHidden })}
                     />
 
                     {
                         this.state.newUser &&
-                        <AuthInput icon={this.state.confirmPasswordHidden ? 'eye' : 'eye-slash'}  placeholder="Repetir senha..." keyboardType='numeric'
+                        <AuthInput icon={this.state.confirmPasswordHidden ? 'eye' : 'eye-slash'} placeholder="Repetir senha..." keyboardType='numeric'
                             value={this.state.confirmPassword} secureTextEntry={this.state.confirmPasswordHidden}
                             onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
-                            onToggleVisibility={() => this.setState({confirmPasswordHidden: !this.state.confirmPasswordHidden})}
+                            onToggleVisibility={() => this.setState({ confirmPasswordHidden: !this.state.confirmPasswordHidden })}
                         />
                     }
                     {
                         !this.state.newUser &&
-                        <TouchableOpacity style={styles.forgetPassword} onPress={() => Alert.alert('Hahaha!', 'Problema seu!')}>
+                        <TouchableOpacity style={styles.forgetPassword} onPress={this.sendSms}>
                             <Text style={styles.forgetPasswordText}>Esqueci minha senha.</Text>
                         </TouchableOpacity>
                     }
                     <Button style={styles.button} color="#4682B4" onPress={this.signinOrSignup}>{this.state.newUser ? 'Cadastrar' : 'Entrar'}</Button>
                 </View>
-                <TouchableOpacity style={styles.registerButton} onPress={this.cleanInputAndFocus}>
+                <TouchableOpacity style={styles.registerButton} onPress={this.cleanInputs}>
                     <Text style={styles.textButton}>{this.state.newUser ? 'Já possui conta?' : 'Ainda não possui conta?'}</Text>
                 </TouchableOpacity>
             </View>

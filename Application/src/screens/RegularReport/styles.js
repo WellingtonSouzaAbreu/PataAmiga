@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 
-    btnSelectImage: {
+    selectImageButton: {
         width: '100%',
         height: 47,
         justifyContent: 'center',
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
 
-    btnUploadImage: {
+    uploadImageButton: {
         width: '100%',
         height: 47,
         justifyContent: 'center',
@@ -115,10 +115,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#F27F3D',
         marginBottom: 10,
         marginBottom: 15
-
     },
 
-    txtBtn: {
+    buttonText: {
         fontWeight: 'bold',
         color: '#fff',
         fontSize: 15

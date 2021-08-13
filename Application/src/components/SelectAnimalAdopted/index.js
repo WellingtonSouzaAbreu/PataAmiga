@@ -8,7 +8,6 @@ import styles from './styles.js'
 
 import { baseApiUrl } from '../../common/baseApiUrl.js'
 import AnimalCard from '../AnimalCard/index.js'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const initialState = {
     animals: []

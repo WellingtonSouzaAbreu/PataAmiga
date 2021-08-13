@@ -6,15 +6,18 @@ import axios from 'axios'
 
 const Splash = (props) => {
 
-    const switchRoute = async() => {
+    const switchRoute = async () => {
         let userInAsyncStorage = false
 
         await AsyncStorage.getItem('user', (error, result) => {
-            if(!error) {
+            console.log(result)
+            console.log(error)
+
+            if (!error && result) {
                 userInAsyncStorage = true
+                axios.defaults.headers.common['Authorization'] = 'bearer ' + JSON.parse(result).token
             }
 
-            axios.defaults.headers.common['Authorization'] = 'bearer ' + JSON.parse(result).token
         })
 
         setTimeout(async () => {

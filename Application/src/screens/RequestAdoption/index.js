@@ -31,7 +31,7 @@ export default class RequestAdoption extends Component {
 		if (!this.checkIfImagesAreSelected()) {
 			return
 		}
-		
+
 		const animalId = this.props.navigation.state.params.animalId
 
 		await axios.post(`${baseApiUrl}/interesteds-in-adoption/${animalId}`, { interestedInAdoption: { description: this.state.description } })
@@ -94,7 +94,7 @@ export default class RequestAdoption extends Component {
 					onRequestClose={this.toggleImageBrowserVisibility}
 				>
 					<View style={styles.imageBrowserContainer}>
-					<ImageBrowser max={3}
+						<ImageBrowser max={3}
 							loadCount={20}
 							renderSelectedComponent={
 								(num) => < PhotoSelectIndicator value={num}
@@ -155,20 +155,17 @@ export default class RequestAdoption extends Component {
 								onChangeText={(description) => this.setState({ description })}
 							/>
 
-							<Button icon="camera" iconFamily="feather"
-								iconSize={25} color="warning" iconColor="#fff"
-								style={styles.btSelectImage}
-								onPress={this.toggleImageBrowserVisibility}
-							>
-								Escolher Imagem
-							</Button>
+							<View style={styles.areaButtons}>
+								<TouchableOpacity style={styles.selectImageButton} onPress={this.toggleImageBrowserVisibility}>
+									<Icon name="camera" size={15} color='#FFF' style={{ marginRight: 15 }} />
+									<Text style={styles.buttonText}>Selecionar imagem</Text>
+								</TouchableOpacity>
 
-							<Button color="info" style={styles.buttonUpload}
-								onPress={this.sendRequestAdoption}
-							>
-								Enviar
-							</Button>
-
+								<TouchableOpacity style={styles.uploadImageButton} onPress={this.sendRequestAdoption}>
+									<Icon name="upload" size={15} color='#FFF' style={{ marginRight: 15 }} />
+									<Text style={styles.buttonText}>Enviar</Text>
+								</TouchableOpacity>
+							</View>
 						</View>
 					</View>
 				</ScrollView>

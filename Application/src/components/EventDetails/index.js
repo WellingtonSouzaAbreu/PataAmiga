@@ -52,8 +52,6 @@ Contamos com a sua participação!`
 					{props.description}
 				</Text>
 			</ScrollView>
-
-
 		</View>
 
 

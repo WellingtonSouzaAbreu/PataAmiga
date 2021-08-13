@@ -162,7 +162,7 @@ const menuDrawerRoutes = {
         navigationOptions: {
             title: 'SOBRE NÓS',
             drawerIcon: ({ tintColor }) => (
-                <Icon name="bullhorn" size={20} color='#F28749' style={{ marginVertical: 2 }} />
+                <Icon name="users" size={20} color='#F28749' style={{ marginVertical: 2 }} />
             )
         }
     },
