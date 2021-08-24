@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body,
+input,
+textarea,
+button,
+span{
+    font: 400 1rem "Inter", sans-serif;
+}
+
+@media(max-width: 1080px) {
+    html {
+        font-size: 93.75%;
+    }
+}
+
+@media(max-width: 720) {
+    html {
+        font-size: 87.5%;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+

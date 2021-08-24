@@ -1,0 +1,236 @@
+.container {
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.pageName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    height: 50px;
+    color: #F27B35;
+}
+
+.registerMoneyDonation {
+    display: flex;
+    padding: 15px;
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.cardMoney {
+    width: 90%;
+    height: 180px;
+    border-left: 4px solid #F27B35;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+/* From DonationTable */
+
+.cardContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column  ;
+}
+
+.headCard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    
+    background-color: #e7e7e7;
+    color: #64718C;
+}
+
+.headCard > strong {
+    margin-right: 15px;
+}
+
+.headCard > div:last-child {
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.headCard > div:first-child {
+    width: 95%;
+ 
+}
+
+.headCard > div:last-child > i {
+    color: #F27B35,
+    
+}
+
+.headCard > div:last-child > i:hover{
+    background-color: #F27B35;
+    border-radius: 100%;
+    color: #fff;
+    transform: scale(1.01);
+    transition: 0.2s ease-in-out;
+
+}
+
+.descriptionDonation {
+    width: 100%;
+    max-height: 100px;
+    min-height: 100px;
+}
+
+.cardContainer > div:last-child {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.cardContainer > div:last-child > div:first-child {
+   
+    width: 75%;
+}
+
+.contactAction {
+    display: flex;
+    width: 25%;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.contactAction > div:first-child {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.contactAction > div:first-child > i {
+    margin-right: 4px;
+    color: #64718C;
+}
+
+
+.contactAction > div:first-child > strong {
+    font-size: 1.2rem;
+    color: #64718C;
+}
+
+.contactAction > button {
+    width: 100%;
+    height: 35px;
+    border: none;
+    background-color: #F27B35;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+/* End DonationTable */
+
+.iconDescriptionCard {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    background-color: #F27B35;
+    color: #ffffff;
+}
+
+
+.iconDescriptionCard > i{
+    margin-right: 10px;
+}
+
+.detailedDonationDescription {
+    width: 100%;
+    padding-left: 10px;
+    display: flex;
+    height: 110px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.detailedDonationDescription > div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.detailedDonationDescription > div > i {
+    margin-right: 10px;
+    color:#64718C;
+}
+
+.detailedDonationDescription > div > strong {
+    margin-right: 10px;
+    font-weight: bold;
+    width: 25%;
+    color: #64718C;
+
+}
+.detailedDonationDescription > div > span {
+    font-weight: bold;
+    color: dimgray;
+}
+
+.registerDonation {
+    width: 90%;
+    border-left: 4px solid #F27B35;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.formRegisterDonation{
+    padding: 10px;
+}
+
+.formRegisterDonation > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.fullWidthAdjsut {
+    width: 50%;
+}
+
+.descriptionInput {
+    min-height: 100px;
+}
+
+.select {
+    width: 100%;
+}
+
+.btnSubimit{
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: #ffffff;
+    background-color: #F27B35;
+    font-weight: bold;
+}
+
+.formDivider {
+  
+    display: flex;
+    flex-direction: row;
+}
+
+.appRequestDonationList {
+    width: 50%;
+    
+}

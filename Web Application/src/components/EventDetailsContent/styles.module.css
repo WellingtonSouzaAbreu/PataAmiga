@@ -1,0 +1,107 @@
+
+
+.headerModal {
+    width: 100%;
+    background-color: #F27B35;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+}
+
+.headerModal > span {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+   
+}
+
+.content > div:first-child {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px 15px 20px;
+    
+   
+}
+
+.content > div:first-child > p {
+    color: #696969;
+}
+
+.content > div:first-child > span {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #696969;
+    margin-bottom: 15px;
+}
+
+.detailed {
+    width: 100%;
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: 80px;
+    margin-top: 15px;
+   
+}
+
+.detailedGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.itemDetail {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 80px;
+}
+
+.detailedGroupRow {
+    width: 100%;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.ItemDetailRow {
+    background-color: snow;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+  
+}
+
+
+.rowDetail {
+    display: flex;
+    height: 50px;
+    align-items: center;
+   
+}
+
+.rowDetail > span {
+    margin-left: 10px;
+}
+
+.statsEvent {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.status {
+    color: red;
+    margin-left: 10px;
+}
