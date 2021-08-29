@@ -15,7 +15,7 @@ import styles from './styles.module.css'
 import TableDonations from "../../components/DonationsTable/index.jsx";
 
 const initialState = {
-	donationDetailsVisibility: true
+	donationDetailsVisibility: false
 }
 
 class Donations extends Component {

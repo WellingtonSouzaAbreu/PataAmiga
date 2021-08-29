@@ -30,8 +30,18 @@ module.exports = app => {
             })
     }
 
-    const getPublications = async(req, res) => {
+    const getPublications = async (req, res) => {
         await app.db('publications')
+            .then(publications => res.status(200).send(publications))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const getPublicationsSummarized = async (req, res) => {
+        await app.db('publications')
+            .select('id', 'title', 'startDateTime',)
             .then(publications => res.status(200).send(publications))
             .catch(err => {
                 console.log(err)
@@ -136,10 +146,27 @@ module.exports = app => {
                     console.log(err)
                     res.status(500).send(err)
                 })
-
         })
-
     }
 
-    return { getPublicationById, getPublications, getEvents, getDones, save, savePicture }
+    const removePublication = async (req, res) => {
+        const idPublication = req.params.id ? req.params.id : res.status(400).send('Identificação da publicação não informada')
+
+        let publicationsId = idPublication.split(',') // Converte em array
+
+        publicationsId.forEach(async (idPublication) => {
+            await app.db('publications')
+                .where({ id: idPublication })
+                .del()
+                .then(_ => console.log(`Publicação de id: ${idPublication} deletada`))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao deletar publicação')
+                })
+        })
+
+        res.status(200).send('Publicações removidas com sucesso!')
+    }
+
+    return { getPublicationById, getPublications, getPublicationsSummarized, getEvents, getDones, save, savePicture, removePublication }
 }

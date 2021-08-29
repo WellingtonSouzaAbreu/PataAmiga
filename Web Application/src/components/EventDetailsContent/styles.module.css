@@ -101,7 +101,12 @@
     align-items: center;
 }
 
-.status {
+.statusClose {
     color: red;
+    margin-left: 10px;
+}
+
+.statusActive {
+    color: rgb(26, 192, 20);
     margin-left: 10px;
 }

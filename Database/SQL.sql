@@ -154,7 +154,8 @@ CREATE TABLE IF NOT EXISTS `remote-monitoring-pictures` (
 
 CREATE TABLE IF NOT EXISTS `publications` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    dateTime DATETIME NOT NULL,
+    startDateTime DATETIME NOT NULL, 
+    endDateTime DATETIME NOT NULL, /* TODO */
     title VARCHAR(50) NOT NULL,
     description VARCHAR(500) NOT NULL,
     reference VARCHAR(100),

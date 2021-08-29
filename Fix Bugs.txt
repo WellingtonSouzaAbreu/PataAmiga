@@ -1,9 +1,11 @@
 *** API ***
 
  -> Bugs corrigidos (12/07/2021)
+
+ -> Tabela 'publications': add startDateTime e endDateTime
+ -> Tabela 'publications': remove dateTime 
  
  *** Application ***
 
--> Adicionar placeholder aos inputs de 'Auth'
 -> Adicionar "hover" a tela 'DogInfo' 
 -> Placeholder da tela 'Complaint' some ao deslizar o dedo

@@ -56,12 +56,16 @@ module.exports = app => {
         .get(app.api.publication.getPublications)
         .post(app.api.publication.save)
 
+    app.route('/publication/summarized')
+        .get(app.api.publication.getPublicationsSummarized)
+
     app.get('/publication/event', app.api.publication.getEvents)
 
     app.get('/publication/done', app.api.publication.getDones)
 
     app.route('/publication/:id')
         .get(app.api.publication.getPublicationById)
+        .delete(app.api.publication.removePublication)
 
     app.post('/publication/picture', app.api.publication.savePicture)
 
