@@ -25,6 +25,15 @@ const columns = [
         }
     },
     {
+        name: "publicationType",
+        label: "Tipo",
+        options: {
+            filter: true,
+            sort: true,
+            customBodyRender: (publicationType) => publicationType == 'event' ? 'Evento' : 'História'
+        }
+    },
+    {
         name: "details",
         label: "Detalhes",
         options: {

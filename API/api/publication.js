@@ -41,7 +41,7 @@ module.exports = app => {
 
     const getPublicationsSummarized = async (req, res) => {
         await app.db('publications')
-            .select('id', 'title', 'startDateTime',)
+            .select('id', 'title', 'startDateTime', 'publicationType')
             .then(publications => res.status(200).send(publications))
             .catch(err => {
                 console.log(err)
@@ -90,19 +90,30 @@ module.exports = app => {
         }
         return dones
     }
+
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
-        const publication = req.body.publication ? req.body.publication : res.status(400).send('Dados da publicação remoto não informados')
-        publication.dateTime = new Date()
+        let publication = req.body.publication ? req.body.publication : res.status(400).send('Dados da publicação remoto não informados')
+        publication.startDateTime = new Date((new Date((publication.startDateTime.split('Z')[0])).getTime()) - 14400000)// Subtraindo 4 horas
+        publication.endDateTime = new Date((new Date((publication.endDateTime.split('Z')[0])).getTime()) - 14400000)// Subtraindo 4 horas
 
         try {
-            existsOrError(publication.dateTime, 'Data da publicação não informada')
-            existsOrError(publication.title, 'Título não informado')
-            existsOrError(publication.description, 'Descrição não informada')
-            existsOrError(publication.city, 'Cidade não informada')
-            existsOrError(publication.address, 'Endereço não informado')
+            existsOrError(publication.startDateTime, 'Data de inicio da publicação não informada')
+            existsOrError(publication.endDateTime, 'Data de encerramento da publicação não informada')
             existsOrError(publication.publicationType, 'Tipo de publicação não informada')
+            existsOrError(publication.title, 'Título não informado')
+
+            if (publication.publicationType == 'event') {
+                existsOrError(publication.description, 'Descrição não informada')
+                existsOrError(publication.city, 'Cidade não informada')
+                existsOrError(publication.district, 'Bairro não informado')
+                existsOrError(publication.address, 'Endereço não informado')
+            } else {
+                existsOrError(publication.animalName, 'Nome do animal não informado')
+                existsOrError(publication.history, 'História não informada')
+                existsOrError(publication.reasonRescue, 'Razão do resgate não informada')
+            }
         } catch (err) {
             return res.status(400).send(err)
         }
@@ -139,7 +150,7 @@ module.exports = app => {
                 publicationId: req.body.publicationId
             }
 
-            app.db('publication-pictures')
+            app.db('publications-pictures')
                 .insert(publicationPicture)
                 .then(_ => res.status(204).send())
                 .catch(err => {
@@ -152,7 +163,7 @@ module.exports = app => {
     const removePublication = async (req, res) => {
         const idPublication = req.params.id ? req.params.id : res.status(400).send('Identificação da publicação não informada')
 
-        let publicationsId = idPublication.split(',') // Converte em array
+        let publicationsId = idPublication.split(',') 
 
         publicationsId.forEach(async (idPublication) => {
             await app.db('publications')

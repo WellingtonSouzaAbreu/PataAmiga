@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `publications` (
     animalName VARCHAR(50),
     history TEXT(2000),
     reasonRescue VARCHAR(20),
-    animalId INT(11),
+    animalId INT(11), /* Desnecessário */
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 

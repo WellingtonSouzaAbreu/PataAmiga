@@ -16,6 +16,10 @@ class Events extends Component {
     state = { ...initialState }
 
     componentDidMount = async () => {
+        await this.loadPublications()
+    }
+
+    loadPublications = async () => {
         await axios.get(`${baseApiUrl}/publication/summarized`)
             .then(res => {
                 console.log(res.data)
@@ -45,7 +49,7 @@ class Events extends Component {
                     <span>PUBLICAÇÕES</span>
                 </div>
                 <div className={styles.addEvent}>
-                    <AddEvent />
+                    <AddEvent onRefresh={this.loadPublications}/>
                 </div>
                 <div className={styles.registerEvents}>
                     <EventTable publications={this.state.publicationsSummarized} onDelete={this.deletePublication} />
