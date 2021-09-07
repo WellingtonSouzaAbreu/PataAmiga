@@ -1,22 +1,17 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
 import { IconButton } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
-import { MDBInput } from "mdbreact";
 
-import styles from './styles.module.css'
-
-import CardDetailDonationReceived from '../../pages/Donations/index.jsx'
-import { DomainPropTypes } from "@material-ui/pickers/constants/prop-types";
-
+import { formatDate } from './../../common/commonFunctions.js'
 
 const columns = [
 	{
-		name: "date",
+		name: "dateTime",
 		label: "Data",
 		options: {
 			filter: true,
 			sort: true,
+			customBodyRender: (dateTime) => formatDate(dateTime)
 		}
 	},
 	{
@@ -28,78 +23,86 @@ const columns = [
 		}
 	},
 	{
-		name: "type",
+		name: "donationType",
 		label: "Tipo",
 		options: {
 			filter: true,
 			sort: false,
+			customBodyRender: (donationType) => {
+				switch (donationType) {
+					case 'money': return 'Dinheiro'
+					case 'portion': return 'Ração'
+					case 'medicines': return 'Remédios'
+					case 'others': return 'Outros'
+				}
+			}
 		}
 	},
 	{
-		name: "details",
+		name: "detailButton",
 		label: "Detalhes",
 		options: {
 			filter: true,
 			sort: false,
 		}
 	},
+	{
+		name: "editButton",
+		label: "Editar",
+		options: {
+			filter: true,
+			sort: false,
+		}
+	}
 ];
 
-const options = {
-	filterType: 'checkbox',
-	elevation: 0,
-	filter: false,
-	print: false,
-	rowsPerPage: 15,
-}
-
-const initialState = {
-
-}
-
 class DonationsTable extends Component {
-	state = { ...initialState }
 
-	data = () => {
-		return  [
-			{ date: "15/09/2021", name: "Lucas Marrtins", type: "Dinheiro", details: <this.IconRequestDetails /> },
-			{ date: "15/09/2023", name: "Lucas dsfdf", type: "Ração", contact: "94840510" },
-			{ date: "15/09/2021", name: "Lucas Marrtins", type: "Dinheiro", contact: "984841812" },
-			{ date: "15/09/2023", name: "Lucas dsfdf", type: "Ração", contact: "94840510" },
+	setDetailButton = (donations) => {
+		return donations.map(donation => {
+			donation.detailButton =
+				<IconButton aria-label="delete" color="primary" onClick={() => this.showDonationDetails(donation)}>
+					<i className='bx bx-calendar-edit'></i>
+				</IconButton>
 
-			{ date: "15/09/2021", name: "Lucas Marrtins", type: "Dinheiro", contact: "984841812" },
-			{ date: "15/09/2023", name: "Lucas dsfdf", type: "Ração", contact: "94840510" },
-
-			{ date: "15/09/2021", name: "Lucas Marrtins", type: "Dinheiro", contact: "984841812" },
-			{ date: "15/09/2023", name: "Lucas dsfdf", type: "Ração", contact: "94840510" },
-
-			{ date: "15/09/2021", name: "Lucas Marrtins", type: "Dinheiro", contact: "984841812" },
-			{ date: "15/09/2023", name: "Lucas dsfdf", type: "Ração", contact: "94840510" },
-
-			{ date: "15/09/2021", name: "Lucas Marrtins", type: "Dinheiro", contact: "984841812" },
-			{ date: "15/09/2023", name: "Lucas dsfdf", type: "Ração", contact: "94840510" },
-		];
+			return donation
+		})
 	}
 
-	IconRequestDetails = () => {
-		return (
-			<IconButton aria-label="delete" color="primary" onClick={this.showDonationDetails}>
-				<i className='bx bx-calendar-edit'></i>
-			</IconButton>
-		)
+	setEditButton = (donations) => {
+		return donations.map(donation => {
+			donation.editButton =
+				<IconButton aria-label="delete" color="primary" onClick={() => window.alert('Funcionalidade ainda não implementada!')}>
+					<i className='bx bx-calendar-edit'></i>
+				</IconButton>
+
+			return donation
+		})
 	}
 
-	showDonationDetails = () => {
-		this.props.onToggleVisibilityOfDonationDetails(true)
+	showDonationDetails = (donation) => {
+		this.props.onToggleVisibilityOfDonationDetails(donation)
 	}
 
 	render = () => {
+
+		let donations = this.props.donations
+
+		let donationsWithButtons = this.setDetailButton(donations)
+		donationsWithButtons = this.setEditButton(donationsWithButtons)
+
 		return (
 			<MUIDataTable
 				title={"Solicitações pelo App"}
-				data={this.data()}
+				data={donationsWithButtons}
 				columns={columns}
-				options={options}
+				options={{
+					filterType: 'checkbox',
+					elevation: 0,
+					filter: false,
+					print: false,
+					rowsPerPage: 15,
+				}}
 			/>
 		)
 	}

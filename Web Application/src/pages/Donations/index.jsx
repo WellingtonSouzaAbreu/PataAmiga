@@ -1,75 +1,71 @@
 import React, { Component } from "react";
-
+import axios from 'axios'
 import { MDBInput } from "mdbreact";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { MenuItem } from "@material-ui/core";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { Grid } from "@material-ui/core";
-import { KeyboardDatePicker } from "@material-ui/pickers";
-import DateFnsUtils from '@date-io/date-fns';
 
 import styles from './styles.module.css'
 
-import TableDonations from "../../components/DonationsTable/index.jsx";
+import { baseApiUrl } from './../../services/baseApiUrl.js'
+import DatePicker from './../../components/CustomDatePicker/index.jsx'
+import DonationsTable from "../../components/DonationsTable/index.jsx";
 
 const initialState = {
-	donationDetailsVisibility: false
+	donationDetailsVisibility: false,
+	donationDetails: {},
+
+	donations: [],
+
+	name: '',
+	cellNumber: '',
+	description: '',
+	donationType: '',
+	date: new Date()
 }
 
 class Donations extends Component {
 
 	state = { ...initialState }
 
-	SelectTipeOfDonation = () => {
+	componentDidMount = async () => {
+		await this.loadDonations()
+	}
+
+	loadDonations = async () => {
+		await axios.get(`${baseApiUrl}/donation`)
+			.then(res => {
+				this.setState({ donations: res.data })
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert('Ocorreu um erro ao obter doações')
+			})
+	}
+
+	selectTipeOfDonation = () => {
 		return (
 			<FormControl className={styles.select} >
 				<InputLabel id="demo-simple-select-helper-label">Tipo de doação</InputLabel>
 				<Select
 					labelId="demo-simple-select-helper-label"
 					id="demo-simple-select-helper"
-					value={10}
-					onChange={() => console.log('value')}
+					value={this.state.donationType}
+					onChange={(e) => this.setState({donationType: e.target.value})}
 					className={styles.select}
 				>
-					<MenuItem value=""></MenuItem>
-					<MenuItem value={10}>Dinheiro</MenuItem>
-					<MenuItem value={20}>Ração</MenuItem>
-					<MenuItem value={30}>Remédios</MenuItem>
-					<MenuItem value={40}>Outros</MenuItem>
+					<MenuItem value={'money'}>Dinheiro</MenuItem>
+					<MenuItem value={'portion'}>Ração</MenuItem>
+					<MenuItem value={'medicines'}>Remédios</MenuItem>
+					<MenuItem value={'others'}>Outros</MenuItem>
 				</Select>
-
 			</FormControl>
 		)
 	}
 
-	DataPicker = () => {
-		const handleDateChange = (date = Date.now() | null) => {
-			// this.setSelectedDate(date);
-		};
-
-		return (
-			<MuiPickersUtilsProvider utils={DateFnsUtils} >
-				<Grid className={styles.adjustSize}>
-					<KeyboardDatePicker
-						className={styles.adjustSize}
-						disableToolbar
-						variant="inline"
-						format="MM/dd/yyyy"
-						margin="normal"
-						id="date-picker-inline"
-						label="Data"
-						value={this.selectedDate}
-						onChange={this.handleDateChange}
-						KeyboardButtonProps={{
-							'aria-label': 'change date',
-						}}
-					/>
-				</Grid>
-
-			</MuiPickersUtilsProvider>
-		)
+	changeDate = (date) => {
+		this.setState({ date })
 	}
 
 	donationsReceivedCard = () => {
@@ -81,13 +77,15 @@ class Donations extends Component {
 	}
 
 	donationDetails = () => {
+		if (!this.state.donationDetails) return
+
 		return (
 			<div className={styles.cardMoney} id="card-detail-render">
 				<div className={styles.cardContainer} id="dtailedRequest">
 					<div className={styles.headCard}>
 						<div>
 							<strong>Detalhes da solicitação de doação de </strong>
-							<strong>Lucas Martins</strong>
+							<strong>{this.state.donationDetails.name}</strong>
 						</div>
 						<div>
 							<i className='bx bx-x bx-sm' onClick={this.toggleVisibilityOfDonationDetails}></i>
@@ -95,12 +93,12 @@ class Donations extends Component {
 					</div>
 					<div>
 						<div>
-							<MDBInput type="textarea" label="Descrição" value="300 Toneladas de Ração 300 Toneladas de Ração 300 Toneladas de Ração 300 Toneladas de Ração 300 Toneladas de Ração 300 Toneladas de Ração 300 Toneladas de Ração 300 Toneladas de Ração 300 Toneladas de Ração300 Toneladas de Ração  " disabled className={styles.descriptionDonation} />
+							<MDBInput type="textarea" label="Descrição" value={this.state.donationDetails.description} disabled className={styles.descriptionDonation} />
 						</div>
 						<div className={styles.contactAction}>
 							<div>
 								<i className='bx bxs-phone bx-sm'  ></i>
-								<strong>984843815</strong>
+								<strong>{this.state.donationDetails.cellNumber}</strong>
 							</div>
 							<button>Aceitar</button>
 						</div>
@@ -124,9 +122,9 @@ class Donations extends Component {
 						<span> 1781,55</span>
 					</div>
 					<div>
-						<i className='bx bxs-box' ></i>
-						<strong>Diversos</strong>
-						<span> 17</span>
+						<i className='bx bx-cookie'></i>
+						<strong>Ração</strong>
+						<span> 84</span>
 					</div>
 					<div>
 						<i className='bx bx-plus-medical'></i>
@@ -134,17 +132,17 @@ class Donations extends Component {
 						<span> 8</span>
 					</div>
 					<div>
-						<i className='bx bx-cookie'></i>
-						<strong>Ração</strong>
-						<span> 84</span>
+						<i className='bx bxs-box' ></i>
+						<strong>Diversos</strong>
+						<span> 17</span>
 					</div>
 				</div>
 			</div>
 		)
 	}
 
-	toggleVisibilityOfDonationDetails = (visibility) => {
-		this.setState({ donationDetailsVisibility: !this.state.donationDetailsVisibility })
+	toggleVisibilityOfDonationDetails = (donation) => {
+		this.setState({ donationDetailsVisibility: !this.state.donationDetailsVisibility, donationDetails: donation })
 	}
 
 	render = () => {
@@ -155,25 +153,32 @@ class Donations extends Component {
 				</div>
 				<div className={styles.formDivider}>
 					<div className={styles.registerMoneyDonation}>
-						<this.donationsReceivedCard />
+						{this.donationsReceivedCard()}
 						<div className={styles.registerDonation}>
 							<div className={styles.iconDescriptionCard}>
 								<i className='bx bx-add-to-queue bx-sm'  ></i>
 								<strong>Registrar uma doação</strong>
 							</div>
 							<div className={styles.formRegisterDonation}>
-								<this.DataPicker />
-								<this.SelectTipeOfDonation />
-								<MDBInput label="Nome" outline />
-								<MDBInput label="Telefone" outline />
-								<MDBInput label="Quantidade" outline />
-								<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput} />
+								<DatePicker label={'Data'}
+									value={this.state.date} onChangeDate={this.changeDate}
+								/>
+								{this.selectTipeOfDonation()}
+								<MDBInput label="Nome" outline
+									value={this.state.name} onChange={e => this.setState({ name: e.target.value })}
+								/>
+								<MDBInput label="Telefone" outline
+									value={this.state.cellNumber} onChange={e => this.setState({ cellNumber: e.target.value })}
+								/>
+								<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput}
+									value={this.state.description} onChange={e => this.setState({ description: e.target.value })}
+								/>
 								<button className={styles.btnSubimit}>FINALIZAR</button>
 							</div>
 						</div>
 					</div>
 					<div className={styles.appRequestDonationList}>
-						<TableDonations onToggleVisibilityOfDonationDetails={this.toggleVisibilityOfDonationDetails} />
+						<DonationsTable donations={this.state.donations} onToggleVisibilityOfDonationDetails={this.toggleVisibilityOfDonationDetails} />
 					</div>
 				</div>
 			</div>

@@ -2,6 +2,16 @@ const user = require("./user")
 
 module.exports = app => {
 
+    const getDonations = async(req, res) => {
+        await app.db('donations')
+            .then(donations => res.status(200).send(donations))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+        
+    }
+
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
@@ -46,5 +56,5 @@ module.exports = app => {
     }
 
 
-    return { save }
+    return { getDonations, save }
 }

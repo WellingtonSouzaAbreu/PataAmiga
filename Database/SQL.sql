@@ -123,7 +123,9 @@ CREATE TABLE IF NOT EXISTS `animal-pictures` (
 CREATE TABLE IF NOT EXISTS `donations` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     description VARCHAR(200),
-    dateTime DATETIME NOT NULL,
+    date DATE NOT NULL,
+    donationType VARCHAR(15),
+    amount INT(11),
     name VARCHAR(50) NOT NULL,
     cellNumber VARCHAR(20) NOT NULL,
     PRIMARY KEY(id)

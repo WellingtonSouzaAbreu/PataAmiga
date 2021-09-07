@@ -51,13 +51,6 @@ const columns = [
     },
 ];
 
-/* const data = [
-    { name: "Feira de Adoção", data: "15/09/2021", details: DetailButton, edit: IconAction },
-    { name: "Bazar Beneficente", data: "12/09/2021", details: DetailButton, edit: IconAction },
-    { name: "Feira de Adoção", data: "15/09/2021", details: DetailButton, edit: IconAction },
-    { name: "Feira de Adoção", data: "15/09/2021", details: DetailButton, edit: IconAction },
-]; */
-
 function EventTable(props) {
 
     const setDetailsButton = () => {

@@ -42,7 +42,8 @@ module.exports = app => {
         .post(app.api.complaint.save)
 
     app.route('/donation')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
+        .get(app.api.donation.getDonations)
         .post(app.api.donation.save)
 
     app.route('/interesteds-in-adoption/:animalId')
