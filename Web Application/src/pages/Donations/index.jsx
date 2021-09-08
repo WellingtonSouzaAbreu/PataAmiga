@@ -22,7 +22,8 @@ const initialState = {
 	cellNumber: '',
 	description: '',
 	donationType: '',
-	date: new Date()
+	date: new Date(),
+	donationReceived: false
 }
 
 class Donations extends Component {
@@ -44,7 +45,41 @@ class Donations extends Component {
 			})
 	}
 
-	selectTipeOfDonation = () => {
+	saveDonation = async () => {
+		const donation = {
+			name: this.state.name,
+			cellNumber: this.state.cellNumber,
+			description: this.state.description,
+			donationType: this.state.donationType,
+			date: this.state.date,
+			donationReceived: this.state.donationReceived
+		}
+
+		await axios.post(`${baseApiUrl}/donation`, donation)
+			.then(_ => {
+				window.alert('Doação registrada com sucesso!')
+				this.loadDonations()
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert(err.response.data)
+			})
+	}
+
+
+	changeDate = (date) => {
+		this.setState({ date })
+	}
+
+	donationsReceivedCard = () => {
+		return (
+			this.state.donationDetailsVisibility
+				? this.donationDetails()
+				: this.donationsReceived()
+		)
+	}
+
+	selectTypeOfDonation = () => {
 		return (
 			<FormControl className={styles.select} >
 				<InputLabel id="demo-simple-select-helper-label">Tipo de doação</InputLabel>
@@ -52,7 +87,7 @@ class Donations extends Component {
 					labelId="demo-simple-select-helper-label"
 					id="demo-simple-select-helper"
 					value={this.state.donationType}
-					onChange={(e) => this.setState({donationType: e.target.value})}
+					onChange={(e) => this.setState({ donationType: e.target.value })}
 					className={styles.select}
 				>
 					<MenuItem value={'money'}>Dinheiro</MenuItem>
@@ -64,15 +99,21 @@ class Donations extends Component {
 		)
 	}
 
-	changeDate = (date) => {
-		this.setState({ date })
-	}
-
-	donationsReceivedCard = () => {
+	selectStateOfDonation = () => {
 		return (
-			this.state.donationDetailsVisibility
-				? this.donationDetails()
-				: this.donationsReceived()
+			<FormControl className={styles.select} >
+				<InputLabel id="demo-simple-select-helper-label">Estado da doação</InputLabel>
+				<Select
+					labelId="demo-simple-select-helper-label"
+					id="demo-simple-select-helper"
+					value={this.state.donationReceived}
+					onChange={(e) => this.setState({ donationReceived: e.target.value })}
+					className={styles.select}
+				>
+					<MenuItem value={false}>Não recebido</MenuItem>
+					<MenuItem value={true}>Recebido</MenuItem>
+				</Select>
+			</FormControl>
 		)
 	}
 
@@ -100,12 +141,28 @@ class Donations extends Component {
 								<i className='bx bxs-phone bx-sm'  ></i>
 								<strong>{this.state.donationDetails.cellNumber}</strong>
 							</div>
-							<button>Aceitar</button>
+							<button onClick={this.changeStateOfDonation}>{this.state.donationDetails.donationReceived ? '✔ Recebido' : 'Receber'}</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		)
+	}
+
+	changeStateOfDonation = async () => {
+		await axios.put(`${baseApiUrl}/donation/change-state/${this.state.donationDetails.id}/${!this.state.donationDetails.donationReceived}`)
+			.then(_ => {
+				let donationDetails = { ...this.state.donationDetails }
+				donationDetails.donationReceived = !donationDetails.donationReceived
+
+				window.alert('Estado da doação alterado com sucesso!')
+				this.setState({ donationDetails })
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert('Ocorreu um erro ao obter doações')
+			})
+
 	}
 
 	donationsReceived = () => {
@@ -142,7 +199,9 @@ class Donations extends Component {
 	}
 
 	toggleVisibilityOfDonationDetails = (donation) => {
-		this.setState({ donationDetailsVisibility: !this.state.donationDetailsVisibility, donationDetails: donation })
+		let donationDetailsVisibility = donation.id == this.state.donationDetails.id && this.state.donationDetailsVisibility == true? false : true
+
+		this.setState({ donationDetailsVisibility: donationDetailsVisibility, donationDetails: donation })
 	}
 
 	render = () => {
@@ -163,7 +222,8 @@ class Donations extends Component {
 								<DatePicker label={'Data'}
 									value={this.state.date} onChangeDate={this.changeDate}
 								/>
-								{this.selectTipeOfDonation()}
+								{this.selectTypeOfDonation()}
+								{this.selectStateOfDonation()}
 								<MDBInput label="Nome" outline
 									value={this.state.name} onChange={e => this.setState({ name: e.target.value })}
 								/>
@@ -173,7 +233,7 @@ class Donations extends Component {
 								<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput}
 									value={this.state.description} onChange={e => this.setState({ description: e.target.value })}
 								/>
-								<button className={styles.btnSubimit}>FINALIZAR</button>
+								<button className={styles.btnSubimit} onClick={this.saveDonation}>FINALIZAR</button>
 							</div>
 						</div>
 					</div>

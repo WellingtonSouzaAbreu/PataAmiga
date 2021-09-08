@@ -46,6 +46,9 @@ module.exports = app => {
         .get(app.api.donation.getDonations)
         .post(app.api.donation.save)
 
+    app.route('/donation/change-state/:id/:state')
+        .put(app.api.donation.changeStateOfDonation)
+
     app.route('/interesteds-in-adoption/:animalId')
         .all(app.config.passport.authenticate())
         .get(app.api.interestedInAdoption.getInterestedsInAdoption)
