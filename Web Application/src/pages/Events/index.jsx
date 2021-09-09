@@ -32,7 +32,7 @@ class Events extends Component {
     }
 
     deletePublication = async (idPublication) => {
-        await axios.delete(`${baseApiUrl}/publication/${idPublication}`)
+        await axios.delete(`${baseApiUrl}/publication/${idPublication}`) // Array de id
             .then(_ => {
                 window.alert('Publicação deletada com sucesso!')
             })

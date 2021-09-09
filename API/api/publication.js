@@ -71,7 +71,7 @@ module.exports = app => {
 
     const getDones = async (req, res) => {
         await app.db('publications')
-            .select('id', 'title', 'dateTime', 'history', 'reasonRescue', 'animalName')
+            .select('id', 'title', 'startDateTime', 'history', 'reasonRescue', 'animalName')
             .where({ publicationType: 'done' })
             .then(async dones => {
                 dones = await browseDones(dones)

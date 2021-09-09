@@ -2,7 +2,7 @@ import React, { Component, } from 'react'
 import { View, Text, Modal, TouchableOpacity, Image } from 'react-native'
 import styles from './styles'
 
-import {baseApiUrl} from './../../common/baseApiUrl.js'
+import { baseApiUrl } from './../../common/baseApiUrl.js'
 import { formatDate } from './../../common/commonFunctions.js'
 import ModalContentHistory from '../ModalHistoryAnimal'
 
@@ -30,11 +30,10 @@ export default class CardAdopted extends Component {
                     visible={this.state.modalVisible}
                     style={styles.modalContainer}
                 >
-                    <ModalContentHistory {...this.props} onCloseModal={this.closeModal}/>
+                    <ModalContentHistory {...this.props} onCloseModal={this.closeModal} />
                 </Modal>
 
-
-                <Image style={styles.adoptedImage} source={{uri: `${baseApiUrl}/publication-pictures/${this.props.imagesURL[0].imageURL}`}} />
+                <Image style={styles.adoptedImage} source={{ uri: `${baseApiUrl}/publication-pictures/${this.props.imagesURL[0].imageURL}` }} />
                 <View style={styles.groupInfoAdopted}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Text style={styles.infoLabel}>Adotado: </Text>

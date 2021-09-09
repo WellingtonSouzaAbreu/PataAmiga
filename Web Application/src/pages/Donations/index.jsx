@@ -16,6 +16,7 @@ const initialState = {
 	donationDetailsVisibility: false,
 	donationDetails: {},
 
+
 	donations: [],
 
 	name: '',
@@ -23,7 +24,14 @@ const initialState = {
 	description: '',
 	donationType: '',
 	date: new Date(),
-	donationReceived: false
+	donationReceived: false,
+
+	numberOfDonationsReceived: {
+		money: 0,
+		portion: 0,
+		medicines: 0,
+		others: 0
+	},
 }
 
 class Donations extends Component {
@@ -37,11 +45,34 @@ class Donations extends Component {
 	loadDonations = async () => {
 		await axios.get(`${baseApiUrl}/donation`)
 			.then(res => {
-				this.setState({ donations: res.data })
+				this.setState({ donations: res.data }, this.loadNumberOfDonationsReceived)
 			})
 			.catch(err => {
 				console.log(err)
 				window.alert('Ocorreu um erro ao obter doações')
+			})
+	}
+
+	loadNumberOfDonationsReceived = async () => {
+		await axios.get(`${baseApiUrl}/donation/number-of-donations-received`)
+			.then(res => {
+				this.setState({ numberOfDonationsReceived: res.data })
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert('Ocorreu um erro ao número de doações recebidas!')
+			})
+	}
+
+	deleteDonation = async (idDonation) => {
+		await axios.delete(`${baseApiUrl}/donation/${idDonation}`) // Array de id
+			.then(_ => {
+				window.alert('Doação deletada com sucesso!')
+				this.loadDonations()
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert(err)
 			})
 	}
 
@@ -129,7 +160,7 @@ class Donations extends Component {
 							<strong>{this.state.donationDetails.name}</strong>
 						</div>
 						<div>
-							<i className='bx bx-x bx-sm' onClick={this.toggleVisibilityOfDonationDetails}></i>
+							<i className='bx bx-x bx-sm' onClick={() => this.toggleVisibilityOfDonationDetails()}></i>
 						</div>
 					</div>
 					<div>
@@ -155,7 +186,6 @@ class Donations extends Component {
 				let donationDetails = { ...this.state.donationDetails }
 				donationDetails.donationReceived = !donationDetails.donationReceived
 
-				window.alert('Estado da doação alterado com sucesso!')
 				this.setState({ donationDetails })
 			})
 			.catch(err => {
@@ -170,28 +200,28 @@ class Donations extends Component {
 			<div className={styles.cardMoney} id="card-detail-render">
 				<div className={styles.iconDescriptionCard}>
 					<i className='bx bx-donate-heart bx-sm' ></i>
-					<strong>Doações recebidas</strong>
+					<strong>Número de doações recebidas</strong>
 				</div>
 				<div className={styles.detailedDonationDescription}>
 					<div>
 						<i className='bx bx-dollar' ></i>
 						<strong>Dinheiro</strong>
-						<span> 1781,55</span>
+						<span> {this.state.numberOfDonationsReceived.money}</span>
 					</div>
 					<div>
 						<i className='bx bx-cookie'></i>
 						<strong>Ração</strong>
-						<span> 84</span>
+						<span> {this.state.numberOfDonationsReceived.portion}</span>
 					</div>
 					<div>
 						<i className='bx bx-plus-medical'></i>
 						<strong>Remédios</strong>
-						<span> 8</span>
+						<span> {this.state.numberOfDonationsReceived.medicines}</span>
 					</div>
 					<div>
 						<i className='bx bxs-box' ></i>
 						<strong>Diversos</strong>
-						<span> 17</span>
+						<span> {this.state.numberOfDonationsReceived.others}</span>
 					</div>
 				</div>
 			</div>
@@ -199,7 +229,12 @@ class Donations extends Component {
 	}
 
 	toggleVisibilityOfDonationDetails = (donation) => {
-		let donationDetailsVisibility = donation.id == this.state.donationDetails.id && this.state.donationDetailsVisibility == true? false : true
+		if (!donation) {
+			this.setState({ donationDetailsVisibility: false })
+			return
+		}
+
+		let donationDetailsVisibility = donation.id == this.state.donationDetails.id && this.state.donationDetailsVisibility == true ? false : true
 
 		this.setState({ donationDetailsVisibility: donationDetailsVisibility, donationDetails: donation })
 	}
@@ -208,7 +243,7 @@ class Donations extends Component {
 		return (
 			<div className={styles.container}>
 				<div className={styles.pageName}>
-					<span>DOAÇÕES</span>
+					<span onClick={this.loadDonations}>DOAÇÕES</span> {/* TODO Provisório para testes */}
 				</div>
 				<div className={styles.formDivider}>
 					<div className={styles.registerMoneyDonation}>
@@ -238,7 +273,7 @@ class Donations extends Component {
 						</div>
 					</div>
 					<div className={styles.appRequestDonationList}>
-						<DonationsTable donations={this.state.donations} onToggleVisibilityOfDonationDetails={this.toggleVisibilityOfDonationDetails} />
+						<DonationsTable donations={this.state.donations} onDelete={this.deleteDonation} onToggleVisibilityOfDonationDetails={this.toggleVisibilityOfDonationDetails} />
 					</div>
 				</div>
 			</div>

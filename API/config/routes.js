@@ -49,6 +49,12 @@ module.exports = app => {
     app.route('/donation/change-state/:id/:state')
         .put(app.api.donation.changeStateOfDonation)
 
+    app.route('/donation/:id')
+        .delete(app.api.donation.removeDonation)
+
+    app.route('/donation/number-of-donations-received')
+        .get(app.api.donation.numberOfDonationsReceived)
+
     app.route('/interesteds-in-adoption/:animalId')
         .all(app.config.passport.authenticate())
         .get(app.api.interestedInAdoption.getInterestedsInAdoption)

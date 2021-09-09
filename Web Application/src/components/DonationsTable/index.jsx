@@ -84,6 +84,13 @@ class DonationsTable extends Component {
 		this.props.onToggleVisibilityOfDonationDetails(donation)
 	}
 
+	onRowDelete = (rowsSelected) => {
+		let donationsIdSelected = rowsSelected.data.map(rowSelected => this.props.donations[rowSelected.index].id)
+
+		console.log(donationsIdSelected)
+		this.props.onDelete(donationsIdSelected)
+	}
+
 	render = () => {
 
 		let donations = this.props.donations
@@ -102,6 +109,7 @@ class DonationsTable extends Component {
 					filter: false,
 					print: false,
 					rowsPerPage: 15,
+					onRowsDelete: this.onRowDelete
 				}}
 			/>
 		)

@@ -12,15 +12,47 @@ module.exports = app => {
     }
 
     const changeStateOfDonation = async (req, res) => {
+        const donationstate = req.params.state == 'true' ? 1 : 0
 
         await app.db('donations')
-            .update({donationReceived: !!req.params.state})
-            .where({id: req.params.id})
+            .update({ donationReceived: donationstate })
+            .where({ id: req.params.id })
             .then(_ => res.status(200).send())
             .catch(err => {
                 console.log(err)
                 res.status(500).send(err)
             })
+    }
+
+    const numberOfDonationsReceived = async (req, res) => {
+        const donationTypes = ['money', 'portion', 'medicines', 'others']
+
+        let donationsReceived = await mapDonationTypes(donationTypes)
+
+        donationsReceivedObject = await donationsReceived.reduce((total, current) => {
+            return { ...total, ...current } // Transforma array em objeto
+        }, {})
+        await res.status(200).send(donationsReceivedObject)
+    }
+
+    const mapDonationTypes = async (donationTypes) => {
+        return await Promise.all(donationTypes.map(async donationType => {
+            const count = await countDonationType(donationType)
+            return { [donationType]: count }
+        }))
+    }
+
+    const countDonationType = async (donationType) => {
+        const count = await app.db('donations')
+            .count(`donationType as ${donationType}`)
+            .where({ donationType: donationType })
+            .then(([count]) => count[donationType])
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+
+        return count
     }
 
     const save = async (req, res) => {
@@ -68,6 +100,25 @@ module.exports = app => {
             })
     }
 
+    const removeDonation = async (req, res) => {
+        const idDonation = req.params.id ? req.params.id : res.status(400).send('Identificação da publicação não informada')
 
-    return { getDonations, changeStateOfDonation, save }
+        let donationsId = idDonation.split(',')
+
+        donationsId.forEach(async (idDonation) => {
+            await app.db('donations')
+                .where({ id: idDonation })
+                .del()
+                .then(_ => console.log(`Doação de id: ${idDonation} deletada`))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao deletar doação')
+                })
+        })
+
+        res.status(200).send('Doações removidas com sucesso!')
+    }
+
+
+    return { getDonations, changeStateOfDonation, numberOfDonationsReceived, save, removeDonation }
 }
