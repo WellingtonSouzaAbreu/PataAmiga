@@ -1,0 +1,42 @@
+.container {
+  display: inline-block;  
+  width: 100%;
+  flex-direction: column;
+ 
+
+}
+
+.typeReport {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+
+}
+
+.typeReport > strong {
+   font-size: 1rem;
+}
+
+.descriptionReport {
+    min-height: 100px;
+    max-height: 150px;
+    font-size: 1.1rem;
+}
+
+.containerLocation {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+  
+    width: 25%;
+}
+
+.btnVerify {
+    background-color: coral;
+}

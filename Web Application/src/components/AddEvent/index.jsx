@@ -33,7 +33,6 @@ const initialState = {
 	reasonRescue: '',
 
 	pictures: []
-
 }
 
 class AddEvent extends Component {

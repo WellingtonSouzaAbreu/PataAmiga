@@ -16,7 +16,6 @@ const initialState = {
 	donationDetailsVisibility: false,
 	donationDetails: {},
 
-
 	donations: [],
 
 	name: '',

@@ -41,6 +41,12 @@ module.exports = app => {
         .get(app.api.complaint.getComplaints)
         .post(app.api.complaint.save)
 
+    app.route('/complaint/change-state/:id/:state')
+        .put(app.api.complaint.changeStateOfComplaint)
+
+    app.route('/complaint/:id')
+        .delete(app.api.complaint.removeComplaint)
+
     app.route('/donation')
         // .all(app.config.passport.authenticate())
         .get(app.api.donation.getDonations)

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { IconButton } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 
-import { formatDate } from './../../common/commonFunctions.js'
+import { formatDate } from '../../common/commonFunctions.js'
 
 const columns = [
 	{

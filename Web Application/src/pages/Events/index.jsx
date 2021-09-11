@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import AddEvent from "../../components/AddEvent";
-import EventTable from "../../components/EventTable";
+import EventsTable from "../../components/EventsTable";
 
 const initialState = {
     publicationsSummarized: [],
@@ -52,7 +52,7 @@ class Events extends Component {
                     <AddEvent onRefresh={this.loadPublications}/>
                 </div>
                 <div className={styles.registerEvents}>
-                    <EventTable publications={this.state.publicationsSummarized} onDelete={this.deletePublication} />
+                    <EventsTable publications={this.state.publicationsSummarized} onDelete={this.deletePublication} />
                 </div>
             </div>
         )
