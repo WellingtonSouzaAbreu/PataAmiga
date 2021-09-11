@@ -60,6 +60,7 @@ module.exports = app => {
 
         const userId =/*  req.user.id  */ 1
         let donation = req.body
+        donation.date = convertDate(donation.date)
 
         if (!donation.donationType) donation.donationType = 'others'
 
@@ -69,7 +70,6 @@ module.exports = app => {
             return res.status(400).send()
         }
 
-        donation.date = new Date()
 
         if (!donation.cellNumber || !donation.name) {
             await app.db('users')
@@ -98,6 +98,10 @@ module.exports = app => {
                 console.log(err)
                 res.status(500).send('Erro ao cadastrar doação')
             })
+    }
+
+    const convertDate = (date) => {
+        return new Date(new Date((date.split('Z')[0])).getTime() - 14400000) 
     }
 
     const removeDonation = async (req, res) => {

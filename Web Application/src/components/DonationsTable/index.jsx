@@ -6,12 +6,12 @@ import { formatDate } from './../../common/commonFunctions.js'
 
 const columns = [
 	{
-		name: "dateTime",
+		name: "date",
 		label: "Data",
 		options: {
 			filter: true,
 			sort: true,
-			customBodyRender: (dateTime) => formatDate(dateTime)
+			customBodyRender: (date) => formatDate(date)
 		}
 	},
 	{
