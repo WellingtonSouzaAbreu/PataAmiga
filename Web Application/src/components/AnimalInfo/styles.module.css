@@ -1,0 +1,100 @@
+.container {
+padding: 15px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.imgsDescription{
+    width: 50%;
+
+}
+
+.carouselImages {
+   height: 250px;
+}
+
+.containerCarousel {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+  
+}
+
+.description {
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.otherDescriptions {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+ 
+}
+.group > div:first-child{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+}
+.group > div:last-child{
+    width: 50%;
+
+}
+.groupString {
+    display: flex;
+    width: 100%;
+    height: 55px;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.groupString > strong {
+    font-size: 1.1rem;
+}
+
+.groupIndicators {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid grey;
+    padding-top: 15px;
+
+}
+
+.stringIndicators {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.stringIndicators > strong {
+    font-size: 1.2rem   ;
+}
+.stringIndicators > button {
+    width: 60px;
+    height: 40px;
+    color: green;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    border-radius: 2px;
+}
+
+.stringIndicators > button:hover {
+    background-color: green;
+    color: #fff;
+    transition: 0.3s ease-in;
+}

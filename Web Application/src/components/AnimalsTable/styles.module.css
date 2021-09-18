@@ -1,0 +1,24 @@
+.container {
+    height: 100vh;
+    background-color: #ffffff;
+    
+}
+
+.pageName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    height: 50px;
+    color: #F27B35;
+ 
+}
+
+.addAnimal{
+    display: flex;
+    background-color: #f2f2f2;
+}
+
+.buttonAddEvent > span{
+    color: #F27B35;
+}

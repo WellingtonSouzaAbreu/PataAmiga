@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.dateRescue {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+
+}
+
+.fullWidthAdjsut {
+    width: 10%;
+
+}
+
+.selectCForwarded {
+    width: 50%;
+}
+
+.policeSuport {
+    align-items: center;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  
+   
+}
+
+.policeSuport > div:first-child {
+    width: 35%;
+}
+
+.policeSuport > div:last-child {
+    width: 64%;
+    height: 80px;
+}
+
+.selectPoliceSuport {
+    width: 100%;
+}
+
+.boNumber {
+    width: 100%;
+    margin-bottom: 15px;
+
+}
+
+
+
+.localeRescue {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    
+}
+
+.localeRescue > div{
+   
+    width: 49%;
+}

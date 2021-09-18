@@ -85,7 +85,7 @@ module.exports = app => {
 
     const getAnimals = async (req, res) => {
         await app.db('animals')
-            .select('id', 'breed', 'aproximateAge', 'sex')
+            .select('id', 'name', 'breed', 'specie', 'aproximateAge', 'sex')
             .then(async (animals) => {
                 // animals = JSON.parse(JSON.stringify(animals))
                 animals = await getAnimalMainPicture(animals)

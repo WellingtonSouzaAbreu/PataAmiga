@@ -36,6 +36,10 @@ module.exports = app => {
     app.route('/collaborator')
         .get(app.api.collaborator.getCollaborators)
         .post(app.api.collaborator.save)
+        .put(app.api.collaborator.save)
+
+    app.route('/collaborator/:id')
+        .delete(app.api.collaborator.removeCollaborator)
 
     app.route('/complaint')
         .get(app.api.complaint.getComplaints)

@@ -1,0 +1,66 @@
+.container {
+   width: 100%;
+}
+
+.spanAdjust {
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.containerForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.formMedic {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dateOfCare {
+    width: 15%;
+    margin: 5px;
+}
+
+.needInternationSelect {
+    width: 20%;
+    margin-top: 6px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.medicName {
+    width: 30%;
+    margin-top: 7px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.needMedicamentSelect {
+    width: 20%;
+    margin-top: 6px;  
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.inputCost {
+    width: 15%;
+    margin-top: 7px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.diagnostic {
+    min-height: 220px;
+    max-height: 250px;
+}
+
+.btnSubmit {
+    width: 100%;
+    border: none;
+    height: 40px;
+    font-weight: bold;
+    color: gray;
+}

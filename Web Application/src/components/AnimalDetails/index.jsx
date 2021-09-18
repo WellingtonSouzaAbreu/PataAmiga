@@ -5,7 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 
-import CollaboratorEditForm from './../CollaboratorEditForm/index.jsx'
+import AnimalDetailsContent from "./../AnimalDetailsContent/index.jsx";
 
 const useStyles = makeStyles((theme) =>
 	createStyles({
@@ -21,16 +21,14 @@ const useStyles = makeStyles((theme) =>
 			border: 'none',
 			borderRadius: 5,
 			boxShadow: theme.shadows[5],
-			width: '30%',
-			height: '40vh',
+			width: '60%',
+			height: '75vh',
 			overflowY: 'auto'
 		},
 	}),
 );
 
-export default function CollaboratorEditModal(props) {
-
-	console.log(props.collaborator)
+export default function AnimalDetails(props) {
 
 	const classes = useStyles();
 	const [open, setVisibility] = React.useState(false);
@@ -41,14 +39,13 @@ export default function CollaboratorEditModal(props) {
 
 	const handleClose = () => {
 		setVisibility(false);
-		props.onRefresh()
 	};
 
 
 	return (
 		<div>
 			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
-                <i class='bx bxs-edit'></i>
+				<i className='bx bxs-detail' ></i>
 			</IconButton>
 
 			<Modal
@@ -63,7 +60,7 @@ export default function CollaboratorEditModal(props) {
 			>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<CollaboratorEditForm collaborator={{...props.collaborator}} onCloseModal={handleClose}/>
+						<AnimalDetailsContent idAnimal={props.idAnimal}/>
 					</div>
 				</Fade>
 			</Modal>

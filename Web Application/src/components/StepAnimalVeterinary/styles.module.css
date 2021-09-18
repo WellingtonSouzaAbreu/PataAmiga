@@ -1,0 +1,58 @@
+.container {
+    width: 100%;
+ }
+ 
+
+ .containerForm {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+ }
+ .formMedic {
+     width: 100%;
+     height: 90px;
+     
+     display: flex;
+     padding: 10px;
+     justify-content: space-between;
+     align-items: center;
+ }
+ 
+ .formMedic > div {
+    width: 20%;
+    margin: 5px;
+   
+ }
+ 
+
+ .dateOfCare {
+    width: 100%;
+  
+ 
+ }
+ 
+ .needInternationSelect {
+     width: 100%;
+     margin-top: 6px;
+     
+   
+ }
+ 
+ .medicName {
+     width: 20%;
+ }
+ 
+ .needMedicamentSelect {
+     width: 100%;
+ 
+ }
+ .inputCost {
+     width: 20%;
+   
+ }
+ 
+ .diagnostic {
+     min-height: 150px;
+     max-height: 200px;
+ }
+ 

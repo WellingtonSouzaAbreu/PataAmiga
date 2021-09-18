@@ -31,8 +31,8 @@ class Collaborators extends Component {
     deleteCollaborator = async (idCollaborator) => {
         await axios.delete(`${baseApiUrl}/collaborator/${idCollaborator}`) // Array de id
             .then(_ => {
-                const plural = idCollaborator.length > 1 ? 'es' : ''
-                window.alert(`Colaborador${plural} deletado${plural == 'es' && 's'} com sucesso!`)
+                const plural = idCollaborator.length > 1 ? 'es' : '' // TODO Necessário? (Frase comum)
+                window.alert(`Colaborador${plural} deletado${plural == 'es' ? 's' : ''} com sucesso!`)
             })
             .catch(err => {
                 console.log(err)
@@ -46,7 +46,7 @@ class Collaborators extends Component {
                 <div className={styles.pageName}>
                     <span onClick={this.loadCollaborators}>COLABORADORES</span>
                 </div>
-                <AddCollaborator />
+                <AddCollaborator onRefresh={this.loadCollaborators}/>
                 <CollaboratorsTable collaborators={this.state.collaborators} onDelete={this.deleteCollaborator} onRefresh={this.loadCollaborators}/>
             </div>
         )

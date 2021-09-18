@@ -8,21 +8,42 @@
     width: 100%;
 }
 
+.heading {
+    color: #F27B35;
+}
+
+
 .formVolunteers {
-    width: 100%;
     display: flex;
+    width: 100%;
+
     flex-direction: row; 
     align-items: center;
  
     
 }
 
-.inputRegister {
-    width: 100%;
-    margin-right: 10px;
+
+.formVolunteers > div {
+    width: 15%;
+    margin-right: 15px;
+}
+
+.formVolunteers > div:last-child {
+    display: flex;
+    width: 10%;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputs {
+  margin: 15px;
 }
 
 .buttonSubmitForm {
+    font-weight: bold;
+    background-color: #F27B35;
+    color: #fff;
     height: 40px;
     margin-bottom: 8px;
     border: none;
