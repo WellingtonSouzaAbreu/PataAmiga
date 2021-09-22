@@ -9,7 +9,9 @@ import VeterinaryCareDetails from './../VeterinaryCareDetails'
 import { baseApiUrl } from '../../services/baseApiUrl';
 
 const initialState = {
-    animal: {}
+    animal: {
+        extraInfo: {}
+    }
 }
 
 class AnimalDetailsContent extends Component {
@@ -21,11 +23,22 @@ class AnimalDetailsContent extends Component {
     }
 
     loadAnimal = async () => {
-        await axios.get(`${baseApiUrl}/animal/${/* this.props.idAnimal */1}/all-data`)
+        await axios.get(`${baseApiUrl}/animal/${this.props.idAnimal}/all-data`)
             .then(res => this.setState({ animal: res.data }))
             .catch(err => {
                 console.log(err)
                 window.alert('Occoreu um erro ao obter dados do animal!')
+            })
+    }
+
+    deleteVeterinaryCare = async (idVeterinaryCare) => {
+        await axios.delete(`${baseApiUrl}/veterinary-care/${idVeterinaryCare}`) // Array de id
+            .then(_ => {
+                window.alert('Cuidado veterinário deletado com sucesso!')
+            })
+            .catch(err => {
+                console.log(err)
+                window.alert(err)
             })
     }
 
@@ -39,16 +52,17 @@ class AnimalDetailsContent extends Component {
                             <span>Informações do Animal</span>
                         </Tab>
                         <Tab className={styles.tabs}>
-                            <i class='bx bx-plus-medical bx-sm' ></i>
+                            <i className='bx bx-plus-medical bx-sm' ></i>
                             <span>Cuidados Veterinários</span>
                         </Tab>
                     </TabList>
 
                     <TabPanel className={styles.tabContent}>
-                        <AnimalInfo animal={this.state.animal} />
+                        <AnimalInfo animal={this.state.animal} onRefresh={this.loadAnimal} />
                     </TabPanel>
                     <TabPanel className={styles.tabContent}>
-                        <VeterinaryCareDetails />
+                        <VeterinaryCareDetails veterinaryCares={this.state.animal.veterinaryCare}
+                            animalId={this.state.animal.id} onRefresh={this.loadAnimal} onDelete={this.deleteVeterinaryCare}/>
                     </TabPanel>
                 </Tabs>
             </div>

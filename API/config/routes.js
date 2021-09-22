@@ -107,6 +107,7 @@ module.exports = app => {
         .put(app.api.user.save)
 
     app.post('/veterinary-care', app.api.veterinaryCare.save)
+    app.del('/veterinary-care/:id', app.api.veterinaryCare.removeVeterinaryCare)
 
     app.post('/visit', app.api.visit.save)
 }

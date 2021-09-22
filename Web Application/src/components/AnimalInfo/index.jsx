@@ -83,15 +83,15 @@ export default function DetailsAnimal(props) {
 				<div className={styles.groupIndicators}>
 					<div className={styles.stringIndicators}>
 						<strong>Adotado?</strong>
-						<button disabled>Não</button>
+						<button disabled>{props.animal.extraInfo.adopted  ? 'Sim': 'Não'}</button>
 					</div>
 					<div className={styles.stringIndicators}>
 						<strong>Lar temporário?</strong>
-						<button>Sim</button>
+						<button>{props.animal.extraInfo.temporaryHome ? 'Sim': 'Não'}</button>
 					</div>
 					<div className={styles.stringIndicators}>
 						<strong>Disponível para adoção?</strong>
-						<button disabled>Não</button>
+						<button disabled>{props.animal.extraInfo.availableToAdoption  ? 'Sim': 'Não'}</button>
 					</div>
 				</div>
 			</div>

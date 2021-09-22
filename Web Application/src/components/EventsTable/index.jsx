@@ -99,7 +99,6 @@ function EventTable(props) {
                 print: false,
                 rowsPerPage: 8,
                 onRowsDelete: onRowDelete
-                /*  onRowSelectionChange: rowSelect, */
             }}
         />
     )

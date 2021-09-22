@@ -2,101 +2,111 @@ import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { MDBInput } from "mdbreact";
+
 import styles from './styles.module.css'
 
-function MedicalCareInformations(){
-    return(
-        <div>
-            <MDBInput type="textarea" disabled label="Diagnóstico" value="floquinho comeu uma chave e precisa tomar dipirona  " className={styles.MedicalCareDiagnostic} />
-        </div>
-    )
-}
+import { formatDate } from './../../common/commonFunctions.js'
 
-const columns = [
- {
-  name: "data",
-  label: "Data",
-  options: {
-   filter: true,
-   sort: true,
-  }
- },
- {
-    name: "internation",
-    label: "Foi internado",
-    options: {
-     filter: true,
-     sort: false,
-    }
- },
- {
-    name: "medication",
-    label: "Foi medicado",
-    options: {
-     filter: true,
-     sort: false,
-    }
- },
- {
-  name: "costs",
-  label: "Custos",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
- {
-  name: "medic",
-  label: "Veterinário",
-  options: {
-   filter: true,
-   sort: false,
-  }
- },
-
-
-];
-
-const data = [
- { data: "18/08/2021", internation: "Sim", medication: "Sim", costs: "347,85", medic: "José Brito", state: "NY" },
- { data: "18/08/2021", internation: "Sim", medication: "Sim", costs: "347,85", medic: "José Brito", state: "NY" },
- { data: "18/08/2021", internation: "Sim", medication: "Sim", costs: "347,85", medic: "José Brito", state: "NY" },
-
-];
-
-const options = {
-  filterType: 'checkbox',
-  filter: false,
-  print:false,
-  download: false,
-  elevation: 0,
-  expandableRows: true,
-      expandableRowsHeader: true,
-      expandableRowsOnClick: true,
-      renderExpandableRow: (rowData, rowMeta) => {
-        const colSpan = rowData.length + 1;
+export default function VeterinaryCareTable(props) {
+    const renderAnamnese = (anamnese) => {
         return (
-          <TableRow>
-            <TableCell colSpan={colSpan}>
-              <MedicalCareInformations/>
-            </TableCell>
-          </TableRow>
-        );
-      },
-     
-};
+            <div>
+                <MDBInput type="textarea" disabled label="Diagnóstico" value={anamnese} className={styles.MedicalCareDiagnostic} />
+            </div>
+        )
+    }
 
+    const onRowDelete = (rowsSelected) => {
+        console.log(rowsSelected)
+        let veterinaryCareIdSelected = rowsSelected.data.map(rowSelected => props.veterinaryCares[rowSelected.index].id)
 
+        console.log(veterinaryCareIdSelected)
+        props.onDelete(veterinaryCareIdSelected)
+    }
 
-export default function TableMedicalCare(){
-    
-    return(
-
+    return (
         <MUIDataTable
-        title={"Histórico Venterinário"}
-        data={data}
-        columns={columns}
-        options={options}
+            title={"Histórico Venterinário"}
+            data={props.veterinaryCares}
+            columns={[
+                {
+                    name: "dateOfVeterinaryCare",
+                    label: "Data",
+                    options: {
+                        filter: true,
+                        sort: false,
+                        customBodyRender: (dateOfVeterinaryCare) => formatDate(dateOfVeterinaryCare)
+                    }
+                },
+                {
+                    name: "needOfHospitalization",
+                    label: "Foi internado",
+                    options: {
+                        filter: true,
+                        sort: false,
+                        customBodyRender: (needOfHospitalization) => needOfHospitalization ? 'Sim' : 'Não'// TODO colocar ícone
+                    }
+                },
+                {
+                    name: "needOfMedication",
+                    label: "Foi medicado",
+                    options: {
+                        filter: true,
+                        sort: false,
+                        customBodyRender: (needOfMedication) => needOfMedication ? 'Sim' : 'Não'// TODO colocar ícone
+                    }
+                },
+                {
+                    name: "totalCostOfTreatment",
+                    label: "Custos",
+                    options: {
+                        filter: true,
+                        sort: false,
+                        customBodyRender: (totalCostOfTreatment) => `R$ ${totalCostOfTreatment}`
+                    }
+                },
+                {
+                    name: "veterinaryName",
+                    label: "Veterinário",
+                    options: {
+                        filter: true,
+                        sort: false,
+                    }
+                },
+                {
+                    name: "anamnese",
+                    label: "Foi internado",
+                    options: {
+                        filter: true,
+                        sort: false,
+                        display: false
+                    }
+                },
+            ]}
+            options={{
+                filterType: 'checkbox',
+                filter: false,
+                print: false,
+                download: false,
+                elevation: 0,
+                expandableRows: true,
+                expandableRowsHeader: true,
+                expandableRowsOnClick: true,
+                onRowsDelete: onRowDelete,
+                renderExpandableRow: (rowData, rowMeta) => {
+                    const colSpan = rowData.length + 1;
+                    console.log(rowData)
+                    let anamnese = rowData[5]
+                    return (
+                        <TableRow>
+                            <TableCell colSpan={colSpan}>
+                                {renderAnamnese(anamnese)}
+                            </TableCell>
+                        </TableRow>
+                    );
+                },
+
+            }}
         />
     )
 }

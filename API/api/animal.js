@@ -12,6 +12,8 @@ module.exports = app => {
                 animal.imagesURL = await getAllAnimalPictures(idAnimal)
                 animal.veterinaryCare = await getVeterinaryCare(idAnimal)
                 animal.rescue = await getRescue(idAnimal)
+                animal.extraInfo = await getExtraInfo(idAnimal)
+                console.log(animal)
                 res.status(200).send(animal)
             })
             .catch(err => {
@@ -23,9 +25,8 @@ module.exports = app => {
     const getVeterinaryCare = async (idAnimal) => {
         return await app.db('veterinary-cares')
             .where({ animalId: idAnimal })
-            .first()
             .then(async veterinaryCare => {
-                veterinaryCare.costsVeterinaries = await getCostsVeterinaries(veterinaryCare.id)
+                // veterinaryCare.costsVeterinaries = await getCostsVeterinaries(veterinaryCare.id) TODO // Os custos serão ancorados ao relatório
                 return veterinaryCare
             })
             .catch(err => {
@@ -34,7 +35,7 @@ module.exports = app => {
             })
     }
 
-    const getCostsVeterinaries = async (veterinaryCareId) => {
+    /* const getCostsVeterinaries = async (veterinaryCareId) => {
         return await app.db('costs-veterinaries')
             .where({ veterinaryCareId: veterinaryCareId })
             .then(costsVeterinaries => costsVeterinaries)
@@ -42,7 +43,7 @@ module.exports = app => {
                 console.log(err)
                 throw err
             })
-    }
+    } */
 
     const getRescue = async (animalId) => {
         return await app.db('rescues')
@@ -53,6 +54,25 @@ module.exports = app => {
                 console.log(err)
                 throw err
             })
+    }
+
+    const getExtraInfo = async (animalId) => {
+        let extraInfo = {}
+        extraInfo.adopted = await app.db('adoptions')
+            .where({ animalId: animalId })
+            .first()
+            .then(adopted => adopted ? true : false)
+            .catch(err => console.log(err))
+
+        extraInfo.temporaryHome = await app.db('temporary-homes')
+            .where({ animalId: animalId })
+            .first()
+            .then(temporaryHome => temporaryHome ? true : false)
+            .catch(err => console.log(err))
+
+        extraInfo.availableToAdoption = !extraInfo.adopted// TODO Como saber se ele é disponível para a adpção
+
+        return extraInfo
     }
 
     const getAnimalById = async (req, res) => {

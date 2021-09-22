@@ -1,172 +1,143 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styles from './styles.module.css'
 import { MDBInput } from "mdbreact";
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
 import Input from '@material-ui/core/Input';
-
 import InputAdornment from '@material-ui/core/InputAdornment';
-import {
-	MuiPickersUtilsProvider,
+import axios from 'axios'
 
-	KeyboardDatePicker,
-} from '@material-ui/pickers';
+import CustomDatePicker from './../CustomDatePicker/index.jsx'
+import { baseApiUrl } from '../../services/baseApiUrl';
 
+const initialState = {
+    dateOfVeterinaryCare: new Date(),
+    needOfHospitalization: false,
+    needOfMedication: false,
+    totalCostOfTreatment: null,
+    anamnese: null,
+    veterinaryName: null,
+    animalId: null,
+    costsVeterinaries: [] // TODO atualizar custos
+}
 
-export default function FormAddMedicRelatory(){
-    function DataOfCare() {
-        const [selectedDate, setSelectedDate] = React.useState(
-            new Date('2021-09-18T21:11:54'),
-        );
-    
-        const handleDateChange = (date) => {
-            setSelectedDate(date);
-        };
-    
-        return (
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <Grid className={styles.dateOfCare}>
-                    <KeyboardDatePicker
-                        
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        id="date-picker-inline"
-                        label="Data da Consulta"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
-                </Grid>
-            </MuiPickersUtilsProvider>
-        )
-    
-    }
+class AddVeterinaryCare extends Component {
 
-    function SelectNeedInternation() {
-        const [event, setEvent] = React.useState('');
-        const handleChange = (event, value) => {
-            setEvent(event.target.value);
-        };
+    state = { ...initialState }
+
+    needOfHospitalization = () => {
         return (
             <FormControl className={styles.needInternationSelect} >
                 <InputLabel id="demo-simple-select-helper-label">Precisa ser internado?</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={event}
-                    onChange={handleChange}
+                    value={this.state.needOfHospitalization}
+                    onChange={(e) => this.setState({ needOfHospitalization: e.target.value })}
                 >
-                    <MenuItem value=""></MenuItem>
-                    <MenuItem value={10}>Sim</MenuItem>
-                    <MenuItem value={20}>Não</MenuItem>
-    
+                    <MenuItem value={true}>Sim</MenuItem>
+                    <MenuItem value={false}>Não</MenuItem>
                 </Select>
-          
             </FormControl>
         )
     }
 
-    function SelectNeedMedicament() {
-        const [event, setEvent] = React.useState('');
-        const handleChange = (event, value) => {
-            setEvent(event.target.value);
-        };
+    needOfMedication = () => {
         return (
             <FormControl className={styles.needMedicamentSelect} >
                 <InputLabel id="demo-simple-select-helper-label">Precisa de medicação?</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={event}
-                    onChange={handleChange}
+                    value={this.state.needOfMedication}
+                    onChange={(e) => this.setState({ needOfMedication: e.target.value })}
                 >
-                    <MenuItem value=""></MenuItem>
-                    <MenuItem value={10}>Sim</MenuItem>
-                    <MenuItem value={20}>Não</MenuItem>
-    
+                    <MenuItem value={true}>Sim</MenuItem>
+                    <MenuItem value={false}>Não</MenuItem>
                 </Select>
-               
+
             </FormControl>
         )
     };
 
-    function InputCost(){
-        return(
-            <FormControl fullWidth className={styles.inputCost}>
-            <InputLabel htmlFor="standard-adornment-amount">Custos</InputLabel>
-            <Input
-              id="standard-adornment-amount"
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            />
-          </FormControl>
-        )
+    saveVeterinaryCare = async () => {
+        await axios.post(` ${baseApiUrl}/veterinary-care`, { veterinaryCare: { ...this.state, animalId: this.props.animalId } })
+            .then(async _ => {
+                await this.props.onRefresh()
+                window.alert('Dados veterinários salvos com sucesso!')
+            })
+            .catch(err => {
+                console.log(err)
+                window.alert('Occoreu um erro ao salvar dados veterinários!')
+            })
+
     }
 
-    function MedicName(){
-        return(
-            <FormControl fullWidth className={styles.medicName}>
-            <InputLabel htmlFor="standard-adornment-amount">Médico Veterinário</InputLabel>
-            <Input
-              id="standard-adornment-amount"
-              startAdornment={<InputAdornment position="start"><i class='bx bx-user'></i></InputAdornment>}
-            />
-          </FormControl>
+    render() {
+        return (
+            <div className={styles.container}>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<i className='bx bx-down-arrow-alt'></i>}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography className={styles.heading}>
+                            <i className='bx bxs-calendar-plus'></i>
+                            <span className={styles.spanAdjust}>Adicionar relatório médico</span>
+                        </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <div className={styles.containerForm}>
+                            <div className={styles.formMedic}>
+                                <CustomDatePicker label={'Data'} value={this.state.dateOfVeterinaryCare} onChangeDate={(date) => this.setState({ dateOfVeterinaryCare: date })} />
+                                {this.needOfHospitalization()}
+                                {this.needOfMedication()}
+                                <FormControl fullWidth className={styles.inputCost}>
+                                    <InputLabel htmlFor="standard-adornment-amount">Custos</InputLabel>
+                                    <Input
+                                        id="standard-adornment-amount"
+                                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                        value={this.state.totalCostOfTreatment}
+                                        onChange={(e) => this.setState({ totalCostOfTreatment: e.target.value })}
+                                    />
+                                </FormControl>
+                                <FormControl fullWidth className={styles.medicName}>
+                                    <InputLabel htmlFor="standard-adornment-amount">Médico Veterinário</InputLabel>
+                                    <Input
+                                        id="standard-adornment-amount"
+                                        startAdornment={<InputAdornment position="start"><i class='bx bx-user'></i></InputAdornment>}
+                                        value={this.state.veterinaryName}
+                                        onChange={(e) => this.setState({ veterinaryName: e.target.value })}
+                                    />
+                                </FormControl>
+                            </div>
+                            <div className={styles.containerDiagnostic}>
+                                <MDBInput type="textarea" label="Relatório" className={styles.diagnostic}
+                                    value={this.state.anamnese} onChange={e => this.setState({ anamnese: e.target.value })}
+                                />
+                            </div>
+                            <div className={styles.confirmButton}>
+                                <button className={styles.btnSubmit} onClick={this.saveVeterinaryCare}>
+                                    Enviar
+                                </button>
+                            </div>
+                        </div>
+
+                    </AccordionDetails>
+                </Accordion>
+            </div>
         )
     }
-    
-    return(
-        <div className={styles.container}>
-            <Accordion>
-				<AccordionSummary
-					expandIcon={<i className='bx bx-down-arrow-alt'></i>}
-					aria-controls="panel1a-content"
-					id="panel1a-header"
-				>
-					<Typography className={styles.heading}>
-						<i className='bx bxs-calendar-plus'></i>
-						<span className={styles.spanAdjust}>Adicionar relatório médico</span>
-					</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-                    <div className={styles.containerForm}>
-                        <div className={styles.formMedic}>
-                            <DataOfCare/>
-                            <SelectNeedInternation/>
-                            <SelectNeedMedicament/>
-                            <InputCost/>
-                            <MedicName/>
-                        </div>
-                        <div className={styles.containerDiagnostic}>
-                            <MDBInput type="textarea" label="Relatório" className={styles.diagnostic} />
-                        </div>
-                        <div className={styles.confirmButton}>
-                            <button className={styles.btnSubmit}>
-                                Enviar
-                            </button>
-                        </div>
-                    </div>
-					
-				</AccordionDetails>
-			</Accordion>
-        </div>
-    )
 }
+
+export default AddVeterinaryCare
 
 
 
