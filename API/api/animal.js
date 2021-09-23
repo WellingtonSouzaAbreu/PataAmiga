@@ -135,27 +135,52 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        const animal = req.body.animal ? req.body.animal : res.status(400).send('Dados do animal não informados')
+        console.log(req.body)
 
-        console.log('foi request')
+        const animal = await objectIsNull(req.body.animal) ? res.status(400).send('Dados do animal não informados') : req.body.animal
+        const veterinaryCare = await objectIsNull(req.body.veterinaryCare) ? res.status(400).send('Dados do cuidado veterinário não informados') : req.body.veterinaryCare
+
+        console.log(veterinaryCare)
         try {
-            existsOrError(animal.color, 'Cor não informada')
-            animal.name ? existsOrError(animal.name, 'Nome não informado') : existsOrError(animal.surname, 'Apelido não informado')
+            /* existsOrError(animal.color, 'Cor não informada')
+            existsOrError(animal.name, 'Nome não informado')
             existsOrError(animal.aproximateAge, 'Idade aproximada não informada')
             existsOrError(animal.sex, 'Sexo não informado')
+            existsOrError(animal.specie, 'Espécie não informado')
+            existsOrError(animal.breed, 'Raça não informado') */
+
+            existsOrError(veterinaryCare.dateOfVeterinaryCare, 'Data do cuidado veterinário não informado')
+            existsOrError(veterinaryCare.totalCostOfTreatment, 'Custo total do cuidado veterinário não informado')
+            existsOrError(veterinaryCare.veterinaryName, 'Nome do veterinário não informado')
         } catch (err) {
             return res.status(400).send(err)
         }
 
-        await app.db('animals')
+        const animalId = 1/* await app.db('animals')
             .insert(animal)
-            .then(id => res.status(200).json(id[0]))
+            .then(id => {
+                console.log('Success => Animal veterinário')
+                return id[0]
+            })
             .catch(err => {
                 console.log(err)
                 res.status(500).send('Erro ao cadastrar animal')
+            }) */
+
+        veterinaryCare.dateOfVeterinaryCare = veterinaryCare.dateOfVeterinaryCare.split('Z')[0]
+
+        await app.db('veterinary-cares')
+            .insert({...veterinaryCare, animalId: animalId})
+            .then(_ => console.log('Success => Cuidado veterinário'))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send('Erro ao cadastrar cuidado veterinário')
             })
+
+        // await res.status(200).json(animalId)
+        await res.status(200).send()
     }
 
     const savePicture = async (req, res) => {
@@ -177,6 +202,7 @@ module.exports = app => {
             }
 
             console.log(req.body)
+            console.log(req.file)
 
             let animalPicture = {
                 imageURL: req.file.filename,
@@ -193,5 +219,24 @@ module.exports = app => {
         })
     }
 
-    return { getAnimalById, getAllDataOfAnimalById, getAnimals, save, savePicture }
+    const removeAnimal = async (req, res) => {
+        const idAnimal = req.params.id ? req.params.id : res.status(400).send('Identificação do animal não informada')
+
+        let animalsId = idAnimal.split(',')
+
+        animalsId.forEach(async (idAnimal) => {
+            await app.db('collaborators')
+                .where({ id: idAnimal })
+                .del()
+                .then(_ => console.log(`Animal de id: ${idAnimal} deletado`))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao deletar animal')
+                })
+        })
+
+        res.status(200).send('Animal removido com sucesso!')
+    }
+
+    return { getAnimalById, getAllDataOfAnimalById, getAnimals, save, savePicture, removeAnimal }
 }

@@ -1,165 +1,99 @@
 import React from 'react'
 import styles from './styles.module.css'
 import { MDBInput } from "mdbreact";
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
 import Input from '@material-ui/core/Input';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
-import {
-	MuiPickersUtilsProvider,
 
-	KeyboardDatePicker,
-} from '@material-ui/pickers';
+import CustomDatePicker from './../CustomDatePicker/index.jsx'
 
 
-export default function StepVeterinaryAnimal(){
+export default function StepAnimalVeterinary(props) {
 
-    function DataOfCare() {
-        const [selectedDate, setSelectedDate] = React.useState(
-            new Date('2021-09-18T21:11:54'),
-        );
-    
-        const handleDateChange = (date) => {
-            setSelectedDate(date);
-        };
-    
-        return (
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <Grid className={styles.dateOfCare}>
-                    <KeyboardDatePicker
-                       
-                        className={styles.dateOfCare}
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        id="date-picker-inline"
-                        label="Data da Consulta"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
-                </Grid>
-            </MuiPickersUtilsProvider>
-        )
-    
-    }
-
-    function SelectNeedInternation() {
-        const [event, setEvent] = React.useState('');
-        const handleChange = (event, value) => {
-            setEvent(event.target.value);
-        };
+    const selectNeedOfHospitalization = () => {
         return (
             <FormControl className={styles.needInternationSelect} >
                 <InputLabel id="demo-simple-select-helper-label">Precisa ser internado?</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={event}
-                    onChange={handleChange}
+                    value={props.veterinaryCare.needOfHospitalization}
+                    onChange={e => props.onChange({ needOfHospitalization: e.target.value })}
                 >
-                    <MenuItem value=""></MenuItem>
-                    <MenuItem value={10}>Sim</MenuItem>
-                    <MenuItem value={20}>Não</MenuItem>
-    
+                    <MenuItem value={true}>Sim</MenuItem>
+                    <MenuItem value={false}>Não</MenuItem>
+
                 </Select>
-          
             </FormControl>
         )
     }
 
-    function SelectNeedMedicament() {
-        const [event, setEvent] = React.useState('');
-        const handleChange = (event, value) => {
-            setEvent(event.target.value);
-        };
+    const selectNeedOfMedication = () => {
+
         return (
             <FormControl className={styles.needMedicamentSelect} >
                 <InputLabel id="demo-simple-select-helper-label">Precisa de medicação?</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={event}
-                    onChange={handleChange}
+                    value={props.veterinaryCare.needOfMedication}
+                    onChange={e => props.onChange({ needOfMedication: e.target.value })}
                 >
-                    <MenuItem value=""></MenuItem>
-                    <MenuItem value={10}>Sim</MenuItem>
-                    <MenuItem value={20}>Não</MenuItem>
-    
+                    <MenuItem value={true}>Sim</MenuItem>
+                    <MenuItem value={false}>Não</MenuItem>
                 </Select>
-               
             </FormControl>
         )
     };
 
-    function InputCost(){
-        return(
-            <FormControl fullWidth className={styles.inputCost}>
-            <InputLabel htmlFor="standard-adornment-amount">Custos</InputLabel>
-            <Input
-              id="standard-adornment-amount"
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            />
-          </FormControl>
-        )
-    }
-
-    function MedicName(){
-        return(
-            <FormControl fullWidth className={styles.medicName}>
-            <InputLabel htmlFor="standard-adornment-amount">Médico Veterinário</InputLabel>
-            <Input
-              id="standard-adornment-amount"
-              startAdornment={<InputAdornment position="start"><i class='bx bx-user'></i></InputAdornment>}
-            />
-          </FormControl>
-        )
-    }
-    
-    return(
+    return (
         <div className={styles.container}>
 
-                    <div className={styles.containerForm}>
-                        <div className={styles.formMedic}>
-                            <div>
-                                <DataOfCare/>
-                            </div>
-                            <div>
-                                <SelectNeedInternation/>
-                            </div>
-                            <div>
-                                <SelectNeedMedicament/>
-                            </div>
-                            <div>
-                                <InputCost/>
-                            </div>
-                            <div>
-                                <MedicName/>
-                            </div>
-                       
-                        </div>
-                        <div className={styles.containerDiagnostic}>
-                            <MDBInput type="textarea" label="Relatório" className={styles.diagnostic} />
-                        </div>
-
+            <div className={styles.containerForm}>
+                <div className={styles.formMedic}>
+                    <div>
+                        <CustomDatePicker label={'Data'} value={props.veterinaryCare.dateOfVeterinaryCare}
+                            onChangeDate={props.onChangeDate}
+                        />
+                    </div>
+                    <div>
+                        {selectNeedOfHospitalization()}
+                    </div>
+                    <div>
+                        {selectNeedOfMedication()}
+                    </div>
+                    <div>
+                        <FormControl fullWidth className={styles.inputCost}>
+                            <InputLabel htmlFor="standard-adornment-amount">Custos</InputLabel>
+                            <Input
+                                id="standard-adornment-amount"
+                                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                value={props.veterinaryCare.totalCostOfTreatment} onChange={e => props.onChange({ totalCostOfTreatment: e.target.value })}
+                            />
+                        </FormControl>
+                    </div>
+                    <div>
+                        <FormControl fullWidth className={styles.medicName}>
+                            <InputLabel htmlFor="standard-adornment-amount">Médico Veterinário</InputLabel>
+                            <Input
+                                id="standard-adornment-amount"
+                                startAdornment={<InputAdornment position="start"><i class='bx bx-user'></i></InputAdornment>}
+                                value={props.veterinaryCare.veterinaryName} onChange={e => props.onChange({ veterinaryName: e.target.value })}
+                            />
+                        </FormControl>
                     </div>
 
+                </div>
+                <div className={styles.containerDiagnostic}>
+                    <MDBInput type="textarea" label="Relatório" className={styles.diagnostic}
+                        value={props.veterinaryCare.anamnese} onChange={e => props.onChange({ anamnese: e.target.value })}
+                    />
+                </div>
+            </div>
         </div>
     )
 }

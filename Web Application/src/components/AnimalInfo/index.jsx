@@ -38,7 +38,7 @@ export default function DetailsAnimal(props) {
 						</MDBCarouselInner>
 					</MDBCarousel>
 				</div>
-				<MDBInput type="textarea" label="Descrição" value={props.animal.othersCharacteristics} disabled className={styles.description} />
+				<MDBInput type="textarea" label="Outras características" value={props.animal.othersCharacteristics} disabled className={styles.description} />
 			</div>
 			<div className={styles.otherDescriptions}>
 				<div className={styles.group}>

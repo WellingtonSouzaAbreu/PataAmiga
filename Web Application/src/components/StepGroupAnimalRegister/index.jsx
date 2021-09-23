@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './styles.module.css'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,103 +9,173 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios'
 
+import { baseApiUrl } from '../../services/baseApiUrl';
 import StepAnimalInfo from './../StepAnimalInfo/index.jsx'
 import StepAnimalRescue from './../StepAnimalRescue/index.jsx'
 import StepAnimalVeterinary from './../StepAnimalVeterinary/index.jsx'
 
+const initialState = {
+	activeStep: 1,
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
+	animal: {
+		castrated: false,
+		sex: false
 	},
-	button: {
-		marginTop: theme.spacing(1),
-		marginRight: theme.spacing(1),
+	pictures: {},
+	veterinaryCare: {
+		needOfMedication: false,
+		needOfHospitalization: false,
+		dateOfVeterinaryCare: new Date()
 	},
-	actionsContainer: {
-		marginBottom: theme.spacing(2),
-	},
-	resetContainer: {
-		padding: theme.spacing(3),
-	},
-}));
-
-function getSteps() {
-	return ['Informações do animal', 'Dados veterinários', 'Resgate'];
+	rescue: {}
 }
 
-function getStepContent(step) {
-	switch (step) {
-		case 0:
-			return <StepAnimalInfo />;
-		case 1:
-			return <StepAnimalVeterinary />;
-		case 2:
-			return <StepAnimalRescue />;
-		default:
-			return 'Unknown step';
+class StepGroupAnimalRegister extends Component {
+
+	state = { ...initialState }
+
+	nextStep = () => {
+		this.saveAnimal()
+		// this.setActiveStep(this.state.activeStep + 1);
+	};
+
+	backStep = () => {
+		this.setActiveStep(this.state.activeStep - 1);
+	};
+
+	resetSteps = () => {
+		this.setActiveStep(0);
+	};
+
+	setActiveStep = (currentActiveStep) => {
+		this.setState({ activeStep: currentActiveStep })
 	}
-}
 
-function StepGroupAnimalRegister() {
-	const classes = useStyles();
-	const [activeStep, setActiveStep] = React.useState(0);
-	const steps = getSteps();
+	getStepContent(step) {
+		switch (step) {
+			case 0:
+				return <StepAnimalInfo animal={this.state.animal} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} />;
+			case 1:
+				return <StepAnimalVeterinary veterinaryCare={this.state.veterinaryCare} onChange={this.updateVeterinaryCareField} onChangeDate={this.changeDate} />;
+			case 2:
+				return <StepAnimalRescue />;
+			default:
+				return 'Unknown step';
+		}
+	}
 
-	const handleNext = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep + 1);
-	};
+	updateAnimalField = (fieldValue) => {
+		let animal = { ...this.state.animal, ...fieldValue }
+		this.setState({ animal }, console.log(this.state.animal))
+	}
 
-	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1);
-	};
+	updateSelectedPictures = (pictures) => {
+		console.log('Update pidture')
+		this.setState({ pictures: pictures })
+	}
 
-	const handleReset = () => {
-		setActiveStep(0);
-	};
+	updateVeterinaryCareField = (fieldValue) => {
+		let veterinaryCare = { ...this.state.veterinaryCare, ...fieldValue }
+		this.setState({ veterinaryCare }, console.log(this.state.veterinaryCare))
+	}
 
-	return (
-		<div className={classes.root}>
-			<Stepper activeStep={activeStep} orientation="vertical">
-				{steps.map((label, index) => (
-					<Step key={label}>
-						<StepLabel>{label}</StepLabel>
-						<StepContent>
-							<Typography>{getStepContent(index)}</Typography>
-							<div className={classes.actionsContainer}>
-								<div>
-									<Button
-										disabled={activeStep === 0}
-										onClick={handleBack}
-										className={classes.button}
-									>
-										Anterior
-									</Button>
-									<Button
-										variant="contained"
-										color="primary"
-										onClick={handleNext}
-										className={classes.button}
-									>
-										{activeStep === steps.length - 1 ? 'Finalizar' : 'Proximo'}
-									</Button>
+	changeDate = (date) => {
+		this.setState({ dateOfVeterinaryCare: date })
+	}
+
+	saveAnimal = async () => {
+		console.log(this.state)
+		const allDataOfAnimal = { ...this.state }
+		delete allDataOfAnimal.pictures
+		delete allDataOfAnimal.activeStep
+
+		await axios.post(`${baseApiUrl}/animal`, { ...allDataOfAnimal })
+			.then(async res => {
+				window.alert('Animal cadastrado com sucesso! id => ' + res.data)
+				await this.saveAnimalPictures(res.data)
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert(err.response.data)
+				window.alert('Occoreu um erro ao salvar dados do animal!')
+			})
+	}
+
+	saveAnimalPictures = async (animalId) => {
+		console.log(this.state.pictures)
+		let valid = [true]
+
+		await this.state.pictures.forEach(async picture => {
+			console.log(picture)
+			let formData = new FormData();
+			formData.append('animalPicture', picture)
+			formData.append('animalId', animalId)
+
+			await axios.post(`${baseApiUrl}/animal/picture`, formData)
+				.then(res => {
+					valid.push(true)
+				})
+				.catch(err => {
+					console.log(err)
+					valid.push(false)
+				})
+		})
+
+		if (valid.reduce((total, current) => total && current), true) {
+			window.alert('Imagens salvas com sucesso!')
+			// this.props.onRefresh() TODO
+		} else {
+			window.alert('Ocorreu um erro ao salvar as imagens!')
+		}
+	}
+
+	render() {
+		const steps = ['Informações do animal', 'Dados veterinários', 'Resgate']
+
+		return (
+			<div className={styles.root}>
+				<Stepper activeStep={this.state.activeStep} orientation="vertical">
+					{steps.map((label, index) => (
+						<Step key={label}>
+							<StepLabel>{label}</StepLabel>
+							<StepContent>
+								<Typography>{this.getStepContent(index)}</Typography>
+								<div className={styles.actionsContainer}>
+									<div>
+										<Button
+											disabled={this.state.activeStep === 0}
+											onClick={this.backStep}
+											className={styles.button}
+										>
+											Anterior
+										</Button>
+										<Button
+											variant="contained"
+											color="primary"
+											onClick={this.state.activeStep === steps.length - 1 ? this.saveAnimal : this.nextStep}
+											className={styles.button}
+										>
+											{this.state.activeStep === steps.length - 1 ? 'Finalizar' : 'Proximo'}
+										</Button>
+									</div>
 								</div>
-							</div>
-						</StepContent>
-					</Step>
-				))}
-			</Stepper>
-			{activeStep === steps.length && (
-				<Paper square elevation={0} className={classes.resetContainer}>
-					<Typography>Todas as informações foram inseridas. O animal foi registrado no sistema.</Typography>
-					<Button onClick={handleReset} className={classes.button}>
-						Recomeçar
-					</Button>
-				</Paper>
-			)}
-		</div>
-	);
+							</StepContent>
+						</Step>
+					))}
+				</Stepper>
+				{this.state.activeStep === steps.length && (
+					<Paper square elevation={0} className={styles.resetContainer}>
+						<Typography>Todas as informações foram inseridas. O animal foi registrado no sistema.</Typography>
+						<Button onClick={this.resetSteps} className={styles.button}>
+							Recomeçar
+						</Button>
+					</Paper>
+				)}
+			</div>
+		);
+	}
 }
 
 export default StepGroupAnimalRegister
