@@ -1,9 +1,28 @@
 module.exports = app => {
 
     const getCollaborators = async (req, res) => {
+        let name = req.query.name ? req.query.name.toLowerCase() : ''
+        let page = req.query.page ? req.query.page : 0
+        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
+
+        console.log(req.query)
+
+
+        let offset = page * rowsPerPage
+        let limit = parseInt(rowsPerPage)
+
+        console.log(`Limit: ${limit}`)
+        console.log(`Offset: ${offset}`)
+
         await app.db('collaborators')
             .select()
-            .then(collaborators => res.status(200).send(collaborators))
+            .where('name'.toLowerCase(), 'like', `%${name}%`)
+            .offset(offset)
+            .limit(limit)
+            .then(collaborators => {
+                /* console.log(collaborators) */
+                res.status(200).send(collaborators)
+            })
             .catch(err => {
                 console.log(err)
                 res.status(500).send(err)
@@ -14,7 +33,7 @@ module.exports = app => {
         const { existsOrError } = app.api.validation
 
 
-        let collaborator // TODO Gambiarra
+        let collaborator // TODO Artifício tecnológico
         if (req.body.collaborator) {
             collaborator = req.body.collaborator
         } else {

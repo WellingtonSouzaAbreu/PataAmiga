@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `animals` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     color VARCHAR(20) NOT NULL,
     name VARCHAR(30),
-    aproximateAge VARCHAR(15) NOT NULL,
+    aproximateAge DATE,
     castrated BOOLEAN DEFAULT false,
     specie VARCHAR(30) NOT NULL,
     breed VARCHAR(10) DEFAULT 'Vira-lata' NOT NULL,

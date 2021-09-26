@@ -25,17 +25,23 @@ class CollaboratorsTable extends Component {
     }
 
     onRowDelete = (rowsSelected) => {
-		let collaboratorsIdSelected = rowsSelected.data.map(rowSelected => this.props.collaborators[rowSelected.index].id)
+        let collaboratorsIdSelected = rowsSelected.data.map(rowSelected => this.props.collaborators[rowSelected.index].id)
 
-		console.log(collaboratorsIdSelected)
-		this.props.onDelete(collaboratorsIdSelected)
-	}
+        console.log(collaboratorsIdSelected)
+        this.props.onDelete(collaboratorsIdSelected)
+    }
+
+    refreshWithFilter = (text) => {
+        this.props.onRefresh(text)
+    }
 
     render() {
+        console.log('Colaborators')
+        console.log(this.props.collaborators)
         return (
             <MUIDataTable
                 title={"Lista de Voluntários"}
-                data={this.props.collaborators}
+                data={[...this.props.collaborators, {}]}
                 columns={[
                     {
                         name: "id",
@@ -43,7 +49,7 @@ class CollaboratorsTable extends Component {
                         options: {
                             filter: false,
                             sort: false,
-                            display: false
+                            display: true // TODO false
                         }
                     },
                     {
@@ -52,6 +58,7 @@ class CollaboratorsTable extends Component {
                         options: {
                             filter: true,
                             sort: true,
+                            searchable: false
                         }
                     },
                     {
@@ -60,7 +67,9 @@ class CollaboratorsTable extends Component {
                         options: {
                             filter: true,
                             sort: false,
+                            searchable: false,
                             customBodyRender: dateOfBirth => formatDate(dateOfBirth)
+
                         }
                     },
                     {
@@ -69,6 +78,7 @@ class CollaboratorsTable extends Component {
                         options: {
                             filter: true,
                             sort: false,
+                            searchable: false
                         }
                     },
                     {
@@ -77,6 +87,7 @@ class CollaboratorsTable extends Component {
                         options: {
                             filter: true,
                             sort: false,
+                            searchable: false
                         }
                     },
 
@@ -86,10 +97,11 @@ class CollaboratorsTable extends Component {
                         options: {
                             filter: true,
                             sort: false,
+                            searchable: false,
                             customBodyRender: (value, tableMeta) => {
                                 console.log(tableMeta)
                                 let collaborator = this.convertArrayInObject(tableMeta.rowData)
-                                return <CollaboratorEditModal collaborator={collaborator} onRefresh={this.props.onRefresh}/>
+                                return <CollaboratorEditModal collaborator={collaborator} onRefresh={this.props.onRefresh} />
                             }
                         }
                     },
@@ -100,8 +112,15 @@ class CollaboratorsTable extends Component {
                     elevation: 0,
                     filter: false,
                     print: false,
-                    rowsPerPage: 8,
-                    onRowsDelete: this.onRowDelete
+                    rowsPerPage: this.props.rowsPerPage,
+                    searchPlaceholder: 'Nome...',
+                    rowHover: true,
+                    onRowsDelete: this.onRowDelete,
+                    customSearch: () => true,
+                    onSearchChange: (text) => this.props.onChangePaginatorAndSearchParams({ searchParam: text }),
+                    onChangePage: (currentPage) => this.props.onChangePaginatorAndSearchParams({ currentPage }),
+                    onChangeRowsPerPage: (rowsPerPage) => this.props.onChangePaginatorAndSearchParams({ rowsPerPage })
+                    // customSearchRender: (text) => <div><input type='text'></input><button>Pesquisar</button></div>
                 }}
             />
         )

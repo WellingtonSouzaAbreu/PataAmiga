@@ -13,7 +13,13 @@ class AnimalsTable extends Component {
 
     state = { ...initialState }
 
+    onRowDelete = (rowsSelected) => {
+        console.log(rowsSelected)
+        let animalsIdSelected = rowsSelected.data.map(rowSelected => this.props.animals[rowSelected.index].id)
 
+        console.log(animalsIdSelected)
+        this.props.onDelete(animalsIdSelected)
+    }
 
     render() {
         console.log(this.props.animals)
@@ -77,7 +83,7 @@ class AnimalsTable extends Component {
                         options: {
                             filter: true,
                             sort: false,
-                            customBodyRender: (value, tableMeta) => <AnimalDetails idAnimal={tableMeta.rowData[0]}/> // Id do registro
+                            customBodyRender: (value, tableMeta) => <AnimalDetails idAnimal={tableMeta.rowData[0]} /> // Id do registro
                         }
                     },
                 ]}
@@ -86,7 +92,8 @@ class AnimalsTable extends Component {
                     elevation: 0,
                     filter: false,
                     print: false,
-                    rowsPerPage: 8
+                    rowsPerPage: 8,
+                    onRowsDelete: this.onRowDelete
                 }}
             />
         )

@@ -9,6 +9,7 @@ module.exports = app => {
             .where({ id: idAnimal })
             .first()
             .then(async (animal) => {
+                animal.aproximateAge = await estimateAge(animal.dateOfBirth)
                 animal.imagesURL = await getAllAnimalPictures(idAnimal)
                 animal.veterinaryCare = await getVeterinaryCare(idAnimal)
                 animal.rescue = await getRescue(idAnimal)
@@ -20,6 +21,26 @@ module.exports = app => {
                 console.log(err)
                 res.status(500).send(err)
             })
+    }
+
+    const estimateAge = (dateOfBirth) => {
+        let differenceInMonths = parseInt((Date.parse(new Date()) - Date.parse(dateOfBirth)) / 1000 / 60 / 60 / 24 / 30)
+
+        console.log(differenceInMonths) //TODO
+
+        if(differenceInMonths <= 1){
+            return  'Alguns dias'
+        }
+
+        if(differenceInMonths > 1 && differenceInMonths <= 12){
+            return `${differenceInMonths} meses`
+        }
+
+        if(parseInt(differenceInMonths > 12) == 1){
+            return `1 ano`
+        }else{
+            return `${parseInt(differenceInMonths / 12)} anos`
+        }
     }
 
     const getVeterinaryCare = async (idAnimal) => {
@@ -82,6 +103,7 @@ module.exports = app => {
             .where({ id: idAnimal })
             .first()
             .then(async (animal) => {
+                animal.aproximateAge = await estimateAge(enimal.dateOfBirth)
                 animal.imagesURL = await getAllAnimalPictures(idAnimal)
                 console.log(animal)
                 res.status(200).send(animal)
@@ -105,10 +127,12 @@ module.exports = app => {
 
     const getAnimals = async (req, res) => {
         await app.db('animals')
-            .select('id', 'name', 'breed', 'specie', 'aproximateAge', 'sex')
+            .select('id', 'name', 'breed', 'specie', 'dateOfBirth', 'sex')
             .then(async (animals) => {
                 // animals = JSON.parse(JSON.stringify(animals))
+                animals = await estimateAllAges(animals)
                 animals = await getAnimalMainPicture(animals)
+                console.log(animals)
                 res.status(200).send(animals)
             })
             .catch(err => {
@@ -117,8 +141,17 @@ module.exports = app => {
             })
     }
 
+    const estimateAllAges = async(animals) => {
+        for(animal of animals){
+            animal.aproximateAge = await estimateAge(animal.dateOfBirth)
+        }
+            return animals
+    }
+
     const getAnimalMainPicture = async (animals) => {
         for (animal of animals) {
+            console.log(animal.id)
+            console.log(animal)
             await app.db('animal-pictures')
                 .select('imageURL')
                 .where({ animalId: animal.id })
@@ -141,15 +174,16 @@ module.exports = app => {
 
         const animal = await objectIsNull(req.body.animal) ? res.status(400).send('Dados do animal não informados') : req.body.animal
         const veterinaryCare = await objectIsNull(req.body.veterinaryCare) ? res.status(400).send('Dados do cuidado veterinário não informados') : req.body.veterinaryCare
+        const rescue = await objectIsNull(req.body.rescue) ? res.status(400).send('Dados do resgate não informados') : req.body.rescue
 
         console.log(veterinaryCare)
         try {
-            /* existsOrError(animal.color, 'Cor não informada')
             existsOrError(animal.name, 'Nome não informado')
-            existsOrError(animal.aproximateAge, 'Idade aproximada não informada')
-            existsOrError(animal.sex, 'Sexo não informado')
+            existsOrError(animal.color, 'Cor não informada')
             existsOrError(animal.specie, 'Espécie não informado')
-            existsOrError(animal.breed, 'Raça não informado') */
+            existsOrError(animal.dateOfBirth, 'Data de nascimento não informada')
+            existsOrError(animal.breed, 'Raça não informado')
+            existsOrError(animal.sex, 'Sexo não informado')
 
             existsOrError(veterinaryCare.dateOfVeterinaryCare, 'Data do cuidado veterinário não informado')
             existsOrError(veterinaryCare.totalCostOfTreatment, 'Custo total do cuidado veterinário não informado')
@@ -158,29 +192,43 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
-        const animalId = 1/* await app.db('animals')
+        animal.dateOfBirth = new Date(animal.dateOfBirth)
+
+        const animalId = await app.db('animals')
             .insert(animal)
             .then(id => {
-                console.log('Success => Animal veterinário')
+                console.log('Success => Animal')
                 return id[0]
             })
             .catch(err => {
                 console.log(err)
                 res.status(500).send('Erro ao cadastrar animal')
-            }) */
+            })
 
-        veterinaryCare.dateOfVeterinaryCare = veterinaryCare.dateOfVeterinaryCare.split('Z')[0]
+        veterinaryCare.dateOfVeterinaryCare = new Date(veterinaryCare.dateOfVeterinaryCare)
 
-        await app.db('veterinary-cares')
-            .insert({...veterinaryCare, animalId: animalId})
-            .then(_ => console.log('Success => Cuidado veterinário'))
+        const veterinaryCareId = await app.db('veterinary-cares')
+            .insert({ ...veterinaryCare, animalId: animalId })
+            .then(id => {
+                console.log('Success => Cuidado veterinário')
+                return id[0]
+            })
             .catch(err => {
                 console.log(err)
                 res.status(500).send('Erro ao cadastrar cuidado veterinário')
             })
 
-        // await res.status(200).json(animalId)
-        await res.status(200).send()
+        rescue.dateOfRescue = new Date(rescue.dateOfRescue)
+
+        await app.db('rescues')
+            .insert({ ...rescue, veterinaryCareId, animalId })
+            .then(id => console.log('Success => Resgate'))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send('Erro ao cadastrar resgate')
+            })
+
+        await res.status(200).json(animalId)
     }
 
     const savePicture = async (req, res) => {
@@ -223,9 +271,10 @@ module.exports = app => {
         const idAnimal = req.params.id ? req.params.id : res.status(400).send('Identificação do animal não informada')
 
         let animalsId = idAnimal.split(',')
+        console.log(animalsId)
 
         animalsId.forEach(async (idAnimal) => {
-            await app.db('collaborators')
+            await app.db('animals')
                 .where({ id: idAnimal })
                 .del()
                 .then(_ => console.log(`Animal de id: ${idAnimal} deletado`))

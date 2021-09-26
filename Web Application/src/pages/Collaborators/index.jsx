@@ -8,24 +8,49 @@ import AddCollaborator from './../../components/AddCollaborator/index.jsx'
 import { baseApiUrl } from "../../services/baseApiUrl";
 
 const initialState = {
-    collaborators: []
+    collaborators: [],
+
+    searchParam: '',
+    rowsPerPage: 10,
+    currentPage: 0
 }
 
 class Collaborators extends Component {
 
-    state = {...initialState}
+    state = { ...initialState }
 
     componentDidMount = async () => {
         await this.loadCollaborators()
     }
 
     loadCollaborators = async () => {
-        await axios(`${baseApiUrl}/collaborator`)
-            .then(res => this.setState({ collaborators: res.data }))
+        let filterParams = ''
+        let page = '0'
+        if (this.state.searchParam) {
+            filterParams = `?name=${this.state.searchParam}`
+        }
+
+        if (this.state.currentPage || this.state.currentPage == 0) {
+            page = `${filterParams ? '&' : '?'}page=${this.state.currentPage}`
+        }
+
+        let rowsPerPage = `${filterParams || page ? '&' : '?'}rowsPerPage=${this.state.rowsPerPage}`
+
+        console.log(this.state)
+
+        await axios(`${baseApiUrl}/collaborator${filterParams}${page}${rowsPerPage}`)
+            .then(res => {
+                console.log(res.data)
+                this.setState({ collaborators: [...this.state.collaborators, ...res.data] })
+            })
             .catch(err => {
                 console.log(err)
                 window.alert('Ocorreu um erro ao buscar collaboradores!')
             })
+    }
+
+    changePaginatorAndSearchParams = (dataField) => {
+            this.setState({ ...dataField }, this.loadCollaborators)
     }
 
     deleteCollaborator = async (idCollaborator) => {
@@ -46,8 +71,10 @@ class Collaborators extends Component {
                 <div className={styles.pageName}>
                     <span onClick={this.loadCollaborators}>COLABORADORES</span>
                 </div>
-                <AddCollaborator onRefresh={this.loadCollaborators}/>
-                <CollaboratorsTable collaborators={this.state.collaborators} onDelete={this.deleteCollaborator} onRefresh={this.loadCollaborators}/>
+                <AddCollaborator onRefresh={this.loadCollaborators} />
+                <CollaboratorsTable collaborators={this.state.collaborators} rowsPerPage={this.state.rowsPerPage} onDelete={this.deleteCollaborator} onRefresh={this.loadCollaborators}
+                    onChangePaginatorAndSearchParams={this.changePaginatorAndSearchParams}
+                />
             </div>
         )
     }

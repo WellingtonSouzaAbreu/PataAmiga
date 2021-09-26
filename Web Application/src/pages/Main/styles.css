@@ -150,6 +150,7 @@
   border-radius: 12px;
 }
 .sidebar li.profile{
+  cursor: pointer;
   position: fixed;
   height: 60px;
   width: 78px;

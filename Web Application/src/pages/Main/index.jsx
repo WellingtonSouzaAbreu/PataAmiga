@@ -17,9 +17,9 @@ export default function Main() {
 					<li >
 						<Link to='/painel-de-controle' >
 							<i className="bx bx-grid-alt" />
-							<span className={'linksName'}>Painel de Controle</span>
+							<span className={'linksName'}>Home</span>
 						</Link>
-						<span className={'tooltip'}>Painel de Controle</span>
+						<span className={'tooltip'}>Home</span>
 					</li>
 					<li>
 						<Link to="/animais"> {/* Não encontrei um cahorro par ao ícone */}
@@ -37,6 +37,27 @@ export default function Main() {
 						<span className={'tooltip'}>Adoção</span>
 					</li>
 					<li>
+						<Link to="/interessados">
+							<i className="bx bxs-user-detail" />
+							<span className={'linksName'}>Interessados em adotar</span>
+						</Link>
+						<span className={'tooltip'}>Interessados em adotar</span>
+					</li>
+					<li>
+						<Link to="/lar-temporario">
+							<i className="bx bxs-cog" />
+							<span className={'linksName'}>Lar temporário</span>
+						</Link>
+						<span className={'tooltip'}>Lar temporário</span>
+					</li>
+					<li >
+						<Link to="/doacoes">
+							<i className="bx bx-donate-heart" />
+							<span className={'linksName'}>Doações</span>
+						</Link>
+						<span className={'tooltip'}>Doações</span>
+					</li>
+					<li>
 						<Link to="/eventos">
 							<i className="bx bx-calendar-event" />
 							<span className={'linksName'}>Eventos</span>
@@ -50,13 +71,7 @@ export default function Main() {
 						</Link>
 						<span className={'tooltip'}>Denúncias</span>
 					</li>
-					<li >
-						<Link to="/doacoes">
-							<i className="bx bx-donate-heart" />
-							<span className={'linksName'}>Doações</span>
-						</Link>
-						<span className={'tooltip'}>Doações</span>
-					</li>
+
 					<li>
 						<Link to="/colaboradores">
 							<i className="bx bxs-user-account " />
@@ -64,23 +79,11 @@ export default function Main() {
 						</Link>
 						<span className={'tooltip'}>Voluntários</span>
 					</li>
-					<li>
-						<Link to="/usuarios">
-							<i className="bx bxs-user-detail" /> {/* TODO à discutir. A ONG terá acesso direto aos dados do usuários? */}
-							<span className={'linksName'}>Usuários do App</span>
-						</Link>
-						<span className={'tooltip'}>Usuários do App</span>
-					</li>
-					<li>
-						<Link to="/configuracoes">
-							<i className="bx bxs-cog" />
-							<span className={'linksName'}>Configurações</span>
-						</Link>
-						<span className={'tooltip'}>Configurações</span>
-					</li>
-					<li className={'profile'}>
-						<i className="bx bx-log-out" id="log_out" />
-					</li>
+					<Link to="/login">
+						<li className={'profile'}>
+							<i className="bx bx-log-out" id="log_out" />
+						</li>
+					</Link>
 				</ul>
 			</div>
 			<section className={'homeSection'} id="content">

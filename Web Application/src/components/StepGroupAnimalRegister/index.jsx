@@ -17,11 +17,12 @@ import StepAnimalRescue from './../StepAnimalRescue/index.jsx'
 import StepAnimalVeterinary from './../StepAnimalVeterinary/index.jsx'
 
 const initialState = {
-	activeStep: 1,
+	activeStep: 0,
 
 	animal: {
 		castrated: false,
-		sex: false
+		sex: false,
+		dateOfBirth: new Date()
 	},
 	pictures: {},
 	veterinaryCare: {
@@ -29,7 +30,11 @@ const initialState = {
 		needOfHospitalization: false,
 		dateOfVeterinaryCare: new Date()
 	},
-	rescue: {}
+	rescue: {
+		dateOfRescue: new Date(),
+		forwardedToKennel: true,
+		policeSupport: false
+	}
 }
 
 class StepGroupAnimalRegister extends Component {
@@ -37,8 +42,7 @@ class StepGroupAnimalRegister extends Component {
 	state = { ...initialState }
 
 	nextStep = () => {
-		this.saveAnimal()
-		// this.setActiveStep(this.state.activeStep + 1);
+		this.setActiveStep(this.state.activeStep + 1);
 	};
 
 	backStep = () => {
@@ -56,11 +60,11 @@ class StepGroupAnimalRegister extends Component {
 	getStepContent(step) {
 		switch (step) {
 			case 0:
-				return <StepAnimalInfo animal={this.state.animal} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} />;
+				return <StepAnimalInfo animal={this.state.animal} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
 			case 1:
-				return <StepAnimalVeterinary veterinaryCare={this.state.veterinaryCare} onChange={this.updateVeterinaryCareField} onChangeDate={this.changeDate} />;
+				return <StepAnimalVeterinary veterinaryCare={this.state.veterinaryCare} onChange={this.updateVeterinaryCareField} onChangeDate={this.changeDateVeterinaryCare} />;
 			case 2:
-				return <StepAnimalRescue />;
+				return <StepAnimalRescue rescue={this.state.rescue} onChange={this.updateAnimalRescueField} onChangeDate={this.changeDateRescue} />;
 			default:
 				return 'Unknown step';
 		}
@@ -71,8 +75,11 @@ class StepGroupAnimalRegister extends Component {
 		this.setState({ animal }, console.log(this.state.animal))
 	}
 
+	changeAnimalBirthDate = (date) => {
+		this.setState({ dateOfBirth: date })
+	}
+
 	updateSelectedPictures = (pictures) => {
-		console.log('Update pidture')
 		this.setState({ pictures: pictures })
 	}
 
@@ -81,11 +88,27 @@ class StepGroupAnimalRegister extends Component {
 		this.setState({ veterinaryCare }, console.log(this.state.veterinaryCare))
 	}
 
-	changeDate = (date) => {
+	changeDateVeterinaryCare = (date) => {
 		this.setState({ dateOfVeterinaryCare: date })
 	}
 
+	updateAnimalRescueField = (fieldValue) => {
+		let rescue = { ...this.state.rescue, ...fieldValue }
+		this.setState({ rescue }, console.log(this.state.rescue))
+	}
+
+	changeDateRescue = (date) => {
+		this.setState({ dateOfRescue: date })
+	}
+
 	saveAnimal = async () => {
+		if (!this.state.pictures.length) {
+			window.alert('Selecione pelo menos uma imagem para realizar o cadastro do animal!')
+			return
+		}
+
+		window.alert(this.state.pictures.length)
+
 		console.log(this.state)
 		const allDataOfAnimal = { ...this.state }
 		delete allDataOfAnimal.pictures
@@ -98,8 +121,7 @@ class StepGroupAnimalRegister extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert(err.response.data)
-				window.alert('Occoreu um erro ao salvar dados do animal!')
+				window.alert(err.response && err.response.data)
 			})
 	}
 
@@ -125,7 +147,7 @@ class StepGroupAnimalRegister extends Component {
 
 		if (valid.reduce((total, current) => total && current), true) {
 			window.alert('Imagens salvas com sucesso!')
-			// this.props.onRefresh() TODO
+			this.props.onRefresh()
 		} else {
 			window.alert('Ocorreu um erro ao salvar as imagens!')
 		}

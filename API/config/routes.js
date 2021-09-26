@@ -27,6 +27,7 @@ module.exports = app => {
 
     app.route('/animal/:id')
         .get(app.api.animal.getAnimalById)
+        .delete(app.api.animal.removeAnimal)
 
     app.route('/animal/:id/all-data')
         .get(app.api.animal.getAllDataOfAnimalById)
@@ -37,7 +38,7 @@ module.exports = app => {
         .get(app.api.collaborator.getCollaborators)
         .post(app.api.collaborator.save)
         .put(app.api.collaborator.save)
-
+    
     app.route('/collaborator/:id')
         .delete(app.api.collaborator.removeCollaborator)
 

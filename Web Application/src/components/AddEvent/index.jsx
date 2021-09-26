@@ -49,7 +49,7 @@ class AddEvent extends Component {
 
 	savePublication = async () => {
 
-		if (this.state.pictures.length < 1) {
+		if (!this.state.pictures.length) {
 			window.alert('Selecione pelo menos uma imagem para realizar a publicação!')
 			return
 		}

@@ -15,10 +15,10 @@ export default function DetailsAnimal(props) {
 
 	const renderAnimalImages = () => {
 		console.log(props.animal.imagesURL)
-		const carouselItem = props.animal.imagesURL.map(image => {
+		const carouselItem = props.animal.imagesURL.map((image, index) => {
 			console.log(`${baseApiUrl}/animal-pictures/${image.imageURL}`)
 			return (
-				<MDBCarouselItem itemId={image.id}>
+				<MDBCarouselItem itemId={index}>
 					<MDBCarouselElement src={`${baseApiUrl}/animal-pictures/${image.imageURL}`} alt='...' />
 				</MDBCarouselItem>
 			)
@@ -33,7 +33,7 @@ export default function DetailsAnimal(props) {
 			<div className={styles.imgsDescription}>
 				<div className={styles.containerCarousel} >
 					<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
-						<MDBCarouselInner>
+						<MDBCarouselInner> {/* TODO Está demorando muito renderizar imagens */}
 							{props.animal.imagesURL && renderAnimalImages()}
 						</MDBCarouselInner>
 					</MDBCarousel>
@@ -83,15 +83,15 @@ export default function DetailsAnimal(props) {
 				<div className={styles.groupIndicators}>
 					<div className={styles.stringIndicators}>
 						<strong>Adotado?</strong>
-						<button disabled>{props.animal.extraInfo.adopted  ? 'Sim': 'Não'}</button>
+						<button disabled>{props.animal.extraInfo.adopted ? 'Sim' : 'Não'}</button>
 					</div>
 					<div className={styles.stringIndicators}>
 						<strong>Lar temporário?</strong>
-						<button>{props.animal.extraInfo.temporaryHome ? 'Sim': 'Não'}</button>
+						<button>{props.animal.extraInfo.temporaryHome ? 'Sim' : 'Não'}</button>
 					</div>
 					<div className={styles.stringIndicators}>
 						<strong>Disponível para adoção?</strong>
-						<button disabled>{props.animal.extraInfo.availableToAdoption  ? 'Sim': 'Não'}</button>
+						<button disabled>{props.animal.extraInfo.availableToAdoption ? 'Sim' : 'Não'}</button>
 					</div>
 				</div>
 			</div>

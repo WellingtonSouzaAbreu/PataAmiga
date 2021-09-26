@@ -10,6 +10,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { DropzoneArea } from 'material-ui-dropzone'
 
+import CustomDatePicker from './../CustomDatePicker/index.jsx'
+
 
 export default function StepInfoAnimal(props) {
 
@@ -90,8 +92,9 @@ export default function StepInfoAnimal(props) {
 							value={props.animal.specie} onChange={(e) => props.onChange({ specie: e.target.value })} />
 						<MDBInput label="Raça" className={styles.inputs} outline
 							value={props.animal.breed} onChange={(e) => props.onChange({ breed: e.target.value })} />
-						<MDBInput label="Idade Aproximada" className={styles.inputs} outline //TODO trocar por data de nascimento
-							value={props.animal.aproximateAge} onChange={(e) => props.onChange({ aproximateAge: e.target.value })} />
+						<CustomDatePicker label={'Idade Aproximada'} className={styles.inputs}
+							value={props.animal.dateOfBirth} onChangeDate={props.onChangeDate}
+						/>
 					</div>
 					<div className={styles.sectionDiv}>
 						<div className={styles.castredSex}>

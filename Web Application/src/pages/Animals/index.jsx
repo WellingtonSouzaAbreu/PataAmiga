@@ -32,6 +32,17 @@ export default class Animals extends Component {
             })
     }
 
+    deleteAnimal = async (idAnimal) => {
+        await axios.delete(`${baseApiUrl}/animal/${idAnimal}`) // Array de id
+            .then(_ => {
+                window.alert('Animal deletado com sucesso!')
+            })
+            .catch(err => {
+                console.log(err)
+                window.alert(err)
+            })
+    }
+
     render() {
         return (
             <div className={styles.container} >
@@ -47,10 +58,10 @@ export default class Animals extends Component {
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <StepGroupAnimalRegister />
+                        <StepGroupAnimalRegister onRefresh={this.loadAnimals}/>
                     </AccordionDetails>
                 </Accordion>
-                <AnimalsTable animals={this.state.animals} />
+                <AnimalsTable animals={this.state.animals} onDelete={this.deleteAnimal}/>
             </div>
         )
     }
