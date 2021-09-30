@@ -117,7 +117,7 @@ class AddEvent extends Component {
 
 		if (valid.reduce((total, current) => total && current), true) {
 			window.alert('Imagens salvas com sucesso!')
-			this.props.onRefresh()
+			this.props.onRefresh(true)
 		} else {
 			window.alert('Ocorreu um erro ao salvar as imagens!')
 		}

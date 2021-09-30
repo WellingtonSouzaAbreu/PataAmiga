@@ -12,7 +12,8 @@ const initialState = {
 
     searchParam: '',
     rowsPerPage: 10,
-    currentPage: 0
+    currentPage: 0,
+    maxPageOpened: -1
 }
 
 class Collaborators extends Component {
@@ -23,7 +24,7 @@ class Collaborators extends Component {
         await this.loadCollaborators()
     }
 
-    loadCollaborators = async () => {
+    loadCollaborators = async (noConcat) => {
         let filterParams = ''
         let page = '0'
         if (this.state.searchParam) {
@@ -36,12 +37,10 @@ class Collaborators extends Component {
 
         let rowsPerPage = `${filterParams || page ? '&' : '?'}rowsPerPage=${this.state.rowsPerPage}`
 
-        console.log(this.state)
-
         await axios(`${baseApiUrl}/collaborator${filterParams}${page}${rowsPerPage}`)
             .then(res => {
                 console.log(res.data)
-                this.setState({ collaborators: [...this.state.collaborators, ...res.data] })
+                noConcat ? this.setState({ collaborators: [...res.data] }) : this.setState({ collaborators: [...this.state.collaborators, ...res.data] })
             })
             .catch(err => {
                 console.log(err)
@@ -49,20 +48,42 @@ class Collaborators extends Component {
             })
     }
 
-    changePaginatorAndSearchParams = (dataField) => {
-            this.setState({ ...dataField }, this.loadCollaborators)
-    }
-
     deleteCollaborator = async (idCollaborator) => {
         await axios.delete(`${baseApiUrl}/collaborator/${idCollaborator}`) // Array de id
             .then(_ => {
                 const plural = idCollaborator.length > 1 ? 'es' : '' // TODO Necessário? (Frase comum)
                 window.alert(`Colaborador${plural} deletado${plural == 'es' ? 's' : ''} com sucesso!`)
+                this.loadCollaborators(true)
             })
             .catch(err => {
                 console.log(err)
                 window.alert(err)
             })
+    }
+
+    changePage = (dataField) => {
+        let pageChanged = false
+
+        if (dataField.currentPage) {
+            pageChanged = dataField.currentPage > this.state.maxPageOpened
+        }
+
+        this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadCollaborators : null)
+    }
+
+    changeRowsPerPage = (dataField) => {
+        let rowsPerPageChanged = false
+
+        if (dataField.rowsPerPage && dataField.rowsPerPage != this.state.rowsPerPage) {
+            rowsPerPageChanged = true
+            dataField = { ...dataField, currentPage: 0, maxPageOpened: -1 }
+        }
+
+        this.setState({ ...dataField, collaborators: rowsPerPageChanged ? [] : this.state.collaborators }, this.loadCollaborators)
+    }
+
+    changeSearchParams = (dataField) => {
+        this.setState({ ...dataField, collaborators: [], currentPage: 0 }, this.loadCollaborators)
     }
 
     render() {
@@ -72,8 +93,9 @@ class Collaborators extends Component {
                     <span onClick={this.loadCollaborators}>COLABORADORES</span>
                 </div>
                 <AddCollaborator onRefresh={this.loadCollaborators} />
-                <CollaboratorsTable collaborators={this.state.collaborators} rowsPerPage={this.state.rowsPerPage} onDelete={this.deleteCollaborator} onRefresh={this.loadCollaborators}
-                    onChangePaginatorAndSearchParams={this.changePaginatorAndSearchParams}
+                <CollaboratorsTable collaborators={this.state.collaborators} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
+                    onDelete={this.deleteCollaborator} onRefresh={this.loadCollaborators}
+                    onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams}
                 />
             </div>
         )

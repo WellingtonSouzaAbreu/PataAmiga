@@ -33,7 +33,7 @@ export default function DetailsAnimal(props) {
 			<div className={styles.imgsDescription}>
 				<div className={styles.containerCarousel} >
 					<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
-						<MDBCarouselInner> {/* TODO Está demorando muito renderizar imagens */}
+						<MDBCarouselInner>
 							{props.animal.imagesURL && renderAnimalImages()}
 						</MDBCarouselInner>
 					</MDBCarousel>

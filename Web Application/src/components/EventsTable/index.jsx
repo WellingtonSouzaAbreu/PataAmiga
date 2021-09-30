@@ -6,51 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 import { formatDate } from '../../common/commonFunctions.js'
 import EventDetails from "../EventDetails";
 
-const columns = [
-    {
-        name: "title",
-        label: "Nome",
-        options: {
-            filter: true,
-            sort: true,
-        }
-    },
-    {
-        name: "startDateTime",
-        label: "Data de início",
-        options: {
-            filter: true,
-            sort: false,
-            customBodyRender: (startDateTime) => formatDate(startDateTime)
-        }
-    },
-    {
-        name: "publicationType",
-        label: "Tipo",
-        options: {
-            filter: true,
-            sort: true,
-            customBodyRender: (publicationType) => publicationType == 'event' ? 'Evento' : 'História'
-        }
-    },
-    {
-        name: "details",
-        label: "Detalhes",
-        options: {
-            filter: true,
-            sort: false,
-        }
-    },
-    {
-        name: "edit",
-        label: "Editar",
-        options: {
-            filter: true,
-            sort: false,
-        }
-    },
-];
-
 function EventTable(props) {
 
     const setDetailsButton = () => {
@@ -91,14 +46,72 @@ function EventTable(props) {
         <MUIDataTable
             title={"Lista de Publicações"}
             data={publications}
-            columns={columns}
+            columns={[
+                {
+                    name: "id",
+                    label: "ID",
+                    options: {
+                        filter: true,
+                        sort: true,
+                    }
+                },
+                {
+                    name: "title",
+                    label: "Nome",
+                    options: {
+                        filter: true,
+                        sort: true,
+                    }
+                },
+                {
+                    name: "startDateTime",
+                    label: "Data de início",
+                    options: {
+                        filter: true,
+                        sort: false,
+                        customBodyRender: (startDateTime) => formatDate(startDateTime)
+                    }
+                },
+                {
+                    name: "publicationType",
+                    label: "Tipo",
+                    options: {
+                        filter: true,
+                        sort: true,
+                        customBodyRender: (publicationType) => publicationType == 'event' ? 'Evento' : 'História'
+                    }
+                },
+                {
+                    name: "details",
+                    label: "Detalhes",
+                    options: {
+                        filter: true,
+                        sort: false,
+                    }
+                },
+                {
+                    name: "edit",
+                    label: "Editar",
+                    options: {
+                        filter: true,
+                        sort: false,
+                    }
+                },
+            ]}
             options={{
                 filterType: 'checkbox',
                 elevation: 0,
                 filter: false,
                 print: false,
-                rowsPerPage: 8,
-                onRowsDelete: onRowDelete
+                rowsPerPage: props.rowsPerPage,
+                searchPlaceholder: 'Nome...',
+                rowHover: true,
+                page: props.currentPage,
+                onRowsDelete: onRowDelete,
+                customSearch: () => true,
+                onSearchChange: (text) => props.onChangeSearchParams({ searchParam: text }),
+                onChangePage: (currentPage) => props.onChangePage({ currentPage }),
+                onChangeRowsPerPage: (rowsPerPage) => props.onChangeRowsPerPage({ rowsPerPage })
             }}
         />
     )

@@ -2,20 +2,19 @@ module.exports = app => {
 
     const getCollaborators = async (req, res) => {
         let name = req.query.name ? req.query.name.toLowerCase() : ''
-        let page = req.query.page ? req.query.page : 0
+        let page = !!req.query.page ? req.query.page : 0
         let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
 
         console.log(req.query)
 
-
-        let offset = page * rowsPerPage
-        let limit = parseInt(rowsPerPage)
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage 
+        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
 
         console.log(`Limit: ${limit}`)
         console.log(`Offset: ${offset}`)
 
         await app.db('collaborators')
-            .select()
+            // .select()
             .where('name'.toLowerCase(), 'like', `%${name}%`)
             .offset(offset)
             .limit(limit)

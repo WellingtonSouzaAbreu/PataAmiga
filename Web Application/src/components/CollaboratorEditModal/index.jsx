@@ -41,7 +41,7 @@ export default function CollaboratorEditModal(props) {
 
 	const handleClose = () => {
 		setVisibility(false);
-		props.onRefresh()
+		props.onRefresh(true)
 	};
 
 

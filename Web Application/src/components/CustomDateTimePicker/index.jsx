@@ -14,7 +14,7 @@ const CustomDateTimePicker = (props) => {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDateTimePicker
                 className={styles.fullWidthAdjsut}
-                variant="inline" // TODO Se colocar inline some os botões 'ok' e 'cancel'
+                variant="inline" 
                 format="dd/MM/yyyy  -  HH:mm"
                 margin="normal"
                 id="date-picker-inline"

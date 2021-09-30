@@ -1,7 +1,20 @@
 module.exports = app => {
 
     const getComplaints = async (req, res) => {
+        let city = req.query.city ? req.query.city.toLowerCase() : ''
+        let page = !!req.query.page ? req.query.page : 0
+        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
+
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
+        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
+
+        console.log(`Limit: ${limit}`)
+        console.log(`Offset: ${offset}`)
+
         await app.db('complaints')
+            .where('city'.toLowerCase(), 'like', `%${city}%`)
+            .offset(offset)
+            .limit(limit)
             .then(complaints => res.status(200).send(complaints))
             .catch(err => {
                 console.log(err)

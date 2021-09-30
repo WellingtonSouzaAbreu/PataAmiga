@@ -10,7 +10,7 @@ import {formatDate} from './../../common/commonFunctions.js'
 export default function CollaboratorEditForm(props) {
 
     const [name, setName] = React.useState(props.collaborator.name);
-    const [dateOfBirth, setDateOfBirth] = React.useState(formatDate(props.collaborator.dateOfBirth));
+    const [dateOfBirth, setDateOfBirth] = React.useState(props.collaborator.dateOfBirth);
     const [city, setCity] = React.useState(props.collaborator.city);
     const [cellNumber, setCellNumber] = React.useState(props.collaborator.cellNumber);
 
@@ -45,7 +45,7 @@ export default function CollaboratorEditForm(props) {
                         value={name} onChange={(e) => setName(e.target.value)}
                     />
                     <MDBInput label="Nascimento" outline
-                        value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)}
+                        value={formatDate(dateOfBirth)} onChange={(e) => setDateOfBirth(e.target.value)}
                     />
                     <MDBInput label="Cidade" outline
                         value={city} onChange={(e) => setCity(e.target.value)}

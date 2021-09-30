@@ -82,8 +82,6 @@ export default function StepInfoAnimal(props) {
 					<div className={styles.sectionDiv}>
 						<MDBInput label="Nome provisório" className={styles.inputs} outline
 							value={props.animal.name} onChange={(e) => props.onChange({ name: e.target.value })} />
-						<MDBInput label="Apelido" className={styles.inputs} outline // TODO é necessário?
-							value={props.animal.surname} onChange={(e) => props.onChange({ surname: e.target.value })} />
 						<MDBInput label="Cor" className={styles.inputs} outline
 							value={props.animal.color} onChange={(e) => props.onChange({ color: e.target.value })} />
 					</div>

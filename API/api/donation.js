@@ -3,8 +3,26 @@ const user = require("./user")
 module.exports = app => {
 
     const getDonations = async (req, res) => {
+        let name = req.query.name ? req.query.name.toLowerCase() : ''
+        let page = !!req.query.page ? req.query.page : 0
+        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
+
+        console.log(req.query)
+
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
+        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
+
+        console.log(`Limit: ${limit}`)
+        console.log(`Offset: ${offset}`)
+
         await app.db('donations')
-            .then(donations => res.status(200).send(donations))
+            .where('name'.toLowerCase(), 'like', `%${name}%`)
+            .offset(offset)
+            .limit(limit)
+            .then(donations => {
+                console.log(donations)
+                res.status(200).send(donations)
+            })
             .catch(err => {
                 console.log(err)
                 res.status(500).send(err)
@@ -101,7 +119,7 @@ module.exports = app => {
     }
 
     const convertDate = (date) => {
-        return new Date(new Date((date.split('Z')[0])).getTime() - 14400000) 
+        return new Date(new Date((date.split('Z')[0])).getTime() - 14400000)
     }
 
     const removeDonation = async (req, res) => {

@@ -40,8 +40,23 @@ module.exports = app => {
     }
 
     const getPublicationsSummarized = async (req, res) => {
+        let title = req.query.title ? req.query.title.toLowerCase() : ''
+        let page = !!req.query.page ? req.query.page : 0
+        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
+
+        console.log(req.query)
+
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage 
+        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
+
+        console.log(`Limit: ${limit}`)
+        console.log(`Offset: ${offset}`)
+
         await app.db('publications')
             .select('id', 'title', 'startDateTime', 'publicationType')
+            .where('title'.toLowerCase(), 'like', `%${title}%`)
+            .offset(offset)
+            .limit(limit)
             .then(publications => res.status(200).send(publications))
             .catch(err => {
                 console.log(err)

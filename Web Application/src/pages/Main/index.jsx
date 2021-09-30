@@ -22,9 +22,8 @@ export default function Main() {
 						<span className={'tooltip'}>Home</span>
 					</li>
 					<li>
-						<Link to="/animais"> {/* Não encontrei um cahorro par ao ícone */}
-							<i className="bx bxs-user" /> {/* TODO - Creio que seria melhor se tivesse uma tela que mostrasse os animais e a partir daí mostrasse suas 
-																	histórias de resgate, afinal, cada cão tem um resgate. Aqui estava resgate*/}
+						<Link to="/animais"> 
+							<i className="bx bxs-user" />
 							<span className={'linksName'}>Animais</span>
 						</Link>
 						<span className={'tooltip'}>Animais</span>

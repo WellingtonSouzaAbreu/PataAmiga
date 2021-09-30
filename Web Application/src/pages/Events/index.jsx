@@ -9,6 +9,11 @@ import EventsTable from "../../components/EventsTable";
 
 const initialState = {
     publicationsSummarized: [],
+
+    searchParam: '',
+    rowsPerPage: 10,
+    currentPage: 0,
+    maxPageOpened: -1
 }
 
 class Events extends Component {
@@ -19,11 +24,23 @@ class Events extends Component {
         await this.loadPublications()
     }
 
-    loadPublications = async () => {
-        await axios.get(`${baseApiUrl}/publication/summarized`)
+    loadPublications = async (noConcat) => {
+        let filterParams = ''
+        let page = '0'
+        if (this.state.searchParam) {
+            filterParams = `?title=${this.state.searchParam}`
+        }
+
+        if (this.state.currentPage || this.state.currentPage == 0) {
+            page = `${filterParams ? '&' : '?'}page=${this.state.currentPage}`
+        }
+
+        let rowsPerPage = `${filterParams || page ? '&' : '?'}rowsPerPage=${this.state.rowsPerPage}`
+
+        await axios.get(`${baseApiUrl}/publication/summarized${filterParams}${page}${rowsPerPage}`)
             .then(res => {
                 console.log(res.data)
-                this.setState({ publicationsSummarized: res.data })
+                noConcat ? this.setState({ publicationsSummarized: [...res.data] }) : this.setState({ publicationsSummarized: [...this.state.publicationsSummarized, ...res.data] })
             })
             .catch(err => {
                 console.log(err)
@@ -35,11 +52,37 @@ class Events extends Component {
         await axios.delete(`${baseApiUrl}/publication/${idPublication}`) // Array de id
             .then(_ => {
                 window.alert('Publicação deletada com sucesso!')
+                this.loadPublications(true)
             })
             .catch(err => {
                 console.log(err)
                 window.alert(err)
             })
+    }
+
+    changePage = (dataField) => {
+        let pageChanged = false
+
+        if (dataField.currentPage) {
+            pageChanged = dataField.currentPage > this.state.maxPageOpened
+        }
+
+        this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadPublications : null)
+    }
+
+    changeRowsPerPage = (dataField) => {
+        let rowsPerPageChanged = false
+
+        if (dataField.rowsPerPage && dataField.rowsPerPage != this.state.rowsPerPage) {
+            rowsPerPageChanged = true
+            dataField = { ...dataField, currentPage: 0, maxPageOpened: -1 }
+        }
+
+        this.setState({ ...dataField, publicationsSummarized: rowsPerPageChanged ? [] : this.state.publicationsSummarized }, this.loadPublications)
+    }
+
+    changeSearchParams = (dataField) => {
+        this.setState({ ...dataField, publicationsSummarized: [], currentPage: 0 }, this.loadPublications)
     }
 
     render() {
@@ -49,10 +92,13 @@ class Events extends Component {
                     <span>PUBLICAÇÕES</span>
                 </div>
                 <div className={styles.addEvent}>
-                    <AddEvent onRefresh={this.loadPublications}/>
+                    <AddEvent onRefresh={this.loadPublications} />
                 </div>
                 <div className={styles.registerEvents}>
-                    <EventsTable publications={this.state.publicationsSummarized} onDelete={this.deletePublication} />
+                    <EventsTable publications={this.state.publicationsSummarized} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
+                        onRefresh={this.loadCollaborators} onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage}
+                        onChangeSearchParams={this.changeSearchParams} onDelete={this.deletePublication}
+                    />
                 </div>
             </div>
         )

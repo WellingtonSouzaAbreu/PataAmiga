@@ -91,7 +91,15 @@ class ComplaintsTable extends Component {
 					expandableRows: true,
 					expandableRowsHeader: true,
 					expandableRowsOnClick: true,
+					rowsPerPage: this.props.rowsPerPage,
+                    searchPlaceholder: 'Nome...',
+                    rowHover: true,
+                    page: this.props.currentPage,
 					onRowsDelete: this.onRowDelete,
+                    customSearch: () => true,
+                    onSearchChange: (text) => this.props.onChangeSearchParams({ searchParam: text }),
+                    onChangePage: (currentPage) => this.props.onChangePage({ currentPage }),
+                    onChangeRowsPerPage: (rowsPerPage) => this.props.onChangeRowsPerPage({ rowsPerPage }),
 					renderExpandableRow: (rowData, rowMeta) => {
 						console.log(rowMeta.dataIndex)
 						const colSpan = rowData.length + 1;

@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import { formatDate } from './../../common/commonFunctions.js'
 import CollaboratorEditModal from './../../components/CollaboratorEditModal/index.jsx';
 
-const columns = []
 const initialState = {
 
 }
@@ -31,17 +30,13 @@ class CollaboratorsTable extends Component {
         this.props.onDelete(collaboratorsIdSelected)
     }
 
-    refreshWithFilter = (text) => {
-        this.props.onRefresh(text)
-    }
-
     render() {
         console.log('Colaborators')
         console.log(this.props.collaborators)
         return (
             <MUIDataTable
                 title={"Lista de Voluntários"}
-                data={[...this.props.collaborators, {}]}
+                data={[...this.props.collaborators]}
                 columns={[
                     {
                         name: "id",
@@ -115,11 +110,12 @@ class CollaboratorsTable extends Component {
                     rowsPerPage: this.props.rowsPerPage,
                     searchPlaceholder: 'Nome...',
                     rowHover: true,
+                    page: this.props.currentPage,
                     onRowsDelete: this.onRowDelete,
                     customSearch: () => true,
-                    onSearchChange: (text) => this.props.onChangePaginatorAndSearchParams({ searchParam: text }),
-                    onChangePage: (currentPage) => this.props.onChangePaginatorAndSearchParams({ currentPage }),
-                    onChangeRowsPerPage: (rowsPerPage) => this.props.onChangePaginatorAndSearchParams({ rowsPerPage })
+                    onSearchChange: (text) => this.props.onChangeSearchParams({ searchParam: text }),
+                    onChangePage: (currentPage) => this.props.onChangePage({ currentPage }),
+                    onChangeRowsPerPage: (rowsPerPage) => this.props.onChangeRowsPerPage({ rowsPerPage })
                     // customSearchRender: (text) => <div><input type='text'></input><button>Pesquisar</button></div>
                 }}
             />

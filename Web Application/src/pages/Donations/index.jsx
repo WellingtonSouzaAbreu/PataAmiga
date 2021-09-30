@@ -31,6 +31,11 @@ const initialState = {
 		medicines: 0,
 		others: 0
 	},
+
+	searchParam: '',
+	rowsPerPage: 9,
+	currentPage: 0,
+	maxPageOpened: -1
 }
 
 class Donations extends Component {
@@ -41,10 +46,21 @@ class Donations extends Component {
 		await this.loadDonations()
 	}
 
-	loadDonations = async () => {
-		await axios.get(`${baseApiUrl}/donation`)
+	loadDonations = async (noConcat) => {
+		let filterParams = ''
+		let page = '0'
+		if (this.state.searchParam) {
+			filterParams = `?name=${this.state.searchParam}`
+		}
+
+		if (this.state.currentPage || this.state.currentPage == 0) {
+			page = `${filterParams ? '&' : '?'}page=${this.state.currentPage}`
+		}
+
+		let rowsPerPage = `${filterParams || page ? '&' : '?'}rowsPerPage=${this.state.rowsPerPage}`
+		await axios.get(`${baseApiUrl}/donation${filterParams}${page}${rowsPerPage}`)
 			.then(res => {
-				this.setState({ donations: res.data }, this.loadNumberOfDonationsReceived)
+				noConcat ? this.setState({ donations: [...res.data] }, this.loadNumberOfDonationsReceived) : this.setState({ donations: [...this.state.donations, ...res.data] }, this.loadNumberOfDonationsReceived)
 			})
 			.catch(err => {
 				console.log(err)
@@ -67,12 +83,37 @@ class Donations extends Component {
 		await axios.delete(`${baseApiUrl}/donation/${idDonation}`) // Array de id
 			.then(_ => {
 				window.alert('Doação deletada com sucesso!')
-				this.loadDonations()
+				this.loadDonations(true)
 			})
 			.catch(err => {
 				console.log(err)
 				window.alert(err)
 			})
+	}
+
+	changePage = (dataField) => {
+		let pageChanged = false
+
+		if (dataField.currentPage) {
+			pageChanged = dataField.currentPage > this.state.maxPageOpened
+		}
+
+		this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadDonations : null)
+	}
+
+	changeRowsPerPage = (dataField) => {
+		let rowsPerPageChanged = false
+
+		if (dataField.rowsPerPage && dataField.rowsPerPage != this.state.rowsPerPage) {
+			rowsPerPageChanged = true
+			dataField = { ...dataField, currentPage: 0, maxPageOpened: -1 }
+		}
+
+		this.setState({ ...dataField, donations: rowsPerPageChanged ? [] : this.state.donations }, this.loadDonations)
+	}
+
+	changeSearchParams = (dataField) => {
+		this.setState({ ...dataField, donations: [], currentPage: 0 }, this.loadDonations)
 	}
 
 	saveDonation = async () => {
@@ -88,7 +129,7 @@ class Donations extends Component {
 		await axios.post(`${baseApiUrl}/donation`, donation)
 			.then(_ => {
 				window.alert('Doação registrada com sucesso!')
-				this.loadDonations()
+				this.loadDonations(true)
 			})
 			.catch(err => {
 				console.log(err)
@@ -272,7 +313,10 @@ class Donations extends Component {
 						</div>
 					</div>
 					<div className={styles.appRequestDonationList}>
-						<DonationsTable donations={this.state.donations} onDelete={this.deleteDonation} onToggleVisibilityOfDonationDetails={this.toggleVisibilityOfDonationDetails} />
+						<DonationsTable donations={this.state.donations} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
+							onDelete={this.deleteDonation} onToggleVisibilityOfDonationDetails={this.toggleVisibilityOfDonationDetails}
+							onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams}
+						/>
 					</div>
 				</div>
 			</div>

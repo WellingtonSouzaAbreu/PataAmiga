@@ -4,58 +4,6 @@ import MUIDataTable from "mui-datatables";
 
 import { formatDate } from '../../common/commonFunctions.js'
 
-const columns = [
-	{
-		name: "date",
-		label: "Data",
-		options: {
-			filter: true,
-			sort: true,
-			customBodyRender: (date) => formatDate(date)
-		}
-	},
-	{
-		name: "name",
-		label: "Nome",
-		options: {
-			filter: true,
-			sort: false,
-		}
-	},
-	{
-		name: "donationType",
-		label: "Tipo",
-		options: {
-			filter: true,
-			sort: false,
-			customBodyRender: (donationType) => {
-				switch (donationType) {
-					case 'money': return 'Dinheiro'
-					case 'portion': return 'Ração'
-					case 'medicines': return 'Remédios'
-					case 'others': return 'Outros'
-				}
-			}
-		}
-	},
-	{
-		name: "detailButton",
-		label: "Detalhes",
-		options: {
-			filter: true,
-			sort: false,
-		}
-	},
-	{
-		name: "editButton",
-		label: "Editar",
-		options: {
-			filter: true,
-			sort: false,
-		}
-	}
-];
-
 class DonationsTable extends Component {
 
 	setDetailButton = (donations) => {
@@ -102,14 +50,81 @@ class DonationsTable extends Component {
 			<MUIDataTable
 				title={"Solicitações pelo App"}
 				data={donationsWithButtons}
-				columns={columns}
+				columns={[
+					{
+						name: "id",
+						label: "ID",
+						options: {
+							filter: true,
+							sort: true,
+							display: true
+						}
+					},
+					{
+						name: "date",
+						label: "Data",
+						options: {
+							filter: true,
+							sort: true,
+							customBodyRender: (date) => formatDate(date)
+						}
+					},
+					{
+						name: "name",
+						label: "Nome",
+						options: {
+							filter: true,
+							sort: false,
+						}
+					},
+					{
+						name: "donationType",
+						label: "Tipo",
+						options: {
+							filter: true,
+							sort: false,
+							customBodyRender: (donationType) => {
+								switch (donationType) {
+									case 'money': return 'Dinheiro'
+									case 'portion': return 'Ração'
+									case 'medicines': return 'Remédios'
+									case 'others': return 'Outros'
+								}
+							}
+						}
+					},
+					{
+						name: "detailButton",
+						label: "Detalhes",
+						options: {
+							filter: true,
+							sort: false,
+						}
+					},
+					{
+						name: "editButton",
+						label: "Editar",
+						options: {
+							filter: true,
+							sort: false,
+						}
+					}
+				]}
 				options={{
 					filterType: 'checkbox',
 					elevation: 0,
 					filter: false,
 					print: false,
-					rowsPerPage: 15,
-					onRowsDelete: this.onRowDelete
+					rowsPerPage: this.props.rowsPerPage,
+					rowsPerPageOptions: [8], // TODO Mais do que isso quebra o layout
+					searchPlaceholder: 'Nome...',
+					rowHover: true,
+					page: this.props.currentPage,
+					onRowsDelete: this.onRowDelete,
+					customSearch: () => true,
+					onSearchChange: (text) => this.props.onChangeSearchParams({ searchParam: text }),
+					onChangePage: (currentPage) => this.props.onChangePage({ currentPage }),
+					onChangeRowsPerPage: (rowsPerPage) => this.props.onChangeRowsPerPage({ rowsPerPage })
 				}}
 			/>
 		)

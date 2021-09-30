@@ -10,7 +10,7 @@ const CustomDatePicker = (props) => {
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
-                variant="dialog" // TODO Se colocar inline some os botões 'ok' e 'cancel'
+                variant="dialog" 
                 format="dd/MM/yyyy"
                 margin="normal"
                 id="date-picker-inline"
