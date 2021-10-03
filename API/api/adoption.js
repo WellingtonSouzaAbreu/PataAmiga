@@ -1,8 +1,28 @@
 module.exports = app => {
 
     const getAdoptions = async (req, res) => {
+        let name = req.query.name ? req.query.name.toLowerCase() : ''
+        let page = !!req.query.page ? req.query.page : 0
+        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
+
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
+        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
+
+        // console.log(`Limit: ${limit}`)
+        // console.log(`Offset: ${offset}`)
+
+        // TODO selecionar dados pertinentes Á adopção
+        
         await app.db('adoptions')
-            .then(adoptions => res.status(200).send(adoptions))
+            .innerJoin('collaborators', 'adoptions.collaboratorId', '=', 'collaborators.id')
+            .innerJoin('animals', 'adoptions.animalId', '=', 'animals.id')
+            .innerJoin('users', 'adoptions.userId', '=', 'users.id')
+            // .where('name'.toLowerCase(), 'like', `%${name}%`)
+            .offset(offset)
+            .then(adoptions => {
+                console.log(adoptions)
+                res.status(200).send(adoptions)
+            })
             .catch(err => {
                 console.log(err)
                 res.status(500).send(err)
@@ -51,7 +71,7 @@ module.exports = app => {
                 res.status(500).send(err)
             })
 
-            res.status(200).json({adopted, expressInterest})
+        res.status(200).json({ adopted, expressInterest })
     }
 
     const getNumberOfAdoptionsByUser = async (req, res) => {

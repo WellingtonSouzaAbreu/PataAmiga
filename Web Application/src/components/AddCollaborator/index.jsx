@@ -24,7 +24,7 @@ class AddCollaborator extends Component {
         await axios.post(`${baseApiUrl}/collaborator`, { collaborator: { ...this.state } })
             .then(_ => {
                 window.alert('Colaborador registrado com sucesso!')
-                // this.setState({ ...initialState }, this.props.onRefresh)
+                this.setState({ ...initialState }, () => this.props.onRefresh(true))
             })
             .catch(err => {
                 window.alert(err.response.data)

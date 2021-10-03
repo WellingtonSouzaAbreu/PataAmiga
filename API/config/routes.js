@@ -5,7 +5,7 @@ module.exports = app => {
     app.post('/validate-token', app.api.user.validateToken)
 
     app.route('/adoption')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .get(app.api.adoption.getAdoptions)
         .post(app.api.adoption.save)
 

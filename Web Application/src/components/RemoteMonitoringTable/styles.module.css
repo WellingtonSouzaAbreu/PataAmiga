@@ -1,0 +1,32 @@
+.collapse {
+    width: 100%;
+
+ 
+}
+
+.containerInfos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.carousel {
+    width: 50%;
+}
+
+.carouselImages {
+    height: 250px;
+}
+
+.observationsContainer {
+    width: 49%;
+    
+
+}
+.observations {
+    width: 100%;
+    min-height: 180px;
+    max-height: 200px;
+
+}

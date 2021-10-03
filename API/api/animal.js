@@ -14,7 +14,7 @@ module.exports = app => {
                 animal.veterinaryCare = await getVeterinaryCare(idAnimal)
                 animal.rescue = await getRescue(idAnimal)
                 animal.extraInfo = await getExtraInfo(idAnimal)
-                console.log(animal)
+                // console.log(animal)
                 res.status(200).send(animal)
             })
             .catch(err => {

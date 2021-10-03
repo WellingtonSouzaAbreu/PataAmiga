@@ -1,0 +1,8 @@
+.colapse {
+    background-color: salmon;
+}
+
+.observations {
+    max-height: 400px;
+    min-height: 200px;
+}
