@@ -7,7 +7,7 @@ import AdoptionDetails from '../AdoptionDetails/index.jsx';
 
 const columns = [
     {
-        name: "name",
+        name: "animalName",
         label: "Nome",
         options: {
             filter: true,
@@ -16,79 +16,68 @@ const columns = [
     },
 
     {
-        name: "adoptedDay",
+        name: "dateAdoption",
         label: "Adotado em",
         options: {
             filter: true,
             sort: false,
-            //customBodyRender: (startDateTime) => formatDate(startDateTime),
+            customBodyRender: (dateAdoption) => formatDate(dateAdoption),
         }
     },
     {
-        name: "guardianAnimal",
+        name: "adopterName",
         label: "Adotado por",
         options: {
             filter: true,
             sort: false,
         }
     },
-
     {
-        name: "volunter",
+        name: "collaboratorName",
         label: "Colaborador",
         options: {
             filter: true,
             sort: false,
         }
     },
-
-
 ];
-
-
-const data = [
-    { name: "Jurubinha", adoptedDay: "15/08/1998", guardianAnimal: "Lucas Martins", volunter: "José Silva"}  
-];
-
-
-
-
-   const initialState = {
-
-}
-
-
 
 class AdoptionsTable extends Component {
-
-    state = { ...initialState }
 
     render() {
         return (
             <MUIDataTable
                 title={"Lista de Animais Adotados"}
-                data={data}
+                data={this.props.adoptions}
                 columns={columns}
                 options={{
                     filterType: 'checkbox',
                     elevation: 0,
                     filter: false,
                     print: false,
-                    rowsPerPage: 8,
+                    rowsPerPage: this.props.rowsPerPage,
+					searchPlaceholder: 'Nome do animal...',
+					rowHover: true,
+					page: this.props.currentPage,
                     elevation: 0,
                     expandableRows: true,
-                        expandableRowsHeader: true,
-                        expandableRowsOnClick: true,
-                        renderExpandableRow: (rowData, rowMeta) => {
-                            const colSpan = rowData.length + 1;
-                            return (
+                    expandableRowsHeader: true,
+                    expandableRowsOnClick: true,
+                    customSearch: () => true,
+					onSearchChange: (text) => this.props.onChangeSearchParams({ searchParam: text }),
+					onChangePage: (currentPage) => this.props.onChangePage({ currentPage }),
+					onChangeRowsPerPage: (rowsPerPage) => this.props.onChangeRowsPerPage({ rowsPerPage }),
+                    renderExpandableRow: (rowData, rowMeta) => {
+                        const colSpan = rowData.length + 1;
+                        const currentRowIndex = rowMeta.dataIndex
+                        return (
                             <TableRow>
                                 <TableCell colSpan={colSpan}>
-                                    <AdoptionDetails/>
+                                    <AdoptionDetails adoption={this.props.adoptions[currentRowIndex]} />
                                 </TableCell>
                             </TableRow>
-                            );
-                        },
+                        );
+                    },
                 }}
             />
         )

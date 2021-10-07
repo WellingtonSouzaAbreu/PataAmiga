@@ -92,6 +92,8 @@ module.exports = app => {
 
     app.post('/remote-monitoring', app.api.remoteMonitoring.save)
 
+    app.get('/remote-monitoring/:idAdoption', app.api.remoteMonitoring.getRemoteMonitoringsByAdoption)
+
     app.post('/remote-monitoring/picture', app.api.remoteMonitoring.savePicture)
 
     app.route('/rescue/:animalId')
@@ -111,4 +113,6 @@ module.exports = app => {
     app.del('/veterinary-care/:id', app.api.veterinaryCare.removeVeterinaryCare)
 
     app.post('/visit', app.api.visit.save)
+
+    app.get('/visit/:idAdoption', app.api.visit.getVisitsByAdoption)
 }

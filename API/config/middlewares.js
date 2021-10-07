@@ -10,4 +10,5 @@ module.exports = app => {
     app.use('/animal-pictures', express.static('./_animalPictures'))
     app.use('/publication-pictures', express.static('./_publicationPictures'))
     app.use('/interested-pictures', express.static('./_interestedPictures'))
+    app.use('/remote-monitoring-pictures', express.static('./_remoteMonitoringPictures'))
 }

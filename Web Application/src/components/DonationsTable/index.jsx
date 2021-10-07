@@ -116,7 +116,7 @@ class DonationsTable extends Component {
 					filter: false,
 					print: false,
 					rowsPerPage: this.props.rowsPerPage,
-					rowsPerPageOptions: [8], // TODO Mais do que isso quebra o layout
+					rowsPerPageOptions: [8],
 					searchPlaceholder: 'Nome...',
 					rowHover: true,
 					page: this.props.currentPage,

@@ -16,7 +16,6 @@ export default function DetailsAnimal(props) {
 	const renderAnimalImages = () => {
 		console.log(props.animal.imagesURL)
 		const carouselItem = props.animal.imagesURL.map((image, index) => {
-			console.log(`${baseApiUrl}/animal-pictures/${image.imageURL}`)
 			return (
 				<MDBCarouselItem itemId={index}>
 					<MDBCarouselElement src={`${baseApiUrl}/animal-pictures/${image.imageURL}`} alt='...' />

@@ -11,45 +11,22 @@ import {
     MDBCarouselInner,
     MDBCarouselItem,
     MDBCarouselElement,
-  } from 'mdb-react-ui-kit';
+} from 'mdb-react-ui-kit';
 
 
 const columns = [
     {
-        name: "data",
+        name: "date",
         label: "Data",
         options: {
             filter: true,
             sort: true,
+            customBodyRender: (date) => formatDate(date)
         }
     },
-
-
-
-
 ];
 
-
-const data = [
-    {  data: "15/08/1998", }  
-];
-
-
-
-
-   const initialState = {
-
-}
-
-
-const VisitRelatory = ()=> {
-    return(
-        <div>
-             <MDBInput type="textarea" label="Observações"  value="É a única rua de Lisboa com o trânsito ao contrário, sabias?1. Não sabia e é por isso queatravesso em frente dos carros tantas vezes. Eles apitam e eu dou uma corrida. 1O trânsito é ao contrário, não me posso esquecer1.A mala esta pesada, cheia de papéis rabiscados que demoro semanas a deitar fora. Nunca se sabe. Nas mãos há sempre um casaco, um cachecol, este inverno está uma treta, nem sequer faz frio. Já não basta a eterna ausência de neve.Às vezes quero calar a cabeça. Ficar com o olhar preso no nada, simplesmente. Nasci com uma estranha deficiência de não conseguir não pensar em nada. Deve ser por isso que os meus sonhos não se entendem, colagens sobrepostas de pensamentos a mil à hora.O mundo inteiro na minha cabeça. A China, o Saramago, o bolo de chocolate e o senhor que passeia o cão à noite. O café da máquina, as saudades da amiga, o verso do poema, os olhos ansiosos do namorado. Israel, EUA, Bruxelas. O Tratado de Lisboa e a série de televisão que deixei de ver. Que será feito da Rory?Desligar a cao? Talvez o David Lynch saiba, ele medita, ele vai criar uma universidade da meditação. Curioso...Mas agora o mundo todo são palavras a esferográfica num bloco azul. 1Por favor, não diga mais, porque eu não sei escolher1. Na minha cabeça cabe o mundo. E o mundo tem que caber em 2000 caracteres. Que será feito da Rory?Desligar a cabeça.Como? Talvez o David Lynch saiba, ele medita, ele vai criar uma universidade da meditação. Curioso...Mas agora o mundo todo são palavras a esferográfica num bloco azul. 1Por favor, não diga mais, porque eu nãoQue será feito daRory?Desligar a cabeça.Como? Talvez o David Lynch saiba, ele medita, ele vai criar uma universidade da meditação. CurMas agora o mundo todo são palavras a esferográfica num bloco azul. 1Por favor, não diga mais, porque eulher1. Na minha cabeça cabe o mundo. E o mundo tem que caber em 2000 caracteres.  sei escolher1. Na minha cabeça cabe o mundo. E o mundo tem que caber em 2000 caracteres. " className={styles.observations} />
-        </div>
-    )
-}
-
+const initialState = {}
 
 
 
@@ -57,12 +34,20 @@ class AdoptionVisitsTable extends Component {
 
     state = { ...initialState }
 
+    renderVisitReport = (visitReport) => {
+        return (
+            <div>
+                <MDBInput type="textarea" label="Observações" value={visitReport.report} className={styles.observations} />
+            </div>
+        )
+    }
 
     render() {
+        console.log(this.props.visits)
         return (
             <MUIDataTable
                 title={"Visitas"}
-                data={data}
+                data={this.props.visits}
                 columns={columns}
                 options={{
                     filterType: 'checkbox',
@@ -72,18 +57,19 @@ class AdoptionVisitsTable extends Component {
                     rowsPerPage: 8,
                     elevation: 0,
                     expandableRows: true,
-                        expandableRowsHeader: true,
-                        expandableRowsOnClick: true,
-                        renderExpandableRow: (rowData, rowMeta) => {
-                            const colSpan = rowData.length + 1;
-                            return (
+                    expandableRowsHeader: true,
+                    expandableRowsOnClick: true,
+                    renderExpandableRow: (rowData, rowMeta) => {
+                        const colSpan = rowData.length + 1;
+                        console.log(rowMeta)
+                        return (
                             <TableRow>
                                 <TableCell colSpan={colSpan} className={styles.collapse}>
-                                   <VisitRelatory/>
+                                    {this.renderVisitReport(this.props.visits[rowMeta.rowIndex])}
                                 </TableCell>
                             </TableRow>
-                            );
-                        },
+                        );
+                    },
                 }}
             />
         )

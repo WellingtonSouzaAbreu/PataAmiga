@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) =>
 	}),
 );
 
-export default function ModalAdoptionMonitoring() {
+export default function AdoptionFollowUpModal(props) {
 
 	const classes = useStyles();
 	const [open, setVisibility] = React.useState(false);
@@ -42,8 +42,6 @@ export default function ModalAdoptionMonitoring() {
 	const handleClose = () => {
 		setVisibility(false);
 	};
-
-
 
 	return (
 		<div>
@@ -64,7 +62,7 @@ export default function ModalAdoptionMonitoring() {
 			>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<AdoptionFollowUpContent/>
+						<AdoptionFollowUpContent idAdoption={props.idAdoption}/>
 					</div>
 				</Fade>
 			</Modal>

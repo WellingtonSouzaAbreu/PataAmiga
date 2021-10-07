@@ -5,7 +5,6 @@ import { formatDate } from '../../common/commonFunctions.js'
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { MDBInput } from "mdbreact";
-
 import {
     MDBCarousel,
     MDBCarouselInner,
@@ -13,63 +12,59 @@ import {
     MDBCarouselElement,
 } from 'mdb-react-ui-kit';
 
+import {baseApiUrl} from './../../services/baseApiUrl.js'
 
 const columns = [
     {
-        name: "data",
+        name: "date",
         label: "Data",
         options: {
             filter: true,
             sort: true,
+            customBodyRender: (date) => formatDate(date)
         }
     },
 ];
 
+const initialState = {}
 
-const data = [
-    { data: "15/08/1998", }
-];
-
-const initialState = {
-}
-
-const RemoteMonitoringInfo = () => {
-    return (
-        <div className={styles.containerInfos}>
-            <div className={styles.carousel}>
-                <MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
-                    <MDBCarouselInner>
-                        <MDBCarouselItem itemId={0}>
-                            <MDBCarouselElement src='https://ichef.bbci.co.uk/news/1024/branded_portuguese/F1F2/production/_118283916_b19c5a1f-162b-410b-8169-f58f0d153752.jpg' alt='...' />
-                        </MDBCarouselItem>
-                        <MDBCarouselItem itemId={1}>
-                            <MDBCarouselElement src='https://veja.abril.com.br/wp-content/uploads/2017/01/cao-labrador-3-copy.jpg?quality=70&strip=info&w=680&h=453&crop=1' alt='...' />
-                        </MDBCarouselItem>
-                        <MDBCarouselItem itemId={2}>
-                            <MDBCarouselElement src='https://images.trustinnews.pt/uploads/sites/5/2019/10/tribunais-vao-tratar-animais-de-estimacao-cada-vez-mais-como-criancas-2-1024x687.jpeg' alt='...' />
-                        </MDBCarouselItem>
-                    </MDBCarouselInner>
-                </MDBCarousel>
-            </div>
-            <div className={styles.observationsContainer}>
-                <MDBInput type="textarea" label="Observações" disabled className={styles.observations} />
-            </div>
-
-        </div>
-
-
-    )
-}
 class RemoteMonitoringTable extends Component {
 
     state = { ...initialState }
 
+    remoteMonitoringInfo = (remoteMonitoring) => {
+        console.log(remoteMonitoring)
+        return (
+            <div className={styles.containerInfos}>
+                <div className={styles.carousel}>
+                    <MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
+                        <MDBCarouselInner>
+                            {remoteMonitoring.imagesURL && this.renderRemoteMonitoringImages(remoteMonitoring.imagesURL)}
+                        </MDBCarouselInner>
+                    </MDBCarousel>
+                </div>
+                <div className={styles.observationsContainer}>
+                    <MDBInput value={remoteMonitoring.observations} type="textarea" label="Observações" disabled className={styles.observations} />
+                </div>
+            </div>
+        )
+    }
+
+    renderRemoteMonitoringImages = (images) => {
+        return images.map((imageURL, index) => {
+            return (
+                <MDBCarouselItem itemId={index}>
+                    <MDBCarouselElement src={`${baseApiUrl}/remote-monitoring-pictures/${imageURL}`} alt='...' />
+                </MDBCarouselItem>
+            )
+        })
+    }
 
     render() {
         return (
             <MUIDataTable
                 title={"Relatórios enviados pelo guardião"}
-                data={data}
+                data={this.props.remoteMonitorings}
                 columns={columns}
                 options={{
                     filterType: 'checkbox',
@@ -86,7 +81,7 @@ class RemoteMonitoringTable extends Component {
                         return (
                             <TableRow>
                                 <TableCell colSpan={colSpan} className={styles.collapse}>
-                                    <RemoteMonitoringInfo />
+                                    {this.remoteMonitoringInfo(this.props.remoteMonitorings[rowMeta.dataIndex])}
                                 </TableCell>
                             </TableRow>
                         );

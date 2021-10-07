@@ -103,7 +103,7 @@ module.exports = app => {
             .where({ id: idAnimal })
             .first()
             .then(async (animal) => {
-                animal.aproximateAge = await estimateAge(enimal.dateOfBirth)
+                animal.aproximateAge = await estimateAge(animal.dateOfBirth)
                 animal.imagesURL = await getAllAnimalPictures(idAnimal)
                 console.log(animal)
                 res.status(200).send(animal)

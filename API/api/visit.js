@@ -1,5 +1,17 @@
 module.exports = app => {
 
+    const getVisitsByAdoption = async (req, res) => {
+        await app.db('visits')
+        .where({adoptionId: req.params.idAdoption})
+            .then(visits => {
+                res.status(200).send(visits)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
@@ -23,5 +35,5 @@ module.exports = app => {
             })
     }
 
-    return { save }
+    return { getVisitsByAdoption, save }
 }

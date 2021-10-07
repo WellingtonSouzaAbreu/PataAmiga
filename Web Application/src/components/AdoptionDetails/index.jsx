@@ -11,69 +11,16 @@ import {
 	MDBCarouselElement,
 } from 'mdb-react-ui-kit';
 
+export default function AdoptionsAnimalsDetails(props) {
 
-const FollowUpModal = () => {
-	return (
-		<div className={styles.remonteMonitoringContainerButtons}>
-			<AdoptionFollowUpModal />
-		</div>
-	)
-}
-
-const CardGuardianInfo = () => {
-	return (
-		<div class="card">
-			<div className={styles.cardContent}>
-				<strong className={styles.title}>Guardião </strong>
-				<div className={styles.infoNameGuardian}>
-					<strong>Nome</strong>
-					<span>José Silva Olinveira</span>
-				</div>
-				<div className={styles.contactGuardian}>
-					<span>Contatos</span>
-					<div className={styles.groupGuardianInfo}>
-						<div>
-							<strong className={styles.titleInfo}>Telefone</strong>
-							<strong>4002-8922</strong>
-						</div>
-						<div>
-							<strong className={styles.titleInfo} >Cel</strong>
-							<strong>984841812</strong>
-						</div>
-						<div>
-							<strong className={styles.titleInfo} >Email</strong>
-							<strong>jose.silva.oliveira19@gmail.com</strong>
-						</div>
-					</div>
-					<div className={styles.andressGuardian}>
-						<span>Endereço</span>
-						<div className={styles.avNumber}>
-							<div>
-								<strong className={styles.titleInfo}>Rua: </strong>
-								<strong>Geraldo Dias Fiusa</strong>
-							</div>
-							<div>
-								<strong className={styles.titleInfo} >N: </strong>
-								<strong>4484</strong>
-							</div>
-							<div>
-								<strong className={styles.titleInfo} >Bairro: </strong>
-								<strong>Cidade Alta</strong>
-							</div>
-						</div>
-						<div>
-							<strong className={styles.titleInfo} >Cidade: </strong>
-							<strong>Rolim de Moura</strong>
-						</div>
-					</div>
-				</div>
-				<FollowUpModal />
+	const FollowUpModal = () => {
+		return (
+			<div className={styles.remonteMonitoringContainerButtons}>
+				<AdoptionFollowUpModal idAdoption={props.adoption.id} />
 			</div>
-		</div>
-	)
-}
+		)
+	}
 
-export default function AdoptionsAnimalsDetails() {
 	function ImagesCarousel() {
 		return (
 			<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
@@ -92,6 +39,106 @@ export default function AdoptionsAnimalsDetails() {
 		);
 	}
 
+	function animalInfo() {
+		return (
+			<div className={styles.otherDescriptions}>
+				<div className={styles.group}>
+					<div className={styles.divider1}>
+						<div className={styles.groupString}>
+							<strong>Nome</strong>
+							<span>{props.adoption.animalName}</span>
+						</div>
+						<div className={styles.groupString}>
+							<strong>Especie</strong>
+							<span>{props.adoption.specie}</span>
+						</div>
+						<div className={styles.groupString}>
+							<strong>Cor</strong>
+							<span>{props.adoption.color}</span>
+						</div>
+						<div className={styles.groupString}>
+							<strong>Sexo</strong>
+							<span>{props.adoption.sex == 'M' ? 'Macho' : 'Fêmea'}</span>
+						</div>
+
+					</div>
+					<div className={styles.divider2}>
+						<div className={styles.groupString}>
+							<strong>Apelido</strong>
+							<span>{props.adoption.surname}</span>
+						</div>
+						<div className={styles.groupString}>
+							<strong>Raça</strong>
+							<span>{props.adoption.breed}</span>
+						</div>
+						<div className={styles.groupString}>
+							<strong>Idade aproximada</strong>
+							<span>{props.adoption.aproximateAge}</span>
+						</div>
+						<div className={styles.groupString}>
+							<strong>Castrado</strong>
+							<span>{props.adoption.castrated ? 'Sim' : 'Não'}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		)
+	}
+
+	function guardianInfo() {
+		return (
+			<div class="card">
+				<div className={styles.cardContent}>
+					<strong className={styles.title}>Guardião </strong>
+					<div className={styles.infoNameGuardian}>
+						<strong>Nome</strong>
+						<span>{props.adoption.adopterName}</span>
+					</div>
+					<div className={styles.contactGuardian}>
+						<span>Contatos</span>
+						<div className={styles.groupGuardianInfo}>
+							<div>
+								<strong className={styles.titleInfo}>Telefone</strong>
+								<strong>{props.adoption.phone}</strong>
+							</div>
+							<div>
+								<strong className={styles.titleInfo} >Celular</strong>
+								<strong>{props.adoption.cellNumber}</strong>
+							</div>
+							<div>
+								<strong className={styles.titleInfo} >Email</strong>
+								<strong>{props.adoption.email}</strong>
+							</div>
+						</div>
+						<div className={styles.andressGuardian}>
+							<span>Endereço</span>
+							<div className={styles.avNumber}>
+								<div>
+									<strong className={styles.titleInfo}>Rua: </strong>
+									<strong>{props.adoption.address}</strong>
+								</div>
+								<div>
+									<strong className={styles.titleInfo} >N: </strong>
+									<strong>{props.adoption.houseNumber}</strong>
+								</div>
+								<div>
+									<strong className={styles.titleInfo} >Bairro: </strong>
+									<strong>{props.adoption.district}</strong>
+								</div>
+							</div>
+							<div>
+								<strong className={styles.titleInfo} >Cidade: </strong>
+								<strong>{props.adoption.city}</strong>
+							</div>
+						</div>
+					</div>
+					<FollowUpModal />
+				</div>
+			</div>
+		)
+	}
+
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.imgsDescription}>
@@ -100,51 +147,9 @@ export default function AdoptionsAnimalsDetails() {
 				</div>
 				<MDBInput type="textarea" label="Descrição" value={"ERA UMA VEZ "} disabled className={styles.description} />
 			</div>
-			<div className={styles.otherDescriptions}>
-				<div className={styles.group}>
-					<div className={styles.divider1}>
-						<div className={styles.groupString}>
-							<strong>Nome</strong>
-							<span>Floquinho de neve</span>
-						</div>
-						<div className={styles.groupString}>
-							<strong>Especie</strong>
-							<span>Canino</span>
-						</div>
-						<div className={styles.groupString}>
-							<strong>Cor</strong>
-							<span>Branco</span>
-						</div>
-						<div className={styles.groupString}>
-							<strong>Sexo</strong>
-							<span>Macho</span>
-						</div>
-
-					</div>
-					<div className={styles.divider2}>
-						<div className={styles.groupString}>
-							<strong>Apelido</strong>
-							<span>Floquinho</span>
-						</div>
-						<div className={styles.groupString}>
-							<strong>Raça</strong>
-							<span>Indefinido</span>
-						</div>
-						<div className={styles.groupString}>
-							<strong>Idade aproximada</strong>
-							<span>16 Meses</span>
-						</div>
-						<div className={styles.groupString}>
-							<strong>Castrado</strong>
-							<span>Sim</span>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
+			{animalInfo()}
 			<div className={styles.divider3}>
-				<CardGuardianInfo />
+				{guardianInfo()}
 			</div>
 		</div>
 	)

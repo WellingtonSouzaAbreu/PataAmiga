@@ -1,7 +1,7 @@
 module.exports = app => {
 
     const getAdoptions = async (req, res) => {
-        let name = req.query.name ? req.query.name.toLowerCase() : ''
+        let animalName = req.query.animalName ? req.query.animalName.toLowerCase() : ''
         let page = !!req.query.page ? req.query.page : 0
         let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
 
@@ -11,22 +11,53 @@ module.exports = app => {
         // console.log(`Limit: ${limit}`)
         // console.log(`Offset: ${offset}`)
 
-        // TODO selecionar dados pertinentes Á adopção
-        
+        // TODO selecionar dados pertinentes Á adoção
+
         await app.db('adoptions')
+            .select('adoptions.id', 'adoptions.dateAdoption', 'adoptions.collaboratorId', 'adoptions.animalId', 'adoptions.userId', 'animals.name as animalName', 'animals.specie', 'animals.color', 'animals.sex', 'animals.breed', 'animals.dateOfBirth', 'animals.castrated', 'collaborators.name as collaboratorName', 'users.name as adopterName', 'users.address', 'users.houseNumber', 'users.email', 'users.phone', 'users.cellNumber', 'users.city', 'users.district')
             .innerJoin('collaborators', 'adoptions.collaboratorId', '=', 'collaborators.id')
             .innerJoin('animals', 'adoptions.animalId', '=', 'animals.id')
             .innerJoin('users', 'adoptions.userId', '=', 'users.id')
-            // .where('name'.toLowerCase(), 'like', `%${name}%`)
+            .where('animals.name'.toLowerCase(), 'like', `%${animalName}%`)
             .offset(offset)
-            .then(adoptions => {
-                console.log(adoptions)
+            .limit(limit)
+            .then(async (adoptions) => {
+                adoptions.aproximateAge = await estimateAllAges(adoptions)
+                // adoptions = adoptions.map(async(adoption) => adoption.animalImageURL = await getAllAnimalPictures(adoption.idAnimal))
                 res.status(200).send(adoptions)
             })
             .catch(err => {
                 console.log(err)
                 res.status(500).send(err)
             })
+    }
+
+    const estimateAllAges = async (adoptionAnimal) => {
+        for (animal of adoptionAnimal) {
+            animal.aproximateAge = await estimateAge(animal.dateOfBirth)
+        }
+        return adoptionAnimal
+    }
+
+
+    const estimateAge = (dateOfBirth) => {
+        let differenceInMonths = parseInt((Date.parse(new Date()) - Date.parse(dateOfBirth)) / 1000 / 60 / 60 / 24 / 30)
+
+        console.log(differenceInMonths) //TODO
+
+        if (differenceInMonths <= 1) {
+            return 'Alguns dias'
+        }
+
+        if (differenceInMonths > 1 && differenceInMonths <= 12) {
+            return `${differenceInMonths} meses`
+        }
+
+        if (parseInt(differenceInMonths > 12) == 1) {
+            return `1 ano`
+        } else {
+            return `${parseInt(differenceInMonths / 12)} anos`
+        }
     }
 
     const alreadyAdoptedAndExpressInterest = async (req, res) => {

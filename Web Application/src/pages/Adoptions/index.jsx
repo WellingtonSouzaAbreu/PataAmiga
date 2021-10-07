@@ -12,7 +12,7 @@ const initialState = {
     searchParam: '',
     rowsPerPage: 10,
     currentPage: 0,
-    maxPageOpened: -1
+    maxPageOpened: 0
 }
 
 class Adoptions extends Component {
@@ -27,7 +27,7 @@ class Adoptions extends Component {
         let filterParams = ''
         let page = '0'
         if (this.state.searchParam) {
-            filterParams = `?name=${this.state.searchParam}`
+            filterParams = `?animalName=${this.state.searchParam}`
         }
 
         if (this.state.currentPage || this.state.currentPage == 0) {
@@ -66,7 +66,7 @@ class Adoptions extends Component {
             pageChanged = dataField.currentPage > this.state.maxPageOpened
         }
 
-        this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadAdoptions : null)
+        this.setState({ ...dataField, maxPageOpened: pageChanged ? dataField.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadAdoptions : null)
     }
 
     changeRowsPerPage = (dataField) => {
