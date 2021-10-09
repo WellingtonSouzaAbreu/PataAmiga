@@ -5,18 +5,21 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import { MDBInput } from "mdbreact";
 
 import styles from './styles.module.css'
 
 import { baseApiUrl } from '../../services/baseApiUrl';
-import CustomDatePicker from './../CustomDatePicker';
 import RemoteMonitoringTable from './../RemoteMonitoringTable';
 import AdoptionVisitReportTable from './../AdoptionVisitReportTable';
+import AddVisits from './../AddVisits'
 
 const initialState = {
     remoteMonitorings: [],
-    visits: []
+    visits: [],
+
+    // Visit
+    visitDate: new Date(),
+    visitReport: 'Foi louco',
 }
 
 class AdoptionFollowUpContent extends Component {
@@ -35,6 +38,7 @@ class AdoptionFollowUpContent extends Component {
             .then(res => {
                 return res.data
             })
+            .catch(err => window.alert(err))
     }
 
     loadVisits = async () => {
@@ -42,6 +46,55 @@ class AdoptionFollowUpContent extends Component {
             .then(res => {
                 console.log(res.data)
                 return res.data
+            })
+            .catch(err => window.alert(err))
+    }
+
+    changeVisitDate = (visitDate) => {
+        this.setState({ visitDate })
+    }
+
+    changeVisitReport = (visitReport) => {
+        this.setState({visitReport})
+    }
+
+    saveVisitReport = async() => {
+        const visitData = {
+            report: this.state.visitReport,
+            date: this.state.visitDate,
+            adoptionId: this.props.idAdoption
+        }
+        await axios.post(`${baseApiUrl}/visit`, {visit: visitData})
+        .then(_ => {
+            window.alert('Visita salva com sucesso!')
+            this.loadVisits()
+        })
+        .catch(err => window.alert(err.response.data))
+    }
+
+    deleteVisit = async (idVisit) => {
+        await axios.delete(`${baseApiUrl}/visit/${idVisit}`) // Array de id
+            .then(_ => {
+                const plural = idVisit.length > 1 ? 'es' : ''
+                window.alert(`Visit${plural} deletado${plural == 'es' ? 's' : ''} com sucesso!`)
+                this.loadVisits()
+            })
+            .catch(err => {
+                console.log(err)
+                window.alert(err)
+            })
+    }
+
+    deleteRemoteMonitoring = async (idRemoteMonitoring) => {
+        await axios.delete(`${baseApiUrl}/remote-monitoring/${idRemoteMonitoring}`) // Array de id
+            .then(_ => {
+                const plural = idRemoteMonitoring.length > 1 ? 'es' : ''
+                window.alert(`Monitoramento${plural} remoto deletado${plural == 'es' ? 's' : ''} com sucesso!`)
+                this.loadRemoteMonitorings()
+            })
+            .catch(err => {
+                console.log(err)
+                window.alert(err)
             })
     }
 
@@ -61,7 +114,7 @@ class AdoptionFollowUpContent extends Component {
                     </TabList>
 
                     <TabPanel className={styles.tabContent}>
-                        <RemoteMonitoringTable remoteMonitorings={this.state.remoteMonitorings} />
+                        <RemoteMonitoringTable remoteMonitorings={this.state.remoteMonitorings} onDelete={this.deleteRemoteMonitoring}/>
                     </TabPanel>
                     <TabPanel className={styles.tabContent}>
                         <Accordion >
@@ -76,13 +129,12 @@ class AdoptionFollowUpContent extends Component {
                                 </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <div className={styles.formContainer}> {/* Add Visits */}
-                                    <CustomDatePicker />
-                                    <MDBInput type="textarea" label="Observações" className={styles.observations} />
-                                </div>
+                                <AddVisits visitDate={this.state.visitDate} visitReport={this.state.visitReport} onChageVisitReport={this.changeVisitReport}
+                                onChangeDate={this.changeVisitDate} onRefresh={this.loadVisits} onSaveVisitReport={this.saveVisitReport}/>
+                                
                             </AccordionDetails>
                         </Accordion>
-                        <AdoptionVisitReportTable visits={this.state.visits}/>
+                        <AdoptionVisitReportTable visits={this.state.visits} onDelete={this.deleteVisit}/>
                     </TabPanel>
                 </Tabs>
             </div>

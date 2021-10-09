@@ -11,8 +11,6 @@ module.exports = app => {
         // console.log(`Limit: ${limit}`)
         // console.log(`Offset: ${offset}`)
 
-        // TODO selecionar dados pertinentes Á adoção
-
         await app.db('adoptions')
             .select('adoptions.id', 'adoptions.dateAdoption', 'adoptions.collaboratorId', 'adoptions.animalId', 'adoptions.userId', 'animals.name as animalName', 'animals.specie', 'animals.color', 'animals.sex', 'animals.breed', 'animals.dateOfBirth', 'animals.castrated', 'collaborators.name as collaboratorName', 'users.name as adopterName', 'users.address', 'users.houseNumber', 'users.email', 'users.phone', 'users.cellNumber', 'users.city', 'users.district')
             .innerJoin('collaborators', 'adoptions.collaboratorId', '=', 'collaborators.id')
@@ -23,13 +21,21 @@ module.exports = app => {
             .limit(limit)
             .then(async (adoptions) => {
                 adoptions.aproximateAge = await estimateAllAges(adoptions)
-                // adoptions = adoptions.map(async(adoption) => adoption.animalImageURL = await getAllAnimalPictures(adoption.idAnimal))
+                adoptions = await walkAnimals(adoptions)
+                console.log(adoptions)
                 res.status(200).send(adoptions)
             })
             .catch(err => {
                 console.log(err)
                 res.status(500).send(err)
             })
+    }
+
+    const walkAnimals = async(adoptions) => {
+        for(adoption of adoptions){
+            adoption.animalImageURL = await getMainAnimalPicture(adoption.animalId)
+        }
+        return adoptions
     }
 
     const estimateAllAges = async (adoptionAnimal) => {
@@ -58,6 +64,18 @@ module.exports = app => {
         } else {
             return `${parseInt(differenceInMonths / 12)} anos`
         }
+    }
+
+    const getMainAnimalPicture = async (idAnimal) => {
+        return await app.db('animal-pictures')
+            .select('imageURL')
+            .first()
+            .where({ animalId: idAnimal })
+            .then(imagesURL => imagesURL.imageURL)
+            .catch(err => {
+                console.log(err)
+                throw err
+            })
     }
 
     const alreadyAdoptedAndExpressInterest = async (req, res) => {
@@ -149,6 +167,7 @@ module.exports = app => {
                 }
 
                 animalsWithPicture = animalsWithPicture.map(([animalInArray]) => animalInArray)
+                // console.log(animalsWithPicture)
                 res.status(200).send(animalsWithPicture)
             })
             .catch(err => {
@@ -196,6 +215,26 @@ module.exports = app => {
                 res.status(500).send('Erro ao cadastrar adoção')
             })
     }
+    
+    const removeAdoption = async (req, res) => {
+        const idAdoption = req.params.id ? req.params.id : res.status(400).send('Identificação da adoção não informada')
 
-    return { getAdoptions, alreadyAdoptedAndExpressInterest, getNumberOfAdoptionsByUser, getAnimalsByUserAdoption, save }
+        let adoptionsId = idAdoption.split(',')
+        console.log(adoptionsId)
+
+        adoptionsId.forEach(async (idAdoption) => {
+            await app.db('adoptions')
+                .where({ id: idAdoption })
+                .del()
+                .then(_ => console.log(`Adoção de id: ${idAdoption} deletado`))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao deletar adoção')
+                })
+        })
+
+        res.status(200).send('Adoção removido com sucesso!')
+    }
+
+    return { getAdoptions, alreadyAdoptedAndExpressInterest, getNumberOfAdoptionsByUser, getAnimalsByUserAdoption, save, removeAdoption}
 }

@@ -87,10 +87,28 @@ module.exports = app => {
                     console.log(err)
                     res.status(500).send(err)
                 })
-
         })
-
     }
 
-    return { getRemoteMonitoringsByAdoption, save, savePicture }
+    const removeRemoteMonitoring = async (req, res) => {
+        const idRemoteMonitoring = req.params.id ? req.params.id : res.status(400).send('Identificação do monitoramento remoto não informada')
+
+        let remoteMonitoringsId = idRemoteMonitoring.split(',')
+        console.log(remoteMonitoringsId)
+
+        remoteMonitoringsId.forEach(async (idRemoteMonitoring) => {
+            await app.db('remote-monitorings')
+                .where({ id: idRemoteMonitoring })
+                .del()
+                .then(_ => console.log(`Monitoramento remoto de id: ${idRemoteMonitoring} deletado`))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao deletar monitoramento remoto')
+                })
+        })
+
+        res.status(200).send('Monitoramento remoto removido com sucesso!')
+    }
+
+    return { getRemoteMonitoringsByAdoption, save, savePicture, removeRemoteMonitoring }
 }

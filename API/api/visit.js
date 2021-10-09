@@ -16,8 +16,9 @@ module.exports = app => {
         const { existsOrError } = app.api.validation
 
         let visit = req.body.visit ? req.body.visit : res.status(400).send('Dados da visita não informados')
-        visit.date = new Date()
 
+        console.log(req.body)
+        
         try {
             existsOrError(visit.report, 'Relatório não informado')
             existsOrError(visit.adoptionId, 'Adoção não informada')
@@ -25,6 +26,8 @@ module.exports = app => {
         } catch (err) {
             return res.status(400).send(err)
         }
+
+        visit.date = new Date(visit.date)
 
         await app.db('visits')
             .insert(visit)
@@ -35,5 +38,25 @@ module.exports = app => {
             })
     }
 
-    return { getVisitsByAdoption, save }
+    const removeVisit = async (req, res) => {
+        const idVisit = req.params.id ? req.params.id : res.status(400).send('Identificação da visita não informada')
+
+        let visitsId = idVisit.split(',')
+        console.log(visitsId)
+
+        visitsId.forEach(async (idVisit) => {
+            await app.db('visits')
+                .where({ id: idVisit })
+                .del()
+                .then(_ => console.log(`Visita de id: ${idVisit} deletado`))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao deletar visit')
+                })
+        })
+
+        res.status(200).send('Animal removido com sucesso!')
+    }
+
+    return { getVisitsByAdoption, save, removeVisit }
 }

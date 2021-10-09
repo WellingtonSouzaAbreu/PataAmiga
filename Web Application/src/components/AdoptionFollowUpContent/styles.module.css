@@ -26,15 +26,3 @@
     background-color: coral;
     transition: 0.3s ease-in;
 }
-
-.tabContent {
-  
-}
-
-.formContainer {
-    width: 100%;
-}
-
-.observations {
-    min-height: 250px;
-}

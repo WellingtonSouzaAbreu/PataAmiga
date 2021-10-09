@@ -44,6 +44,13 @@ const columns = [
 
 class AdoptionsTable extends Component {
 
+    onRowDelete = (rowsSelected) => {
+        let adoptionsIdSelected = rowsSelected.data.map(rowSelected => this.props.adoptions[rowSelected.index].id)
+
+        console.log(adoptionsIdSelected)
+        this.props.onDelete(adoptionsIdSelected)
+    }
+
     render() {
         return (
             <MUIDataTable
@@ -63,6 +70,7 @@ class AdoptionsTable extends Component {
                     expandableRows: true,
                     expandableRowsHeader: true,
                     expandableRowsOnClick: true,
+                    onRowsDelete: this.onRowDelete,
                     customSearch: () => true,
 					onSearchChange: (text) => this.props.onChangeSearchParams({ searchParam: text }),
 					onChangePage: (currentPage) => this.props.onChangePage({ currentPage }),

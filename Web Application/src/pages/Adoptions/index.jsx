@@ -47,7 +47,7 @@ class Adoptions extends Component {
             })
     }
 
-    deleteCollaborator = async (idAdoption) => {
+    deleteAdoption = async (idAdoption) => {
         await axios.delete(`${baseApiUrl}/adoption/${idAdoption}`) // Array de id
             .then(_ => {
                 window.alert(`Adoção deletada com sucesso!`)
@@ -91,7 +91,7 @@ class Adoptions extends Component {
                     <span>ADOÇÕES</span>
                 </div>
                 <AdoptionsTable adoptions={this.state.adoptions} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
-                    onDelete={this.deleteCollaborator} onRefresh={this.loadAdoptions}
+                    onDelete={this.deleteAdoption} onRefresh={this.loadAdoptions}
                     onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams} />
             </div>
         )

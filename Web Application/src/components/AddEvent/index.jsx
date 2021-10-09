@@ -159,12 +159,16 @@ class AddEvent extends Component {
 									<FormHelperText>Selecione uma opção</FormHelperText>
 								</FormControl>
 
+								{
+									this.state.publicationType == 'event'
+										? <CustomDateTimePicker
+											label={'Data e hora de início'}
+											value={this.state.startDateTime} onChangeDateTime={this.changeStartDateTime}
+										/>
+										: null
+								}
 								<CustomDateTimePicker
-									label={'Data e hora de início'}
-									value={this.state.startDateTime} onChangeDateTime={this.changeStartDateTime}
-								/>
-								<CustomDateTimePicker
-									label={'Data e hora de encerramento'}
+									label={this.state.publicationType == 'event' ? 'Data e hora de encerramento' : 'Publicação visível até'}
 									value={this.state.endDateTime} onChangeDateTime={this.changeEndDateTime}
 								/>
 

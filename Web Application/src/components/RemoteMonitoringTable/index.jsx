@@ -29,8 +29,14 @@ const columns = [
 const initialState = {}
 
 class RemoteMonitoringTable extends Component {
-
     state = { ...initialState }
+
+    onRowDelete = (rowsSelected) => {
+        let remoteMonitoringsIdSelected = rowsSelected.data.map(rowSelected => this.props.remoteMonitorings[rowSelected.index].id)
+
+        console.log(remoteMonitoringsIdSelected)
+        this.props.onDelete(remoteMonitoringsIdSelected)
+    }
 
     remoteMonitoringInfo = (remoteMonitoring) => {
         console.log(remoteMonitoring)
@@ -76,6 +82,7 @@ class RemoteMonitoringTable extends Component {
                     expandableRows: true,
                     expandableRowsHeader: true,
                     expandableRowsOnClick: true,
+                    onRowsDelete: this.onRowDelete,
                     renderExpandableRow: (rowData, rowMeta) => {
                         const colSpan = rowData.length + 1;
                         return (

@@ -6,31 +6,11 @@ import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
 
-// import styles from './style.module.css'
+import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import EventDetailsContent from "./../../components/EventDetailsContent";
 
-/* const useStyles = makeStyles((theme) => // TODO makeStyles só funciona em comonent funcional
-	createStyles({
-		modal: {
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-		},
-
-		paper: {
-			backgroundColor: theme.palette.background.paper,
-			border: 'none',
-			borderRadius: 5,
-			boxShadow: theme.shadows[5],
-			width: '60%',
-			height: '75vh',
-			overflowY: 'auto'
-		},
-	}),
-);
- */
 const initialState = {
 	publication: {},
 	modalVisible: false
@@ -62,23 +42,6 @@ class EventDetails extends Component {
 	}
 	render() {
 
-		const classes = {
-			modal: {
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-			},
-			paper: {
-				// backgroundColor: theme.palette.background.paper, // TODO 'theme' só funciona em comonent funcional
-				border: 'none',
-				borderRadius: 5,
-				// boxShadow: theme.shadows[5],
-				width: '60%',
-				height: '75vh',
-				overflowY: 'auto'
-			}
-		}
-
 		return (
 			<div>
 				<IconButton aria-label="delete" color="primary" onClick={this.showModalAndLoadDetails}>
@@ -86,7 +49,7 @@ class EventDetails extends Component {
 				</IconButton>
 
 				<Modal
-					className={classes.modal}
+					className={styles.modal}
 					open={this.state.modalVisible}
 					onClose={this.closeModal}
 					closeAfterTransition
@@ -96,7 +59,7 @@ class EventDetails extends Component {
 					}}
 				>
 					<Fade in={this.state.modalVisible}>
-						<div className={classes.paper}>
+						<div className={styles.paper}>
 							<EventDetailsContent publication={this.state.publication} />
 						</div>
 					</Fade>

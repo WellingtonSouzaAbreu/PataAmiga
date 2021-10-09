@@ -68,7 +68,7 @@ class Collaborators extends Component {
             pageChanged = dataField.currentPage > this.state.maxPageOpened
         }
 
-        this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadCollaborators : null)
+        this.setState({ ...dataField, maxPageOpened: pageChanged ? dataField.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadCollaborators : null)
     }
 
     changeRowsPerPage = (dataField) => {

@@ -9,6 +9,8 @@ module.exports = app => {
         .get(app.api.adoption.getAdoptions)
         .post(app.api.adoption.save)
 
+    app.del('/adoption/:id', app.api.adoption.removeAdoption)
+
     app.route('/adoption/already-adopted-and-express-interest/:animalId')
         .all(app.config.passport.authenticate())
         .get(app.api.adoption.alreadyAdoptedAndExpressInterest)
@@ -92,6 +94,8 @@ module.exports = app => {
 
     app.post('/remote-monitoring', app.api.remoteMonitoring.save)
 
+    app.del('/remote-monitoring/:id', app.api.remoteMonitoring.removeRemoteMonitoring)
+
     app.get('/remote-monitoring/:idAdoption', app.api.remoteMonitoring.getRemoteMonitoringsByAdoption)
 
     app.post('/remote-monitoring/picture', app.api.remoteMonitoring.savePicture)
@@ -113,6 +117,8 @@ module.exports = app => {
     app.del('/veterinary-care/:id', app.api.veterinaryCare.removeVeterinaryCare)
 
     app.post('/visit', app.api.visit.save)
+
+    app.del('/visit/:id', app.api.visit.removeVisit)
 
     app.get('/visit/:idAdoption', app.api.visit.getVisitsByAdoption)
 }

@@ -42,6 +42,13 @@ class AdoptionVisitsTable extends Component {
         )
     }
 
+    onRowDelete = (rowsSelected) => {
+        let visitsIdSelected = rowsSelected.data.map(rowSelected => this.props.visits[rowSelected.index].id)
+
+        console.log(visitsIdSelected)
+        this.props.onDelete(visitsIdSelected)
+    }
+
     render() {
         console.log(this.props.visits)
         return (
@@ -59,9 +66,9 @@ class AdoptionVisitsTable extends Component {
                     expandableRows: true,
                     expandableRowsHeader: true,
                     expandableRowsOnClick: true,
+                    onRowsDelete: this.onRowDelete,
                     renderExpandableRow: (rowData, rowMeta) => {
                         const colSpan = rowData.length + 1;
-                        console.log(rowMeta)
                         return (
                             <TableRow>
                                 <TableCell colSpan={colSpan} className={styles.collapse}>

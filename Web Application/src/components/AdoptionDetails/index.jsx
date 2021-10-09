@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './styles.module.css'
 import { MDBInput } from "mdbreact";
 
+import {baseApiUrl} from './../../services/baseApiUrl.js'
 import AdoptionFollowUpModal from '../AdoptionFollowUpModal';
 
 import {
@@ -13,6 +14,9 @@ import {
 
 export default function AdoptionsAnimalsDetails(props) {
 
+	console.log('props')
+	console.log(props.adoption)
+
 	const FollowUpModal = () => {
 		return (
 			<div className={styles.remonteMonitoringContainerButtons}>
@@ -23,20 +27,20 @@ export default function AdoptionsAnimalsDetails(props) {
 
 	function ImagesCarousel() {
 		return (
-			<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
+			<MDBCarousel  fade className={styles.carouselImages}>
 				<MDBCarouselInner>
-					<MDBCarouselItem itemId={0}>
-						<MDBCarouselElement src='https://s2.glbimg.com/slaVZgTF5Nz8RWqGrHRJf0H1PMQ=/0x0:800x450/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/U/e/NTegqdSe6SoBAoQDjKZA/cachorro.jpg' alt='...' />
-					</MDBCarouselItem>
-					<MDBCarouselItem itemId={1}>
-						<MDBCarouselElement src='https://veja.abril.com.br/wp-content/uploads/2017/01/cao-labrador-3-copy.jpg?quality=70&strip=info&w=680&h=453&crop=1' alt='...' />
-					</MDBCarouselItem>
-					<MDBCarouselItem itemId={2}>
-						<MDBCarouselElement src='https://images.trustinnews.pt/uploads/sites/5/2019/10/tribunais-vao-tratar-animais-de-estimacao-cada-vez-mais-como-criancas-2-1024x687.jpeg' alt='...' />
-					</MDBCarouselItem>
+					{props.adoption.animalImageURL && renderAnimalAdoptedImages()}
 				</MDBCarouselInner>
 			</MDBCarousel>
 		);
+	}
+
+	function renderAnimalAdoptedImages() {
+		return (
+			<MDBCarouselItem itemId={0}>
+				<MDBCarouselElement src={`${baseApiUrl}/animal-pictures/${props.adoption.animalImageURL}`} alt='...' />
+			</MDBCarouselItem>
+		)
 	}
 
 	function animalInfo() {
