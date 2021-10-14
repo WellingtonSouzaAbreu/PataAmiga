@@ -32,12 +32,32 @@ const initialState = {
 	history: '',
 	reasonRescue: '',
 
-	pictures: []
+	pictures: [],
+	initialPictures: [],
+
+	editMode: false
 }
 
 class AddEvent extends Component {
 
 	state = { ...initialState }
+
+	componentDidMount = async () => {
+		if (this.props.edit && !this.state.editMode) {
+			this.setState({ id: this.props.idPublicaton, ... await this.getDetailsOfPublication() })
+		}
+	}
+
+	getDetailsOfPublication = async () => {
+		return await axios.get(`${baseApiUrl}/publication/${this.props.idPublication}`)
+			.then(res => {
+				return res.data
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert('Erro ao solicitar dados detalhados da publicação!')
+			})
+	}
 
 	changeStartDateTime = (startDateTime) => {
 		this.setState({ startDateTime })
@@ -55,6 +75,8 @@ class AddEvent extends Component {
 		}
 
 		const publication = await this.getPublicationDataForType()
+
+		if(this.props.edit) publication.id = this.props.idPublication //Edição
 
 		await axios.post(`${baseApiUrl}/publication`, { publication })
 			.then(async res => {
@@ -124,7 +146,12 @@ class AddEvent extends Component {
 	}
 
 	updateSelectedPictures = (files) => {
+		console.log(files)
 		this.setState({ pictures: files })
+	}
+
+	extractInitialPictures = async () => {
+		return await this.state.imagesURL.map(({ imageURL }) => `${baseApiUrl}/publication-pictures/${imageURL}`)
 	}
 
 	render() {
@@ -137,8 +164,8 @@ class AddEvent extends Component {
 						id="panel1a-header"
 					>
 						<Typography className={styles.heading}>
-							<i className='bx bxs-calendar-plus'></i>
-							<span className={styles.spanAdjust}>Criar uma nova publicação</span>
+							<i className={this.props.edit ? 'bx bxs-edit' : 'bx bxs-layer-plus'}></i>
+							<span className={styles.spanAdjust}>{this.props.edit ? 'Editar publicação' : 'Cadastrar publicação' }</span>
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
@@ -215,6 +242,8 @@ class AddEvent extends Component {
 										</>
 								}
 								<DropzoneArea
+									clearOnUnmount={true}
+									initialFiles={[]} // TODO Initial Files não funciona
 									acceptedFiles={['image/*']}
 									dropzoneText={`Carregar imagens(max: 3)`}
 									onChange={(files) => this.updateSelectedPictures(files)}
@@ -223,7 +252,7 @@ class AddEvent extends Component {
 						</div>
 						<div className={styles.confirmButton}>
 							<button className={styles.buttonCreateEvent} onClick={this.savePublication}>
-								Criar Evento
+								{this.props.edit  ? 'Salvar alterações' : 'Cadastrar'}
 							</button>
 						</div>
 					</AccordionDetails>

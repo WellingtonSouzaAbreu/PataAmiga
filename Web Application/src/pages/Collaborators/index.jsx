@@ -86,6 +86,10 @@ class Collaborators extends Component {
         this.setState({ ...dataField, collaborators: [], currentPage: 0 }, this.loadCollaborators)
     }
 
+    setCollaboratorToEdit = (collaborator) => {
+        this.setState({ editingCollaborator: collaborator })
+    }
+
     render() {
         return (
             <div className={styles.container} >
@@ -96,6 +100,7 @@ class Collaborators extends Component {
                 <CollaboratorsTable collaborators={this.state.collaborators} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
                     onDelete={this.deleteCollaborator} onRefresh={this.loadCollaborators}
                     onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams}
+                    onSetCollaboratorToEdit={this.setCollaboratorToEdit}
                 />
             </div>
         )

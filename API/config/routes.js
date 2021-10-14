@@ -40,7 +40,7 @@ module.exports = app => {
         .get(app.api.collaborator.getCollaborators)
         .post(app.api.collaborator.save)
         .put(app.api.collaborator.save)
-    
+
     app.route('/collaborator/:id')
         .delete(app.api.collaborator.removeCollaborator)
 
@@ -103,6 +103,8 @@ module.exports = app => {
     app.route('/rescue/:animalId')
         .get(app.api.rescue.getRescue)
         .post(app.api.rescue.save)
+
+    app.del('/temporary-home/:id', app.api.temporaryHome.removeTemporaryHome)
 
     app.route('/temporary-home')
         .get(app.api.temporaryHome.getTemporaryHomes)

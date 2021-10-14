@@ -13,7 +13,8 @@ const initialState = {
     searchParam: '',
     rowsPerPage: 10,
     currentPage: 0,
-    maxPageOpened: -1
+    maxPageOpened: -1,
+     
 }
 
 class Events extends Component {
@@ -96,7 +97,7 @@ class Events extends Component {
                 </div>
                 <div className={styles.registerEvents}>
                     <EventsTable publications={this.state.publicationsSummarized} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
-                        onRefresh={this.loadCollaborators} onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage}
+                        onRefresh={this.loadPublications} onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage}
                         onChangeSearchParams={this.changeSearchParams} onDelete={this.deletePublication}
                     />
                 </div>

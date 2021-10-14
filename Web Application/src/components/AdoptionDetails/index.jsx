@@ -149,7 +149,7 @@ export default function AdoptionsAnimalsDetails(props) {
 				<div className={styles.containerCarousel} >
 					<ImagesCarousel />
 				</div>
-				<MDBInput type="textarea" label="Descrição" value={"ERA UMA VEZ "} disabled className={styles.description} />
+				<MDBInput type="textarea" label="Descrição" value={props.adoption.othersCharacteristics} disabled className={styles.description} />
 			</div>
 			{animalInfo()}
 			<div className={styles.divider3}>

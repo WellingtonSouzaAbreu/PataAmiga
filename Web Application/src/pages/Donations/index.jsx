@@ -98,7 +98,7 @@ class Donations extends Component {
 			pageChanged = dataField.currentPage > this.state.maxPageOpened
 		}
 
-		this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadDonations : null)
+		this.setState({ ...dataField, maxPageOpened: pageChanged ? dataField.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadDonations : null)
 	}
 
 	changeRowsPerPage = (dataField) => {

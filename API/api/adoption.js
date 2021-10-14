@@ -12,7 +12,7 @@ module.exports = app => {
         // console.log(`Offset: ${offset}`)
 
         await app.db('adoptions')
-            .select('adoptions.id', 'adoptions.dateAdoption', 'adoptions.collaboratorId', 'adoptions.animalId', 'adoptions.userId', 'animals.name as animalName', 'animals.specie', 'animals.color', 'animals.sex', 'animals.breed', 'animals.dateOfBirth', 'animals.castrated', 'collaborators.name as collaboratorName', 'users.name as adopterName', 'users.address', 'users.houseNumber', 'users.email', 'users.phone', 'users.cellNumber', 'users.city', 'users.district')
+            .select( 'adoptions.id','adoptions.dateAdoption', 'adoptions.collaboratorId', 'adoptions.animalId', 'adoptions.userId', 'animals.name as animalName', 'animals.specie', 'animals.color', 'animals.sex', 'animals.breed', 'animals.dateOfBirth', 'animals.castrated', 'animals.othersCharacteristics', 'collaborators.name as collaboratorName', 'users.name as adopterName', 'users.address', 'users.houseNumber', 'users.email', 'users.phone', 'users.cellNumber', 'users.city', 'users.district')
             .innerJoin('collaborators', 'adoptions.collaboratorId', '=', 'collaborators.id')
             .innerJoin('animals', 'adoptions.animalId', '=', 'animals.id')
             .innerJoin('users', 'adoptions.userId', '=', 'users.id')
@@ -22,7 +22,6 @@ module.exports = app => {
             .then(async (adoptions) => {
                 adoptions.aproximateAge = await estimateAllAges(adoptions)
                 adoptions = await walkAnimals(adoptions)
-                console.log(adoptions)
                 res.status(200).send(adoptions)
             })
             .catch(err => {
@@ -31,8 +30,8 @@ module.exports = app => {
             })
     }
 
-    const walkAnimals = async(adoptions) => {
-        for(adoption of adoptions){
+    const walkAnimals = async (adoptions) => {
+        for (adoption of adoptions) {
             adoption.animalImageURL = await getMainAnimalPicture(adoption.animalId)
         }
         return adoptions
@@ -48,8 +47,6 @@ module.exports = app => {
 
     const estimateAge = (dateOfBirth) => {
         let differenceInMonths = parseInt((Date.parse(new Date()) - Date.parse(dateOfBirth)) / 1000 / 60 / 60 / 24 / 30)
-
-        console.log(differenceInMonths) //TODO
 
         if (differenceInMonths <= 1) {
             return 'Alguns dias'
@@ -215,7 +212,7 @@ module.exports = app => {
                 res.status(500).send('Erro ao cadastrar adoção')
             })
     }
-    
+
     const removeAdoption = async (req, res) => {
         const idAdoption = req.params.id ? req.params.id : res.status(400).send('Identificação da adoção não informada')
 
@@ -236,5 +233,5 @@ module.exports = app => {
         res.status(200).send('Adoção removido com sucesso!')
     }
 
-    return { getAdoptions, alreadyAdoptedAndExpressInterest, getNumberOfAdoptionsByUser, getAnimalsByUserAdoption, save, removeAdoption}
+    return { getAdoptions, alreadyAdoptedAndExpressInterest, getNumberOfAdoptionsByUser, getAnimalsByUserAdoption, save, removeAdoption }
 }

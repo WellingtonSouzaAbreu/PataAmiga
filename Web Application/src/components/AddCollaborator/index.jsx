@@ -13,21 +13,39 @@ const initialState = {
     name: '',
     dateOfBirth: '2000-11-11',
     city: '',
-    cellNumber: ''
+    cellNumber: '',
+
+    editMode: false
 }
 
 class AddCollaborator extends Component {
 
     state = { ...initialState }
 
+    componentDidMount = () => {
+        if (this.props.edit && !this.state.editMode) {
+            this.setState({ ...this.props.collaborator })
+        }
+    }
+
     saveCollaborator = async () => {
-        await axios.post(`${baseApiUrl}/collaborator`, { collaborator: { ...this.state } })
+        await axios.post(`${baseApiUrl}/collaborator`, {
+            collaborator: {
+                name: this.state.name,
+                dateOfBirth: this.state.dateOfBirth,
+                city: this.state.city,
+                cellNumber: this.state.cellNumber,
+            }
+        })
             .then(_ => {
                 window.alert('Colaborador registrado com sucesso!')
-                this.setState({ ...initialState }, () => this.props.onRefresh(true))
+                this.props.edit
+                    ? this.props.onRefresh(true)
+                    : this.setState({ ...initialState }, () => this.props.onRefresh(true))
             })
             .catch(err => {
-                window.alert(err.response.data)
+                console.log(err)
+                window.alert(err)
             })
     }
 
@@ -37,14 +55,14 @@ class AddCollaborator extends Component {
                 <Accordion
                     className={styles.acordion}
                 >
-                    <AccordionSummary
+                    <AccordionSummary // TODO Iniciar expandido se o this.props.edit for true
                         expandIcon={<i className='bx bx-down-arrow-alt'></i>}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
-                        <Typography className={styles.heading}>
+                        <Typography className={styles.heading} >
                             <i className='bx bxs-calendar-plus'></i>
-                            <span className={styles.spanAdjust}>Cadastrar Voluntários   </span>
+                            <span className={styles.spanAdjust}>{this.props.edit ? 'Editar colaborador' : 'Cadastrar colaborador'}   </span>
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails >
@@ -62,7 +80,7 @@ class AddCollaborator extends Component {
                                 value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
                             />
                             <button className={styles.buttonSubmitForm} onClick={this.saveCollaborator}>
-                                Cadastrar
+                                {this.props.edit ? 'Salvar alterações': 'Cadastrar'}
                             </button>
                         </div>
                     </AccordionDetails>

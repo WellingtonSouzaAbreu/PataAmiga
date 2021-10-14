@@ -1,5 +1,6 @@
 const { response } = require('express')
 const multer = require('multer')
+const fs = require('fs')
 
 module.exports = app => {
 
@@ -46,7 +47,7 @@ module.exports = app => {
 
         console.log(req.query)
 
-        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage 
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
         let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
 
         console.log(`Limit: ${limit}`)
@@ -133,13 +134,26 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
-        await app.db('publications')
-            .insert(publication)
-            .then(id => res.status(200).json(id[0]))
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar publicação')
-            })
+        console.log(publication)
+
+        if (!publication.id) {
+            await app.db('publications')
+                .insert(publication)
+                .then(id => res.status(200).json(id[0]))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar publicação')
+                })
+        } else {
+            await app.db('publications')
+                .update(publication)
+                .where({ id: publication.id })
+                .then(id => res.status(200).json(publication.id))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar publicação')
+                })
+        }
     }
 
     const savePicture = async (req, res) => {
@@ -165,20 +179,63 @@ module.exports = app => {
                 publicationId: req.body.publicationId
             }
 
+            //Deletar as ultimas publication-pictures 
             app.db('publications-pictures')
-                .insert(publicationPicture)
-                .then(_ => res.status(204).send())
-                .catch(err => {
-                    console.log(err)
-                    res.status(500).send(err)
+                .select('imageURL')
+                .where({ publicationId: publicationPicture.publicationId })
+                .then(async (imagesURL) => {
+
+                    console.log(imagesURL)
+
+                    if (imagesURL.length > 0) {
+                        await deleteSavedFiles(imagesURL)
+
+                        await app.db('publications-pictures')
+                            .select('imageURL')
+                            .where({ publicationId: publicationPicture.publicationId })
+                            .del()
+                            .then(_ => console.log('Registros deletados!'))
+                            .catch(err => {
+                                console.log(err)
+                                console.log('Erro ao remover registros anteriores')
+                            })
+                        console.log('Registros anteriores deletados')
+
+                    }
+
+                    await app.db('publications-pictures')
+                        .insert(publicationPicture)
+                        .then(_ => res.status(204).send())
+                        .catch(err => {
+                            console.log(err)
+                            res.status(500).send(err)
+                        })
                 })
+                .catch(err => console.log(err))
+        })
+    }
+
+    const deleteSavedFiles = async (imagesURL) => {
+        for (imageURL of imagesURL) {
+            await deleteFile(`${__dirname}/../_publicationPictures/${imageURL.imageURL}`)
+        }
+    }
+
+    const deleteFile = (filePath) => {
+        fs.unlink(filePath, (err) => {
+            if (!err) {
+                console.log('Arquivo deletado com sucesso!');
+            } else {
+                console.log(err)
+                console.log('Erro ao deletar arquivo.');
+            }
         })
     }
 
     const removePublication = async (req, res) => {
         const idPublication = req.params.id ? req.params.id : res.status(400).send('Identificação da publicação não informada')
 
-        let publicationsId = idPublication.split(',') 
+        let publicationsId = idPublication.split(',')
 
         publicationsId.forEach(async (idPublication) => {
             await app.db('publications')
@@ -192,6 +249,7 @@ module.exports = app => {
         })
 
         res.status(200).send('Publicações removidas com sucesso!')
+
     }
 
     return { getPublicationById, getPublications, getPublicationsSummarized, getEvents, getDones, save, savePicture, removePublication }

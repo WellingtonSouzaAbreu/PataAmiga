@@ -40,6 +40,7 @@ class EventDetails extends Component {
 				window.alert('Erro ao solicitar dados detalhados da publicação!')
 			})
 	}
+
 	render() {
 
 		return (
@@ -60,7 +61,7 @@ class EventDetails extends Component {
 				>
 					<Fade in={this.state.modalVisible}>
 						<div className={styles.paper}>
-							<EventDetailsContent publication={this.state.publication} />
+							<EventDetailsContent publication={this.state.publication}  onRefresh={this.props.onRefresh}/>
 						</div>
 					</Fade>
 				</Modal>

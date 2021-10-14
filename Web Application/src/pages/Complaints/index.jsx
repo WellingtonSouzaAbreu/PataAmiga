@@ -66,7 +66,7 @@ class Report extends Component {
             pageChanged = dataField.currentPage > this.state.maxPageOpened
         }
 
-        this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadComplaints : null)
+        this.setState({ ...dataField, maxPageOpened: pageChanged ? dataField.currentField : this.state.maxPageOpened }, pageChanged ? this.loadComplaints : null)
     }
 
     changeRowsPerPage = (dataField) => {

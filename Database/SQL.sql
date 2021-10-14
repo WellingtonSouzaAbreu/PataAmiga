@@ -160,16 +160,15 @@ CREATE TABLE IF NOT EXISTS `publications` (
     startDateTime DATETIME NOT NULL, 
     endDateTime DATETIME NOT NULL, /* TODO */
     title VARCHAR(50) NOT NULL,
-    description VARCHAR(500) NOT NULL,
+    description VARCHAR(500) ,
     reference VARCHAR(100),
-    address VARCHAR(100) NOT NULL,
-    city VARCHAR(40) NOT NULL,
+    address VARCHAR(100),
+    city VARCHAR(40) ,
     publicationType ENUM('event', 'done') NOT NULL,
     district VARCHAR(30),
     animalName VARCHAR(50),
     history TEXT(2000),
-    reasonRescue VARCHAR(20),
-    animalId INT(11), /* Desnecessário */
+    reasonRescue VARCHAR(200),
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 

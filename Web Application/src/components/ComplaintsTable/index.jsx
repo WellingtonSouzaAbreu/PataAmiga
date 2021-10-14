@@ -11,6 +11,14 @@ import ExpadendContent from '../ComplaintDetailsContent/index'
 
 const columns = [
 	{
+		name: "id",
+		label: "ID",
+		options: {
+			filter: true,
+			sort: true,
+		}
+	},
+	{
 		name: "date",
 		label: "Data",
 		options: {
@@ -60,7 +68,7 @@ class ComplaintsTable extends Component {
 		await axios.put(`${baseApiUrl}/complaint/change-state/${idComplaint}/${state}`)
 			.then(_ => {
 				window.alert(`Denúncia ${state ? '' : 'não'} verificada!`)
-				this.props.onRefresh()
+				this.props.onRefresh(true)
 			})
 			.catch(err => {
 				console.log(err)

@@ -89,11 +89,9 @@ function EventDetailsContent(props) {
                             <strong>Status: </strong>
                             <strong className={publicationStatus == 'Ativo' ? styles.statusActive : styles.statusClose}>{publicationStatus}</strong>
                         </div>
-
                     </div>
                     <div>
                     </div>
-
                 </div>
             </>
 
@@ -115,7 +113,6 @@ function EventDetailsContent(props) {
         return carouselItems
     }
 
-    let desc = "Lorem Ipsum is simply dummy tLorem Ipsum Lorem Ipsum is simply dummy tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with theext of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with theis simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with theext of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the"
     function renderHistoryDetails() {
         return (
             <>
@@ -135,11 +132,11 @@ function EventDetailsContent(props) {
                             <div>
                                 <div>
                                     <strong>Nome</strong>
-                                    <span>Chicó</span>
+                                    <span>{props.publication.animalName}</span>
                                 </div>
                                 <div>
                                     <strong>Razao do Resgate</strong>
-                                    <span>Abandono</span>
+                                    <span>{props.publication.reasonRescue}</span>
                                 </div>
                                 <div className={styles.endPublication}>
                                     <div className={styles.itemDetail}>
@@ -155,7 +152,7 @@ function EventDetailsContent(props) {
                     </div>
                     <div className={styles.description}>
                         <span>História</span>
-                        <p>{props.publication.description}</p>
+                        <p>{props.publication.history}</p>
                     </div>
 
                 </div>

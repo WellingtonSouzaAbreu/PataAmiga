@@ -13,16 +13,6 @@ class CollaboratorsTable extends Component {
 
     state = { ...initialState }
 
-    convertArrayInObject = (dataArray) => {
-        return {
-            id: dataArray[0],
-            name: dataArray[1],
-            dateOfBirth: dataArray[2],
-            city: dataArray[3],
-            cellNumber: dataArray[4],
-        }
-    }
-
     onRowDelete = (rowsSelected) => {
         let collaboratorsIdSelected = rowsSelected.data.map(rowSelected => this.props.collaborators[rowSelected.index].id)
 
@@ -31,7 +21,6 @@ class CollaboratorsTable extends Component {
     }
 
     render() {
-        console.log('Colaborators')
         console.log(this.props.collaborators)
         return (
             <MUIDataTable
@@ -40,7 +29,7 @@ class CollaboratorsTable extends Component {
                 columns={[
                     {
                         name: "id",
-                        label: "id",
+                        label: "ID",
                         options: {
                             filter: false,
                             sort: false,
@@ -94,9 +83,8 @@ class CollaboratorsTable extends Component {
                             sort: false,
                             searchable: false,
                             customBodyRender: (value, tableMeta) => {
-                                console.log(tableMeta)
-                                let collaborator = this.convertArrayInObject(tableMeta.rowData)
-                                return <CollaboratorEditModal collaborator={collaborator} onRefresh={this.props.onRefresh} />
+                                const index = tableMeta.rowIndex
+                                return <CollaboratorEditModal collaborator={this.props.collaborators[index]} edit={true} onRefresh={this.props.onRefresh} />
                             }
                         }
                     },

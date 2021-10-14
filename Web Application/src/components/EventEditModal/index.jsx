@@ -5,7 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 
-import AddCollaborator from "../AddCollaborator/index.jsx";
+import AddEvent from "../AddEvent/index.jsx";
 
 const useStyles = makeStyles((theme) =>
 	createStyles({
@@ -21,16 +21,14 @@ const useStyles = makeStyles((theme) =>
 			border: 'none',
 			borderRadius: 5,
 			boxShadow: theme.shadows[5],
-			width: '30%',
-			height: '40vh',
+			width: '80%',
+			height: '60vh',
 			overflowY: 'auto'
 		},
 	}),
 );
 
-export default function CollaboratorEditModal(props) {
-
-	console.log(props.collaborator)
+export default function EventEditModal(props) {
 
 	const classes = useStyles();
 	const [open, setVisibility] = React.useState(false);
@@ -48,7 +46,7 @@ export default function CollaboratorEditModal(props) {
 	return (
 		<div>
 			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
-                <i class='bx bxs-edit'></i>
+				<i class='bx bxs-edit'></i>
 			</IconButton>
 
 			<Modal
@@ -63,7 +61,7 @@ export default function CollaboratorEditModal(props) {
 			>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<AddCollaborator collaborator={props.collaborator} edit={props.edit} onCloseModal={handleClose} onRefresh={props.onRefresh}/>
+						<AddEvent idPublication={props.idPublication} edit={props.edit} onCloseModal={handleClose} onRefresh={props.onRefresh} />
 					</div>
 				</Fade>
 			</Modal>

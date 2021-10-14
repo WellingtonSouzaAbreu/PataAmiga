@@ -55,21 +55,21 @@ class AdoptionFollowUpContent extends Component {
     }
 
     changeVisitReport = (visitReport) => {
-        this.setState({visitReport})
+        this.setState({ visitReport })
     }
 
-    saveVisitReport = async() => {
+    saveVisitReport = async () => {
         const visitData = {
             report: this.state.visitReport,
             date: this.state.visitDate,
             adoptionId: this.props.idAdoption
         }
-        await axios.post(`${baseApiUrl}/visit`, {visit: visitData})
-        .then(_ => {
-            window.alert('Visita salva com sucesso!')
-            this.loadVisits()
-        })
-        .catch(err => window.alert(err.response.data))
+        await axios.post(`${baseApiUrl}/visit`, { visit: visitData })
+            .then(async _ => {
+                window.alert('Visita salva com sucesso!')
+                this.setState({ visits: await this.loadVisits() })
+            })
+            .catch(err => window.alert(err.response.data))
     }
 
     deleteVisit = async (idVisit) => {
@@ -114,7 +114,7 @@ class AdoptionFollowUpContent extends Component {
                     </TabList>
 
                     <TabPanel className={styles.tabContent}>
-                        <RemoteMonitoringTable remoteMonitorings={this.state.remoteMonitorings} onDelete={this.deleteRemoteMonitoring}/>
+                        <RemoteMonitoringTable remoteMonitorings={this.state.remoteMonitorings} onDelete={this.deleteRemoteMonitoring} />
                     </TabPanel>
                     <TabPanel className={styles.tabContent}>
                         <Accordion >
@@ -130,11 +130,11 @@ class AdoptionFollowUpContent extends Component {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <AddVisits visitDate={this.state.visitDate} visitReport={this.state.visitReport} onChageVisitReport={this.changeVisitReport}
-                                onChangeDate={this.changeVisitDate} onRefresh={this.loadVisits} onSaveVisitReport={this.saveVisitReport}/>
-                                
+                                    onChangeDate={this.changeVisitDate} onRefresh={this.loadVisits} onSaveVisitReport={this.saveVisitReport} />
+
                             </AccordionDetails>
                         </Accordion>
-                        <AdoptionVisitReportTable visits={this.state.visits} onDelete={this.deleteVisit}/>
+                        <AdoptionVisitReportTable visits={this.state.visits} onDelete={this.deleteVisit} />
                     </TabPanel>
                 </Tabs>
             </div>
