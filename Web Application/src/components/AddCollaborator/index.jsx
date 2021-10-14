@@ -29,14 +29,16 @@ class AddCollaborator extends Component {
     }
 
     saveCollaborator = async () => {
-        await axios.post(`${baseApiUrl}/collaborator`, {
-            collaborator: {
-                name: this.state.name,
-                dateOfBirth: this.state.dateOfBirth,
-                city: this.state.city,
-                cellNumber: this.state.cellNumber,
-            }
-        })
+        let collaborator = {
+            name: this.state.name,
+            dateOfBirth: this.state.dateOfBirth,
+            city: this.state.city,
+            cellNumber: this.state.cellNumber,
+        }
+
+        if (this.props.collaborator.id) collaborator.id = this.props.collaborator.id
+
+        await axios.post(`${baseApiUrl}/collaborator`, { collaborator })
             .then(_ => {
                 window.alert('Colaborador registrado com sucesso!')
                 this.props.edit
@@ -80,7 +82,7 @@ class AddCollaborator extends Component {
                                 value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
                             />
                             <button className={styles.buttonSubmitForm} onClick={this.saveCollaborator}>
-                                {this.props.edit ? 'Salvar alterações': 'Cadastrar'}
+                                {this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
                             </button>
                         </div>
                     </AccordionDetails>
