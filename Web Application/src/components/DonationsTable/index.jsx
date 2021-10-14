@@ -99,6 +99,14 @@ class DonationsTable extends Component {
 						options: {
 							filter: true,
 							sort: false,
+							customBodyRender: (value, tableMeta) => {
+								const index = tableMeta.rowIndex
+								return (
+									<IconButton aria-label="delete" color="primary" onClick={() => this.showDonationDetails(this.props.donations[index])}>
+										<i className='bx bx-calendar-edit'></i>
+									</IconButton>
+								)
+							}
 						}
 					},
 					{
@@ -107,6 +115,14 @@ class DonationsTable extends Component {
 						options: {
 							filter: true,
 							sort: false,
+							customBodyRender: (value, tableMeta) => {
+								const index = tableMeta.rowIndex
+								return (
+									<IconButton aria-label="delete" color="primary" onClick={() => window.alert('Funcionalidade ainda não implementada!')}>
+										<i className='bx bx-calendar-edit'></i>
+									</IconButton>
+								)
+							}
 						}
 					}
 				]}

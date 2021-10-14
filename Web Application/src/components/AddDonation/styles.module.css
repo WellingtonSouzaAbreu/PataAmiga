@@ -1,0 +1,58 @@
+.registerMoneyDonation {
+    display: flex;
+    padding: 15px;
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.registerDonation {
+    width: 90%;
+    border-left: 4px solid #F27B35;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.formRegisterDonation{
+    padding: 10px;
+}
+
+.formRegisterDonation > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.iconDescriptionCard {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    background-color: #F27B35;
+    color: #ffffff;
+}
+
+.iconDescriptionCard > i{
+    margin-right: 10px;
+}
+
+.descriptionInput {
+    min-height: 100px;
+}
+
+.select {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btnSubimit{
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: #ffffff;
+    background-color: #F27B35;
+    font-weight: bold;
+}

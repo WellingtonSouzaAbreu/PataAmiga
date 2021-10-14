@@ -7,13 +7,11 @@ module.exports = app => {
         let page = !!req.query.page ? req.query.page : 0
         let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
 
-        console.log(req.query)
-
         let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
         let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
 
-        console.log(`Limit: ${limit}`)
-        console.log(`Offset: ${offset}`)
+        /* console.log(`Limit: ${limit}`)
+        console.log(`Offset: ${offset}`) */
 
         await app.db('donations')
             .where('name'.toLowerCase(), 'like', `%${name}%`)
@@ -30,10 +28,12 @@ module.exports = app => {
     }
 
     const changeStateOfDonation = async (req, res) => {
-        const donationstate = req.params.state == 'true' ? 1 : 0
+        const donationState = req.params.state == 'true' ? 1 : 0
+
+        console.log(donationState)
 
         await app.db('donations')
-            .update({ donationReceived: donationstate })
+            .update({ donationReceived: donationState })
             .where({ id: req.params.id })
             .then(_ => res.status(200).send())
             .catch(err => {
@@ -64,6 +64,7 @@ module.exports = app => {
         const count = await app.db('donations')
             .count(`donationType as ${donationType}`)
             .where({ donationType: donationType })
+            // .where({ donationReceived: 1 }) TODO Somente doações recebidas ou todas?
             .then(([count]) => count[donationType])
             .catch(err => {
                 console.log(err)
