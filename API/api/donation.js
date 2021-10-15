@@ -77,7 +77,7 @@ module.exports = app => {
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
-        const userId =/*  req.user.id  */ 1
+        const userId =/*  req.user.id  */ 1 // Default TODO Habilitar passport
         let donation = req.body
         donation.date = convertDate(donation.date)
 
@@ -104,23 +104,34 @@ module.exports = app => {
             existsOrError(donation.cellNumber, 'Celular do doador não informado')
             existsOrError(donation.date, 'Data não informada')
             existsOrError(donation.description, 'Descrição não informada')
-
-
         } catch (err) {
             return res.status(400).send(err)
         }
 
-        await app.db('donations')
+        if(!donation.id){
+            await app.db('donations')
             .insert(donation)
             .then(_ => res.status(204).send())
             .catch(err => {
                 console.log(err)
                 res.status(500).send('Erro ao cadastrar doação')
             })
+        }else{
+            console.log('ToEdit')
+            console.log(donation)
+            await app.db('donations')
+            .update(donation)
+            .where({id: donation.id})
+            .then(_ => res.status(204).send())
+            .catch(err => {
+                console.log(err)
+                res.status(500).send('Erro ao cadastrar doação')
+            })
+        }
     }
 
     const convertDate = (date) => {
-        return new Date(new Date((date.split('Z')[0])).getTime() - 14400000)
+        return new Date(date)
     }
 
     const removeDonation = async (req, res) => {

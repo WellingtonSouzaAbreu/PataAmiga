@@ -19,14 +19,25 @@ const initialState = {
     donationType: '',
     date: new Date(),
     donationReceived: false,
+
+    editMode: false
 }
 
 class AddDonation extends Component {
 
     state = { ...initialState }
 
+    componentDidMount = () => {
+        if (this.props.edit && !this.state.editMode) {
+            this.setState({ ...this.props.donation, editMode: true })
+        }
+    }
+
     saveDonation = async () => {
-        await axios.post(`${baseApiUrl}/donation`, {...this.state})
+        const donation = {...this.state}
+        delete donation.editMode
+
+        await axios.post(`${baseApiUrl}/donation`,  donation )
             .then(_ => {
                 window.alert('Doação registrada com sucesso!')
                 this.props.onRefresh(true)
@@ -68,7 +79,7 @@ class AddDonation extends Component {
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={this.state.donationReceived}
+                    value={!!this.state.donationReceived}
                     onChange={(e) => this.setState({ donationReceived: e.target.value })}
                     className={styles.select}
                 >
@@ -82,11 +93,11 @@ class AddDonation extends Component {
     render() {
         return (
             <div className={styles.registerMoneyDonation}>
-                {this.props.onDonationsReceivedCard()}
+                {!this.props.edit && this.props.onDonationsReceivedCard()}
                 <div className={styles.registerDonation}>
                     <div className={styles.iconDescriptionCard}>
                         <i className='bx bx-add-to-queue bx-sm'  ></i>
-                        <strong>Registrar uma doação</strong>
+                        <strong>{this.props.edit ? 'Editar adoção' : 'Registrar uma doação'} </strong>
                     </div>
                     <div className={styles.formRegisterDonation}>
                         <DatePicker label={'Data'}
@@ -103,7 +114,7 @@ class AddDonation extends Component {
                         <MDBInput type="textarea" label="Descrição" className={styles.descriptionInput}
                             value={this.state.description} onChange={e => this.setState({ description: e.target.value })}
                         />
-                        <button className={styles.btnSubimit} onClick={this.saveDonation}>FINALIZAR</button>
+                        <button className={styles.btnSubimit} onClick={this.saveDonation}>{this.props.edit ? 'Salvar alterações' : 'FINALIZAR'}</button>
                     </div>
                 </div>
             </div>

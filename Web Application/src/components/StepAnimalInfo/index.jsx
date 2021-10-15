@@ -84,6 +84,12 @@ export default function StepInfoAnimal(props) {
 							value={props.animal.name} onChange={(e) => props.onChange({ name: e.target.value })} />
 						<MDBInput label="Cor" className={styles.inputs} outline
 							value={props.animal.color} onChange={(e) => props.onChange({ color: e.target.value })} />
+
+						{/* TODO Estilizar checkbox (Não entendi esse componente, parece bugado)*/}
+						<MDBInput label="Disponível para adoção?" type="checkbox" id=""
+							checked={props.animal.availableForAdoption} onChange={(e) => props.onChange({ availableForAdoption: e.target.checked })}
+						/>
+
 					</div>
 					<div className={styles.sectionDiv}>
 						<MDBInput label="Especie" className={styles.inputs} outline

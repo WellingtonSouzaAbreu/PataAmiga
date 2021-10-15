@@ -22,7 +22,8 @@ const initialState = {
 	animal: {
 		castrated: false,
 		sex: false,
-		dateOfBirth: new Date()
+		dateOfBirth: new Date(),
+		availableForAdoption: false
 	},
 	pictures: {},
 	veterinaryCare: {

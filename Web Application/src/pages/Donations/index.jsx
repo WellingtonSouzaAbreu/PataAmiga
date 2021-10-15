@@ -212,7 +212,7 @@ class Donations extends Component {
 				<div className={styles.formDivider}>
 					<AddDonation onDonationsReceivedCard={this.donationsReceivedCard} onRefresh={this.loadDonations}/>
 					<div className={styles.appRequestDonationList}>
-						<DonationsTable donations={this.state.donations} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
+						<DonationsTable donations={this.state.donations} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage} onRefresh={this.loadDonations}
 							onDelete={this.deleteDonation} onToggleVisibilityOfDonationDetails={this.toggleVisibilityOfDonationDetails}
 							onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams}
 						/>

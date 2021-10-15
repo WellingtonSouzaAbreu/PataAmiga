@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `animals` (
     surname VARCHAR(20),
     sex ENUM('M', 'F') NOT NULL,
     othersCharacteristics VARCHAR(300),
+    availableForAdoption BOOLEAN DEFAULT 0,
     PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8;
 

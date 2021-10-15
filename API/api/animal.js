@@ -28,17 +28,17 @@ module.exports = app => {
 
         console.log(differenceInMonths) //TODO
 
-        if(differenceInMonths <= 1){
-            return  'Alguns dias'
+        if (differenceInMonths <= 1) {
+            return 'Alguns dias'
         }
 
-        if(differenceInMonths > 1 && differenceInMonths <= 12){
+        if (differenceInMonths > 1 && differenceInMonths <= 12) {
             return `${differenceInMonths} meses`
         }
 
-        if(parseInt(differenceInMonths > 12) == 1){
+        if (parseInt(differenceInMonths > 12) == 1) {
             return `1 ano`
-        }else{
+        } else {
             return `${parseInt(differenceInMonths / 12)} anos`
         }
     }
@@ -91,7 +91,13 @@ module.exports = app => {
             .then(temporaryHome => temporaryHome ? true : false)
             .catch(err => console.log(err))
 
-        extraInfo.availableToAdoption = !extraInfo.adopted// TODO Como saber se ele é disponível para a adpção
+        extraInfo.availableToAdoption = await app.db('animals') // TODO Como saber se ele é disponível para a adpção
+            .select('availableForAdoption')
+            .where({ id: animalId })
+            .first()
+            .then(({availableForAdoption}) => availableForAdoption ? true : false)
+            .catch(err => console.log(err))
+
 
         return extraInfo
     }
@@ -141,11 +147,11 @@ module.exports = app => {
             })
     }
 
-    const estimateAllAges = async(animals) => {
-        for(animal of animals){
+    const estimateAllAges = async (animals) => {
+        for (animal of animals) {
             animal.aproximateAge = await estimateAge(animal.dateOfBirth)
         }
-            return animals
+        return animals
     }
 
     const getAnimalMainPicture = async (animals) => {
