@@ -61,7 +61,7 @@ export default class Animals extends Component {
                         <StepGroupAnimalRegister onRefresh={this.loadAnimals}/>
                     </AccordionDetails>
                 </Accordion>
-                <AnimalsTable animals={this.state.animals} onDelete={this.deleteAnimal}/>
+                <AnimalsTable animals={this.state.animals} onDelete={this.deleteAnimal} onRefresh={this.loadAnimals}/>
             </div>
         )
     }

@@ -9,7 +9,7 @@ module.exports = app => {
         .get(app.api.adoption.getAdoptions)
         .post(app.api.adoption.save)
 
-    app.del('/adoption/:id', app.api.adoption.removeAdoption)
+    app.delete('/adoption/:id', app.api.adoption.removeAdoption)
 
     app.route('/adoption/already-adopted-and-express-interest/:animalId')
         .all(app.config.passport.authenticate())
@@ -94,7 +94,7 @@ module.exports = app => {
 
     app.post('/remote-monitoring', app.api.remoteMonitoring.save)
 
-    app.del('/remote-monitoring/:id', app.api.remoteMonitoring.removeRemoteMonitoring)
+    app.delete('/remote-monitoring/:id', app.api.remoteMonitoring.removeRemoteMonitoring)
 
     app.get('/remote-monitoring/:idAdoption', app.api.remoteMonitoring.getRemoteMonitoringsByAdoption)
 
@@ -104,7 +104,7 @@ module.exports = app => {
         .get(app.api.rescue.getRescue)
         .post(app.api.rescue.save)
 
-    app.del('/temporary-home/:id', app.api.temporaryHome.removeTemporaryHome)
+    app.delete('/temporary-home/:id', app.api.temporaryHome.removeTemporaryHome)
 
     app.route('/temporary-home')
         .get(app.api.temporaryHome.getTemporaryHomes)
@@ -116,11 +116,11 @@ module.exports = app => {
         .put(app.api.user.save)
 
     app.post('/veterinary-care', app.api.veterinaryCare.save)
-    app.del('/veterinary-care/:id', app.api.veterinaryCare.removeVeterinaryCare)
+    app.delete('/veterinary-care/:id', app.api.veterinaryCare.removeVeterinaryCare)
 
     app.post('/visit', app.api.visit.save)
 
-    app.del('/visit/:id', app.api.visit.removeVisit)
+    app.delete('/visit/:id', app.api.visit.removeVisit)
 
     app.get('/visit/:idAdoption', app.api.visit.getVisitsByAdoption)
 }

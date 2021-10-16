@@ -14,7 +14,7 @@ module.exports = app => {
                 animal.veterinaryCare = await getVeterinaryCare(idAnimal)
                 animal.rescue = await getRescue(idAnimal)
                 animal.extraInfo = await getExtraInfo(idAnimal)
-                // console.log(animal)
+                console.log(animal.rescue)
                 res.status(200).send(animal)
             })
             .catch(err => {
@@ -95,7 +95,7 @@ module.exports = app => {
             .select('availableForAdoption')
             .where({ id: animalId })
             .first()
-            .then(({availableForAdoption}) => availableForAdoption ? true : false)
+            .then(({ availableForAdoption }) => availableForAdoption ? true : false)
             .catch(err => console.log(err))
 
 
@@ -191,50 +191,83 @@ module.exports = app => {
             existsOrError(animal.breed, 'Raça não informado')
             existsOrError(animal.sex, 'Sexo não informado')
 
-            existsOrError(veterinaryCare.dateOfVeterinaryCare, 'Data do cuidado veterinário não informado')
-            existsOrError(veterinaryCare.totalCostOfTreatment, 'Custo total do cuidado veterinário não informado')
-            existsOrError(veterinaryCare.veterinaryName, 'Nome do veterinário não informado')
+            if (!animal.id) {
+                existsOrError(veterinaryCare.dateOfVeterinaryCare, 'Data do cuidado veterinário não informado')
+                existsOrError(veterinaryCare.totalCostOfTreatment, 'Custo total do cuidado veterinário não informado')
+                existsOrError(veterinaryCare.veterinaryName, 'Nome do veterinário não informado')
+            }
         } catch (err) {
             return res.status(400).send(err)
         }
 
         animal.dateOfBirth = new Date(animal.dateOfBirth)
 
-        const animalId = await app.db('animals')
-            .insert(animal)
-            .then(id => {
-                console.log('Success => Animal')
-                return id[0]
-            })
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar animal')
-            })
+        if (!animal.id) {
+            const animalId = await app.db('animals')
+                .insert(animal)
+                .then(id => {
+                    console.log('Success => Animal')
+                    return id[0]
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar animal')
+                })
 
-        veterinaryCare.dateOfVeterinaryCare = new Date(veterinaryCare.dateOfVeterinaryCare)
+            veterinaryCare.dateOfVeterinaryCare = new Date(veterinaryCare.dateOfVeterinaryCare)
 
-        const veterinaryCareId = await app.db('veterinary-cares')
-            .insert({ ...veterinaryCare, animalId: animalId })
-            .then(id => {
-                console.log('Success => Cuidado veterinário')
-                return id[0]
-            })
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar cuidado veterinário')
-            })
+            const veterinaryCareId = await app.db('veterinary-cares')
+                .insert({ ...veterinaryCare, animalId: animalId })
+                .then(id => {
+                    console.log('Success => Cuidado veterinário')
+                    return id[0]
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar cuidado veterinário')
+                })
 
-        rescue.dateOfRescue = new Date(rescue.dateOfRescue)
+            rescue.dateOfRescue = new Date(rescue.dateOfRescue)
 
-        await app.db('rescues')
-            .insert({ ...rescue, veterinaryCareId, animalId })
-            .then(id => console.log('Success => Resgate'))
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar resgate')
-            })
+            await app.db('rescues')
+                .insert({ ...rescue, veterinaryCareId, animalId })
+                .then(id => console.log('Success => Resgate'))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar resgate')
+                })
 
-        await res.status(200).json(animalId)
+            await res.status(200).json(animalId)
+        } else {
+            console.log('edit')
+            delete animal.aproximateAge
+            delete animal.imagesURL
+            delete animal.extraInfo
+
+            await app.db('animals')
+                .update(animal)
+                .where({ id: animal.id })
+                .then(id => {
+                    console.log('Success => Animal')
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar animal')
+                })
+
+            rescue.dateOfRescue = new Date(rescue.dateOfRescue)
+
+            await app.db('rescues')
+                .update(rescue)
+                .where({ id: rescue.id })
+                .then(_ => console.log('Success => Resgate'))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar resgate')
+                })
+
+            await res.status(200).json(animal.id)
+        }
     }
 
     const savePicture = async (req, res) => {
@@ -256,7 +289,7 @@ module.exports = app => {
             }
 
             console.log(req.body)
-            console.log(req.file)
+            console.log(req.file)           //TODO sobrescrever imagens
 
             let animalPicture = {
                 imageURL: req.file.filename,

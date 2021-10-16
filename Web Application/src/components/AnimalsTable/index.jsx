@@ -3,6 +3,7 @@ import MUIDataTable from "mui-datatables";
 import IconButton from '@material-ui/core/IconButton';
 
 import AnimalDetails from "./../AnimalDetails/index.jsx";
+import AnimalEditModal from './../AnimalEditModal/index.jsx'
 
 const columns = [];
 const options = {}
@@ -30,11 +31,10 @@ class AnimalsTable extends Component {
                 columns={[
                     {
                         name: "id",
-                        label: "Nome",
+                        label: "ID",
                         options: {
                             filter: true,
                             sort: true,
-                            display: false
                         }
                     },
                     {
@@ -84,6 +84,18 @@ class AnimalsTable extends Component {
                             filter: true,
                             sort: false,
                             customBodyRender: (value, tableMeta) => <AnimalDetails idAnimal={tableMeta.rowData[0]} /> // Id do registro
+                        }
+                    },
+                    {
+                        name: "edit",
+                        label: "Editar",
+                        options: {
+                            filter: true,
+                            sort: false,
+                            customBodyRender: (value, tableMeta) => {
+                                const index = tableMeta.rowIndex
+                                return <AnimalEditModal idAnimal={this.props.animals[index].id} edit={true} onRefresh={this.props.onRefresh}/> 
+                            }
                         }
                     },
                 ]}

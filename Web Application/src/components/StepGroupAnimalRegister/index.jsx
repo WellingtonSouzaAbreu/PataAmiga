@@ -42,6 +42,39 @@ class StepGroupAnimalRegister extends Component {
 
 	state = { ...initialState }
 
+	componentDidMount = () => {
+		if (this.props.edit) {
+			this.loadAnimal()
+		}
+	}
+
+	loadAnimal = async () => {
+		await axios.get(`${baseApiUrl}/animal/${this.props.idAnimal}/all-data`)
+			.then(async res => {
+				console.log(res.data)
+
+				let newState = await this.structureStateData(res.data)
+
+				this.setState({ ...newState }) //Depois de salvo, os dados veterinarios são editados por detalhes
+			})
+			.catch(err => {
+				console.log(err)
+				window.alert('Occoreu um erro ao obter dados do animal!')
+			})
+	}
+
+	structureStateData = async (allData) => {
+		let currentState = { ...this.state }
+
+		currentState.rescue = allData.rescue ? allData.rescue : currentState.rescue
+
+		delete allData.veterinaryCare
+		delete allData.rescue
+
+		currentState.animal = allData
+		return currentState
+	}
+
 	nextStep = () => {
 		this.setActiveStep(this.state.activeStep + 1);
 	};
@@ -63,7 +96,11 @@ class StepGroupAnimalRegister extends Component {
 			case 0:
 				return <StepAnimalInfo animal={this.state.animal} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
 			case 1:
-				return <StepAnimalVeterinary veterinaryCare={this.state.veterinaryCare} onChange={this.updateVeterinaryCareField} onChangeDate={this.changeDateVeterinaryCare} />;
+				if (this.props.edit) { // TODO provisório, tá feio
+					return <h1>A edição dos dados veterinários deve ser feita através da aba 'Mais informações'</h1>
+				} else {
+					return <StepAnimalVeterinary veterinaryCare={this.state.veterinaryCare} onChange={this.updateVeterinaryCareField} onChangeDate={this.changeDateVeterinaryCare} />
+				}
 			case 2:
 				return <StepAnimalRescue rescue={this.state.rescue} onChange={this.updateAnimalRescueField} onChangeDate={this.changeDateRescue} />;
 			default:
@@ -95,7 +132,7 @@ class StepGroupAnimalRegister extends Component {
 
 	updateAnimalRescueField = (fieldValue) => {
 		let rescue = { ...this.state.rescue, ...fieldValue }
-		this.setState({ rescue }, console.log(this.state.rescue))
+		this.setState({ rescue })
 	}
 
 	changeDateRescue = (date) => {

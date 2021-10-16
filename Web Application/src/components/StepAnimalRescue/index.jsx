@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styles from './styles.module.css'
 import { MDBInput } from "mdbreact";
 import FormControl from '@material-ui/core/FormControl';
@@ -9,8 +9,8 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 
 import CustomDatePicker from '../CustomDatePicker';
 
-function StepAnimalRescue(props) {
-    const selectPoliceSupport = () => {
+class StepAnimalRescue extends Component {
+    selectPoliceSupport = () => {
         return (
             <FormControl className={styles.selectPoliceSupport} >
                 <InputLabel id="demo-simple-select-helper-label">Houve suporte policial?</InputLabel>
@@ -18,8 +18,8 @@ function StepAnimalRescue(props) {
 
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={props.policeSupport}
-                    onChange={(e) => props.onChange({ policeSupport: e.target.value })}
+                    value={!!this.props.rescue.policeSupport}
+                    onChange={(e) => this.props.onChange({ policeSupport: e.target.value })}
                 >
                     <MenuItem value={true}>Sim</MenuItem>
                     <MenuItem value={false}>Não</MenuItem>
@@ -29,15 +29,15 @@ function StepAnimalRescue(props) {
         )
     }
 
-    const selectForwardedToKennel = () => {
+    selectForwardedToKennel = () => {
         return (
             <FormControl className={styles.selectCForwarded} >
                 <InputLabel id="demo-simple-select-helper-label">Enchaminhado para o canil?</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={props.forwardedToKennel}
-                    onChange={(e) => props.onChange({ forwardedToKennel: e.target.value })}
+                    value={!!this.props.rescue.forwardedToKennel}
+                    onChange={(e) => this.props.onChange({ forwardedToKennel: e.target.value })}
                 >
                     <MenuItem value={true}>Sim</MenuItem>
                     <MenuItem value={false}>Não</MenuItem>
@@ -46,40 +46,42 @@ function StepAnimalRescue(props) {
             </FormControl>
         )
     }
-    return (
-        <div className={styles.container}>
-            <CustomDatePicker label={'Data de resgate'} value={new Date()}
-                onChangeDate={props.onChangeDate}
-            />
-            <div>
-                <div className={styles.localeRescue}>
-                    <div>
-                        <MDBInput label="Endereço" className={styles.andress} outline
-                            value={props.address} onChange={(e) => props.onChange({ address: e.target.value })}
-                        />
+    render() {
+        return (
+            <div className={styles.container} >
+                <CustomDatePicker label={'Data de resgate'} value={this.props.rescue.dateOfRescue}
+                    onChangeDate={this.props.onChangeDate}
+                />
+                <div>
+                    <div className={styles.localeRescue}>
+                        <div>
+                            <MDBInput label="Endereço" className={styles.andress} outline
+                                value={this.props.rescue.address} onChange={(e) => this.props.onChange({ address: e.target.value })}
+                            />
+                        </div>
+                        <div>
+                            <MDBInput label="Local" className={styles.andress} outline
+                                value={this.props.rescue.locale} onChange={(e) => this.props.onChange({ locale: e.target.value })}
+                            />
+                        </div>
                     </div>
-                    <div>
-                        <MDBInput label="Local" className={styles.andress} outline
-                            value={props.locale} onChange={(e) => props.onChange({ locale: e.target.value })}
-                        />
+                    <div className={styles.policeSupport}>
+                        <div>
+                            {this.selectPoliceSupport()}
+                        </div>
+                        <div>
+                            <MDBInput label="Número do BO" className={styles.boNumber} outline
+                                value={this.props.rescue.BONumber} onChange={(e) => this.props.onChange({ BONumber: e.target.value })}
+                            />
+                        </div>
                     </div>
-                </div>
-                <div className={styles.policeSupport}>
-                    <div>
-                        {selectPoliceSupport()}
+                    <div className={styles.dateRescue}>
+                        {this.selectForwardedToKennel()}
                     </div>
-                    <div>
-                        <MDBInput label="Número do BO" className={styles.boNumber} outline
-                            value={props.BONumber} onChange={(e) => props.onChange({ BONumber: e.target.value })}
-                        />
-                    </div>
-                </div>
-                <div className={styles.dateRescue}>
-                    {selectForwardedToKennel()}
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default StepAnimalRescue
