@@ -8,7 +8,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 
 import {baseApiUrl} from './../../services/baseApiUrl.js'
-import StepGroupAnimalRegister from './../../components/StepGroupAnimalRegister/index.jsx';
+import AddAnimal from './../../components/AddAnimal/index.jsx';
 import AnimalsTable from './../../components/AnimalsTable/index.jsx'
 
 const initialState = {
@@ -58,7 +58,7 @@ export default class Animals extends Component {
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <StepGroupAnimalRegister onRefresh={this.loadAnimals}/>
+                        <AddAnimal onRefresh={this.loadAnimals}/>
                     </AccordionDetails>
                 </Accordion>
                 <AnimalsTable animals={this.state.animals} onDelete={this.deleteAnimal} onRefresh={this.loadAnimals}/>

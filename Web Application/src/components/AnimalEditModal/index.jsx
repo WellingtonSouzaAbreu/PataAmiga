@@ -5,7 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 
-import StepGroupAnimalRegister from "../StepGroupAnimalRegister/index.jsx";
+import AddAnimal from "../AddAnimal/index.jsx";
 
 const useStyles = makeStyles((theme) =>
 	createStyles({
@@ -61,7 +61,7 @@ export default function AnimalEditModal(props) {
 			>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<StepGroupAnimalRegister idAnimal={props.idAnimal} edit={props.edit} onCloseModal={handleClose} onRefresh={props.onRefresh} />
+						<AddAnimal idAnimal={props.idAnimal} edit={props.edit} onCloseModal={handleClose} onRefresh={props.onRefresh} />
 					</div>
 				</Fade>
 			</Modal>

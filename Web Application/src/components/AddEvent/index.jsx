@@ -76,7 +76,7 @@ class AddEvent extends Component {
 
 		const publication = await this.getPublicationDataForType()
 
-		if(this.props.edit) publication.id = this.props.idPublication //Edição
+		if (this.props.edit) publication.id = this.props.idPublication //Edição
 
 		await axios.post(`${baseApiUrl}/publication`, { publication })
 			.then(async res => {
@@ -146,6 +146,7 @@ class AddEvent extends Component {
 	}
 
 	updateSelectedPictures = (files) => {
+		if(!!files) return 
 		console.log(files)
 		this.setState({ pictures: files })
 	}
@@ -155,6 +156,8 @@ class AddEvent extends Component {
 	}
 
 	render() {
+
+		console.log(this.state.imagesURL ? `${baseApiUrl}/publication-pictures/${this.state.imagesURL[0].imageURL}` : 'Null')
 		return (
 			<div className={styles.container} >
 				<Accordion >
@@ -165,7 +168,7 @@ class AddEvent extends Component {
 					>
 						<Typography className={styles.heading}>
 							<i className={this.props.edit ? 'bx bxs-edit' : 'bx bxs-layer-plus'}></i>
-							<span className={styles.spanAdjust}>{this.props.edit ? 'Editar publicação' : 'Cadastrar publicação' }</span>
+							<span className={styles.spanAdjust}>{this.props.edit ? 'Editar publicação' : 'Cadastrar publicação'}</span>
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
@@ -243,7 +246,7 @@ class AddEvent extends Component {
 								}
 								<DropzoneArea
 									clearOnUnmount={true}
-									initialFiles={[]} // TODO Initial Files não funciona
+									initialFiles={[this.state.imagesURL ? `${baseApiUrl}/publication-pictures/${this.state.imagesURL[0].imageURL}` : '']} // TODO Initial Files não funciona
 									acceptedFiles={['image/*']}
 									dropzoneText={`Carregar imagens(max: 3)`}
 									onChange={(files) => this.updateSelectedPictures(files)}
@@ -252,7 +255,7 @@ class AddEvent extends Component {
 						</div>
 						<div className={styles.confirmButton}>
 							<button className={styles.buttonCreateEvent} onClick={this.savePublication}>
-								{this.props.edit  ? 'Salvar alterações' : 'Cadastrar'}
+								{this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
 							</button>
 						</div>
 					</AccordionDetails>

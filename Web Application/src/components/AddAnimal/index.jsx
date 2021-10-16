@@ -12,9 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
 
 import { baseApiUrl } from '../../services/baseApiUrl';
-import StepAnimalInfo from './../StepAnimalInfo/index.jsx'
-import StepAnimalRescue from './../StepAnimalRescue/index.jsx'
-import StepAnimalVeterinary from './../StepAnimalVeterinary/index.jsx'
+import StepAnimalInfo from '../StepAnimalInfo/index.jsx'
+import StepAnimalRescue from '../StepAnimalRescue/index.jsx'
+import StepAnimalVeterinary from '../StepAnimalVeterinary/index.jsx'
 
 const initialState = {
 	activeStep: 0,
@@ -38,7 +38,7 @@ const initialState = {
 	}
 }
 
-class StepGroupAnimalRegister extends Component {
+class AddAnimal extends Component {
 
 	state = { ...initialState }
 
@@ -94,7 +94,7 @@ class StepGroupAnimalRegister extends Component {
 	getStepContent(step) {
 		switch (step) {
 			case 0:
-				return <StepAnimalInfo animal={this.state.animal} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
+				return <StepAnimalInfo animal={this.state.animal} selectedPictures={this.state.pictures} edit={this.props.edit} onChange={this.updateAnimalField}  onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
 			case 1:
 				if (this.props.edit) { // TODO provisório, tá feio
 					return <h1>A edição dos dados veterinários deve ser feita através da aba 'Mais informações'</h1>
@@ -238,4 +238,4 @@ class StepGroupAnimalRegister extends Component {
 	}
 }
 
-export default StepGroupAnimalRegister
+export default AddAnimal

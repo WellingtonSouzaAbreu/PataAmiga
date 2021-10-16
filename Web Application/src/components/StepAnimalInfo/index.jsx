@@ -1,7 +1,4 @@
-import React from 'react'
-import styles from './styles.module.css'
-
-
+import React, {useState} from 'react'
 import { MDBInput } from "mdbreact";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -10,12 +7,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { DropzoneArea } from 'material-ui-dropzone'
 
+import styles from './styles.module.css'
+
+import { baseApiUrl } from './../../services/baseApiUrl.js'
 import CustomDatePicker from './../CustomDatePicker/index.jsx'
 
+let pictures = []
 
 export default function StepInfoAnimal(props) {
-
-	let pictures = []
 
 	const SelectAnimalSex = () => {
 		return (
@@ -24,7 +23,7 @@ export default function StepInfoAnimal(props) {
 				<Select
 					labelId="demo-simple-select-helper-label"
 					id="demo-simple-select-helper"
-					value={props.sex}
+					value={props.animal.sex}
 					onChange={(e) => props.onChange({ sex: e.target.value })}
 				>
 					<MenuItem value={'M'}>Macho</MenuItem>
@@ -43,7 +42,7 @@ export default function StepInfoAnimal(props) {
 				<Select
 					labelId="demo-simple-select-helper-label"
 					id="demo-simple-select-helper"
-					value={props.castrated}
+					value={!!props.animal.castrated}
 					onChange={(e) => props.onChange({ castrated: e.target.value })}
 				>
 					<MenuItem value={true}>Sim</MenuItem>
@@ -55,11 +54,13 @@ export default function StepInfoAnimal(props) {
 		)
 	}
 
+	console.log(!props.selectedPictures.length)
 	function UploadAnimalImages() {
 		return (
 			<DropzoneArea
 				dropzoneClass={styles.boxUpload}
 				filesLimit={3}
+				initialFiles={!props.selectedPictures.length && props.edit ? loadAnimalURLImages() : props.selectedPictures}
 				acceptedFiles={['image/*']}
 				dropzoneText={"Selecione imagens do animal"}
 				onChange={(files) => changeSelectedImage(files)}
@@ -67,13 +68,42 @@ export default function StepInfoAnimal(props) {
 		)
 	}
 
+	function loadAnimalURLImages() {
+		if (props.animal.imagesURL) {
+			return props.animal.imagesURL.map(({ imageURL }) => {
+				return `${baseApiUrl}/animal-pictures/${imageURL}`
+			})
+		}
+		return ['']
+	}
+
 	const changeSelectedImage = (files) => { // TODO Ao mudar o estado o preview da imagem some
 		pictures = files
-		setTimeout(() => {
-			!!files.length && props.onSelectPicture(pictures)
-		}, 1000)
+
+		if (files.length == props.selectedPictures.length) { // Gambiarra do cacete
+			for (let i = 0; i < files.length; i++) {
+				let equal = false
+				if (files[i].filename == props.selectedPictures[i].filename) {
+					equal = true
+					console.log('É igual')
+				}
+				if (equal) return
+				console.log('Não é igual')
+			}
+		}
+
+		console.log(files)
+		console.log(props.selectedPictures)
+
+		if (!!files.length) {
+			props.onSelectPicture(pictures)
+		} else {
+			props.onSelectPicture([])
+		}
 		return
 	}
+
+	console.log(props)
 
 	return (
 		<div className={styles.container}>

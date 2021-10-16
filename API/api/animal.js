@@ -1,4 +1,5 @@
 const multer = require('multer')
+const fs = require('fs')
 
 module.exports = app => {
 
@@ -14,7 +15,7 @@ module.exports = app => {
                 animal.veterinaryCare = await getVeterinaryCare(idAnimal)
                 animal.rescue = await getRescue(idAnimal)
                 animal.extraInfo = await getExtraInfo(idAnimal)
-                console.log(animal.rescue)
+                // console.log(animal.rescue)
                 res.status(200).send(animal)
             })
             .catch(err => {
@@ -111,7 +112,7 @@ module.exports = app => {
             .then(async (animal) => {
                 animal.aproximateAge = await estimateAge(animal.dateOfBirth)
                 animal.imagesURL = await getAllAnimalPictures(idAnimal)
-                console.log(animal)
+                // console.log(animal)
                 res.status(200).send(animal)
             })
             .catch(err => {
@@ -138,7 +139,7 @@ module.exports = app => {
                 // animals = JSON.parse(JSON.stringify(animals))
                 animals = await estimateAllAges(animals)
                 animals = await getAnimalMainPicture(animals)
-                console.log(animals)
+                // console.log(animals)
                 res.status(200).send(animals)
             })
             .catch(err => {
@@ -156,8 +157,8 @@ module.exports = app => {
 
     const getAnimalMainPicture = async (animals) => {
         for (animal of animals) {
-            console.log(animal.id)
-            console.log(animal)
+            // console.log(animal.id)
+            // console.log(animal)
             await app.db('animal-pictures')
                 .select('imageURL')
                 .where({ animalId: animal.id })
@@ -288,21 +289,64 @@ module.exports = app => {
                 return res.end('Erro ao fazer upload da(s) imagem(s)')
             }
 
-            console.log(req.body)
-            console.log(req.file)           //TODO sobrescrever imagens
-
             let animalPicture = {
                 imageURL: req.file.filename,
                 animalId: req.body.animalId
             }
 
+            console.log(animalPicture.filename)
+
             app.db('animal-pictures')
-                .insert(animalPicture)
-                .then(_ => res.status(204).send())
-                .catch(err => {
-                    console.log(err)
-                    res.status(500).send(err)
+                .select('imageURL')
+                .where({ animalId: animalPicture.animalId })
+                .then(async (imagesURL) => {
+
+                    console.log(imagesURL)
+
+                    if (imagesURL.length > 0) {
+                        await deleteSavedFiles(imagesURL)
+
+                        await app.db('animal-pictures')
+                            .select('imageURL')
+                            .where({ animalId: animalPicture.animalId })
+                            .del()
+                            .then(_ => console.log('Registros deletados!'))
+                            .catch(err => {
+                                console.log(err)
+                                console.log('Erro ao remover registros anteriores')
+                            })
+                        console.log('Registros anteriores deletados')
+
+                    }
+
+                    await app.db('animal-pictures')
+                        .insert(animalPicture)
+                        .then(_ => res.status(204).send())
+                        .catch(err => {
+                            console.log(err)
+                            res.status(500).send(err)
+                        })
                 })
+                .catch(err => console.log(err))
+
+
+        })
+    }
+
+    const deleteSavedFiles = async (imagesURL) => {
+        for (imageURL of imagesURL) {
+            await deleteFile(`${__dirname}/../_animalPictures/${imageURL.imageURL}`)
+        }
+    }
+
+    const deleteFile = (filePath) => {
+        fs.unlink(filePath, (err) => {
+            if (!err) {
+                console.log('Arquivo deletado com sucesso!');
+            } else {
+                console.log(err)
+                console.log('Erro ao deletar arquivo.');
+            }
         })
     }
 

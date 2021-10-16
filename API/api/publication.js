@@ -173,12 +173,14 @@ module.exports = app => {
             if (err) {
                 return res.end('Erro ao fazer upload da(s) imagem(s)')
             }
+            console.log(req.file)
 
             let publicationPicture = {
                 imageURL: req.file.filename,
                 publicationId: req.body.publicationId
             }
 
+            
             //Deletar as ultimas publication-pictures 
             app.db('publications-pictures')
                 .select('imageURL')
