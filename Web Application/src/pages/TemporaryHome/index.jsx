@@ -1,7 +1,10 @@
 import react, { Component } from 'react'
 import axios from 'axios'
 
+import styles from './styles.module.css'
+
 import { baseApiUrl } from '../../services/baseApiUrl.js'
+import AddTemporaryHome from './../../components/AddTemporaryHome'
 import TemporaryHomeTable from './../../components/TemporaryHomeTable'
 
 const initialState = {
@@ -42,7 +45,15 @@ class TemporaryHome extends Component {
 
     render() {
         return (
-            <TemporaryHomeTable temporaryHomes={this.state.temporaryHomes} onDelete={this.deleteTemporaryHome}/>
+            <div className={styles.container}>
+                <div className={styles.pageName}>
+                    <span>LARES TEMPORÁRIOS</span>
+                </div>
+                <div className={styles.tableContainer}>
+                    <AddTemporaryHome/>
+                    <TemporaryHomeTable temporaryHomes={this.state.temporaryHomes} onDelete={this.deleteTemporaryHome} />
+                </div>
+            </div>
         )
     }
 }

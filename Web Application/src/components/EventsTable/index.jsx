@@ -8,7 +8,6 @@ import EventEditModal from '../EventEditModal/index.jsx';
 
 class EventTable extends Component {
 
-
     onRowDelete = (rowsSelected) => {
         let publicationsIdSelected = rowsSelected.data.map(rowSelected => this.props.publications[rowSelected.index].id)
 

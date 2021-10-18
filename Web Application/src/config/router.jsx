@@ -9,6 +9,7 @@ import Home from './../pages/Home'
 import Collaborators from './../pages/Collaborators'
 import Animals from './../pages/Animals'
 import TemporaryHome from './../pages/TemporaryHome'
+import Interesteds from './../pages/Interesteds'
 
 export default props =>
     <Switch>
@@ -20,7 +21,7 @@ export default props =>
         <Route exact path="/denuncias" component={Complaints} />
         <Route exact path="/colaboradores" component={Collaborators} />
         <Route exact path="/animais" component={Animals} />
-        <Route exact path="/interessados" component={() => <h1>Interessados</h1>} />
+        <Route exact path="/interessados" component={Interesteds} />
         <Route exact path="/lar-temporario" component={TemporaryHome} />
         <Redirect from="*" to="/home" />
     </Switch>

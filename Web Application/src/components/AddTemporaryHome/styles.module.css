@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    display: flex;
+}
+
+.acordion {
+    width: 100%;
+}
+
+.formTH {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    
+}
+
+.formTH div {
+    margin-right: 10px;
+    
+}
+
+.buttonSubmitForm {
+    width: 200px;
+    height: 38px;
+    border-radius: 2px;
+    border: none;
+    background-color: coral;
+    color: #fff;
+}

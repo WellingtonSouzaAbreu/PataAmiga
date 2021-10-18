@@ -68,10 +68,16 @@ module.exports = app => {
     app.route('/donation/number-of-donations-received')
         .get(app.api.donation.numberOfDonationsReceived)
 
-    app.route('/interesteds-in-adoption/:animalId')
-        .all(app.config.passport.authenticate())
+    app.route('/interesteds-in-adoption')
         .get(app.api.interestedInAdoption.getInterestedsInAdoption)
+
+    app.route('/interesteds-in-adoption/:animalId')
+        // .all(app.config.passport.authenticate())
         .post(app.api.interestedInAdoption.save)
+
+    app.delete('/interesteds-in-adoption/:id', app.api.interestedInAdoption.removeInterested)
+
+    app.post('/interesteds-in-adoption/toggle-state', app.api.interestedInAdoption.toggleVerifiedState)    
 
     app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
 

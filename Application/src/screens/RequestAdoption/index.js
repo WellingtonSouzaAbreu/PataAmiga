@@ -38,7 +38,7 @@ export default class RequestAdoption extends Component {
 			.then(res => {
 				console.log(res.data)
 				const interestedInAdoptionId = res.data
-				this.saveImages(animalId)
+				this.saveImages(interestedInAdoptionId)
 			})
 			.catch(err => {
 				console.log(err)
@@ -54,6 +54,8 @@ export default class RequestAdoption extends Component {
 			let imageData = new FormData()
 			imageData.append('interestedPicture', image)
 			imageData.append('interestedInAdoptionId', interestedInAdoptionId)
+
+			console.log("imageData: " + imageData)
 
 			await axios.post(`${baseApiUrl}/interested-in-adoption/picture`, imageData)
 				.then(res => {

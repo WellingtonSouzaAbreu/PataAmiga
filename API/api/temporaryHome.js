@@ -87,7 +87,7 @@ module.exports = app => {
     }
 
     const removeTemporaryHome = async (req, res) => {
-        const idTemporaryHome = req.params.id ? req.params.id : res.status(400).send('Identificação do lar temporário não informado')
+        const idTemporaryHwome = req.params.id ? req.params.id : res.status(400).send('Identificação do lar temporário não informado')
 
         let temporaryHomesId = idTemporaryHome.split(',')
         console.log(temporaryHomesId)

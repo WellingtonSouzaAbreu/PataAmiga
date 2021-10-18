@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `interesteds-pictures` (
 CREATE TABLE IF NOT EXISTS `interesteds-in-adoption` (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     description VARCHAR(200) NOT NULL,
+    verified BOOLEAN DEFAULT 0,
     userId INT(11) UNSIGNED NOT NULL,
     animalId INT(11) UNSIGNED NOT NULL,
     PRIMARY KEY(id)

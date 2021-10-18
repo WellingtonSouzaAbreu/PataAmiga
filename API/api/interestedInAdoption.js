@@ -3,10 +3,21 @@ const multer = require('multer')
 module.exports = app => {
 
     const getInterestedsInAdoption = async (req, res) => {
-        const animalId = req.params.animalId ? req.params.animalId : res.status(400).send('Animal não encontrado')
+        let animalName = req.query.animalName ? req.query.animalName.toLowerCase() : ''
+        let page = !!req.query.page ? req.query.page : 0
+        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
 
-        await app.db('interesteds-in-adoption')
-            .where({ animalId: animalId })
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
+        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
+
+        // console.log(`Limit: ${limit}`)
+        // console.log(`Offset: ${offset}`)
+
+        await app.db('interesteds-in-adoption as interest')
+            .innerJoin('animals', 'animals.id', '=', 'interest.animalId')
+            .select('interest.id', 'interest.description', 'interest.userId', 'interest.animalId', 'interest.verified', 'animals.name as animalName')
+            .where('animals.name'.toLowerCase(), 'like', `%${animalName}%`)
+            .offset(offset)
             .then(async interesteds => {
                 interesteds = await getUserNameAndCellNumberById(interesteds)
                 interesteds = await getPicturesOfInteresteds(interesteds)
@@ -22,10 +33,10 @@ module.exports = app => {
     const getUserNameAndCellNumberById = async (interesteds) => {
         for (interested of interesteds) {
             await app.db('users')
-                .select('name', 'cellNumber')
+                .select('name as userName', 'cellNumber')
                 .first()
                 .then(userData => {
-                    interested.name = userData.name
+                    interested.userName = userData.userName
                     interested.cellNumber = userData.cellNumber
                 })
                 .catch(err => console.log(err))/* res.status(500).send('Não foi possível localizar usuários interessados') */
@@ -34,15 +45,14 @@ module.exports = app => {
     }
 
     const getPicturesOfInteresteds = async (interesteds) => {
-
         for (interested of interesteds) {
             await app.db('interesteds-pictures')
+                .select('imageURL')
                 .where({ interestedInAdoptionId: interested.id })
                 .then(interestedPictures => {
-                    console.log(interestedPictures)
-                    interested.imagesURL = interestedPictures
+                    interested.imagesURL = interestedPictures.map(interest => interest.imageURL)
                 })
-                .catch(err => console.log(err))/* res.status(500).send('Não foi possível localizar usuários interessados') */
+                .catch(err => console.log(err))
         }
         return interesteds
     }
@@ -50,7 +60,7 @@ module.exports = app => {
     const save = async (req, res) => {
         const { existsOrError } = app.api.validation
 
-        const userId = req.user.id 
+        const userId = /* req.user.id  */ 1
 
         let interestedInAdoption = req.body.interestedInAdoption ? req.body.interestedInAdoption : res.status(400).send('Dados do interesse não informados')
         interestedInAdoption.userId = userId
@@ -99,6 +109,8 @@ module.exports = app => {
                 interestedInAdoptionId: req.body.interestedInAdoptionId
             }
 
+            console.log(interestedPicture)
+
             app.db('interesteds-pictures')
                 .insert(interestedPicture)
                 .then(_ => res.status(204).send())
@@ -110,5 +122,35 @@ module.exports = app => {
         })
     }
 
-    return { getInterestedsInAdoption, save, savePicture }
+    const toggleVerifiedState = async (req, res) => {
+        await app.db('interesteds-in-adoption')
+            .update({ verified: req.body.verified })
+            .then(_ => res.status(204).send())
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const removeInterested = async (req, res) => {
+        const idInterested = req.params.id ? req.params.id : res.status(400).send('Identificação do interessado não informada')
+
+        let interestedsId = idInterested.split(',')
+
+        interestedsId.forEach(async (idInterested) => {
+            await app.db('interesteds-in-adoption')
+                .where({ id: idInterested })
+                .del()
+                .then(_ => console.log(`Interesse de id: ${idInterested} deletada`))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao deletar interesse')
+                })
+        })
+
+        res.status(200).send('Interesse em adotar removido com sucesso!')
+
+    }
+
+    return { getInterestedsInAdoption, save, savePicture, toggleVerifiedState, removeInterested }
 }

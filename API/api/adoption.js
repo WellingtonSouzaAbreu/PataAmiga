@@ -12,7 +12,7 @@ module.exports = app => {
         // console.log(`Offset: ${offset}`)
 
         await app.db('adoptions')
-            .select( 'adoptions.id','adoptions.dateAdoption', 'adoptions.collaboratorId', 'adoptions.animalId', 'adoptions.userId', 'animals.name as animalName', 'animals.specie', 'animals.color', 'animals.sex', 'animals.breed', 'animals.dateOfBirth', 'animals.castrated', 'animals.othersCharacteristics', 'collaborators.name as collaboratorName', 'users.name as adopterName', 'users.address', 'users.houseNumber', 'users.email', 'users.phone', 'users.cellNumber', 'users.city', 'users.district')
+            .select('adoptions.id', 'adoptions.dateAdoption', 'adoptions.collaboratorId', 'adoptions.animalId', 'adoptions.userId', 'animals.name as animalName', 'animals.specie', 'animals.color', 'animals.sex', 'animals.breed', 'animals.dateOfBirth', 'animals.castrated', 'animals.othersCharacteristics', 'collaborators.name as collaboratorName', 'users.name as adopterName', 'users.address', 'users.houseNumber', 'users.email', 'users.phone', 'users.cellNumber', 'users.city', 'users.district')
             .innerJoin('collaborators', 'adoptions.collaboratorId', '=', 'collaborators.id')
             .innerJoin('animals', 'adoptions.animalId', '=', 'animals.id')
             .innerJoin('users', 'adoptions.userId', '=', 'users.id')
@@ -152,10 +152,11 @@ module.exports = app => {
                 for ({ animalId } of animalsId) {
 
                     await app.db('animals')
-                        .select('id', 'name', 'breed', 'aproximateAge')
+                        .select('id', 'name', 'breed', 'dateOfBirth')
                         .where({ id: animalId })
-                        .then(async (animals) => {
-                            animalsWithPicture.push(await getAnimalMainPicture(animals))
+                        .then(async (animal) => {
+                            animal.aproximateAge = await estimateAge(animal.dateOfBirth)
+                            animalsWithPicture.push(await getAnimalMainPicture(animal))
                         })
                         .catch(err => {
                             console.log(err)
@@ -171,7 +172,6 @@ module.exports = app => {
                 console.log(err)
                 throw err
             })
-
     }
 
     const getAnimalMainPicture = async (animals) => {
