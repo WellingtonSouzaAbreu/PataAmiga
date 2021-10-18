@@ -48,11 +48,10 @@ class Interesteds extends Component {
             })
     }
 
-    toggleStateOfInterest = async(interestVerified) => {
-        await axios.put(`${baseApiUrl}/interesteds-in-adoption/toggle-state`, {verified: interestVerified ? 1 : 0})
+    toggleStateOfInterest = async(interestVerified, idInterested) => {
+        await axios.put(`${baseApiUrl}/interesteds-in-adoption/toggle-state`, {verified: interestVerified ? 1 : 0, idInterested})
         .then(res => {
             console.log(res.data)
-            window.alert('Estado da verificação: ' + !!interestVerified)
             this.loadInterestedsInAdopt(true)
         })
         .catch(err => {

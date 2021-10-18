@@ -125,6 +125,7 @@ module.exports = app => {
     const toggleVerifiedState = async (req, res) => {
         await app.db('interesteds-in-adoption')
             .update({ verified: req.body.verified })
+            .where({id: req.body.idInterested})
             .then(_ => res.status(204).send())
             .catch(err => {
                 console.log(err)

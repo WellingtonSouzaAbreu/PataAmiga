@@ -77,7 +77,7 @@ module.exports = app => {
 
     app.delete('/interesteds-in-adoption/:id', app.api.interestedInAdoption.removeInterested)
 
-    app.post('/interesteds-in-adoption/toggle-state', app.api.interestedInAdoption.toggleVerifiedState)    
+    app.put('/interesteds-in-adoption/toggle-state', app.api.interestedInAdoption.toggleVerifiedState)    
 
     app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
 

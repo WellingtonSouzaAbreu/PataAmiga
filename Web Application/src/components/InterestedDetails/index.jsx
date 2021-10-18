@@ -90,7 +90,8 @@ export default function InterestedModalDetails(props) {
 								<MDBInput value={props.interestedInAdopt.description} type="textarea" label="Descrição" disabled className={styles.description} outline />
 							</div>
 							<div>
-								<button onClick={() => props.onToggleStateOfInterest(!this.props.interestedInAdopt.verified)}>{this.props.interestedInAdopt.verified ? 'Não Verificar' : 'Verificar'}</button>
+								<button onClick={() => props.onToggleStateOfInterest(!props.interestedInAdopt.verified, props.interestedInAdopt.id)}>{props.interestedInAdopt.verified ? 'Não Verificar' : 'Verificar'}</button>
+								// Provisório
 							</div>
 						</div>
 					</div>
