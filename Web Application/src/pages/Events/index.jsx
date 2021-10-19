@@ -14,7 +14,7 @@ const initialState = {
     rowsPerPage: 10,
     currentPage: 0,
     maxPageOpened: -1,
-     
+
 }
 
 class Events extends Component {
@@ -68,7 +68,7 @@ class Events extends Component {
             pageChanged = dataField.currentPage > this.state.maxPageOpened
         }
 
-        this.setState({ ...dataField, maxPageOpened: pageChanged ? this.state.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadPublications : null)
+        this.setState({ ...dataField, maxPageOpened: pageChanged ? dataField.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadPublications : null)
     }
 
     changeRowsPerPage = (dataField) => {

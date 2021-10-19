@@ -27,6 +27,8 @@ module.exports = app => {
         .get(app.api.animal.getAnimals)
         .post(app.api.animal.save)
 
+    app.get('/animals/select-options', app.api.animal.getAnimalSelectOptions)
+
     app.route('/animal/:id')
         .get(app.api.animal.getAnimalById)
         .delete(app.api.animal.removeAnimal)

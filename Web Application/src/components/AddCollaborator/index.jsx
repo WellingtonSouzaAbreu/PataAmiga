@@ -8,10 +8,11 @@ import axios from 'axios'
 
 import styles from './styles.module.css'
 import { baseApiUrl } from "../../services/baseApiUrl";
+import CustomDatePicker from "../CustomDatePicker";
 
 const initialState = {
     name: '',
-    dateOfBirth: '2000-11-11',
+    dateOfBirth: new Date(),
     city: '',
     cellNumber: '',
 
@@ -36,7 +37,7 @@ class AddCollaborator extends Component {
             cellNumber: this.state.cellNumber,
         }
 
-        if (this.props.collaborator.id) collaborator.id = this.props.collaborator.id
+        if (this.props.collaborator) collaborator.id = this.props.collaborator.id
 
         await axios.post(`${baseApiUrl}/collaborator`, { collaborator })
             .then(_ => {
@@ -72,8 +73,8 @@ class AddCollaborator extends Component {
                             <MDBInput className={styles.inputRegister} label="Nome" outline
                                 value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })}
                             />
-                            <MDBInput className={styles.inputRegister} label="Nascimento" outline
-                                value={this.state.dateOfBirth} onChange={(e) => this.setState({ dateOfBirth: e.target.value })}
+                            <CustomDatePicker label="Nascimento"
+                                value={this.state.dateOfBirth} onChangeDate={(dateOfBirth) => this.setState({ dateOfBirth })}
                             />
                             <MDBInput className={styles.inputRegister} label="Cidade" outline
                                 value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })}

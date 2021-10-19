@@ -3,18 +3,20 @@ import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import { MDBInput } from "mdbreact";
 import TableCell from "@material-ui/core/TableCell";
-
-import styles from './styles.module.css'
-
-import { baseApiUrl } from './../../services/baseApiUrl.js'
-import { formatDate } from './../../common/commonFunctions.js'
-
 import {
 	MDBCarousel,
 	MDBCarouselInner,
 	MDBCarouselItem,
 	MDBCarouselElement,
 } from 'mdb-react-ui-kit';
+
+import styles from './styles.module.css'
+
+import { baseApiUrl } from './../../services/baseApiUrl.js'
+import { formatDate } from './../../common/commonFunctions.js'
+import TemporaryHomeEditModal from './../TemporaryHomeEditModal'
+
+
 
 
 
@@ -39,7 +41,7 @@ class TemporaryHomeTable extends Component {
 						<div className={styles.divider1}>
 							<div className={styles.groupString}>
 								<strong>Nome</strong>
-								<span>{TemporaryHome.name}</span>
+								<span>{TemporaryHome.animalName}</span>
 							</div>
 							<div className={styles.groupString}>
 								<strong>Especie</strong>
@@ -100,7 +102,15 @@ class TemporaryHomeTable extends Component {
 				data={this.props.temporaryHomes}
 				columns={[
 					{
-						name: "name",
+						name: "id",
+						label: "ID",
+						options: {
+							filter: true,
+							sort: true,
+						}
+					},
+					{
+						name: "animalName",
 						label: "Animal",
 						options: {
 							filter: true,
@@ -125,18 +135,36 @@ class TemporaryHomeTable extends Component {
 							sort: false,
 						}
 					},
+					{
+						name: "edit",
+						label: "Editar",
+						options: {
+							filter: true,
+							sort: false,
+							customBodyRender: (value, tableMeta) => {
+								const index = tableMeta.rowIndex
+								return <TemporaryHomeEditModal temporaryHome={this.props.temporaryHomes[index]} edit={true} onRefresh={this.props.onRefresh} />
+							}
+						}
+					},
 				]}
 				options={{
 					filterType: 'checkbox',
 					elevation: 0,
 					filter: false,
 					print: false,
-					rowsPerPage: 8,
-					elevation: 0,
+					rowsPerPage: this.props.rowsPerPage,
+					searchPlaceholder: 'Nome...',
+					rowHover: true,
+					page: this.props.currentPage,
 					expandableRows: true,
 					expandableRowsHeader: true,
 					expandableRowsOnClick: true,
 					onRowsDelete: this.onRowDelete,
+					customSearch: () => true,
+					onSearchChange: (text) => this.props.onChangeSearchParams({ searchParam: text }),
+					onChangePage: (currentPage) => this.props.onChangePage({ currentPage }),
+					onChangeRowsPerPage: (rowsPerPage) => this.props.onChangeRowsPerPage({ rowsPerPage }),
 					renderExpandableRow: (rowData, rowMeta) => {
 						const colSpan = rowData.length + 1;
 						return (

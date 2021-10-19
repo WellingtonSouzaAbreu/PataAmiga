@@ -102,14 +102,14 @@ module.exports = app => {
                 return res.end('Erro ao fazer upload da(s) imagem(s)')
             }
 
-            console.log(req.body)
+            // console.log(req.body)
 
             let interestedPicture = {
                 imageURL: req.file.filename,
                 interestedInAdoptionId: req.body.interestedInAdoptionId
             }
 
-            console.log(interestedPicture)
+            // console.log(interestedPicture)
 
             app.db('interesteds-pictures')
                 .insert(interestedPicture)

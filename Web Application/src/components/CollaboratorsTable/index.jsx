@@ -104,7 +104,6 @@ class CollaboratorsTable extends Component {
                     onSearchChange: (text) => this.props.onChangeSearchParams({ searchParam: text }),
                     onChangePage: (currentPage) => this.props.onChangePage({ currentPage }),
                     onChangeRowsPerPage: (rowsPerPage) => this.props.onChangeRowsPerPage({ rowsPerPage })
-                    // customSearchRender: (text) => <div><input type='text'></input><button>Pesquisar</button></div>
                 }}
             />
         )

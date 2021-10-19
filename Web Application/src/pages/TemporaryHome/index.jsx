@@ -8,7 +8,12 @@ import AddTemporaryHome from './../../components/AddTemporaryHome'
 import TemporaryHomeTable from './../../components/TemporaryHomeTable'
 
 const initialState = {
-    temporaryHomes: []
+    temporaryHomes: [],
+
+    searchParam: '',
+    rowsPerPage: 10,
+    currentPage: 0,
+    maxPageOpened: -1,
 }
 
 class TemporaryHome extends Component {
@@ -19,11 +24,23 @@ class TemporaryHome extends Component {
         await this.loadTemporaryHomes()
     }
 
-    loadTemporaryHomes = async () => {
-        await axios(`${baseApiUrl}/temporary-home`)
+    loadTemporaryHomes = async (noConcat) => {
+        let filterParams = ''
+        let page = '0'
+        if (this.state.searchParam) {
+            filterParams = `?animalName=${this.state.searchParam}`
+        }
+
+        if (this.state.currentPage || this.state.currentPage == 0) {
+            page = `${filterParams ? '&' : '?'}page=${this.state.currentPage}`
+        }
+
+        let rowsPerPage = `${filterParams || page ? '&' : '?'}rowsPerPage=${this.state.rowsPerPage}`
+
+        await axios.get(`${baseApiUrl}/temporary-home${filterParams}${page}${rowsPerPage}`)
             .then(res => {
                 console.log(res.data)
-                this.setState({ temporaryHomes: res.data })
+                noConcat ? this.setState({ temporaryHomes: [...res.data] }) : this.setState({ temporaryHomes: [...this.state.temporaryHomes, ...res.data] })
             })
             .catch(err => {
                 console.log(err)
@@ -43,6 +60,31 @@ class TemporaryHome extends Component {
             })
     }
 
+    changePage = (dataField) => {
+        let pageChanged = false
+
+        if (dataField.currentPage) {
+            pageChanged = dataField.currentPage > this.state.maxPageOpened
+        }
+
+        this.setState({ ...dataField, maxPageOpened: pageChanged ? dataField.currentPage : this.state.maxPageOpened }, pageChanged ? this.loadTemporaryHomes : null)
+    }
+
+    changeRowsPerPage = (dataField) => {
+        let rowsPerPageChanged = false
+
+        if (dataField.rowsPerPage && dataField.rowsPerPage != this.state.rowsPerPage) {
+            rowsPerPageChanged = true
+            dataField = { ...dataField, currentPage: 0, maxPageOpened: -1 }
+        }
+
+        this.setState({ ...dataField, temporaryHomes: rowsPerPageChanged ? [] : this.state.temporaryHomes }, this.loadTemporaryHomes)
+    }
+
+    changeSearchParams = (dataField) => {
+        this.setState({ ...dataField, temporaryHomes: [], currentPage: 0 }, this.loadTemporaryHomes)
+    }
+
     render() {
         return (
             <div className={styles.container}>
@@ -50,8 +92,11 @@ class TemporaryHome extends Component {
                     <span>LARES TEMPORÁRIOS</span>
                 </div>
                 <div className={styles.tableContainer}>
-                    <AddTemporaryHome/>
-                    <TemporaryHomeTable temporaryHomes={this.state.temporaryHomes} onDelete={this.deleteTemporaryHome} />
+                    <AddTemporaryHome onRefresh={this.loadTemporaryHomes} />
+                    <TemporaryHomeTable temporaryHomes={this.state.temporaryHomes} onRefresh={this.loadTemporaryHomes} onDelete={this.deleteTemporaryHome}
+                        currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
+                        onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage}
+                        onChangeSearchParams={this.changeSearchParams} onDelete={this.deleteTemporaryHome} />
                 </div>
             </div>
         )

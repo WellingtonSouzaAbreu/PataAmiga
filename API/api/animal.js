@@ -174,6 +174,42 @@ module.exports = app => {
         return animals
     }
 
+    const getAnimalSelectOptions = async (req, res) => {
+        await app.db('animals')
+            .select('animals.id', 'animals.name', 'animals.breed')
+            .then(async (animals) => {
+                let adoptedAnimals = await adoptedAnimalsId()
+                let temporaryHomeAnimals = await temporaryHomeAnimalsId()
+                animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id) && !temporaryHomeAnimals.includes(animal.id))
+                console.log(animals)
+                res.status(200).send(animals)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const adoptedAnimalsId = async () => {
+       return await app.db('adoptions')
+            .select('animalId')
+            .then(animalsId => animalsId.map(({ animalId }) => animalId))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const temporaryHomeAnimalsId = async () => {
+        return await app.db('temporary-homes')
+             .select('animalId')
+             .then(animalsId => animalsId.map(({ animalId }) => animalId))
+             .catch(err => {
+                 console.log(err)
+                 res.status(500).send(err)
+             })
+     }
+
     const save = async (req, res) => {
         const { existsOrError, objectIsNull } = app.api.validation
 
@@ -370,5 +406,5 @@ module.exports = app => {
         res.status(200).send('Animal removido com sucesso!')
     }
 
-    return { getAnimalById, getAllDataOfAnimalById, getAnimals, save, savePicture, removeAnimal }
+    return { getAnimalById, getAllDataOfAnimalById, getAnimals, getAnimalSelectOptions, save, savePicture, removeAnimal }
 }

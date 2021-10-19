@@ -1,8 +1,27 @@
 module.exports = app => {
 
     const getTemporaryHomes = async (req, res) => {
+        let animalName = req.query.animalName ? req.query.animalName.toLowerCase() : ''
+        let page = !!req.query.page ? req.query.page : 0
+        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10
+
+        console.log(req.query)
+
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
+        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
+
+        // console.log(`Limit: ${limit}`)
+        // console.log(`Offset: ${offset}`)
+
         await app.db('temporary-homes')
             .innerJoin('animals', 'animals.id', '=', 'temporary-homes.animalId')
+            .select(
+                'temporary-homes.id', 'temporary-homes.adopterName', 'temporary-homes.animalId', 'temporary-homes.date', 'temporary-homes.cellNumber',
+                'animals.id as animalId', 'animals.name as animalName', 'animals.specie', 'animals.sex', 'animals.breed',
+                'animals.dateOfBirth', 'animals.color', 'animals.castrated', 'animals.availableForAdoption', 'othersCharacteristics'
+            )
+            .where('animals.name'.toLowerCase(), 'like', `%${animalName}%`)
+            .offset(offset)
             .then(async temporaryHomes => {
                 temporaryHomes.aproximateAge = await estimateAllAges(temporaryHomes)
                 temporaryHomes = await walkTemporaryHomes(temporaryHomes)
@@ -64,30 +83,40 @@ module.exports = app => {
         const { existsOrError } = app.api.validation
 
         let temporaryHome = req.body.temporaryHome ? req.body.temporaryHome : res.status(400).send('Dados da doação não informados')
-        temporaryHome.date = new Date()
 
         try {
             existsOrError(temporaryHome.adopterName, 'Nome do adotante não informado')
             existsOrError(temporaryHome.cellNumber, 'Celular adotante não informado')
             existsOrError(temporaryHome.date, 'Data não informada')
             existsOrError(temporaryHome.animalId, 'Animal não informado')
-
-
         } catch (err) {
             return res.status(400).send(err)
         }
 
-        await app.db('temporary-homes')
-            .insert(temporaryHome)
-            .then(_ => res.status(204).send())
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar lar temporário')
-            })
+        temporaryHome.date = new Date(temporaryHome.date)
+
+        if (!temporaryHome.id) {
+            await app.db('temporary-homes')
+                .insert(temporaryHome)
+                .then(_ => res.status(204).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar lar temporário')
+                })
+        } else {
+            await app.db('temporary-homes')
+                .update(temporaryHome)
+                .where({ id: temporaryHome.id })
+                .then(_ => res.status(204).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao atualizar lar temporário')
+                })
+        }
     }
 
     const removeTemporaryHome = async (req, res) => {
-        const idTemporaryHwome = req.params.id ? req.params.id : res.status(400).send('Identificação do lar temporário não informado')
+        const idTemporaryHome = req.params.id ? req.params.id : res.status(400).send('Identificação do lar temporário não informado')
 
         let temporaryHomesId = idTemporaryHome.split(',')
         console.log(temporaryHomesId)
