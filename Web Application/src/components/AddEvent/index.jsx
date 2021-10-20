@@ -33,7 +33,6 @@ const initialState = {
 	reasonRescue: '',
 
 	pictures: [],
-	initialPictures: [],
 
 	editMode: false
 }
@@ -50,7 +49,7 @@ class AddEvent extends Component {
 
 	getDetailsOfPublication = async () => {
 		return await axios.get(`${baseApiUrl}/publication/${this.props.idPublication}`)
-			.then(res => {
+			.then(async (res) => {
 				return res.data
 			})
 			.catch(err => {
@@ -68,6 +67,8 @@ class AddEvent extends Component {
 	}
 
 	savePublication = async () => {
+		console.log('PicturesState')
+		console.log(this.state)
 
 		if (!this.state.pictures.length) {
 			window.alert('Selecione pelo menos uma imagem para realizar a publicação!')
@@ -117,8 +118,6 @@ class AddEvent extends Component {
 
 	savePublicationPictures = async (publicationId) => {
 
-		console.log(this.state.pictures)
-
 		let valid = [true]
 
 		await this.state.pictures.forEach(async picture => {
@@ -146,18 +145,26 @@ class AddEvent extends Component {
 	}
 
 	updateSelectedPictures = (files) => {
-		if(!!files) return 
+		console.log('To no updateSelectedPicture')
 		console.log(files)
-		this.setState({ pictures: files })
+		if (!files) {
+			return
+		}
+		this.setState({ pictures: [...files] })
 	}
 
-	extractInitialPictures = async () => {
-		return await this.state.imagesURL.map(({ imageURL }) => `${baseApiUrl}/publication-pictures/${imageURL}`)
+	loadImagesURL = async () => {
+		console.log(this.state)
+		if (this.state.imagesURL) {
+			return await this.state.imagesURL.map(({ imageURL }) => {
+				console.log('map')
+				console.log(`${baseApiUrl}/publication-pictures/${imageURL}`)
+				return `${baseApiUrl}/publication-pictures/${imageURL}`
+			})
+		}
 	}
 
 	render() {
-
-		console.log(this.state.imagesURL ? `${baseApiUrl}/publication-pictures/${this.state.imagesURL[0].imageURL}` : 'Null')
 		return (
 			<div className={styles.container} >
 				<Accordion >
@@ -245,8 +252,10 @@ class AddEvent extends Component {
 										</>
 								}
 								<DropzoneArea
-									clearOnUnmount={true}
-									initialFiles={[this.state.imagesURL ? `${baseApiUrl}/publication-pictures/${this.state.imagesURL[0].imageURL}` : '']} // TODO Initial Files não funciona
+									// clearOnUnmount={true}
+									dropzoneClass={styles.boxUpload}
+									initialFiles={!this.state.pictures.length ? this.loadImagesURL() : []} // TODO Initial Files não funciona
+									filesLimit={3}
 									acceptedFiles={['image/*']}
 									dropzoneText={`Carregar imagens(max: 3)`}
 									onChange={(files) => this.updateSelectedPictures(files)}

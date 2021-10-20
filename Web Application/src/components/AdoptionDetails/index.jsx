@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.css'
 import { MDBInput } from "mdbreact";
 
-import {baseApiUrl} from './../../services/baseApiUrl.js'
+import { baseApiUrl } from './../../services/baseApiUrl.js'
 import AdoptionFollowUpModal from '../AdoptionFollowUpModal';
 
 import {
@@ -27,7 +27,7 @@ export default function AdoptionsAnimalsDetails(props) {
 
 	function ImagesCarousel() {
 		return (
-			<MDBCarousel  fade className={styles.carouselImages}>
+			<MDBCarousel fade className={styles.carouselImages}>
 				<MDBCarouselInner>
 					{props.adoption.animalImageURL && renderAnimalAdoptedImages()}
 				</MDBCarouselInner>
@@ -67,10 +67,6 @@ export default function AdoptionsAnimalsDetails(props) {
 
 					</div>
 					<div className={styles.divider2}>
-						<div className={styles.groupString}>
-							<strong>Apelido</strong>
-							<span>{props.adoption.surname}</span>
-						</div>
 						<div className={styles.groupString}>
 							<strong>Raça</strong>
 							<span>{props.adoption.breed}</span>

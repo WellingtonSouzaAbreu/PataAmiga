@@ -16,65 +16,59 @@ import { baseApiUrl } from './../../services/baseApiUrl.js'
 import { formatDate } from './../../common/commonFunctions.js'
 import TemporaryHomeEditModal from './../TemporaryHomeEditModal'
 
-
-
-
-
-
 class TemporaryHomeTable extends Component {
-	renderAnimalDetails(TemporaryHome) {
-		console.log(TemporaryHome)
+	renderAnimalDetails(temporaryHome) {
+		console.log(temporaryHome)
 		return (
 			<div className={styles.container}>
 				<div className={styles.imgsDescription}>
 					<div className={styles.containerCarousel} >
 						<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
 							<MDBCarouselInner>
-								{this.renderCarouselImages(this.props.temporaryHomes[0].animalImageURL)}{/*  // TODO  TemporaryHome Não está declarado na segunda div  */}
+								{this.renderCarouselImages(temporaryHome.animalImageURL)}
 							</MDBCarouselInner>
 						</MDBCarousel>
 					</div>
-					<MDBInput type="textarea" label="Descrição" value={this.props.temporaryHomes[0].othersCharacteristics} disabled className={styles.description} />{/* TODO  ^*/}
+					<MDBInput type="textarea" label="Descrição" value={temporaryHome.othersCharacteristics} disabled className={styles.description} />{/* TODO  ^*/}
 				</div>
 				<div className={styles.otherDescriptions}>
 					<div className={styles.group}>
 						<div className={styles.divider1}>
 							<div className={styles.groupString}>
 								<strong>Nome</strong>
-								<span>{TemporaryHome.animalName}</span>
+								<span>{temporaryHome.animalName}</span>
 							</div>
 							<div className={styles.groupString}>
 								<strong>Especie</strong>
-								<span>{TemporaryHome.specie}</span>
+								<span>{temporaryHome.specie}</span>
 							</div>
 							<div className={styles.groupString}>
 								<strong>Cor</strong>
-								<span>{TemporaryHome.color}</span>
+								<span>{temporaryHome.color}</span>
 							</div>
 							<div className={styles.groupString}>
 								<strong>Sexo</strong>
-								<span>{TemporaryHome.sex == 'M' ? 'Macho' : 'Fêmea'}</span>
+								<span>{temporaryHome.sex == 'M' ? 'Macho' : 'Fêmea'}</span>
 							</div>
 						</div>
 						<div className={styles.divider2}>
 							<div className={styles.groupString}>
 								<strong>Raça</strong>
-								{/* <span>{temporaryHome.breed}</span>  */}  {/* TODO TemporaryHome Não está declarado na segunda div */}
-								<span>{this.props.temporaryHomes[0].breed}</span>
+								<span>{temporaryHome.breed}</span>
 							</div>
 							<div className={styles.groupString}>
 								<strong>Idade aproximada</strong>
-								<span>{this.props.temporaryHomes[0].aproximateAge} </span>
+								<span>{temporaryHome.aproximateAge} </span>
 							</div>
 							<div className={styles.groupString}>
 								<strong>Castrado</strong>
-								<span>{this.props.temporaryHomes[0].castrated ? 'Sim' : 'Não'}</span>
+								<span>{temporaryHome.castrated ? 'Sim' : 'Não'}</span>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className={styles.divider3}>
-					<MDBInput value={`Nome: ${this.props.temporaryHomes[0].adopterName}\nTelefone: ${this.props.temporaryHomes[0].cellNumber}`} type="textarea" label="Voluntário" disabled className={styles.volunter} /> {/* // TODO  temporary não acessível*/}
+					<MDBInput value={`Nome: ${temporaryHome.adopterName}\nTelefone: ${temporaryHome.cellNumber}`} type="textarea" label="Voluntário" disabled className={styles.volunter} /> {/* // TODO  temporary não acessível*/}
 				</div>
 			</div>
 		)
@@ -120,7 +114,7 @@ class TemporaryHomeTable extends Component {
 
 					{
 						name: "date",
-						label: "Desde de",
+						label: "Data",
 						options: {
 							filter: true,
 							sort: false,

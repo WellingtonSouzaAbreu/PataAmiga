@@ -27,7 +27,6 @@ class AddTemporaryHome extends Component {
     state = { ...initialState }
 
     componentDidMount = async () => {
-        window.alert('Mounted')
         await this.loadAnimalsToSelect()
         if (this.props.edit && !this.state.editMode) {
             this.setState({ ...this.props.temporaryHome })
@@ -45,17 +44,17 @@ class AddTemporaryHome extends Component {
     }
 
     changeDate = (date) => {
-        this.setState({date})
+        this.setState({ date })
     }
 
     selectAnimal = () => {
         return (
             <FormControl className={styles.select} >
-                <InputLabel id="demo-simple-select-helper-label">Estado da doação</InputLabel>
+                <InputLabel id="demo-simple-select-helper-label">Animal</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={this.state.animalId}
+                    value={this.props.editMode ? this.props.temporaryHome.animalId : this.state.animalId}
                     onChange={(e) => this.setState({ animalId: e.target.value })}
                     className={styles.select}
                 >
@@ -87,7 +86,7 @@ class AddTemporaryHome extends Component {
                 window.alert('Lat temporário registrado com sucesso!')
                 this.props.edit
                     ? this.props.onRefresh(true)
-                    : this.setState({ ...initialState, animalsSelect: this.state.animalsSelect }, () => {this.props.onRefresh(true); this.loadAnimalsToSelect()})
+                    : this.setState({ ...initialState, animalsSelect: this.state.animalsSelect }, () => { this.props.onRefresh(true); this.loadAnimalsToSelect() })
             })
             .catch(err => {
                 console.log(err)

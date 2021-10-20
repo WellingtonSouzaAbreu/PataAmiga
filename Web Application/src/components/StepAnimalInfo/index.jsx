@@ -74,7 +74,7 @@ export default function StepInfoAnimal(props) {
 				return `${baseApiUrl}/animal-pictures/${imageURL}`
 			})
 		}
-		return ['']
+		return []
 	}
 
 	const changeSelectedImage = (files) => { // TODO Ao mudar o estado o preview da imagem some
