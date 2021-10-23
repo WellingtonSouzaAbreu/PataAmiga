@@ -146,18 +146,17 @@ class AddEvent extends Component {
 
 	updateSelectedPictures = (files) => {
 		console.log('To no updateSelectedPicture')
-		console.log(files)
+		console.log(!files)
 		if (!files) {
 			return
 		}
-		this.setState({ pictures: [...files] })
+		this.setState({ pictures: files })
 	}
 
 	loadImagesURL = async () => {
-		console.log(this.state)
+		console.log(this.state.imagesURL)
 		if (this.state.imagesURL) {
 			return await this.state.imagesURL.map(({ imageURL }) => {
-				console.log('map')
 				console.log(`${baseApiUrl}/publication-pictures/${imageURL}`)
 				return `${baseApiUrl}/publication-pictures/${imageURL}`
 			})
@@ -165,6 +164,9 @@ class AddEvent extends Component {
 	}
 
 	render() {
+
+		const ttt = this.loadImagesURL()
+
 		return (
 			<div className={styles.container} >
 				<Accordion >
@@ -254,7 +256,7 @@ class AddEvent extends Component {
 								<DropzoneArea
 									// clearOnUnmount={true}
 									dropzoneClass={styles.boxUpload}
-									initialFiles={!this.state.pictures.length ? this.loadImagesURL() : []} // TODO Initial Files não funciona
+									initialFiles={ttt} // TODO Initial Files não funciona
 									filesLimit={3}
 									acceptedFiles={['image/*']}
 									dropzoneText={`Carregar imagens(max: 3)`}

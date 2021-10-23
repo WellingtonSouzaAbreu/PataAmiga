@@ -180,7 +180,7 @@ module.exports = app => {
                 publicationId: req.body.publicationId
             }
 
-            
+
             //Deletar as ultimas publication-pictures 
             app.db('publications-pictures')
                 .select('imageURL')
@@ -248,9 +248,32 @@ module.exports = app => {
                     console.log(err)
                     res.status(500).send('Ocorreu um erro ao deletar publicação')
                 })
+
+            await app.db('publications-pictures')
+                .select('imageURL')
+                .where({ publicationId: idPublication })
+                .then(async imagesURL => {
+                    if (imagesURL.length > 0) {
+                        await deleteSavedFiles(imagesURL)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover imagens anteriores')
+                })
+
+            await app.db('publications-pictures')
+                .select('imageURL')
+                .where({ publicationId: idPublication })
+                .del()
+                .then(_ => console.log('Registros deletados!'))
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover registros anteriores')
+                })
         })
 
-        res.status(200).send('Publicações removidas com sucesso!')
+        await res.status(200).send('Publicações removidas com sucesso!')
 
     }
 

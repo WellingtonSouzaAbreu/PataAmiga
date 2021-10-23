@@ -1,4 +1,5 @@
 const multer = require('multer')
+const fs = require('fs')
 
 module.exports = app => {
 
@@ -125,7 +126,7 @@ module.exports = app => {
     const toggleVerifiedState = async (req, res) => {
         await app.db('interesteds-in-adoption')
             .update({ verified: req.body.verified })
-            .where({id: req.body.idInterested})
+            .where({ id: req.body.idInterested })
             .then(_ => res.status(204).send())
             .catch(err => {
                 console.log(err)
@@ -147,10 +148,49 @@ module.exports = app => {
                     console.log(err)
                     res.status(500).send('Ocorreu um erro ao deletar interesse')
                 })
+
+            await app.db('interesteds-pictures')
+                .select('imageURL')
+                .where({ interestedInAdoptionId: idInterested })
+                .then(async imagesURL => {
+                    if (imagesURL.length > 0) {
+                        await deleteSavedFiles(imagesURL)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover imagens anteriores')
+                })
+
+            await app.db('interesteds-pictures')
+                .select('imageURL')
+                .where({ interestedInAdoptionId: idInterested })
+                .del()
+                .then(_ => console.log('Registros deletados!'))
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover registros anteriores')
+                })
         })
 
         res.status(200).send('Interesse em adotar removido com sucesso!')
+    }
 
+    const deleteSavedFiles = async (imagesURL) => {
+        for (imageURL of imagesURL) {
+            await deleteFile(`${__dirname}/../_interestedPictures/${imageURL.imageURL}`)
+        }
+    }
+
+    const deleteFile = (filePath) => {
+        fs.unlink(filePath, (err) => {
+            if (!err) {
+                console.log('Arquivo deletado com sucesso!');
+            } else {
+                console.log(err)
+                console.log('Erro ao deletar arquivo.');
+            }
+        })
     }
 
     return { getInterestedsInAdoption, save, savePicture, toggleVerifiedState, removeInterested }

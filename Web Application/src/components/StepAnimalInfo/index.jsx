@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { MDBInput } from "mdbreact";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -70,9 +70,9 @@ export default function StepInfoAnimal(props) {
 
 	function loadAnimalURLImages() {
 		if (props.animal.imagesURL) {
-			return props.animal.imagesURL.map(({ imageURL }) => {
+			console.log(props.animal.imagesURL.map(({ imageURL }) => {
 				return `${baseApiUrl}/animal-pictures/${imageURL}`
-			})
+			}))
 		}
 		return []
 	}
@@ -87,8 +87,10 @@ export default function StepInfoAnimal(props) {
 					equal = true
 					console.log('É igual')
 				}
-				if (equal) return
-				console.log('Não é igual')
+				if (equal) {
+					console.log('Não é igual')
+					return
+				}
 			}
 		}
 
@@ -96,9 +98,7 @@ export default function StepInfoAnimal(props) {
 		console.log(props.selectedPictures)
 
 		if (!!files.length) {
-			props.onSelectPicture(pictures)
-		} else {
-			props.onSelectPicture([])
+			props.onSelectPicture(files)//Error
 		}
 		return
 	}

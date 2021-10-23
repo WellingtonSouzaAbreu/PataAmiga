@@ -51,6 +51,7 @@ module.exports = app => {
                 console.log(err)
                 throw err
             })
+
     }
 
     const estimateAllAges = async (temporaryHome) => {

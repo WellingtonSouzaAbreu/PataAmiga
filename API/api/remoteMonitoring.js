@@ -1,4 +1,5 @@
 const multer = require('multer')
+const fs = require('fs')
 
 module.exports = app => {
 
@@ -19,7 +20,7 @@ module.exports = app => {
         for (remoteMonitoring of remoteMonitorings) {
             remoteMonitoring.imagesURL = []
             remoteMonitoring.imagesURL = await app.db('remote-monitoring-pictures')
-            .where({remoteMonitoringId: remoteMonitoring.id})
+                .where({ remoteMonitoringId: remoteMonitoring.id })
                 .then(imageURL => {
                     return imageURL.map(imageURL => imageURL.imageURL)
                 })
@@ -105,9 +106,49 @@ module.exports = app => {
                     console.log(err)
                     res.status(500).send('Ocorreu um erro ao deletar monitoramento remoto')
                 })
+
+            await app.db('remote-monitoring-pictures')
+                .select('imageURL')
+                .where({ remoteMonitoringId: idRemoteMonitoring })
+                .then(async imagesURL => {
+                    if (imagesURL.length > 0) {
+                        await deleteSavedFiles(imagesURL)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover imagens anteriores')
+                })
+
+            await app.db('remote-monitoring-pictures')
+                .select('imageURL')
+                .where({ remoteMonitoringId: idRemoteMonitoring })
+                .del()
+                .then(_ => console.log('Registros deletados!'))
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover registros anteriores')
+                })
         })
 
         res.status(200).send('Monitoramento remoto removido com sucesso!')
+    }
+
+    const deleteSavedFiles = async (imagesURL) => {
+        for (imageURL of imagesURL) {
+            await deleteFile(`${__dirname}/../_remoteMonitoringPictures/${imageURL.imageURL}`)
+        }
+    }
+
+    const deleteFile = (filePath) => {
+        fs.unlink(filePath, (err) => {
+            if (!err) {
+                console.log('Arquivo deletado com sucesso!');
+            } else {
+                console.log(err)
+                console.log('Erro ao deletar arquivo.');
+            }
+        })
     }
 
     return { getRemoteMonitoringsByAdoption, save, savePicture, removeRemoteMonitoring }

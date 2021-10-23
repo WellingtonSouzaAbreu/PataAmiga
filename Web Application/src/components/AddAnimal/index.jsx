@@ -25,7 +25,7 @@ const initialState = {
 		dateOfBirth: new Date(),
 		availableForAdoption: false
 	},
-	pictures: {},
+	pictures: [],
 	veterinaryCare: {
 		needOfMedication: false,
 		needOfHospitalization: false,
@@ -94,7 +94,7 @@ class AddAnimal extends Component {
 	getStepContent(step) {
 		switch (step) {
 			case 0:
-				return <StepAnimalInfo animal={this.state.animal} selectedPictures={this.state.pictures} edit={this.props.edit} onChange={this.updateAnimalField}  onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
+				return <StepAnimalInfo animal={this.state.animal} selectedPictures={this.state.pictures} edit={this.props.edit} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
 			case 1:
 				if (this.props.edit) { // TODO provisório, tá feio
 					return <h1>A edição dos dados veterinários deve ser feita através da aba 'Mais informações'</h1>

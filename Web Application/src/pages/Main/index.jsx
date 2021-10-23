@@ -15,14 +15,14 @@ export default function Main() {
 				</div>
 				<ul className="nav-list">
 					<li >
-						<Link to='/painel-de-controle' >
+						<Link to='/home' >
 							<i className="bx bx-grid-alt" />
 							<span className={'linksName'}>Home</span>
 						</Link>
 						<span className={'tooltip'}>Home</span>
 					</li>
 					<li>
-						<Link to="/animais"> 
+						<Link to="/animais">
 							<i className="bx bxs-user" />
 							<span className={'linksName'}>Animais</span>
 						</Link>

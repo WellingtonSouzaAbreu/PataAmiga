@@ -180,7 +180,7 @@ module.exports = app => {
             .then(async (animals) => {
                 let adoptedAnimals = await adoptedAnimalsId()
                 let temporaryHomeAnimals = await temporaryHomeAnimalsId()
-                animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id) )
+                animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id))
                 console.log(animals)
                 res.status(200).send(animals)
             })
@@ -191,7 +191,7 @@ module.exports = app => {
     }
 
     const adoptedAnimalsId = async () => {
-       return await app.db('adoptions')
+        return await app.db('adoptions')
             .select('animalId')
             .then(animalsId => animalsId.map(({ animalId }) => animalId))
             .catch(err => {
@@ -202,13 +202,13 @@ module.exports = app => {
 
     const temporaryHomeAnimalsId = async () => {
         return await app.db('temporary-homes')
-             .select('animalId')
-             .then(animalsId => animalsId.map(({ animalId }) => animalId))
-             .catch(err => {
-                 console.log(err)
-                 res.status(500).send(err)
-             })
-     }
+            .select('animalId')
+            .then(animalsId => animalsId.map(({ animalId }) => animalId))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
 
     const save = async (req, res) => {
         const { existsOrError, objectIsNull } = app.api.validation
@@ -400,6 +400,29 @@ module.exports = app => {
                 .catch(err => {
                     console.log(err)
                     res.status(500).send('Ocorreu um erro ao deletar animal')
+                })
+
+            await app.db('animal-pictures')
+                .select('imageURL')
+                .where({ animalId: idAnimal })
+                .then(async imagesURL => {
+                    if (imagesURL.length > 0) {
+                        await deleteSavedFiles(imagesURL)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover imagens anteriores')
+                })
+
+            await app.db('animal-pictures')
+                .select('imageURL')
+                .where({ animalId: idAnimal })
+                .del()
+                .then(_ => console.log('Registros deletados!'))
+                .catch(err => {
+                    console.log(err)
+                    console.log('Erro ao remover registros anteriores')
                 })
         })
 
