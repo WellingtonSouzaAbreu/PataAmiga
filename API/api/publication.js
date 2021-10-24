@@ -108,9 +108,10 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        let publication = req.body.publication ? req.body.publication : res.status(400).send('Dados da publicação remoto não informados')
+        const publication = await objectIsNull(req.body.publication) ? res.status(400).send('Dados da publicação não informados') : req.body.publication
+
         publication.startDateTime = new Date((new Date((publication.startDateTime.split('Z')[0])).getTime()) - 14400000)// Subtraindo 4 horas
         publication.endDateTime = new Date((new Date((publication.endDateTime.split('Z')[0])).getTime()) - 14400000)// Subtraindo 4 horas
 

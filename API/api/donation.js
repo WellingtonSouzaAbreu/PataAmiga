@@ -75,11 +75,12 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
+
+        const donation = await objectIsNull(req.body) ? res.status(400).send('Dados da doação não informados') : req.body
 
         const userId =/*  req.user.id  */ 1 // Default TODO Habilitar passport
-        let donation = req.body
-        donation.date = convertDate(donation.date)
+        donation.date = new Date(donation.date)
 
         if (!donation.donationType) donation.donationType = 'others'
 
@@ -89,17 +90,13 @@ module.exports = app => {
             return res.status(400).send()
         }
 
-
         if (!donation.cellNumber || !donation.name) {
             await app.db('users')
                 .select('name', 'cellNumber')
                 .where({ id: userId })
                 .then(([userData]) => donation = { ...donation, ...userData })
                 .catch(err => console.log('Erro ao consultar dados do usuário'))
-        }
-
-        try {
-            // existsOrError(donation.donationType, 'Tipo de doação não informado')
+        } try {
             existsOrError(donation.name, 'Nome do doador não informado')
             existsOrError(donation.cellNumber, 'Celular do doador não informado')
             existsOrError(donation.date, 'Data não informada')
@@ -108,30 +105,26 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
-        if(!donation.id){
+        if (!donation.id) {
             await app.db('donations')
-            .insert(donation)
-            .then(_ => res.status(204).send())
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar doação')
-            })
-        }else{
+                .insert(donation)
+                .then(_ => res.status(204).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar doação')
+                })
+        } else {
             console.log('ToEdit')
             console.log(donation)
             await app.db('donations')
-            .update(donation)
-            .where({id: donation.id})
-            .then(_ => res.status(204).send())
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar doação')
-            })
+                .update(donation)
+                .where({ id: donation.id })
+                .then(_ => res.status(204).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar doação')
+                })
         }
-    }
-
-    const convertDate = (date) => {
-        return new Date(date)
     }
 
     const removeDonation = async (req, res) => {

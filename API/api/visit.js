@@ -2,7 +2,7 @@ module.exports = app => {
 
     const getVisitsByAdoption = async (req, res) => {
         await app.db('visits')
-        .where({adoptionId: req.params.idAdoption})
+            .where({ adoptionId: req.params.idAdoption })
             .then(visits => {
                 res.status(200).send(visits)
             })
@@ -13,12 +13,10 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        let visit = req.body.visit ? req.body.visit : res.status(400).send('Dados da visita não informados')
+        const visit = await objectIsNull(req.body.visit) ? res.status(400).send('Dados da visita não informados') : req.body.visit
 
-        console.log(req.body)
-        
         try {
             existsOrError(visit.report, 'Relatório não informado')
             existsOrError(visit.adoptionId, 'Adoção não informada')

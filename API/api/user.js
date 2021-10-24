@@ -59,9 +59,9 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        const user = req.body.user ? req.body.user : res.status(400).send('Dados do usuário não informados')
+        const user = await objectIsNull(req.body.user) ? res.status(400).send('Dados do usuário não informados') : req.body.user
         const idUserForUpdate = req.params.id || null // for update - from URL
 
         try {
@@ -102,7 +102,6 @@ module.exports = app => {
                     res.status(500).send('Erro ao cadastrar usuário')
                 })
         } else {
-
             await app.db('users')
                 .update(user)
                 .where({ id: idUserForUpdate })

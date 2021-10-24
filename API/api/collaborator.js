@@ -29,17 +29,9 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-
-        let collaborator // TODO Artifício tecnológico
-        if (req.body.collaborator) {
-            collaborator = req.body.collaborator
-        } else {
-            console.log('Err')
-            return res.status(400).send('Dados do colaborador não informados')
-        }
-
+        const collaborator = await objectIsNull(req.body.collaborator) ? res.status(400).send('Dados do colaborador não informados') : req.body.collaborator
 
         try {
             existsOrError(collaborator.name, 'Nome não infomado')
@@ -50,9 +42,7 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
-        console.log(collaborator)
-
-        collaborator.dateOfBirth = collaborator.dateOfBirth.split('Z')[0]
+        collaborator.dateOfBirth = new Date(collaborator.dateOfBirth)
 
         if (!collaborator.id) {
             await app.db('collaborators')

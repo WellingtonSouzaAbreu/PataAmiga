@@ -5,13 +5,12 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        console.log(req.body.veterinaryCare)
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        let veterinaryCare = req.body.veterinaryCare ? req.body.veterinaryCare : res.status(400).send('Dados dos cuidado veterinário não informados')
+        const veterinaryCare = await objectIsNull(req.body.veterinaryCare) ? res.status(400).send('Dados do cuidado veterinário não informados') : req.body.veterinaryCare
 
-        const costsVeterinaries = [...veterinaryCare.costsVeterinaries]
-        delete veterinaryCare.costsVeterinaries
+        // const costsVeterinaries = [...veterinaryCare.costsVeterinaries] // Obsoleto
+        // delete veterinaryCare.costsVeterinaries // Obsoleto
 
         // veterinaryCare.totalCostOfTreatment = getTotalCostOfTreatment(costsVeterinaries)
 
@@ -27,7 +26,7 @@ module.exports = app => {
 
         veterinaryCare.dateOfVeterinaryCare = veterinaryCare.dateOfVeterinaryCare.split('Z')[0]
 
-        let idVeterinaryCare
+        // let idVeterinaryCare Obsoleto
         await app.db('veterinary-cares')
             .insert(veterinaryCare)
             .then(id => /* idVeterinaryCare = id[0] */res.status(200).send())
@@ -36,7 +35,7 @@ module.exports = app => {
                 res.status(500).send('Erro ao cadastrar cuidado veterinário')
             })
 
-
+        // Obsoleto
         /* costsVeterinaries.map(cost => cost.veterinaryCareId = idVeterinaryCare)
 
         await app.db('costs-veterinaries')
@@ -48,11 +47,11 @@ module.exports = app => {
             }) */
     }
 
-    const getTotalCostOfTreatment = (costsVeterinaries) => {
+    /* const getTotalCostOfTreatment = (costsVeterinaries) => {
         let totalCost = 0
         costsVeterinaries.map(cost => totalCost += cost.value)
         return totalCost
-    }
+    } */
 
     const removeVeterinaryCare = async (req, res) => {
         const idVeterinaryCare = req.params.id ? req.params.id : res.status(400).send('Identificação do cuidado veterinário não informado')

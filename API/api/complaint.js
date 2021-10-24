@@ -39,9 +39,9 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        let complaint = req.body.complaint ? req.body.complaint : res.status(400).send('Dados da denúncia não informados')
+        const complaint = await objectIsNull(req.body.complaint) ? res.status(400).send('Dados da denúncia não informados') : req.body.complaint
         complaint.date = new Date()
 
         try {

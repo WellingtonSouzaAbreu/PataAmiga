@@ -213,13 +213,10 @@ module.exports = app => {
     const save = async (req, res) => {
         const { existsOrError, objectIsNull } = app.api.validation
 
-        console.log(req.body)
-
         const animal = await objectIsNull(req.body.animal) ? res.status(400).send('Dados do animal não informados') : req.body.animal
         const veterinaryCare = await objectIsNull(req.body.veterinaryCare) ? res.status(400).send('Dados do cuidado veterinário não informados') : req.body.veterinaryCare
         const rescue = await objectIsNull(req.body.rescue) ? res.status(400).send('Dados do resgate não informados') : req.body.rescue
 
-        console.log(veterinaryCare)
         try {
             existsOrError(animal.name, 'Nome não informado')
             existsOrError(animal.color, 'Cor não informada')

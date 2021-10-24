@@ -81,9 +81,9 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        let temporaryHome = req.body.temporaryHome ? req.body.temporaryHome : res.status(400).send('Dados da doação não informados')
+        const temporaryHome = await objectIsNull(req.body.temporaryHome) ? res.status(400).send('Dados do lar temporário não informados') : req.body.temporaryHome
 
         try {
             existsOrError(temporaryHome.adopterName, 'Nome do adotante não informado')

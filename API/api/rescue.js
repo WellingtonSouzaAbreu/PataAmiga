@@ -14,10 +14,11 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        const rescue = req.body.rescue ? req.body.rescue : res.status(400).send('Dados do resgate não informados')
+        const rescue = await objectIsNull(req.body.rescue) ? res.status(400).send('Dados do resgate não informados') : req.body.rescue
         rescue.animalId = req.params.animalId ? req.params.animalId : res.status(400).send('Animal não identificado')
+        
         let collaboratorsId = rescue.collaboratorsId
         delete rescue.collaboratorsId
 

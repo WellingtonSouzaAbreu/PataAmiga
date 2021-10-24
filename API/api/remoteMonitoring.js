@@ -34,9 +34,9 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        const remoteMonitoring = req.body.remoteMonitoring ? req.body.remoteMonitoring : res.status(400).send('Dados do monitoramento remoto não informados')
+        const remoteMonitoring = await objectIsNull(req.body.remoteMonitoring) ? res.status(400).send('Dados do monitoramento remoto não informados') : req.body.remoteMonitoring
         remoteMonitoring.date = new Date()
 
         try {

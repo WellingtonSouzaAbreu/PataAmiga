@@ -191,9 +191,9 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
-        const { existsOrError } = app.api.validation
+        const { existsOrError, objectIsNull } = app.api.validation
 
-        const adoption = req.body.adoption ? req.body.adoption : res.status(400).send('Dados da adoção não informados')
+        const adoption = await objectIsNull(req.body.adoption) ? res.status(400).send('Dados da adoção não informados') : req.body.adoption
 
         try {
             existsOrError(adoption.dateAdoption, 'Data não informado')
