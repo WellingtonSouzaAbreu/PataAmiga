@@ -11,6 +11,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { DropzoneArea } from 'material-ui-dropzone'
+import classNames from "classnames";
 
 import styles from './styles.module.css'
 
@@ -34,7 +35,9 @@ const initialState = {
 
 	pictures: [],
 
-	editMode: false
+	editMode: false,
+
+	formated: ['http://192.168.2.183:500/publication-pictures/1634765446675_DSC02368.JPG']
 }
 
 class AddEvent extends Component {
@@ -146,30 +149,32 @@ class AddEvent extends Component {
 
 	updateSelectedPictures = (files) => {
 		console.log('To no updateSelectedPicture')
-		console.log(!files)
+		console.log(files)
 		if (!files) {
 			return
 		}
-		this.setState({ pictures: files })
+		this.setState({ pictures: [...files] })
 	}
 
-	loadImagesURL = async () => {
-		console.log(this.state.imagesURL)
+	loadImagesURL = () => {
+		console.log(this.state)
 		if (this.state.imagesURL) {
-			return await this.state.imagesURL.map(({ imageURL }) => {
+			 return this.state.imagesURL.map(({ imageURL }) => {
+				console.log('map')
 				console.log(`${baseApiUrl}/publication-pictures/${imageURL}`)
 				return `${baseApiUrl}/publication-pictures/${imageURL}`
 			})
 		}
+
 	}
 
 	render() {
-
-		const ttt = this.loadImagesURL()
-
+		console.log(this.loadImagesURL())
 		return (
 			<div className={styles.container} >
-				<Accordion >
+				<Accordion
+					defaultExpanded={this.props.edit ? true : false}
+				>
 					<AccordionSummary
 						expandIcon={<i className='bx bx-down-arrow-alt'></i>}
 						aria-controls="panel1a-content"
@@ -180,8 +185,8 @@ class AddEvent extends Component {
 							<span className={styles.spanAdjust}>{this.props.edit ? 'Editar publicação' : 'Cadastrar publicação'}</span>
 						</Typography>
 					</AccordionSummary>
-					<AccordionDetails>
-						<div className={styles.formCreate}>
+					<AccordionDetails className={classNames(styles.containerForm, this.props.edit && styles.containerFormEdit)}>
+						<div className={classNames(styles.formCreate, this.props.edit && styles.formCreateEdit)}>
 							<div className={styles.nameDescription}>
 								<FormControl className={styles.fullWidthAdjsut} >
 									<InputLabel id="demo-simple-select-helper-label">Tipo de publicação</InputLabel>
@@ -189,7 +194,7 @@ class AddEvent extends Component {
 										labelId="demo-simple-select-helper-label"
 										id="demo-simple-select-helper"
 										value={this.state.publicationType}
-										onChange={(e) => this.setState({ publicationType: e.target.value })}
+										onChange={(e) => this.setState({ ...initialState, publicationType: e.target.value })}
 									>
 										<MenuItem value=""></MenuItem>
 										<MenuItem value={'event'}>Evento</MenuItem>
@@ -256,15 +261,18 @@ class AddEvent extends Component {
 								<DropzoneArea
 									// clearOnUnmount={true}
 									dropzoneClass={styles.boxUpload}
-									initialFiles={ttt} // TODO Initial Files não funciona
+									initialFiles={!this.state.pictures.length ? this.loadImagesURL() : []} // TODO Initial Files não funciona
 									filesLimit={3}
 									acceptedFiles={['image/*']}
 									dropzoneText={`Carregar imagens(max: 3)`}
 									onChange={(files) => this.updateSelectedPictures(files)}
 								/>
+								<DropzoneArea
+									initialFiles={this.loadImagesURL()}
+								/>
 							</div>
 						</div>
-						<div className={styles.confirmButton}>
+						<div className={classNames(styles.confirmButton, this.props.edit && styles.confirmButtonEdit)}>
 							<button className={styles.buttonCreateEvent} onClick={this.savePublication}>
 								{this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
 							</button>

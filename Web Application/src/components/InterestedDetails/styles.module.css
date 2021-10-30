@@ -10,8 +10,9 @@
 .paper {
     background-color: #ffff;
     width: 30%;
-    height: 55vh;
+    height: 60vh;
     overflow-y: auto;
+    border-radius: 4px;
 
 }
 

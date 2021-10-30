@@ -207,7 +207,7 @@ class Donations extends Component {
 		return (
 			<div className={styles.container}>
 				<div className={styles.pageName}>
-					<span onClick={this.loadDonations}>DOAÇÕES</span> {/* TODO Provisório para testes */}
+					<span onClick={this.loadDonations}>DOAÇÕES</span> 
 				</div>
 				<div className={styles.formDivider}>
 					<AddDonation onDonationsReceivedCard={this.donationsReceivedCard} onRefresh={this.loadDonations}/>

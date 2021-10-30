@@ -7,10 +7,13 @@ import Typography from '@material-ui/core/Typography';
 import { MenuItem, Select, InputLabel, FormControl } from "@material-ui/core";
 import axios from 'axios'
 
+import AnimalDetails from '../AnimalDetails'
 import styles from './styles.module.css'
+
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import CustomDatePicker from "../CustomDatePicker";
+import classNames from "classnames";
 
 const initialState = {
     date: new Date(),
@@ -49,16 +52,16 @@ class AddTemporaryHome extends Component {
 
     selectAnimal = () => {
         return (
-            <FormControl className={styles.select} >
+            <FormControl className={classNames(styles.select , this.props.edit && styles.selectEdit)} >
                 <InputLabel id="demo-simple-select-helper-label">Animal</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
                     value={this.props.editMode ? this.props.temporaryHome.animalId : this.state.animalId}
                     onChange={(e) => this.setState({ animalId: e.target.value })}
-                    className={styles.select}
+                    
                 >
-                    <MenuItem value={null}>Selecione um animal</MenuItem>
+                    <MenuItem value={null}  >Selecione um animal</MenuItem>
                     {this.renderSelectOptions()}
                 </Select>
             </FormControl>
@@ -98,6 +101,7 @@ class AddTemporaryHome extends Component {
         return (
             <div className={styles.container}>
                 <Accordion
+                    defaultExpanded = {this.props.edit ? true : false}
                     className={styles.acordion}
                 >
                     <AccordionSummary
@@ -111,22 +115,26 @@ class AddTemporaryHome extends Component {
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails >
-                        <div className={styles.formTH}>
-                            <CustomDatePicker label={'Data'}
-                                value={this.state.date} onChangeDate={this.changeDate}
-                            />
-                            <div>
+                        <div className={classNames(styles.formTH, this.props.edit && styles.formTHEdit)}>
+                            <div className={classNames(styles.containerInput , this.props.edit && styles.containerInputEdit)}>
+                                <CustomDatePicker label={'Data'}
+                                    value={this.state.date} onChangeDate={this.changeDate}
+                                />
+                            </div>
+                           
+                            <div  className={classNames(styles.containerInput , this.props.edit && styles.containerInputEdit)}>
                                 <MDBInput className={styles.inputRegister} label="Nome do voluntário" outline
                                     value={this.state.adopterName} onChange={(e) => this.setState({ adopterName: e.target.value })}
                                 />
                             </div>
-                            <div>
+                            <div  className={classNames(styles.containerInput , this.props.edit && styles.containerInputEdit)}>
                                 <MDBInput className={styles.inputRegister} label="Telefone" outline
                                     value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
                                 />
                             </div>
-                            <div>
+                            <div  className={classNames(styles.containerInputSelect , this.props.edit && styles.containerInputEdit)}>
                                 {this.selectAnimal()}
+                                
                             </div>
 
                             <button className={styles.buttonSubmitForm} onClick={this.saveTemporaryHome}>

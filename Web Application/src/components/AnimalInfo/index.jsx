@@ -13,14 +13,17 @@ import { baseApiUrl } from '../../services/baseApiUrl';
 
 export default function DetailsAnimal(props) {
 
-	const renderAnimalImages = () => {
-		return props.animal.imagesURL.map((image, index) => {
-			return (
+	function renderAnimalImages ()  {
+		
+		let carouselItems = []
+		props.animal.imagesURL.map((image, index) => {
+			carouselItems.push (
 				<MDBCarouselItem itemId={index}>
 					<MDBCarouselElement src={`${baseApiUrl}/animal-pictures/${image.imageURL}`} alt='...' />
 				</MDBCarouselItem>
 			)
 		})
+		return carouselItems
 	}
 
 	return (
@@ -29,7 +32,7 @@ export default function DetailsAnimal(props) {
 				<div className={styles.containerCarousel} >
 					<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
 						<MDBCarouselInner>
-							{!!props.animal.imagesURL && renderAnimalImages()}
+							{ !!props.animal.imagesURL ?  renderAnimalImages() : null}
 						</MDBCarouselInner>
 					</MDBCarousel>
 				</div>

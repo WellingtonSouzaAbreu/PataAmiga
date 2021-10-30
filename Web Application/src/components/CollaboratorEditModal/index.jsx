@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) =>
 			borderRadius: 5,
 			boxShadow: theme.shadows[5],
 			width: '30%',
-			height: '40vh',
+			height: '52vh',
 			overflowY: 'auto'
 		},
 	}),

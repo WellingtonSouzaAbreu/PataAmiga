@@ -1,14 +1,20 @@
 .container {
     display: flex;
     width: 100%;
-    flex-direction: row;
+    flex-direction: row;    
+   
 }
+
 
 .acordion {
     width: 100%;
 }
 
 .heading {
+    color: #F27B35;
+}
+
+.headingEdit {
     color: #F27B35;
 }
 
@@ -19,22 +25,31 @@
 
     flex-direction: row; 
     align-items: center;
- 
+  
+}
+
+.formVolunteersEdit {
+    display: flex;
+    width: 100%;
+    flex-direction: column; 
+    align-items: center;
+    padding: 10px;
+  
+}
+
+
+.containerInput {
+    width: 15%;
+    margin-right: 15px;
+  
+}
+
+.containerInputEdit {
+    width: 100%;
+    
     
 }
 
-
-.formVolunteers > div {
-    width: 15%;
-    margin-right: 15px;
-}
-
-.formVolunteers > div:last-child {
-    display: flex;
-    width: 10%;
-    align-items: center;
-    justify-content: center;
-}
 
 .inputs {
   margin: 15px;
@@ -51,3 +66,5 @@
     border-radius: 3px;
     
 }
+
+

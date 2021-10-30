@@ -7,8 +7,11 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
 
 import styles from './styles.module.css'
+
+
 import { baseApiUrl } from "../../services/baseApiUrl";
 import CustomDatePicker from "../CustomDatePicker";
+import classNames from "classnames";
 
 const initialState = {
     name: '',
@@ -55,34 +58,44 @@ class AddCollaborator extends Component {
     render() {
         return (
             <div className={styles.container}>
-                <Accordion
+                <Accordion             
+                    defaultExpanded ={this.props.edit ? true : false}
                     className={styles.acordion}
                 >
-                    <AccordionSummary // TODO Iniciar expandido se o this.props.edit for true
+                    <AccordionSummary
                         expandIcon={<i className='bx bx-down-arrow-alt'></i>}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
-                        <Typography className={styles.heading} >
+                        <Typography className={classNames(styles.heading, this.props.edit && styles.headingEdit )} >
                             <i className='bx bxs-calendar-plus'></i>
                             <span className={styles.spanAdjust}>{this.props.edit ? 'Editar colaborador' : 'Cadastrar colaborador'}   </span>
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails >
-                        <div className={styles.formVolunteers}>
-                            <MDBInput className={styles.inputRegister} label="Nome" outline
-                                value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })}
-                            />
-                            <CustomDatePicker label="Nascimento"
-                                value={this.state.dateOfBirth} onChangeDate={(dateOfBirth) => this.setState({ dateOfBirth })}
-                            />
-                            <MDBInput className={styles.inputRegister} label="Cidade" outline
-                                value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })}
-                            />
-                            <MDBInput className={styles.inputRegister} label="Telefone" outline
-                                value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
-                            />
-                            <button className={styles.buttonSubmitForm} onClick={this.saveCollaborator}>
+                        <div className={classNames(styles.formVolunteers, this.props.edit && styles.formVolunteersEdit )} >
+                            <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit )}>
+                                <MDBInput className={classNames(styles.inputRegister, this.props.edit && styles.inputRegisterEdit )} label="Nome" outline
+                                    value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })}
+                                />
+                            </div>
+                           <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit )}>
+                                <CustomDatePicker label="Nascimento"
+                                     value={this.state.dateOfBirth} onChangeDate={(dateOfBirth) => this.setState({ dateOfBirth })}
+                                />
+                           </div>
+                           <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit )}>
+                                <MDBInput className={styles.inputRegister} label="Cidade" outline
+                                    value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })}
+                                />
+                           </div>
+                          <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit )}>
+                                <MDBInput className={styles.inputRegister} label="Telefone" outline
+                                    value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
+                                />
+                          </div>
+                            
+                            <button className={styles.buttonSubmitForm} onClick={this.saveCollaborator} >
                                 {this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
                             </button>
                         </div>

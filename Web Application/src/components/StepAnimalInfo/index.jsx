@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import { MDBInput } from "mdbreact";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -11,6 +11,7 @@ import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import CustomDatePicker from './../CustomDatePicker/index.jsx'
+import classNames from 'classnames';
 
 let pictures = []
 
@@ -70,9 +71,9 @@ export default function StepInfoAnimal(props) {
 
 	function loadAnimalURLImages() {
 		if (props.animal.imagesURL) {
-			console.log(props.animal.imagesURL.map(({ imageURL }) => {
+			return props.animal.imagesURL.map(({ imageURL }) => {
 				return `${baseApiUrl}/animal-pictures/${imageURL}`
-			}))
+			})
 		}
 		return []
 	}
@@ -87,10 +88,8 @@ export default function StepInfoAnimal(props) {
 					equal = true
 					console.log('É igual')
 				}
-				if (equal) {
-					console.log('Não é igual')
-					return
-				}
+				if (equal) return
+				console.log('Não é igual')
 			}
 		}
 
@@ -98,15 +97,15 @@ export default function StepInfoAnimal(props) {
 		console.log(props.selectedPictures)
 
 		if (!!files.length) {
-			props.onSelectPicture(files)//Error
-		}
+			props.onSelectPicture(pictures)
+		} 
 		return
 	}
 
 	console.log(props)
 
 	return (
-		<div className={styles.container}>
+		<div className={classNames(styles.container)}>
 			<div className={styles.formCreate}>
 				<div className={styles.containerForm}>
 					<div className={styles.sectionDiv}>

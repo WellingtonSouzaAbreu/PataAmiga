@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) =>
 			border: 'none',
 			borderRadius: 5,
 			boxShadow: theme.shadows[5],
-			width: '80%',
-			height: '60vh',
+			width: '30%',
+			height: '50vh',
 			overflowY: 'auto'
 		},
 	}),

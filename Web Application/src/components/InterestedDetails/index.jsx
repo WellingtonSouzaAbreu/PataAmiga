@@ -91,7 +91,7 @@ export default function InterestedModalDetails(props) {
 							</div>
 							<div>
 								<button onClick={() => props.onToggleStateOfInterest(!props.interestedInAdopt.verified, props.interestedInAdopt.id)}>{props.interestedInAdopt.verified ? 'Não Verificar' : 'Verificar'}</button>
-								// Provisório
+								
 							</div>
 						</div>
 					</div>

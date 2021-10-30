@@ -8,18 +8,41 @@
 }
 
 .formTH {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    
-    
+    align-items: center; 
 }
 
-.formTH div {
+.formTHEdit {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerInput div {
     margin-right: 10px;
     
 }
 
+.select {
+    width: 100%;
+}
+
+.selectEdit {
+    width: 100%;
+    
+}
+
+
+.containerInputEdit {
+    width: 100%;
+
+}
+
+.containerInputSelect {
+    width: 15%;
+    margin-right: 10px;
+}
 .buttonSubmitForm {
     width: 200px;
     height: 38px;
