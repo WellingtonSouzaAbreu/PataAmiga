@@ -1,13 +1,11 @@
 import React from "react";
-import { makeStyles,  createStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import IconButton from '@material-ui/core/IconButton';
 
-
-import AdoptionFollowUpContent from "./../AdoptionFollowUpContent";
-
-import styles from './styles.module.css'
+import AddAdoption from "../AddAdoption/index.jsx";
 
 const useStyles = makeStyles((theme) =>
 	createStyles({
@@ -15,7 +13,6 @@ const useStyles = makeStyles((theme) =>
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
-
 		},
 
 		paper: {
@@ -23,14 +20,14 @@ const useStyles = makeStyles((theme) =>
 			border: 'none',
 			borderRadius: 5,
 			boxShadow: theme.shadows[5],
-			width: '60%',
-			height: '75vh',
+			width: '85%',
+			height: '90vh',
 			overflowY: 'auto'
 		},
 	}),
 );
 
-export default function AdoptionFollowUpModal(props) {
+export default function AdoptionEditModal(props) {
 
 	const classes = useStyles();
 	const [open, setVisibility] = React.useState(false);
@@ -41,14 +38,15 @@ export default function AdoptionFollowUpModal(props) {
 
 	const handleClose = () => {
 		setVisibility(false);
+		props.onRefresh(true)
 	};
+
 
 	return (
 		<div>
-            <button className={styles.btMonitoring} onClick={handleOpen}>
-                <i class='bx bx-list-check bx-sm'></i>
-                <span>Acompanhamento</span>
-            </button>
+			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
+				<i class='bx bxs-edit'></i>
+			</IconButton>
 
 			<Modal
 				className={classes.modal}
@@ -62,7 +60,7 @@ export default function AdoptionFollowUpModal(props) {
 			>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<AdoptionFollowUpContent idAdoption={props.idAdoption}/>
+						<AddAdoption adoption={props.adoption} edit={props.edit} onCloseModal={handleClose} onRefresh={props.onRefresh} />
 					</div>
 				</Fade>
 			</Modal>

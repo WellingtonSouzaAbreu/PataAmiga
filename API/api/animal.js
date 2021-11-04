@@ -106,10 +106,13 @@ module.exports = app => {
     const getAnimalById = async (req, res) => {
         const idAnimal = req.params.id ? req.params.id : res.status(400).send('Identificação do animal não informada')
 
+        console.log(idAnimal)
+
         await app.db('animals')
             .where({ id: idAnimal })
             .first()
             .then(async (animal) => {
+                console.log(animal)
                 animal.aproximateAge = await estimateAge(animal.dateOfBirth)
                 animal.imagesURL = await getAllAnimalPictures(idAnimal)
                 // console.log(animal)
@@ -175,13 +178,16 @@ module.exports = app => {
     }
 
     const getAnimalSelectOptions = async (req, res) => {
+        const animalPreviousSelected = req.query.animalPreviousSelected && req.query.animalPreviousSelected
+
         await app.db('animals')
-            .select('animals.id', 'animals.name', 'animals.breed')
+            .select('id', 'name', 'breed')
+            .orderBy('name')
             .then(async (animals) => {
+                console.log(animals)
                 let adoptedAnimals = await adoptedAnimalsId()
                 let temporaryHomeAnimals = await temporaryHomeAnimalsId()
-                animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id))
-                console.log(animals)
+                animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id) || animal.id == animalPreviousSelected )
                 res.status(200).send(animals)
             })
             .catch(err => {

@@ -13,8 +13,10 @@ module.exports = app => {
             })
     }
 
-    const save = async (req, res) => {
+    const update = async (req, res) => {
         const { existsOrError, objectIsNull } = app.api.validation
+
+        console.log(req.body.rescue)
 
         const rescue = await objectIsNull(req.body.rescue) ? res.status(400).send('Dados do resgate não informados') : req.body.rescue
         rescue.animalId = req.params.animalId ? req.params.animalId : res.status(400).send('Animal não identificado')
@@ -31,16 +33,19 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
+        rescue.dateOfRescue = new Date(rescue.dateOfRescue)
+
         let idRescue
         await app.db('rescues')
-            .insert(rescue)
-            .then(id => idRescue = id[0])
+            .update(rescue)
+            .where({id: rescue.id})
+            .then(id => /* idRescue = id[0] */ res.status(200).send())
             .catch(err => {
                 console.log(err)
                 res.status(500).send('Erro ao cadastrar resgate')
             })
 
-        let collaboratorsData = []
+        /* let collaboratorsData = []
         for (collaboratorId of collaboratorsId) {
             collaboratorsData.push({ collaboratorId: collaboratorId, rescueId: idRescue })
         }
@@ -55,10 +60,10 @@ module.exports = app => {
                     console.log(err)
                     res.status(500).send('Erro ao cadastrar collaboradores envolvidos no resgate')
                 })
-        }
+        } */
 
     }
 
-    return {getRescue, save }
+    return {getRescue, update }
 }
 

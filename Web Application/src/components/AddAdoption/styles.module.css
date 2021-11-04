@@ -1,0 +1,64 @@
+.container {
+    
+    width: 100%;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f27b35;
+    
+}
+
+.spanAdjust {
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.containerForm {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerForm .containerInput {
+    width: 15%;
+    margin-right: 15px;
+}
+
+.containerForm .containerInputBt {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerForm .containerInputBt .btModal {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    align-items: flex-end;
+
+    
+}
+
+.containerForm .containerInputBt .btModal i {
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+
+}
+
+.containerForm .containerInputBt .btModal i:hover{
+    transform: scale(1.05);
+    transition: 0.2s;
+
+}
+.select {
+    width: 100%;
+}

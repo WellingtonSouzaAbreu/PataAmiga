@@ -1,12 +1,8 @@
 import { Component } from 'react'
 import MUIDataTable from "mui-datatables";
-import IconButton from '@material-ui/core/IconButton';
 
 import AnimalDetails from "./../AnimalDetails/index.jsx";
 import AnimalEditModal from './../AnimalEditModal/index.jsx'
-
-const columns = [];
-const options = {}
 
 const initialState = {}
 

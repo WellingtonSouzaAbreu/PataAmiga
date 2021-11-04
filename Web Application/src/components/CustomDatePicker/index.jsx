@@ -14,6 +14,7 @@ const CustomDatePicker = (props) => {
                 format="dd/MM/yyyy"
                 margin="normal"
                 id="date-picker-inline"
+                disabled={props.disabled}
                 label={props.label}
                 value={props.value}
                 onChange={changeDate}

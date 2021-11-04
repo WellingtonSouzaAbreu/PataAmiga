@@ -195,6 +195,8 @@ module.exports = app => {
 
         const adoption = await objectIsNull(req.body.adoption) ? res.status(400).send('Dados da adoção não informados') : req.body.adoption
 
+        console.log(adoption)
+
         try {
             existsOrError(adoption.dateAdoption, 'Data não informado')
             existsOrError(adoption.animalId, 'Animal não informado')
@@ -204,13 +206,26 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
-        await app.db('adoptions')
-            .insert(adoption)
-            .then(_ => res.status(204).send())
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar adoção')
-            })
+        adoption.dateAdoption = new Date(adoption.dateAdoption)
+
+        if (!adoption.id) {
+            await app.db('adoptions')
+                .insert(adoption)
+                .then(_ => res.status(204).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao cadastrar adoção')
+                })
+        } else {
+            await app.db('adoptions')
+                .update(adoption)
+                .where({ id: adoption.id })
+                .then(_ => res.status(204).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Erro ao atualizar adoção')
+                })
+        }
     }
 
     const removeAdoption = async (req, res) => {

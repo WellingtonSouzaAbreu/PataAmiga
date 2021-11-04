@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios'
 
 import styles from './styles.module.css'
+import AddAdoption from "../../components/AddAdoption";
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import AdoptionsTable from "../../components/AdoptionTable";
@@ -90,6 +91,7 @@ class Adoptions extends Component {
                 <div className={styles.pageName} onClick={this.loadAdoptions}>
                     <span>ADOÇÕES</span>
                 </div>
+                <AddAdoption onRefresh={this.loadAdoptions}/>
                 <AdoptionsTable adoptions={this.state.adoptions} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
                     onDelete={this.deleteAdoption} onRefresh={this.loadAdoptions}
                     onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams} />

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import styles from './styles.module.css'
-
-import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -183,7 +181,7 @@ class AddAnimal extends Component {
 				})
 		})
 
-		if (valid.reduce((total, current) => total && current), true) {
+		if (valid.reduce((total, current) => total && current, true)) {
 			window.alert('Imagens salvas com sucesso!')
 			this.props.onRefresh()
 		} else {

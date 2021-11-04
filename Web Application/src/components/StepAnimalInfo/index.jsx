@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { MDBInput } from "mdbreact";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -81,10 +81,10 @@ export default function StepInfoAnimal(props) {
 	const changeSelectedImage = (files) => { // TODO Ao mudar o estado o preview da imagem some
 		pictures = files
 
-		if (files.length == props.selectedPictures.length) { // Gambiarra do cacete
+		if (files.length === props.selectedPictures.length) { // Gambiarra do cacete
 			for (let i = 0; i < files.length; i++) {
 				let equal = false
-				if (files[i].filename == props.selectedPictures[i].filename) {
+				if (files[i].filename === props.selectedPictures[i].filename) {
 					equal = true
 					console.log('É igual')
 				}

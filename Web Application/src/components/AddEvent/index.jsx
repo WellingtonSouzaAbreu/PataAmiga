@@ -46,7 +46,7 @@ class AddEvent extends Component {
 
 	componentDidMount = async () => {
 		if (this.props.edit && !this.state.editMode) {
-			this.setState({ id: this.props.idPublicaton, ... await this.getDetailsOfPublication() })
+			this.setState({ id: this.props.idPublicaton, ...await this.getDetailsOfPublication() })
 		}
 	}
 
@@ -94,7 +94,7 @@ class AddEvent extends Component {
 	}
 
 	getPublicationDataForType = () => {
-		if (this.state.publicationType == 'event') {
+		if (this.state.publicationType === 'event') {
 			return {
 				title: this.state.title,
 				description: this.state.description,
@@ -139,7 +139,7 @@ class AddEvent extends Component {
 				})
 		})
 
-		if (valid.reduce((total, current) => total && current), true) {
+		if (valid.reduce((total, current) => total && current, true)) {
 			window.alert('Imagens salvas com sucesso!')
 			this.props.onRefresh(true)
 		} else {
@@ -159,13 +159,12 @@ class AddEvent extends Component {
 	loadImagesURL = () => {
 		console.log(this.state)
 		if (this.state.imagesURL) {
-			 return this.state.imagesURL.map(({ imageURL }) => {
+			return this.state.imagesURL.map(({ imageURL }) => {
 				console.log('map')
 				console.log(`${baseApiUrl}/publication-pictures/${imageURL}`)
 				return `${baseApiUrl}/publication-pictures/${imageURL}`
 			})
 		}
-
 	}
 
 	render() {
@@ -204,7 +203,7 @@ class AddEvent extends Component {
 								</FormControl>
 
 								{
-									this.state.publicationType == 'event'
+									this.state.publicationType === 'event'
 										? <CustomDateTimePicker
 											label={'Data e hora de início'}
 											value={this.state.startDateTime} onChangeDateTime={this.changeStartDateTime}
@@ -212,15 +211,15 @@ class AddEvent extends Component {
 										: null
 								}
 								<CustomDateTimePicker
-									label={this.state.publicationType == 'event' ? 'Data e hora de encerramento' : 'Publicação visível até'}
+									label={this.state.publicationType === 'event' ? 'Data e hora de encerramento' : 'Publicação visível até'}
 									value={this.state.endDateTime} onChangeDateTime={this.changeEndDateTime}
 								/>
 
-								<MDBInput label={this.state.publicationType == 'event' ? 'Nome do evento' : 'Nome da história'} outline
+								<MDBInput label={this.state.publicationType === 'event' ? 'Nome do evento' : 'Nome da história'} outline
 									value={this.state.title} onChange={e => this.setState({ title: e.target.value })}
 								/>
 								{
-									this.state.publicationType == 'event'
+									this.state.publicationType === 'event'
 										? <>
 
 											<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput} outline
@@ -234,7 +233,7 @@ class AddEvent extends Component {
 							</div>
 							<div className={styles.locationEvent}>
 								{
-									this.state.publicationType == 'event'
+									this.state.publicationType === 'event'
 										? <>
 											<MDBInput label="Cidade" outline
 												value={this.state.city} onChange={e => this.setState({ city: e.target.value })}
@@ -266,9 +265,6 @@ class AddEvent extends Component {
 									acceptedFiles={['image/*']}
 									dropzoneText={`Carregar imagens(max: 3)`}
 									onChange={(files) => this.updateSelectedPictures(files)}
-								/>
-								<DropzoneArea
-									initialFiles={this.loadImagesURL()}
 								/>
 							</div>
 						</div>

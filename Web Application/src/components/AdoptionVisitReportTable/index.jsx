@@ -6,14 +6,6 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { MDBInput } from "mdbreact";
 
-import {
-    MDBCarousel,
-    MDBCarouselInner,
-    MDBCarouselItem,
-    MDBCarouselElement,
-} from 'mdb-react-ui-kit';
-
-
 const columns = [
     {
         name: "date",

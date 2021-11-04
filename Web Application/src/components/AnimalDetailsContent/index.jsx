@@ -6,6 +6,8 @@ import styles from './styles.module.css'
 
 import AnimalInfo from './../AnimalInfo/index.jsx';
 import VeterinaryCareDetails from './../VeterinaryCareDetails'
+import AnimalRescueDetails from '../AnimalRescueDetails';
+
 import { baseApiUrl } from '../../services/baseApiUrl';
 
 const initialState = {
@@ -48,12 +50,16 @@ class AnimalDetailsContent extends Component {
                 <Tabs >
                     <TabList className={styles.tabContainer}>
                         <Tab className={styles.tabs}>
-                            <i className='bx bx-detail bx-sm'></i>
+                            <i className='bx bx-detail bx-sm'></i> {/* TODO tem como deixar a aba selecionada destacada? */}
                             <span>Informações do Animal</span>
                         </Tab>
                         <Tab className={styles.tabs}>
                             <i className='bx bx-plus-medical bx-sm' ></i>
                             <span>Cuidados Veterinários</span>
+                        </Tab>
+                        <Tab className={styles.tabs}>
+                        <i class='bx bxl-flutter bx-sm'></i>
+                            <span>Informações do Resgate</span>
                         </Tab>
                     </TabList>
 
@@ -63,6 +69,9 @@ class AnimalDetailsContent extends Component {
                     <TabPanel className={styles.tabContent}>
                         <VeterinaryCareDetails veterinaryCares={this.state.animal.veterinaryCare}
                             animalId={this.state.animal.id} onRefresh={this.loadAnimal} onDelete={this.deleteVeterinaryCare}/>
+                    </TabPanel>
+                    <TabPanel className={styles.tabContent}>
+                       <AnimalRescueDetails rescue={this.state.animal.rescue} onRefresh={this.loadAnimal} />
                     </TabPanel>
                 </Tabs>
             </div>

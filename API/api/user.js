@@ -24,8 +24,33 @@ module.exports = app => {
             })
     }
 
+    const getUserSelectOptions = async (req, res) => {
+        console.log(req.query.userName)
+        await app.db('users')
+            .select('id', 'name', 'cellNumber')
+            .where('name'.toLowerCase(), 'like', `%${req.query.userName}%`)
+            .orWhere('cellNumber'.toLowerCase(), 'like', `%${req.query.userName}%`)
+            .then(async users => {
+                users = await concatNameAndCellNumber(users)
+                res.status(200).send(users)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const concatNameAndCellNumber = (users) => {
+        return users.map(user => {
+            user.label = `${user.name} - ${user.cellNumber}`
+            delete user.cellNumber
+            delete user.name
+            return user
+        })
+    }
+
     const signin = async (req, res) => {
-        console.log(req.body.cellNumber, req.body.password) 
+        console.log(req.body.cellNumber, req.body.password)
 
         if (!req.body.cellNumber || !req.body.password) {
             return res.status(400).send('Informe usuário e senha!')
@@ -90,7 +115,7 @@ module.exports = app => {
         if (user.password) {
             user.password = encryptPassword(user.password)
         }
-        
+
         delete user.confirmPassword
 
         if (!idUserForUpdate) {
@@ -134,6 +159,6 @@ module.exports = app => {
 
     }
 
-    return { getUserById, signin, save, validateToken }
+    return { getUserById, getUserSelectOptions, signin, save, validateToken }
 }
 

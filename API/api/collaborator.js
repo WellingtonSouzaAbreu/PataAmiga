@@ -7,7 +7,7 @@ module.exports = app => {
 
         console.log(req.query)
 
-        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage 
+        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
         let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
 
         console.log(`Limit: ${limit}`)
@@ -20,6 +20,20 @@ module.exports = app => {
             .limit(limit)
             .then(collaborators => {
                 /* console.log(collaborators) */
+                res.status(200).send(collaborators)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+    }
+
+    const getCollaboratorSelectOptions = async (req, res) => {
+        await app.db('collaborators')
+            .select('id', 'name', 'dateOfBirth')
+            .orderBy('name')
+            .then(async (collaborators) => {
+                // console.log(collaborators)
                 res.status(200).send(collaborators)
             })
             .catch(err => {
@@ -83,6 +97,6 @@ module.exports = app => {
         res.status(200).send('Colaborador removido com sucesso!')
     }
 
-    return { getCollaborators, save, removeCollaborator }
+    return { getCollaborators, getCollaboratorSelectOptions, save, removeCollaborator }
 
 }

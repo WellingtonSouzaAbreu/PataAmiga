@@ -76,7 +76,7 @@ class AdoptionFollowUpContent extends Component {
         await axios.delete(`${baseApiUrl}/visit/${idVisit}`) // Array de id
             .then(_ => {
                 const plural = idVisit.length > 1 ? 'es' : ''
-                window.alert(`Visit${plural} deletado${plural == 'es' ? 's' : ''} com sucesso!`)
+                window.alert(`Visit${plural} deletado${plural === 'es' ? 's' : ''} com sucesso!`)
                 this.loadVisits()
             })
             .catch(err => {
@@ -89,7 +89,7 @@ class AdoptionFollowUpContent extends Component {
         await axios.delete(`${baseApiUrl}/remote-monitoring/${idRemoteMonitoring}`) // Array de id
             .then(_ => {
                 const plural = idRemoteMonitoring.length > 1 ? 'es' : ''
-                window.alert(`Monitoramento${plural} remoto deletado${plural == 'es' ? 's' : ''} com sucesso!`)
+                window.alert(`Monitoramento${plural} remoto deletado${plural === 'es' ? 's' : ''} com sucesso!`)
                 this.loadRemoteMonitorings()
             })
             .catch(err => {

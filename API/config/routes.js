@@ -27,7 +27,7 @@ module.exports = app => {
         .get(app.api.animal.getAnimals)
         .post(app.api.animal.save)
 
-    app.get('/animals/select-options', app.api.animal.getAnimalSelectOptions)
+    app.get('/animal/select-options', app.api.animal.getAnimalSelectOptions)
 
     app.route('/animal/:id')
         .get(app.api.animal.getAnimalById)
@@ -45,6 +45,8 @@ module.exports = app => {
 
     app.route('/collaborator/:id')
         .delete(app.api.collaborator.removeCollaborator)
+
+    app.get('/collaborator/select-options', app.api.collaborator.getCollaboratorSelectOptions)
 
     app.route('/complaint')
         .get(app.api.complaint.getComplaints)
@@ -79,7 +81,7 @@ module.exports = app => {
 
     app.delete('/interesteds-in-adoption/:id', app.api.interestedInAdoption.removeInterested)
 
-    app.put('/interesteds-in-adoption/toggle-state', app.api.interestedInAdoption.toggleVerifiedState)    
+    app.put('/interesteds-in-adoption/toggle-state', app.api.interestedInAdoption.toggleVerifiedState)
 
     app.post('/interested-in-adoption/picture', app.api.interestedInAdoption.savePicture)
 
@@ -110,13 +112,15 @@ module.exports = app => {
 
     app.route('/rescue/:animalId')
         .get(app.api.rescue.getRescue)
-        .post(app.api.rescue.save)
+        .put(app.api.rescue.update)
 
     app.delete('/temporary-home/:id', app.api.temporaryHome.removeTemporaryHome)
 
     app.route('/temporary-home')
         .get(app.api.temporaryHome.getTemporaryHomes)
         .post(app.api.temporaryHome.save)
+
+    app.get('/user/select-options', app.api.user.getUserSelectOptions)
 
     app.route('/user/:id')
         .all(app.config.passport.authenticate())

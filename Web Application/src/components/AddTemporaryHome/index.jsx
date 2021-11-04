@@ -37,7 +37,7 @@ class AddTemporaryHome extends Component {
     }
 
     loadAnimalsToSelect = async () => {
-        return await axios.get(`${baseApiUrl}/animals/select-options`)
+        return await axios.get(`${baseApiUrl}/animal/select-options`)
             .then(res => this.setState({ animalsSelect: res.data }))
             .catch(err => {
                 console.log(err)
@@ -70,7 +70,7 @@ class AddTemporaryHome extends Component {
 
     renderSelectOptions = () => {
         return this.state.animalsSelect.map(animal => {
-            return <MenuItem value={animal.id}>{`${animal.id} - ${animal.name} - ${animal.breed}`}</MenuItem>
+            return <MenuItem value={animal.id}>{`${animal.name} - ${animal.breed} - ${animal.id}`}</MenuItem>
         })
     }
 

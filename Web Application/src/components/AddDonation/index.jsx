@@ -1,4 +1,4 @@
-import react, { Component } from 'react'
+import { Component } from 'react'
 import { MDBInput } from "mdbreact";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
