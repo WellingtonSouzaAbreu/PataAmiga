@@ -188,6 +188,7 @@ module.exports = app => {
                 let adoptedAnimals = await adoptedAnimalsId()
                 let temporaryHomeAnimals = await temporaryHomeAnimalsId()
                 animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id) || animal.id == animalPreviousSelected )
+                animals = await animals.filter(animal => !temporaryHomeAnimals.includes(animal.id))
                 res.status(200).send(animals)
             })
             .catch(err => {

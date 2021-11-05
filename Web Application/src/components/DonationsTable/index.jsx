@@ -25,12 +25,13 @@ class DonationsTable extends Component {
 				data={this.props.donations}
 				columns={[
 					{
-						name: "id",
-						label: "ID",
+						name: "donationReceived",
+						label: "Recebido",
 						options: {
 							filter: true,
 							sort: true,
-							display: true
+							display: true,
+							customBodyRender: (donationReceived) => donationReceived ? 'Sim' : 'Não' 
 						}
 					},
 					{

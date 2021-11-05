@@ -5,11 +5,12 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { MenuItem } from "@material-ui/core";
 import axios from 'axios'
-
+import classNames from "classnames";
 
 import styles from './styles.module.css'
 
 import { baseApiUrl } from '../../services/baseApiUrl';
+import CustomSnackbar from '../CustomSnackbar';
 import DatePicker from './../CustomDatePicker/index.jsx'
 
 const initialState = {
@@ -20,7 +21,11 @@ const initialState = {
     date: new Date(),
     donationReceived: false,
 
-    editMode: false
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info',
+
+    editMode: false,
 }
 
 class AddDonation extends Component {
@@ -34,18 +39,32 @@ class AddDonation extends Component {
     }
 
     saveDonation = async () => {
-        const donation = {...this.state}
-        delete donation.editMode
+        const donation = {
+            name: this.state.name,
+            cellNumber: this.state.cellNumber,
+            description: this.state.description,
+            donationType: this.state.donationType,
+            date: this.state.date,
+            donationReceived: this.state.donationReceived,
+        }
 
-        await axios.post(`${baseApiUrl}/donation`,  donation )
+        await axios.post(`${baseApiUrl}/donation`, donation)
             .then(_ => {
-                window.alert('Doação registrada com sucesso!')
+                this.toggleSnackbarVisibility(true, `Doação cadastrada com sucesso!`, 'success')
                 this.props.onRefresh(true)
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err.response.data)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar doação!`, 'error')
             })
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     changeDate = (date) => {
@@ -92,9 +111,10 @@ class AddDonation extends Component {
 
     render() {
         return (
-            <div className={styles.registerMoneyDonation}>
+            <div className={classNames(styles.registerMoneyDonation, this.props.edit && styles.wii)}> {/* TODO classNames não funcionam */}
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 {!this.props.edit && this.props.onDonationsReceivedCard()}
-                <div className={styles.registerDonation}>
+                <div className={classNames(styles.registerDonation, this.props.edit && styles.wii)}>
                     <div className={styles.iconDescriptionCard}>
                         <i className='bx bx-add-to-queue bx-sm'  ></i>
                         <strong>{this.props.edit ? 'Editar adoção' : 'Registrar uma doação'} </strong>

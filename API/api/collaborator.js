@@ -16,6 +16,7 @@ module.exports = app => {
         await app.db('collaborators')
             // .select()
             .where('name'.toLowerCase(), 'like', `%${name}%`)
+            // .orWhere('cellNumber'.toLowerCase(), 'like', `%${name}%`)
             .offset(offset)
             .limit(limit)
             .then(collaborators => {

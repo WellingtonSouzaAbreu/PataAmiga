@@ -17,6 +17,7 @@ import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import CustomDateTimePicker from './../CustomDateTimePicker/index.jsx'
+import CustomSnackbar from './../CustomSnackbar'
 
 const initialState = {
 	title: '',
@@ -35,9 +36,11 @@ const initialState = {
 
 	pictures: [],
 
-	editMode: false,
+	snackbarVisible: false,
+	snackbarMessage: '',
+	snackbarType: 'info',
 
-	formated: ['http://192.168.2.183:500/publication-pictures/1634765446675_DSC02368.JPG']
+	editMode: false
 }
 
 class AddEvent extends Component {
@@ -57,8 +60,16 @@ class AddEvent extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert('Erro ao solicitar dados detalhados da publicação!')
+				this.toggleSnackbarVisibility(true, `Erro ao obter detalhes da publicação!`, 'error')
 			})
+	}
+
+	toggleSnackbarVisibility = (visibility, message, type) => {
+		if (visibility) {
+			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+		} else {
+			this.setState({ snackbarVisible: !!visibility })
+		}
 	}
 
 	changeStartDateTime = (startDateTime) => {
@@ -74,7 +85,7 @@ class AddEvent extends Component {
 		console.log(this.state)
 
 		if (!this.state.pictures.length) {
-			window.alert('Selecione pelo menos uma imagem para realizar a publicação!')
+			this.toggleSnackbarVisibility(true, `Adicione pelo menos uma foto para concluir o cadastro!`, 'warning')
 			return
 		}
 
@@ -84,12 +95,11 @@ class AddEvent extends Component {
 
 		await axios.post(`${baseApiUrl}/publication`, { publication })
 			.then(async res => {
-				window.alert('Salvo com sucesso!')
 				await this.savePublicationPictures(res.data)
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert(err.response.data)
+				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar publicação!`, 'error')
 			})
 	}
 
@@ -140,10 +150,10 @@ class AddEvent extends Component {
 		})
 
 		if (valid.reduce((total, current) => total && current, true)) {
-			window.alert('Imagens salvas com sucesso!')
+			this.toggleSnackbarVisibility(true, `Publicação cadastrada com sucesso!`, 'success')
 			this.props.onRefresh(true)
 		} else {
-			window.alert('Ocorreu um erro ao salvar as imagens!')
+			this.toggleSnackbarVisibility(true, `Erro ao cadastrar publicação!`, 'error')
 		}
 	}
 
@@ -171,6 +181,7 @@ class AddEvent extends Component {
 		console.log(this.loadImagesURL())
 		return (
 			<div className={styles.container} >
+				<CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
 				<Accordion
 					defaultExpanded={this.props.edit ? true : false}
 				>

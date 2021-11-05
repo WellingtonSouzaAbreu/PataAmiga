@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
 
 import { baseApiUrl } from '../../services/baseApiUrl';
+import CustomSnackbar from './../CustomSnackbar'
 import StepAnimalInfo from '../StepAnimalInfo/index.jsx'
 import StepAnimalRescue from '../StepAnimalRescue/index.jsx'
 import StepAnimalVeterinary from '../StepAnimalVeterinary/index.jsx'
@@ -33,7 +34,11 @@ const initialState = {
 		dateOfRescue: new Date(),
 		forwardedToKennel: true,
 		policeSupport: false
-	}
+	},
+
+	snackbarVisible: false,
+	snackbarMessage: '',
+	snackbarType: 'info'
 }
 
 class AddAnimal extends Component {
@@ -57,8 +62,16 @@ class AddAnimal extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert('Occoreu um erro ao obter dados do animal!')
+				this.toggleSnackbarVisibility(true, `Erro obter animais!`, 'error')
 			})
+	}
+
+	toggleSnackbarVisibility = (visibility, message, type) => {
+		if (visibility) {
+			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+		} else {
+			this.setState({ snackbarVisible: !!visibility })
+		}
 	}
 
 	structureStateData = async (allData) => {
@@ -92,7 +105,7 @@ class AddAnimal extends Component {
 	getStepContent(step) {
 		switch (step) {
 			case 0:
-				return <StepAnimalInfo animal={this.state.animal} selectedPictures={this.state.pictures} edit={this.props.edit} onChange={this.updateAnimalField}  onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
+				return <StepAnimalInfo animal={this.state.animal} selectedPictures={this.state.pictures} edit={this.props.edit} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
 			case 1:
 				if (this.props.edit) { // TODO provisório, tá feio
 					return <h1>A edição dos dados veterinários deve ser feita através da aba 'Mais informações'</h1>
@@ -139,25 +152,28 @@ class AddAnimal extends Component {
 
 	saveAnimal = async () => {
 		if (!this.state.pictures.length) {
-			window.alert('Selecione pelo menos uma imagem para realizar o cadastro do animal!')
+			this.toggleSnackbarVisibility(true, `Adicione pelo menos uma foto para concluir o cadastro!`, 'warning')
 			return
 		}
 
-		window.alert(this.state.pictures.length)
-
 		console.log(this.state)
-		const allDataOfAnimal = { ...this.state }
+		const allDataOfAnimal = {
+			animal: this.state.animal,
+			pictures: this.state.pictures,
+			veterinaryCare: this.state.veterinaryCare,
+			rescue: this.state.rescue
+		}
+
 		delete allDataOfAnimal.pictures
 		delete allDataOfAnimal.activeStep
 
 		await axios.post(`${baseApiUrl}/animal`, { ...allDataOfAnimal })
 			.then(async res => {
-				window.alert('Animal cadastrado com sucesso! id => ' + res.data)
 				await this.saveAnimalPictures(res.data)
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert(err.response && err.response.data)
+				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar animal!`, 'error')
 			})
 	}
 
@@ -182,10 +198,10 @@ class AddAnimal extends Component {
 		})
 
 		if (valid.reduce((total, current) => total && current, true)) {
-			window.alert('Imagens salvas com sucesso!')
+			this.toggleSnackbarVisibility(true, `Animal cadastrado com sucesso!`, 'success')
 			this.props.onRefresh()
 		} else {
-			window.alert('Ocorreu um erro ao salvar as imagens!')
+			this.toggleSnackbarVisibility(true, `Erro ao cadastrar animal!`, 'success')
 		}
 	}
 
@@ -194,6 +210,7 @@ class AddAnimal extends Component {
 
 		return (
 			<div className={styles.root}>
+				<CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
 				<Stepper activeStep={this.state.activeStep} orientation="vertical">
 					{steps.map((label, index) => (
 						<Step key={label}>

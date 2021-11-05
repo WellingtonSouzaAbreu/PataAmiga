@@ -134,7 +134,7 @@ export default function StepInfoAnimal(props) {
 							<SelectAnimalSex />
 							<SelectCastrated />
 						</div>
-						<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput}
+						<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput} // TODO Este campo não está com rolagem
 							value={props.animal.othersCharacteristics} onChange={(e) => props.onChange({ othersCharacteristics: e.target.value })}
 						/>
 					</div>

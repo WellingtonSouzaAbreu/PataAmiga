@@ -6,6 +6,7 @@ import styles from './styles.module.css'
 import CollaboratorsTable from './../../components/CollaboratorsTable/index.jsx'
 import AddCollaborator from './../../components/AddCollaborator/index.jsx'
 import { baseApiUrl } from "../../services/baseApiUrl";
+import CustomSnackbar from "../../components/CustomSnackbar"
 
 const initialState = {
     collaborators: [],
@@ -13,7 +14,11 @@ const initialState = {
     searchParam: '',
     rowsPerPage: 10,
     currentPage: 0,
-    maxPageOpened: -1
+    maxPageOpened: -1,
+
+    snackbarVisible: false,
+    snackbarMessage: 'Isso é apenas um teste',
+    snackbarType: 'success'
 }
 
 class Collaborators extends Component {
@@ -44,21 +49,28 @@ class Collaborators extends Component {
             })
             .catch(err => {
                 console.log(err)
-                window.alert('Ocorreu um erro ao buscar collaboradores!')
+                this.toggleSnackbarVisibility(true, `Erro ao obter colaboradores!`, 'error')
             })
     }
 
     deleteCollaborator = async (idCollaborator) => {
         await axios.delete(`${baseApiUrl}/collaborator/${idCollaborator}`) // Array de id
             .then(_ => {
-                const plural = idCollaborator.length > 1 ? 'es' : '' // TODO Necessário? (Frase comum)
-                window.alert(`Colaborador${plural} deletado${plural == 'es' ? 's' : ''} com sucesso!`)
+                this.toggleSnackbarVisibility(true, `Collaborador${idCollaborator.length > 1 ? 'es' : ''} deletado${idCollaborator.length > 1 ? 's': ''} com sucesso!`, 'success')
                 this.loadCollaborators(true)
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, `Erro ao deletar colaborador!`, 'error')
             })
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     changePage = (dataField) => {
@@ -93,6 +105,7 @@ class Collaborators extends Component {
     render() {
         return (
             <div className={styles.container} >
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.pageName}>
                     <span onClick={this.loadCollaborators}>COLABORADORES</span>
                 </div>

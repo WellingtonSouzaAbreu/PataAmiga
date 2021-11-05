@@ -8,11 +8,11 @@ import { MenuItem, Select, InputLabel, FormControl, TextField } from "@material-
 import styles from './styles.module.css'
 import classNames from "classnames";
 import axios from 'axios'
-import Box from '@mui/material/Box';
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
-import CustomDatePicker from "../CustomDatePicker";
-import AnimalDetails from "../AnimalDetails";
+import CustomDatePicker from "./../CustomDatePicker";
+import CustomSnackbar from "./../CustomSnackbar";
+import AnimalDetails from "./../AnimalDetails";
 
 const initialState = {
     animalId: null,
@@ -23,7 +23,11 @@ const initialState = {
 
     animalsSelect: [],
     collaboratorsSelect: [],
-    usersSelect: []
+    usersSelect: [],
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class AddAdoption extends Component {
@@ -44,8 +48,16 @@ class AddAdoption extends Component {
             .then(res => res.data)
             .catch(err => {
                 console.log(err)
-                window.alert('Erro ao obter dados de select animal')
+                this.toggleSnackbarVisibility(true, `Erro ao obter lista de animais!`, 'error')
             })
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     getCollaboratorsSelectOptions = async () => {
@@ -53,7 +65,7 @@ class AddAdoption extends Component {
             .then(res => res.data)
             .catch(err => {
                 console.log(err)
-                window.alert('Erro ao obter dados de select colaborador')
+                this.toggleSnackbarVisibility(true, `Erro ao obter lista de colaboradores!`, 'error')
             })
     }
 
@@ -113,6 +125,7 @@ class AddAdoption extends Component {
     selectGuardian = () => {
         return (
             <FormControl className={classNames(styles.select, this.props.edit && styles.selectEdit)} >
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 {/* <InputLabel id="demo-simple-select-helper-label">Novo guardião</InputLabel> */}
                 <Autocomplete
                     disablePortal
@@ -159,7 +172,7 @@ class AddAdoption extends Component {
             .then(res => res.data)
             .catch(err => {
                 console.log(err)
-                window.alert('Erro ao obter dados do select user')
+                this.toggleSnackbarVisibility(true, `Erro ao obter lista de usuários com estas letras!`, 'error')
             })
     }
 
@@ -193,12 +206,12 @@ class AddAdoption extends Component {
 
         await axios.post(`${baseApiUrl}/adoption`, { adoption })
             .then(_ => {
-                window.alert('Adoção registrada com sucesso!')
+                this.toggleSnackbarVisibility(true, `Adoção cadastrada com sucesso!`, 'success')
                 this.props.onRefresh()
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err.response ? err.response.data : 'Erro ao registrar doação!')
+                this.toggleSnackbarVisibility(true,  err.response ? err.response.data : `Erro ao cadastrar adoção!`, 'error')
             })
 
     }

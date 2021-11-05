@@ -84,19 +84,15 @@ module.exports = app => {
 
         if (!donation.donationType) donation.donationType = 'others'
 
-        try {
-            existsOrError(donation, 'Dados da doação não informados')
-        } catch (err) {
-            return res.status(400).send()
-        }
-
         if (!donation.cellNumber || !donation.name) {
             await app.db('users')
                 .select('name', 'cellNumber')
                 .where({ id: userId })
                 .then(([userData]) => donation = { ...donation, ...userData })
                 .catch(err => console.log('Erro ao consultar dados do usuário'))
-        } try {
+        } 
+        
+        try {
             existsOrError(donation.name, 'Nome do doador não informado')
             existsOrError(donation.cellNumber, 'Celular do doador não informado')
             existsOrError(donation.date, 'Data não informada')
