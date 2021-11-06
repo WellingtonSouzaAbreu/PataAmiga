@@ -10,17 +10,22 @@ import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import EventDetailsContent from "./../../components/EventDetailsContent";
+import CustomSnackbar from './../CustomSnackbar'
 
 const initialState = {
 	publication: {},
-	modalVisible: false
+	modalVisible: false,
+
+	snackbarVisible: false,
+	snackbarMessage: '',
+	snackbarType: 'info'
 }
 
 class EventDetails extends Component {
 
 	state = { ...initialState }
-	
-	showModalAndLoadDetails = async() => {
+
+	showModalAndLoadDetails = async () => {
 		await this.getDetailsOfPublication()
 		this.setState({ modalVisible: true })
 	};
@@ -37,35 +42,45 @@ class EventDetails extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert('Erro ao solicitar dados detalhados da publicação!')
+				this.toggleSnackbarVisibility(true, `Ocorreu um erro ao obter detalhes da publicação!`,  'error')
 			})
 	}
 
+	toggleSnackbarVisibility = (visibility, message, type) => {
+		if (visibility) {
+			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+		} else {
+			this.setState({ snackbarVisible: !!visibility })
+		}
+	}
+
 	render() {
-
 		return (
-			<div>
-				<IconButton aria-label="delete" color="primary" onClick={this.showModalAndLoadDetails}>
-					<i className='bx bxs-detail' ></i>
-				</IconButton>
+			<>
+				<CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
+				<div>
+					<IconButton aria-label="delete" color="primary" onClick={this.showModalAndLoadDetails}>
+						<i className='bx bxs-detail' ></i>
+					</IconButton>
 
-				<Modal
-					className={styles.modal}
-					open={this.state.modalVisible}
-					onClose={this.closeModal}
-					closeAfterTransition
-					BackdropComponent={Backdrop}
-					BackdropProps={{
-						timeout: 500,
-					}}
-				>
-					<Fade in={this.state.modalVisible}>
-						<div className={styles.paper}>
-							<EventDetailsContent publication={this.state.publication}  onRefresh={this.props.onRefresh}/>
-						</div>
-					</Fade>
-				</Modal>
-			</div>
+					<Modal
+						className={styles.modal}
+						open={this.state.modalVisible}
+						onClose={this.closeModal}
+						closeAfterTransition
+						BackdropComponent={Backdrop}
+						BackdropProps={{
+							timeout: 500,
+						}}
+					>
+						<Fade in={this.state.modalVisible}>
+							<div className={styles.paper}>
+								<EventDetailsContent publication={this.state.publication} onRefresh={this.props.onRefresh} />
+							</div>
+						</Fade>
+					</Modal>
+				</div>
+			</>
 		)
 	}
 }

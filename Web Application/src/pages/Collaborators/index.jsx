@@ -17,8 +17,8 @@ const initialState = {
     maxPageOpened: -1,
 
     snackbarVisible: false,
-    snackbarMessage: 'Isso é apenas um teste',
-    snackbarType: 'success'
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class Collaborators extends Component {
@@ -49,7 +49,7 @@ class Collaborators extends Component {
             })
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, `Erro ao obter colaboradores!`, 'error')
+                this.toggleSnackbarVisibility(true, `Houve um erro ao obter colaboradores!`, 'error')
             })
     }
 
@@ -61,16 +61,8 @@ class Collaborators extends Component {
             })
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, `Erro ao deletar colaborador!`, 'error')
+                this.toggleSnackbarVisibility(true, `Houve um erro ao deletar colaborador!`, 'error')
             })
-    }
-
-    toggleSnackbarVisibility = (visibility, message, type) => {
-        if (visibility) {
-            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
-        } else {
-            this.setState({ snackbarVisible: !!visibility })
-        }
     }
 
     changePage = (dataField) => {
@@ -100,6 +92,14 @@ class Collaborators extends Component {
 
     setCollaboratorToEdit = (collaborator) => {
         this.setState({ editingCollaborator: collaborator })
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     render() {

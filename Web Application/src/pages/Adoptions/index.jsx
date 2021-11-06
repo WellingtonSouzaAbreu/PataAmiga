@@ -5,6 +5,7 @@ import styles from './styles.module.css'
 import AddAdoption from "../../components/AddAdoption";
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
+import CustomSnackbar from './../../components/CustomSnackbar'
 import AdoptionsTable from "../../components/AdoptionTable";
 
 const initialState = {
@@ -13,7 +14,11 @@ const initialState = {
     searchParam: '',
     rowsPerPage: 10,
     currentPage: 0,
-    maxPageOpened: 0
+    maxPageOpened: 0,
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class Adoptions extends Component {
@@ -44,19 +49,19 @@ class Adoptions extends Component {
             })
             .catch(err => {
                 console.log(err)
-                window.alert('Ocorreu um erro ao buscar adoções!')
+                this.toggleSnackbarVisibility(true, `Houve um erro ao obter adoções!`, 'error')
             })
     }
 
     deleteAdoption = async (idAdoption) => {
         await axios.delete(`${baseApiUrl}/adoption/${idAdoption}`) // Array de id
             .then(_ => {
-                window.alert(`Adoção deletada com sucesso!`)
+                this.toggleSnackbarVisibility(true, `Adoç${idAdoption.length > 1 ? 'ões' : 'ão'} deletada${idAdoption.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadAdoptions(true)
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, `Houve um erro ao deletar adoção!`, 'error')
             })
     }
 
@@ -85,13 +90,22 @@ class Adoptions extends Component {
         this.setState({ ...dataField, adoptions: [], currentPage: 0 }, this.loadAdoptions)
     }
 
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
+    }
+
     render() {
         return (
             <div className={styles.container} >
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.pageName} onClick={this.loadAdoptions}>
                     <span>ADOÇÕES</span>
                 </div>
-                <AddAdoption onRefresh={this.loadAdoptions}/>
+                <AddAdoption onRefresh={this.loadAdoptions} />
                 <AdoptionsTable adoptions={this.state.adoptions} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
                     onDelete={this.deleteAdoption} onRefresh={this.loadAdoptions}
                     onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams} />

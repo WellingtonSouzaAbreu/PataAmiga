@@ -12,7 +12,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function CustomSnackbar(props) {
     return (
         <Stack spacing={2} sx={{ width: '100%' }}>
-            <Snackbar open={props.visible} autoHideDuration={7000} onClose={() => props.onClose(false)}
+            <Snackbar open={props.visible} autoHideDuration={4000} onClose={() => props.onClose(false)}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 key={'bottom', 'right'}
             >

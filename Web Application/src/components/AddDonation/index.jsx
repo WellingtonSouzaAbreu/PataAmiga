@@ -55,16 +55,8 @@ class AddDonation extends Component {
             })
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar doação!`, 'error')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar doação!`, err.response.status == 400 ? 'warning' : 'error')
             })
-    }
-
-    toggleSnackbarVisibility = (visibility, message, type) => {
-        if (visibility) {
-            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
-        } else {
-            this.setState({ snackbarVisible: !!visibility })
-        }
     }
 
     changeDate = (date) => {
@@ -107,6 +99,14 @@ class AddDonation extends Component {
                 </Select>
             </FormControl>
         )
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     render() {

@@ -4,6 +4,7 @@ import axios from 'axios'
 import styles from './styles.module.css'
 
 import { baseApiUrl } from '../../services/baseApiUrl.js'
+import CustomSnackbar from '../../components/CustomSnackbar'
 import InterestedTable from "./../../components/InterestedTable";
 
 const initialState = {
@@ -14,6 +15,9 @@ const initialState = {
     currentPage: 0,
     maxPageOpened: -1,
 
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class Interesteds extends Component {
@@ -44,31 +48,32 @@ class Interesteds extends Component {
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, `Houve um erro ao obter interessados em adotar!`, 'error')
             })
     }
 
-    toggleStateOfInterest = async(interestVerified, idInterested) => {
-        await axios.put(`${baseApiUrl}/interesteds-in-adoption/toggle-state`, {verified: interestVerified ? 1 : 0, idInterested})
-        .then(res => {
-            console.log(res.data)
-            this.loadInterestedsInAdopt(true)
-        })
-        .catch(err => {
-            console.log(err)
-            window.alert(err)
-        })
+    toggleStateOfInterest = async (interestVerified, idInterested) => {
+        await axios.put(`${baseApiUrl}/interesteds-in-adoption/toggle-state`, { verified: interestVerified ? 1 : 0, idInterested })
+            .then(res => {
+                console.log(res.data)
+                this.toggleSnackbarVisibility(true, `Estado do interesse alterado com sucesso!`, 'success')
+                this.loadInterestedsInAdopt(true)
+            })
+            .catch(err => {
+                console.log(err)
+                this.toggleSnackbarVisibility(true, `Houve um erro ao alterar estado do interesse!`, 'error')
+            })
     }
 
     deleteInterested = async (idInterested) => {
         await axios.delete(`${baseApiUrl}/interesteds-in-adoption/${idInterested}`) // Array de id
             .then(_ => {
-                window.alert('Interessado deletado com sucesso!')
+                this.toggleSnackbarVisibility(true, `Interesse${idInterested.length > 1 ? 's' : ''} deletado${idInterested.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadInterestedsInAdopt(true)
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, `Houve um erro ao deletar interesse!`, 'error')
             })
     }
 
@@ -97,16 +102,25 @@ class Interesteds extends Component {
         this.setState({ ...dataField, interestedsInAdopt: [], currentPage: 0 }, this.loadInterestedsInAdopt)
     }
 
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
+    }
+
     render() {
         return (
             <div className={styles.container}>
+                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.pageName}>
                     <span>INTERESSADOS</span>
                 </div>
                 <div className={styles.tableContainer}>
                     <InterestedTable interestedsInAdopt={this.state.interestedsInAdopt} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
                         onRefresh={this.loadInterestedsInAdopt} onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage}
-                        onChangeSearchParams={this.changeSearchParams} onDelete={this.deleteInterested} onToggleStateOfInterest={this.toggleStateOfInterest}/>
+                        onChangeSearchParams={this.changeSearchParams} onDelete={this.deleteInterested} onToggleStateOfInterest={this.toggleStateOfInterest} />
                 </div>
             </div>
         )

@@ -5,6 +5,7 @@ import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import ComplaintsTable from '../../components/ComplaintsTable/index.jsx'
+import CustomSnackbar from '../../components/CustomSnackbar'
 
 const initialState = {
     complaints: [],
@@ -12,7 +13,11 @@ const initialState = {
     searchParam: '',
     rowsPerPage: 10,
     currentPage: 0,
-    maxPageOpened: -1
+    maxPageOpened: -1,
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class Report extends Component {
@@ -42,7 +47,7 @@ class Report extends Component {
             })
             .catch(err => {
                 console.log(err)
-                window.alert('Ops! Erro ao obter denúncias!')
+                this.toggleSnackbarVisibility(true, `Houve um erro ao obter denúncias!`, 'error')
             })
     }
 
@@ -50,12 +55,13 @@ class Report extends Component {
         await axios.delete(`${baseApiUrl}/complaint/${idComplaint}`) // Array de id
             .then(_ => {
                 const plural = idComplaint.length > 1 ? 's' : ''
-                window.alert(`Denúncia${plural} deletada${plural} com sucesso!`)
+                this.toggleSnackbarVisibility(true, `Denúncia${idComplaint.length > 1 ? 's' : ''} deletada${idComplaint.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadComplaints(true)
             })
             .catch(err => {
                 console.log(err)
                 window.alert(err)
+                this.toggleSnackbarVisibility(true, `Houve um erro ao deletar denúncia!`, 'error')
             })
     }
 
@@ -84,9 +90,18 @@ class Report extends Component {
         this.setState({ ...dataField, complaints: [], currentPage: 0 }, this.loadComplaints)
     }
 
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
+    }
+
     render() {
         return (
             <div className={styles.container}>
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.pageName}>
                     <span onClick={this.loadComplaints}>DENÚNCIAS</span>
                 </div>

@@ -48,16 +48,8 @@ class AddAdoption extends Component {
             .then(res => res.data)
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, `Erro ao obter lista de animais!`, 'error')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro ao obter lista de animais!`, 'error')
             })
-    }
-
-    toggleSnackbarVisibility = (visibility, message, type) => {
-        if (visibility) {
-            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
-        } else {
-            this.setState({ snackbarVisible: !!visibility })
-        }
     }
 
     getCollaboratorsSelectOptions = async () => {
@@ -65,7 +57,7 @@ class AddAdoption extends Component {
             .then(res => res.data)
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, `Erro ao obter lista de colaboradores!`, 'error')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro ao obter lista de colaboradores!`, 'error')
             })
     }
 
@@ -125,7 +117,6 @@ class AddAdoption extends Component {
     selectGuardian = () => {
         return (
             <FormControl className={classNames(styles.select, this.props.edit && styles.selectEdit)} >
-                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 {/* <InputLabel id="demo-simple-select-helper-label">Novo guardião</InputLabel> */}
                 <Autocomplete
                     disablePortal
@@ -133,7 +124,7 @@ class AddAdoption extends Component {
                     options={this.state.usersSelect}
                     sx={{ width: 300 }}
                     // inputValue={this.state.userId}
-                    onChange={(e) => this.setState({userId: e.target.id})}
+                    onChange={(e) => this.setState({ userId: e.target.id })}
                     renderOption={(props, user) => {
                         return <div {...props} id={user.id}>{user.label}</div>
                     }}
@@ -172,7 +163,7 @@ class AddAdoption extends Component {
             .then(res => res.data)
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, `Erro ao obter lista de usuários com estas letras!`, 'error')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro ao obter lista de usuários com estas letras!`, 'error')
             })
     }
 
@@ -211,57 +202,68 @@ class AddAdoption extends Component {
             })
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true,  err.response ? err.response.data : `Erro ao cadastrar adoção!`, 'error')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro ao cadastrar adoção!`, err.response.status == 400 ? 'warning' : 'error')
             })
 
     }
 
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
+    }
+
     render() {
         return (
-            <div className={styles.container}>
-                <Accordion
-                    defaultExpanded={true}
-                    className={styles.acordion}
-                >
-                    <AccordionSummary
-                        expandIcon={<i className='bx bx-down-arrow-alt'></i>}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
+            <>
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
+                <div className={styles.container}>
+                    <Accordion
+                        defaultExpanded={true}
+                        className={styles.acordion}
                     >
-                        <Typography className={classNames(styles.heading, this.props.edit && styles.headingEdit)} >
-                            <i className='bx bxs-calendar-plus'></i>
-                            <span className={styles.spanAdjust}>{this.props.edit ? 'Editar adoção' : 'Registrar adoção'}   </span>
-                        </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails >
-                        <div className={styles.containerForm}>
-                            <div className={styles.containerInputBt}>
-                                {this.selectAnimal()}
-                                <div className={styles.btModal}>
-                                    {this.state.animalId && <AnimalDetails idAnimal={this.state.animalId} />}
+                        <AccordionSummary
+                            expandIcon={<i className='bx bx-down-arrow-alt'></i>}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                        >
+                            <Typography className={classNames(styles.heading, this.props.edit && styles.headingEdit)} >
+                                <i className='bx bxs-calendar-plus'></i>
+                                <span className={styles.spanAdjust}>{this.props.edit ? 'Editar adoção' : 'Registrar adoção'}   </span>
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails >
+                            <div className={styles.containerForm}>
+                                <div className={styles.containerInputBt}>
+                                    {this.selectAnimal()}
+                                    <div className={styles.btModal}>
+                                        {this.state.animalId && <AnimalDetails idAnimal={this.state.animalId} />}
+                                    </div>
+
+                                </div>
+                                <div className={styles.containerInput}>
+                                    {this.selectGuardian()}
+                                </div>
+                                <div className={classNames(styles.containerInput)}>
+                                    <CustomDatePicker label={'Data da adoção'} value={this.state.dateAdoption}
+                                        onChangeDate={(dateAdoption) => this.setState({ dateAdoption })}
+                                    />
+                                </div>
+                                {/* <div className={classNames(styles.containerInput)}>
+                                {this.selectPeriodAdoption()}
+                            </div> */}
+                                <div className={styles.containerInput}>
+                                    {this.selectCollaborator()}
                                 </div>
 
                             </div>
-                            <div className={styles.containerInput}>
-                                {this.selectGuardian()}
-                            </div>
-                            <div className={classNames(styles.containerInput)}>
-                                <CustomDatePicker label={'Data da adoção'} value={this.state.dateAdoption}
-                                    onChangeDate={(dateAdoption) => this.setState({ dateAdoption })}
-                                />
-                            </div>
-                            {/* <div className={classNames(styles.containerInput)}>
-                                {this.selectPeriodAdoption()}
-                            </div> */}
-                            <div className={styles.containerInput}>
-                                {this.selectCollaborator()}
-                            </div>
-
-                        </div>
-                    </AccordionDetails>
-                </Accordion>
-                <button onClick={this.saveAdoption}>Cadastrar adoção</button> // Provisótio TODO
-            </div>
+                        </AccordionDetails>
+                    </Accordion>
+                    <button onClick={this.saveAdoption}>Cadastrar adoção</button> // Provisótio TODO
+                </div>
+            </>
         )
     }
 }

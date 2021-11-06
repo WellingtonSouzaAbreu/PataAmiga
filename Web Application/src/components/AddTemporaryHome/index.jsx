@@ -13,6 +13,7 @@ import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import CustomDatePicker from "../CustomDatePicker";
+import CustomSnackbar from './../CustomSnackbar'
 import classNames from "classnames";
 
 const initialState = {
@@ -22,7 +23,11 @@ const initialState = {
     animalId: null,
 
     editMode: false,
-    animalsSelect: []
+    animalsSelect: [],
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info',
 }
 
 class AddTemporaryHome extends Component {
@@ -41,9 +46,8 @@ class AddTemporaryHome extends Component {
             .then(res => this.setState({ animalsSelect: res.data }))
             .catch(err => {
                 console.log(err)
-                window.alert('Erro ao obter dados d select')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao obter lista de animais!`, 'error')
             })
-
     }
 
     changeDate = (date) => {
@@ -52,14 +56,14 @@ class AddTemporaryHome extends Component {
 
     selectAnimal = () => {
         return (
-            <FormControl className={classNames(styles.select , this.props.edit && styles.selectEdit)} >
+            <FormControl className={classNames(styles.select, this.props.edit && styles.selectEdit)} >
                 <InputLabel id="demo-simple-select-helper-label">Animal</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
                     value={this.props.editMode ? this.props.temporaryHome.animalId : this.state.animalId}
                     onChange={(e) => this.setState({ animalId: e.target.value })}
-                    
+
                 >
                     <MenuItem value={null}  >Selecione um animal</MenuItem>
                     {this.renderSelectOptions()}
@@ -86,64 +90,75 @@ class AddTemporaryHome extends Component {
 
         await axios.post(`${baseApiUrl}/temporary-home`, { temporaryHome })
             .then(_ => {
-                window.alert('Lat temporário registrado com sucesso!')
+                this.toggleSnackbarVisibility(true, `Lar temporário cadastrado com sucesso!`, 'success')
                 this.props.edit
                     ? this.props.onRefresh(true)
                     : this.setState({ ...initialState, animalsSelect: this.state.animalsSelect }, () => { this.props.onRefresh(true); this.loadAnimalsToSelect() })
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err.response.data)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar lar temporário!`, err.response.status == 400 ? 'warning' : 'error')
             })
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     render() {
         return (
-            <div className={styles.container}>
-                <Accordion
-                    defaultExpanded = {this.props.edit ? true : false}
-                    className={styles.acordion}
-                >
-                    <AccordionSummary
-                        expandIcon={<i className='bx bx-down-arrow-alt'></i>}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
+            <>
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
+                <div className={styles.container}>
+                    <Accordion
+                        defaultExpanded={this.props.edit ? true : false}
+                        className={styles.acordion}
                     >
-                        <Typography className={styles.heading} >
-                            <i className='bx bxs-calendar-plus'></i>
-                            <span className={styles.spanAdjust}>{this.props.edit ? 'Editar lar temporário' : 'Cadastrar lar temporário'}   </span>
-                        </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails >
-                        <div className={classNames(styles.formTH, this.props.edit && styles.formTHEdit)}>
-                            <div className={classNames(styles.containerInput , this.props.edit && styles.containerInputEdit)}>
-                                <CustomDatePicker label={'Data'}
-                                    value={this.state.date} onChangeDate={this.changeDate}
-                                />
-                            </div>
-                           
-                            <div  className={classNames(styles.containerInput , this.props.edit && styles.containerInputEdit)}>
-                                <MDBInput className={styles.inputRegister} label="Nome do voluntário" outline
-                                    value={this.state.adopterName} onChange={(e) => this.setState({ adopterName: e.target.value })}
-                                />
-                            </div>
-                            <div  className={classNames(styles.containerInput , this.props.edit && styles.containerInputEdit)}>
-                                <MDBInput className={styles.inputRegister} label="Telefone" outline
-                                    value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
-                                />
-                            </div>
-                            <div  className={classNames(styles.containerInputSelect , this.props.edit && styles.containerInputEdit)}>
-                                {this.selectAnimal()}
-                                
-                            </div>
+                        <AccordionSummary
+                            expandIcon={<i className='bx bx-down-arrow-alt'></i>}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                        >
+                            <Typography className={styles.heading} >
+                                <i className='bx bxs-calendar-plus'></i>
+                                <span className={styles.spanAdjust}>{this.props.edit ? 'Editar lar temporário' : 'Cadastrar lar temporário'}   </span>
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails >
+                            <div className={classNames(styles.formTH, this.props.edit && styles.formTHEdit)}>
+                                <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit)}>
+                                    <CustomDatePicker label={'Data'}
+                                        value={this.state.date} onChangeDate={this.changeDate}
+                                    />
+                                </div>
 
-                            <button className={styles.buttonSubmitForm} onClick={this.saveTemporaryHome}>
-                                {this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
-                            </button>
-                        </div>
-                    </AccordionDetails>
-                </Accordion>
-            </div>
+                                <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit)}>
+                                    <MDBInput className={styles.inputRegister} label="Nome do voluntário" outline
+                                        value={this.state.adopterName} onChange={(e) => this.setState({ adopterName: e.target.value })}
+                                    />
+                                </div>
+                                <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit)}>
+                                    <MDBInput className={styles.inputRegister} label="Telefone" outline
+                                        value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
+                                    />
+                                </div>
+                                <div className={classNames(styles.containerInputSelect, this.props.edit && styles.containerInputEdit)}>
+                                    {this.selectAnimal()}
+
+                                </div>
+
+                                <button className={styles.buttonSubmitForm} onClick={this.saveTemporaryHome}>
+                                    {this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
+                                </button>
+                            </div>
+                        </AccordionDetails>
+                    </Accordion>
+                </div>
+            </>
         )
     }
 }

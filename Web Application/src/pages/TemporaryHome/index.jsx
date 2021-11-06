@@ -4,6 +4,7 @@ import axios from 'axios'
 import styles from './styles.module.css'
 
 import { baseApiUrl } from '../../services/baseApiUrl.js'
+import CustomSnackbar from '../../components/CustomSnackbar'
 import AddTemporaryHome from './../../components/AddTemporaryHome'
 import TemporaryHomeTable from './../../components/TemporaryHomeTable'
 
@@ -14,6 +15,10 @@ const initialState = {
     rowsPerPage: 10,
     currentPage: 0,
     maxPageOpened: -1,
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class TemporaryHome extends Component {
@@ -44,19 +49,19 @@ class TemporaryHome extends Component {
             })
             .catch(err => {
                 console.log(err)
-                window.alert('Ocorreu um erro ao buscar lares temporários!')
+                this.toggleSnackbarVisibility(true, `Houve um erro ao obter lares temporários!`, 'error')
             })
     }
 
     deleteTemporaryHome = async (idTemporaryHome) => {
         await axios.delete(`${baseApiUrl}/temporary-home/${idTemporaryHome}`) // Array de id
             .then(_ => {
-                window.alert(`Lar temporário deletado com sucesso!`)
+                this.toggleSnackbarVisibility(true, `Lar${idTemporaryHome.length > 1 ? 'es' : ''} temporário${idTemporaryHome.length > 1 ? 's' : ''} deletado${idTemporaryHome.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadTemporaryHomes(true)
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, `Houve um erro ao deletar lar temporário!`, 'error')
             })
     }
 
@@ -85,9 +90,18 @@ class TemporaryHome extends Component {
         this.setState({ ...dataField, temporaryHomes: [], currentPage: 0 }, this.loadTemporaryHomes)
     }
 
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
+    }
+
     render() {
         return (
             <div className={styles.container}>
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.pageName}>
                     <span>LARES TEMPORÁRIOS</span>
                 </div>

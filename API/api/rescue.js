@@ -42,7 +42,7 @@ module.exports = app => {
             .then(id => /* idRescue = id[0] */ res.status(200).send())
             .catch(err => {
                 console.log(err)
-                res.status(500).send('Erro ao cadastrar resgate')
+                res.status(500).send()
             })
 
         /* let collaboratorsData = []

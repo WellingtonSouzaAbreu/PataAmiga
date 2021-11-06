@@ -179,7 +179,7 @@ module.exports = app => {
 
     const getAnimalSelectOptions = async (req, res) => {
         const animalPreviousSelected = req.query.animalPreviousSelected && req.query.animalPreviousSelected
-
+        
         await app.db('animals')
             .select('id', 'name', 'breed')
             .orderBy('name')

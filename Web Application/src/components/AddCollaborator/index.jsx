@@ -54,7 +54,7 @@ class AddCollaborator extends Component {
             })
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar animal!`, 'error')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro ao cadastrar colaborador!`, err.response.status == 400 ? 'warning' : 'error')
             })
     }
 

@@ -6,6 +6,7 @@ import axios from 'axios'
 import styles from './styles.module.css'
 
 import { baseApiUrl } from "../../services/baseApiUrl";
+import CustomSnackbar from './../CustomSnackbar'
 import CustomDatePicker from "../CustomDatePicker";
 import classNames from "classnames";
 
@@ -20,7 +21,11 @@ const initialState = {
     policeSupport: 0,
     veterinaryCareId: 0,
 
-    editMode: false
+    editMode: false,
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class AnimalDetailsRescue extends Component {
@@ -72,28 +77,41 @@ class AnimalDetailsRescue extends Component {
     }
 
     saveRescue = async () => {
-        let rescue = { ...this.state }
-        delete rescue.editMode
+        let rescue = {
+            id: this.state.id,
+            dateOfRescue: this.state.dateOfRescue,
+            BONumber: this.state.BONumber,
+            address: this.state.address,
+            animalId: this.state.animalId,
+            locale: this.state.locale,
+            forwardedToKennel: this.state.forwardedToKennel,
+            policeSupport: this.state.policeSupport,
+            veterinaryCareId: this.state.veterinaryCareId,
+        }
 
         await axios.put(`${baseApiUrl}/rescue/${this.state.animalId}`, { rescue })
             .then(_ => {
-
-                window.alert('Alterações salvas com sucesso!')
+                this.toggleSnackbarVisibility(true, `Resgate cadastrado com sucesso!`, 'success')
                 this.setState({ editMode: false }, this.props.onRefresh)
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err.response ? err.response.data : 'Erro ao editar dados de resgate')
+                this.toggleSnackbarVisibility(true, err.response.data ? err.response.data : `Houve um erro ao cadastrar resgate!`, err.response.status == 400 ? 'warning' : 'error')
             })
     }
 
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
+    }
+
     render() {
-
-        console.log(this.props.rescue)
-
         return (
             <div className={styles.container}>
-
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.box}>
                     {/* <span>Informações do Resgate</span> */} {/* TODO achei redundante */}
                     <div className={classNames(styles.dateOfRescueMoved)}>

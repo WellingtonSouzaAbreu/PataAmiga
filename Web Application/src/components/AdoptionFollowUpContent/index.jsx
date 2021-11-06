@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import styles from './styles.module.css'
 
 import { baseApiUrl } from '../../services/baseApiUrl';
+import CustomSnackbar from './../CustomSnackbar'
 import RemoteMonitoringTable from './../RemoteMonitoringTable';
 import AdoptionVisitReportTable from './../AdoptionVisitReportTable';
 import AddVisits from './../AddVisits'
@@ -20,6 +21,10 @@ const initialState = {
     // Visit
     visitDate: new Date(),
     visitReport: 'Foi louco',
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info',
 }
 
 class AdoptionFollowUpContent extends Component {
@@ -38,7 +43,10 @@ class AdoptionFollowUpContent extends Component {
             .then(res => {
                 return res.data
             })
-            .catch(err => window.alert(err))
+            .catch(err => {
+                console.log(err)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao obter lista de monitoramentos remotos!`, err.response.status == 400 ? 'warning' : 'error')
+            })
     }
 
     loadVisits = async () => {
@@ -47,7 +55,10 @@ class AdoptionFollowUpContent extends Component {
                 console.log(res.data)
                 return res.data
             })
-            .catch(err => window.alert(err))
+            .catch(err => {
+                console.log(err)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao obter lista de visitas!`, err.response.status == 400 ? 'warning' : 'error')
+            })
     }
 
     changeVisitDate = (visitDate) => {
@@ -66,41 +77,51 @@ class AdoptionFollowUpContent extends Component {
         }
         await axios.post(`${baseApiUrl}/visit`, { visit: visitData })
             .then(async _ => {
-                window.alert('Visita salva com sucesso!')
+                this.toggleSnackbarVisibility(true, `Visita cadastrada com sucesso!`, 'success')
                 this.setState({ visits: await this.loadVisits() })
             })
-            .catch(err => window.alert(err.response.data))
+            .catch(err => {
+                console.log(err)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar relatório de visita!`, err.response.status == 400 ? 'warning' : 'error')
+            })
     }
 
     deleteVisit = async (idVisit) => {
         await axios.delete(`${baseApiUrl}/visit/${idVisit}`) // Array de id
             .then(_ => {
-                const plural = idVisit.length > 1 ? 'es' : ''
-                window.alert(`Visit${plural} deletado${plural === 'es' ? 's' : ''} com sucesso!`)
+                this.toggleSnackbarVisibility(true, `Visita${idVisit.length > 1 ? 's' : ''} deletada${idVisit.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadVisits()
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao deletar relatório de visita!`, err.response.status == 400 ? 'warning' : 'error')
             })
     }
 
     deleteRemoteMonitoring = async (idRemoteMonitoring) => {
         await axios.delete(`${baseApiUrl}/remote-monitoring/${idRemoteMonitoring}`) // Array de id
             .then(_ => {
-                const plural = idRemoteMonitoring.length > 1 ? 'es' : ''
-                window.alert(`Monitoramento${plural} remoto deletado${plural === 'es' ? 's' : ''} com sucesso!`)
+                this.toggleSnackbarVisibility(true, `Monitoramento${idRemoteMonitoring.length > 1 ? 's' : ''} remoto${idRemoteMonitoring.length > 1 ? 's' : ''} deletado${idRemoteMonitoring.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadRemoteMonitorings()
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao deletar monitoramento remoto!`, err.response.status == 400 ? 'warning' : 'error')
             })
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     render() {
         return (
             <div>
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <Tabs >
                     <TabList className={styles.tabContainer}>
                         <Tab className={styles.tabs}>

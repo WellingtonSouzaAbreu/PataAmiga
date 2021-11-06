@@ -37,7 +37,7 @@ function EventDetailsContent(props) {
                         <div>
                             <MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
                                 <MDBCarouselInner>
-                                    {renderPublicationImages()}
+                                    {props.publication.imagesURL && renderPublicationImages()}
                                 </MDBCarouselInner>
                             </MDBCarousel>
                         </div>
@@ -124,7 +124,7 @@ function EventDetailsContent(props) {
                         <div className={styles.carouselDiv}>
                             <MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
                                 <MDBCarouselInner>
-                                    {renderPublicationImages()}
+                                    {props.publication.imagesURL && renderPublicationImages()}
                                 </MDBCarouselInner>
                             </MDBCarousel>
                         </div>

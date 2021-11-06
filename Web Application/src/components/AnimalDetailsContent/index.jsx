@@ -9,11 +9,16 @@ import VeterinaryCareDetails from './../VeterinaryCareDetails'
 import AnimalRescueDetails from '../AnimalRescueDetails';
 
 import { baseApiUrl } from '../../services/baseApiUrl';
+import CustomSnackbar from "./../CustomSnackbar";
 
 const initialState = {
     animal: {
         extraInfo: {}
-    }
+    },
+
+    snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class AnimalDetailsContent extends Component {
@@ -29,52 +34,63 @@ class AnimalDetailsContent extends Component {
             .then(res => this.setState({ animal: res.data }))
             .catch(err => {
                 console.log(err)
-                window.alert('Occoreu um erro ao obter dados do animal!')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro obter dados do animal!`, 'error')
             })
     }
 
     deleteVeterinaryCare = async (idVeterinaryCare) => {
         await axios.delete(`${baseApiUrl}/veterinary-care/${idVeterinaryCare}`) // Array de id
             .then(_ => {
-                window.alert('Cuidado veterinário deletado com sucesso!')
+                this.toggleSnackbarVisibility(true, `Dado${idVeterinaryCare.length > 1 ? 's' : ''} veterinário${idVeterinaryCare.length > 1 ? 's' : ''} deletado${idVeterinaryCare.length > 1 ? 's' : ''} com sucesso!`, 'success')
             })
             .catch(err => {
                 console.log(err)
-                window.alert(err)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro ao deletar dado veterinário!`, 'error')
             })
+    }
+
+    toggleSnackbarVisibility = (visibility, message, type) => {
+        if (visibility) {
+            this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+        } else {
+            this.setState({ snackbarVisible: !!visibility })
+        }
     }
 
     render() {
         return (
-            <div>
-                <Tabs >
-                    <TabList className={styles.tabContainer}>
-                        <Tab className={styles.tabs}>
-                            <i className='bx bx-detail bx-sm'></i> {/* TODO tem como deixar a aba selecionada destacada? */}
-                            <span>Informações do Animal</span>
-                        </Tab>
-                        <Tab className={styles.tabs}>
-                            <i className='bx bx-plus-medical bx-sm' ></i>
-                            <span>Cuidados Veterinários</span>
-                        </Tab>
-                        <Tab className={styles.tabs}>
-                        <i class='bx bxl-flutter bx-sm'></i>
-                            <span>Informações do Resgate</span>
-                        </Tab>
-                    </TabList>
+            <>
+                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
+                <div>
+                    <Tabs >
+                        <TabList className={styles.tabContainer}>
+                            <Tab className={styles.tabs}>
+                                <i className='bx bx-detail bx-sm'></i> {/* TODO tem como deixar a aba selecionada destacada? */}
+                                <span>Informações do Animal</span>
+                            </Tab>
+                            <Tab className={styles.tabs}>
+                                <i className='bx bx-plus-medical bx-sm' ></i>
+                                <span>Cuidados Veterinários</span>
+                            </Tab>
+                            <Tab className={styles.tabs}>
+                                <i class='bx bxl-flutter bx-sm'></i>
+                                <span>Informações do Resgate</span>
+                            </Tab>
+                        </TabList>
 
-                    <TabPanel className={styles.tabContent}>
-                        <AnimalInfo animal={this.state.animal} onRefresh={this.loadAnimal} />
-                    </TabPanel>
-                    <TabPanel className={styles.tabContent}>
-                        <VeterinaryCareDetails veterinaryCares={this.state.animal.veterinaryCare}
-                            animalId={this.state.animal.id} onRefresh={this.loadAnimal} onDelete={this.deleteVeterinaryCare}/>
-                    </TabPanel>
-                    <TabPanel className={styles.tabContent}>
-                       <AnimalRescueDetails rescue={this.state.animal.rescue} onRefresh={this.loadAnimal} />
-                    </TabPanel>
-                </Tabs>
-            </div>
+                        <TabPanel className={styles.tabContent}>
+                            <AnimalInfo animal={this.state.animal} onRefresh={this.loadAnimal} />
+                        </TabPanel>
+                        <TabPanel className={styles.tabContent}>
+                            <VeterinaryCareDetails veterinaryCares={this.state.animal.veterinaryCare}
+                                animalId={this.state.animal.id} onRefresh={this.loadAnimal} onDelete={this.deleteVeterinaryCare} />
+                        </TabPanel>
+                        <TabPanel className={styles.tabContent}>
+                            <AnimalRescueDetails rescue={this.state.animal.rescue} onRefresh={this.loadAnimal} />
+                        </TabPanel>
+                    </Tabs>
+                </div>
+            </>
         )
     }
 }

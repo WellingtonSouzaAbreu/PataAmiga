@@ -5,6 +5,7 @@ import { MDBInput } from "mdbreact";
 import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
+import CustomSnackbar from "../../components/CustomSnackbar"
 import AddDonation from './../../components/AddDonation/index.jsx'
 import DonationsTable from "../../components/DonationsTable/index.jsx";
 
@@ -24,7 +25,11 @@ const initialState = {
 	searchParam: '',
 	rowsPerPage: 9,
 	currentPage: 0,
-	maxPageOpened: -1
+	maxPageOpened: -1,
+
+	snackbarVisible: false,
+    snackbarMessage: '',
+    snackbarType: 'info'
 }
 
 class Donations extends Component {
@@ -53,7 +58,7 @@ class Donations extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert('Ocorreu um erro ao obter doações')
+				this.toggleSnackbarVisibility(true, `Houve um erro ao obter doações!`, 'error')
 			})
 	}
 
@@ -64,19 +69,19 @@ class Donations extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert('Ocorreu um erro ao número de doações recebidas!')
+				this.toggleSnackbarVisibility(true, `Houve um erro ao obter o numero de doações recebidas!`, 'error')
 			})
 	}
 
 	deleteDonation = async (idDonation) => {
 		await axios.delete(`${baseApiUrl}/donation/${idDonation}`) // Array de id
 			.then(_ => {
-				window.alert('Doação deletada com sucesso!')
+				this.toggleSnackbarVisibility(true, `Doaç${idDonation.length > 1 ? 'ões' : ''} deletada${idDonation.length > 1 ? 's' : ''} com sucesso!`, 'success')
 				this.loadDonations(true)
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert(err)
+				this.toggleSnackbarVisibility(true, `Houve um erro ao deletar denúncia!`, 'error')
 			})
 	}
 
@@ -154,7 +159,7 @@ class Donations extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				window.alert('Ocorreu um erro ao obter doações')
+				this.toggleSnackbarVisibility(true, `Houve um erro ao alterar o estado da doação!`, 'error')
 			})
 
 	}

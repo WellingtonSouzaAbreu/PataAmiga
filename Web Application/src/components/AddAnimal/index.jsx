@@ -62,16 +62,8 @@ class AddAnimal extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				this.toggleSnackbarVisibility(true, `Erro obter animais!`, 'error')
+				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro obter animais!`, 'error')
 			})
-	}
-
-	toggleSnackbarVisibility = (visibility, message, type) => {
-		if (visibility) {
-			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
-		} else {
-			this.setState({ snackbarVisible: !!visibility })
-		}
 	}
 
 	structureStateData = async (allData) => {
@@ -173,7 +165,7 @@ class AddAnimal extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar animal!`, 'error')
+				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar animal!`, err.response.status == 400 ? 'warning' : 'error')
 			})
 	}
 
@@ -201,7 +193,15 @@ class AddAnimal extends Component {
 			this.toggleSnackbarVisibility(true, `Animal cadastrado com sucesso!`, 'success')
 			this.props.onRefresh()
 		} else {
-			this.toggleSnackbarVisibility(true, `Erro ao cadastrar animal!`, 'success')
+			this.toggleSnackbarVisibility(true, `Erro ao cadastrar animal!`, 'error')
+		}
+	}
+
+	toggleSnackbarVisibility = (visibility, message, type) => {
+		if (visibility) {
+			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+		} else {
+			this.setState({ snackbarVisible: !!visibility })
 		}
 	}
 

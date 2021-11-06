@@ -60,16 +60,8 @@ class AddEvent extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				this.toggleSnackbarVisibility(true, `Erro ao obter detalhes da publicação!`, 'error')
+				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao obter detalhes da publicação!`, 'error')
 			})
-	}
-
-	toggleSnackbarVisibility = (visibility, message, type) => {
-		if (visibility) {
-			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
-		} else {
-			this.setState({ snackbarVisible: !!visibility })
-		}
 	}
 
 	changeStartDateTime = (startDateTime) => {
@@ -99,7 +91,7 @@ class AddEvent extends Component {
 			})
 			.catch(err => {
 				console.log(err)
-				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar publicação!`, 'error')
+				this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Erro ao cadastrar publicação!`, err.response.status == 400 ? 'warning' : 'error')
 			})
 	}
 
@@ -174,6 +166,14 @@ class AddEvent extends Component {
 				console.log(`${baseApiUrl}/publication-pictures/${imageURL}`)
 				return `${baseApiUrl}/publication-pictures/${imageURL}`
 			})
+		}
+	}
+
+	toggleSnackbarVisibility = (visibility, message, type) => {
+		if (visibility) {
+			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+		} else {
+			this.setState({ snackbarVisible: !!visibility })
 		}
 	}
 
