@@ -135,4 +135,10 @@ module.exports = app => {
     app.delete('/visit/:id', app.api.visit.removeVisit)
 
     app.get('/visit/:idAdoption', app.api.visit.getVisitsByAdoption)
+
+    app.post('/generate-recovery-password', app.api.recoveryPassword.generateStaticPage)
+
+    app.put('/recovery-password', app.api.recoveryPassword.saveNewPassword)
+
+    app.get('/already-changed', app.api.recoveryPassword.endpointAlreadyUsed)
 }

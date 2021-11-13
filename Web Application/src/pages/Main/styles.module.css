@@ -1,0 +1,121 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+body {
+   flex-direction: row;
+   min-height: 100%;
+   display: flex;
+   width: 100%;
+}
+
+.sidebar{
+  position: relative;
+  left: 0;
+  top: 0;
+  min-height: 100vh;
+  min-width: 250px;
+  background: #F27B35;
+  padding: 6px 14px;
+  
+}
+
+.sidebar .logoDetails{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+  color: #FFF;
+}
+.sidebar .logoDetails .icon{
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+.sidebar .logoDetails .logoName{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.sidebar i{
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.navList{
+  height: calc(100% - 62px);
+  
+  
+}
+.sidebar li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+ 
+}
+
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #F27B35;
+ 
+}
+.sidebar li a:hover{
+  background: #FFF;
+  
+}
+
+.sidebar li a .linksName{
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.sidebar li a:hover .linksName,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #808080;
+}
+.sidebar li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+.homeSection{
+  width: calc(100vw - 250px);
+  background: #fff;
+  min-height: 100vh;
+  position: relative;
+  overflow: auto;
+}
+
+
+.homeSection .text{
+  display: inline-block;
+  color: #11101d;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px
+}
+
+
+.navList .logout  {
+
+  font-size: 28px;
+  margin-top: 50px;
+  padding-top: 10px;
+  border-top: 1px solid #f2f2f2;
+  
+}
+

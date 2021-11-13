@@ -99,11 +99,7 @@ class AddAnimal extends Component {
 			case 0:
 				return <StepAnimalInfo animal={this.state.animal} selectedPictures={this.state.pictures} edit={this.props.edit} onChange={this.updateAnimalField} onSelectPicture={this.updateSelectedPictures} onChangeDate={this.changeAnimalBirthDate} />
 			case 1:
-				if (this.props.edit) { // TODO provisório, tá feio
-					return <h1>A edição dos dados veterinários deve ser feita através da aba 'Mais informações'</h1>
-				} else {
-					return <StepAnimalVeterinary veterinaryCare={this.state.veterinaryCare} onChange={this.updateVeterinaryCareField} onChangeDate={this.changeDateVeterinaryCare} />
-				}
+				return <StepAnimalVeterinary veterinaryCare={this.state.veterinaryCare} onChange={this.updateVeterinaryCareField} onChangeDate={this.changeDateVeterinaryCare} />
 			case 2:
 				return <StepAnimalRescue rescue={this.state.rescue} onChange={this.updateAnimalRescueField} onChangeDate={this.changeDateRescue} />;
 			default:
@@ -206,7 +202,11 @@ class AddAnimal extends Component {
 	}
 
 	render() {
-		const steps = ['Informações do animal', 'Dados veterinários', 'Resgate']
+		let steps = ['Informações do animal']
+
+		if(!this.props.edit ){
+			steps.push('Dados veterinários', 'Resgate')
+		}
 
 		return (
 			<div className={styles.root}>

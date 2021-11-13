@@ -1,91 +1,96 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom'
 
-import './styles.css'
+import styles from './styles.module.css'
+
 
 import Routes from './../../config/router.jsx'
+import classNames from 'classnames';
 
 export default function Main() {
 	return (
 		<body>
-			<div className={'sidebar'}>
-				<div className={'logoDetails'}>
-					<i className="bx bxl-c-plus-plus" />
+			<div className={styles.sidebar}>
+				<div className={styles.logoDetails}>
+					<i class="fas fa-paw"></i>
+					<span>Pata Amiga</span>
 				</div>
-				<ul className="nav-list">
+				<ul className={styles.navList}>
 					<li >
-						<Link to='/home' >
-							<i className="bx bx-grid-alt" />
-							<span className={'linksName'}>Home</span>
+						<Link to='/painel-de-controle' >
+							<i className="bx bxs-heart" />
+							<span className={styles.linksName}>Home</span>
 						</Link>
-						<span className={'tooltip'}>Home</span>
-					</li>
-					<li>
-						<Link to="/animais">
-							<i className="bx bxs-user" />
-							<span className={'linksName'}>Animais</span>
-						</Link>
-						<span className={'tooltip'}>Animais</span>
 					</li>
 					<li >
 						<Link to="/adocoes">
-							<i className="bx bxs-heart" />
-							<span className={'linksName'}>Adoção</span>
+							<i class="fas fa-heart"></i>
+							<span className={styles.linksName}>Adoção</span>
 						</Link>
-						<span className={'tooltip'}>Adoção</span>
 					</li>
 					<li>
-						<Link to="/interessados">
-							<i className="bx bxs-user-detail" />
-							<span className={'linksName'}>Interessados em adotar</span>
+						<Link to="/animais">
+							<i class="fas fa-dog"></i>
+							<span className={styles.linksName}>Animais</span>
 						</Link>
-						<span className={'tooltip'}>Interessados em adotar</span>
+
+					</li>
+
+					<li>
+						<Link to="/interessados">
+							<i class="far fa-id-card"></i>
+							<span className={styles.linksName}>Interessados</span>
+						</Link>
+
 					</li>
 					<li>
 						<Link to="/lar-temporario">
-							<i className="bx bxs-cog" />
-							<span className={'linksName'}>Lar temporário</span>
+							<i class="fas fa-home"></i>
+							<span className={styles.linksName}>Lar temporário</span>
 						</Link>
-						<span className={'tooltip'}>Lar temporário</span>
+
 					</li>
 					<li >
 						<Link to="/doacoes">
-							<i className="bx bx-donate-heart" />
-							<span className={'linksName'}>Doações</span>
+							<i class="fas fa-hand-holding-usd"></i>
+							<span className={styles.linksName}>Doações</span>
 						</Link>
-						<span className={'tooltip'}>Doações</span>
+
 					</li>
 					<li>
 						<Link to="/eventos">
-							<i className="bx bx-calendar-event" />
-							<span className={'linksName'}>Eventos</span>
+							<i i class="fas fa-calendar-day"></i>
+							<span className={styles.linksName}>Eventos</span>
 						</Link>
-						<span className={'tooltip'}>Eventos</span>
+
 					</li>
 					<li>
 						<Link to="/denuncias">
-							<i className="bx bxs-megaphone" />
-							<span className={'linksName'}>Denúncias</span>
+							<i class="fas fa-bullhorn"></i>
+							<span className={styles.linksName}>Denúncias</span>
 						</Link>
-						<span className={'tooltip'}>Denúncias</span>
+
 					</li>
 
 					<li>
 						<Link to="/colaboradores">
-							<i className="bx bxs-user-account " />
-							<span className={'linksName'}>Voluntários</span>
+							<i class="fas fa-users"></i>
+							<span className={styles.linksName}>Voluntários</span>
 						</Link>
-						<span className={'tooltip'}>Voluntários</span>
+
 					</li>
-					<Link to="/login">
-						<li className={'profile'}>
-							<i className="bx bx-log-out" id="log_out" />
-						</li>
-					</Link>
+					<li className={styles.logout}>
+						<Link to="/login">
+							<i class="fas fa-sign-out-alt" id="log_out"></i>
+							<span className={styles.linksName}>Desconectar</span>
+						</Link>
+					</li>
+
 				</ul>
+
+
 			</div>
-			<section className={'homeSection'} id="content">
+			<section className={styles.homeSection} id="content">
 				<Routes></Routes>
 			</section>
 		</body>

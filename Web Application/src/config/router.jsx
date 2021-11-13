@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom'
 
 import Adoptions from '../pages/Adoptions'
+import Auth from '../pages/Auth'
 import Donations from './../pages/Donations'
 import Events from './../pages/Events'
 import Complaints from './../pages/Complaints'
@@ -13,7 +14,7 @@ import Interesteds from './../pages/Interesteds'
 
 export default props =>
     <Switch>
-        <Route exact path="/login" component={() => <h1>Login</h1>} />
+        <Route exact path="/login" component={Auth} />
         <Route exact path="/adocoes" component={Adoptions} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/doacoes" component={Donations} />

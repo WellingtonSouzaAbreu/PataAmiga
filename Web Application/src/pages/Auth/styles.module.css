@@ -1,0 +1,57 @@
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authCard{
+    width: 600px;
+    border: 1px black solid;
+    padding: 30px;
+}
+
+.titleContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.pipe{
+    background-color: #F27B35;
+    width: 5px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.form{
+    /* background-color: aqua; */
+}
+
+.input{
+
+}
+
+.loginButton{
+    margin-top: 50px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: #ffffff;
+    background-color: #F27B35;
+    font-weight: bold;
+}
+
+.forgotPasswordContainer{
+   /*  background-color: aqua; */
+}
+
+.forgotPassword {
+    font-size: 10pt;
+    color: gray;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
+}
