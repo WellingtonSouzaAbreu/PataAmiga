@@ -43,9 +43,9 @@ module.exports = app => {
                         .then(res => {
                             if(res.data){
                                 document.getElementsByClassName('container')[0].innerHTML = \`
-                                <h2 style="margin: auto;">Senha alterada com sucesso!</h2>
+                                <h2 style="margin: auto;">Ops! Este link não está disponível</h2>
                                 <br/>
-                                <h2 style="margin: auto;">Para trocar de senha, solicite novamente.</h2>
+                                <h2 style="margin: auto;">Para alterar a senha, solicite novamente que esqueceu a senha, que lhe enviaremos um novo link</h2>
                             \`
                             }else{
                                 document.getElementsByClassName('container')[0].innerHTML = \`
@@ -121,9 +121,21 @@ module.exports = app => {
         console.log(endpoint)
 
         app.config.middlewares.newRoutes(`/recuperar-senha/${endpoint}`, HTMLPage)
-        
-        const url= `http://192.168.2.183:500/recuperar-senha/${endpoint}`
-        res.status(200).send(url)
+
+        const url = `http://192.168.2.183:500/recuperar-senha/${endpoint}`
+
+        if (user.cellNumber == 'Admin') {
+            const emailSended = await sendEmail(url)
+
+            if (emailSended) {
+                return res.status(200).send()
+            } else {
+                return res.status(500).send()
+            }
+        } else {
+            return res.status(200).send(url)
+        }
+
     }
 
     const getUserLoginAccess = async (user) => {
@@ -147,16 +159,20 @@ module.exports = app => {
         return jwt.decode(token, authSecret)
     }
 
-    const sendEmail = () => {
+    const sendEmail = async (url) => {
         let nodemailer = require('nodemailer');
 
-        let remetente = nodemailer.createTransport({
+        const senderUser = 'wellingtonsouza.wsa100@gmail.com'
+        const senderPassword = 'xxxxxxxx'
+        const recipient = 'wellingtonsouza6300@gmail.com'
+
+        let remetente = nodemailer.createTransport({ //Configuração de remetente
             host: 'smtp.gmail.com',
             port: 587,
             secure: false,
             auth: {
-                user: 'wellingtonsouza.wsa100@gmail.com',
-                pass: 'Outubro10'
+                user: senderUser,
+                pass: senderPassword
             },
             tls: {
                 rejectUnauthorized: false
@@ -164,22 +180,38 @@ module.exports = app => {
         });
 
         let emailASerEnviado = {
-            from: 'Ton <wellingtonsouza.wsa100@gmail.com>',
-            to: 'wellingtonsouza@gmail.com',
-            subject: 'Enviando Email com Node.js',
-            text: 'Estou te enviando este email com node.js'
+            from: 'Associação Pata Amiga <wellingtonsouza.wsa100@gmail.com>',
+            to: recipient,
+            subject: 'Recuperação de senha do Pata Amiga',
+            html: `
+            <div style='margin:auto;'>
+                <br />
+                <p style='font-size: 15pt;'>Clique no botão abaixo para recuperar o acesso a sua conta</p>
+                <br />
+                <a href=${url} style='color: white;text-decoration: none;font-size: 20pt;font-weight: bold;'>
+                    <div
+                        style="margin-top:60px;padding: 20px 50px; background-color: green; color: white; width:150px;height:30px;display:flex;align-items:center;justify-content:center;">
+                        Clique aqui
+                    </div>
+                </a>
+                <br/>
+                <p style='margin-bottom: 30px;'>
+                <span style='font-weight:bold;'> Obs:</span> Este link só pode ser utilizado uma vez.
+                </p>
+             </div>
+                
+                `
         };
 
-        res.status(200)
-        /*  await remetente.sendMail(emailASerEnviado)
-             .then(info => {
-                 console.log(info)
-                 res.status(200).send(info)
-             })
-             .catch(err => {
-                 console.log(err)
-                 res.status(500).send(err)
-             }) */
+        return await remetente.sendMail(emailASerEnviado)
+            .then(info => {
+                console.log(info)
+                return true
+            })
+            .catch(err => {
+                console.log(err)
+                return false
+            })
     }
 
     const saveNewPassword = async (req, res) => {
