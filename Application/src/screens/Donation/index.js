@@ -21,13 +21,13 @@ class Donation extends Component {
     requestCollect = async () => {
         await axios.post(`${baseApiUrl}/donation`, this.state.donation)
             .then(_ => {
-                showAlert('Eba!', 'Solicitação realizada com sucesso!')
+                showAlert('Pronto!', 'Solicitação realizada com sucesso!')
                 this.setState({ ...initialState })
                 this.props.navigation.goBack()
             })
             .catch(err => {
                 console.log(err.response.data)
-                showAlert('Ops', 'Ocorreu um erro ao solicitar coleta!')
+                showAlert('Ops!', err.response ? err.response.data : 'Ocorreu um erro ao solicitar coleta!')
             })
     }
 

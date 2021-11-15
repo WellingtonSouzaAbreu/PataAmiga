@@ -59,7 +59,7 @@ module.exports = app => {
         .delete(app.api.complaint.removeComplaint)
 
     app.route('/donation')
-        // .all(app.config.passport.authenticate())
+        .all(app.config.passport.authenticate())
         .get(app.api.donation.getDonations)
         .post(app.api.donation.save)
 

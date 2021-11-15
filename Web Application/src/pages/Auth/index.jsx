@@ -24,14 +24,24 @@ class Auth extends Component {
 
     state = { ...initialState }
 
+    componentDidMount = async () => {
+        await this.setDefaultAxiosHeader()
+    }
+
+    setDefaultAxiosHeader = async () => {
+        const userData = JSON.parse(localStorage.getItem('userData'))
+        axios.defaults.headers.common['Authorization'] = 'bearer ' + userData.token
+    }
+
     signin = async () => {
-        if(this.state.user != 'Admin'){
+        if (this.state.user != 'Admin') {
             this.toggleSnackbarVisibility(true, `Somente administradores podem logar no sistema!`, 'warning')
             return
         }
         await axios.post(`${baseApiUrl}/signin`, { cellNumber: this.state.user, password: this.state.password })
             .then(async res => {
                 await this.toggleSnackbarVisibility(true, `Login realizado com sucesso! Redirecionando...`, 'success')
+                await this.setTokenInLocalStorage(res.data)
                 await this.redirectToApplication()
             })
             .catch(err => {
@@ -40,7 +50,13 @@ class Auth extends Component {
             })
     }
 
-    redirectToApplication = () => {
+    setTokenInLocalStorage = async (userData) => {
+        const userDataJson = JSON.stringify(userData)
+        localStorage.setItem('userData', userDataJson)
+    }
+
+
+    redirectToApplication = async () => {
         setTimeout(() => {
             this.setState({ redirect: true })
         }, 1000)
@@ -59,7 +75,7 @@ class Auth extends Component {
             })
     }
 
-    toggleSnackbarVisibility = (visibility, message, type) => {
+    toggleSnackbarVisibility = async (visibility, message, type) => {
         if (visibility) {
             this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
         } else {

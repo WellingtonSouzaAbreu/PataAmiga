@@ -134,20 +134,20 @@ module.exports = app => {
                 throw err
             })
     }
-
-    const getAnimals = async (req, res) => {
+    
+    //TODO imprimir relatório de erros
+    
+    const getAnimals = async (req, res) => { //TODO implementar paginação..
         await app.db('animals')
             .select('id', 'name', 'breed', 'specie', 'dateOfBirth', 'sex')
             .then(async (animals) => {
-                // animals = JSON.parse(JSON.stringify(animals))
                 animals = await estimateAllAges(animals)
                 animals = await getAnimalMainPicture(animals)
-                // console.log(animals)
-                res.status(200).send(animals)
+                return res.status(200).send(animals)
             })
             .catch(err => {
                 console.log(err)
-                res.status(500).send(err)
+                return res.status(500).send()
             })
     }
 

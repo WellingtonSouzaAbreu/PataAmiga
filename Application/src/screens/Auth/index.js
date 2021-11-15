@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, Alert, StatusBar, TouchableOpacity } from "react-native";
+import { View, Text, Image, StatusBar, TouchableOpacity } from "react-native";
 import { Input, Button } from 'galio-framework';
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -33,19 +33,16 @@ class Login extends Component {
         console.log(textLength)
         if (writing) {
             switch (textLength) {
-                case 0:
-                    // formatedText += '+55 '
-                    break
                 case 1:
                     formatedText = `+55 (69) ${text}`
                     break
-                case 6:
-                    formatedText += ' '
-                    break
-                case 14:
-                    formatedText += '-'
+                case 15:
+                    formatedText = `${text.substring(0, text.length - 1)}-${text.substring(text.length - 1, text.length)}`
                     break
             }
+        } else {
+            if (textLength == 8) formatedText = `+55 (69) `
+            if (textLength == 15) formatedText = text.substring(0, text.length - 1)
         }
 
         this.setState({ cellNumber: formatedText })
@@ -84,7 +81,7 @@ class Login extends Component {
                 await this.props.navigation.navigate('Home')
             })
             .catch(err => {
-                Alert.alert('Erro', err.response.data)
+                showAlert('Ops!', err.response ? err.response.data : 'Ocorreu um erro ao tentar acessar o aplicativo, verifique sua conexão!')
             })
     }
 
@@ -98,7 +95,7 @@ class Login extends Component {
 
         await axios.post(`${baseApiUrl}/signup`, { user })
             .then(res => {
-                Alert.alert('Oba!', 'Seu cadastro foi realizado com sucesso!')
+                showAlert('Pronto!', 'Seu cadastro foi realizado com sucesso!')
                 this.setState({
                     newUser: false,
                     name: null,
@@ -107,7 +104,7 @@ class Login extends Component {
             })
             .catch(err => {
                 console.log(err)
-                Alert.alert('Ops!', err.response.data)
+                showAlert('Ops!', err.response ? err.response.data : 'Ocorreu um erro ao realizar seu cadastro!')
             })
     }
 

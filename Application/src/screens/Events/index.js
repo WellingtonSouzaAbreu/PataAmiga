@@ -6,6 +6,7 @@ import styles from './styles.js'
 
 import { baseApiUrl } from './../../common/baseApiUrl.js'
 import EventCard from '../../components/EventCard'
+import { showAlert } from '../../common/commonFunctions.js';
 
 const initialState = {
     events: []
@@ -18,26 +19,28 @@ export default class EventScreen extends Component {
     componentDidMount = async () => {
         await axios(`${baseApiUrl}/publication/event`)
             .then(res => this.setState({ events: res.data }))
-            .catch(err => Alert.alert('Erro', 'Não foi possível obter os eventos!'))
+            .catch(err => showAlert('Erro', 'Não foi possível obter os eventos!'))
     }
 
+    //{/* <Image style={styles.headerImage} source={require('./../../assets/imgs/events2.png')} /> */} {/* TODO Scroll e flatlist dá bosta */}
     render() {
         return (
-            <ScrollView showsVerticalScrollIndicIator={false}>
-                <View style={styles.container}>
-                    <View style={styles.header}>
-                        <Image style={styles.headerImage} source={require('./../../assets/imgs/events2.png')} />
-                        <Text style={styles.headerText}>Confira aqui nossos proximos eventos</Text>
-                    </View>
-                    <View style={styles.line}></View>
-                    <FlatList
-                        style={styles.flatlistEvents}
-                        data={this.state.events}
-                        renderItem={({ item }) => <EventCard {...item} />}
-                        keyExtractor={item => item.id}
-                    />
+            <View style={styles.container}>
+                <View style={styles.header}>
+
+                    <Text style={styles.headerText}>Confira aqui nossos proximos eventos</Text>
                 </View>
-            </ScrollView>
+                <View style={styles.line}></View>
+                {!this.state.events && <Text style={styles.headerText}>Não possui eventos próximos</Text>}
+                <FlatList
+                    style={styles.flatlistEvents}
+                    data={this.state.events}
+                    renderItem={({ item }) => <EventCard {...item} />}
+                    keyExtractor={item => item.id}
+                >
+
+                </FlatList>
+            </View>
         )
     }
 }

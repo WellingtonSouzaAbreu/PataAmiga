@@ -208,6 +208,14 @@ class Donations extends Component {
 		this.setState({ donationDetailsVisibility: donationDetailsVisibility, donationDetails: donation })
 	}
 
+	toggleSnackbarVisibility = (visibility, message, type) => {
+		if (visibility) {
+			this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
+		} else {
+			this.setState({ snackbarVisible: !!visibility })
+		}
+	}
+
 	render = () => {
 		return (
 			<div className={styles.container}>

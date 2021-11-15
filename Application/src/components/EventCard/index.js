@@ -45,11 +45,11 @@ export default class EventCard extends Component {
                         <View style={styles.infoRow}>
                             <View style={styles.infoItem}>
                                 <Icon name="calendar" size={15} color='gray' style={styles.iconStyle} />
-                                <Text style={styles.infoValue}>{formatDate(this.props.dateTime)}</Text>
+                                <Text style={styles.infoValue}>{formatDate(this.props.startDateTime)}</Text>
                             </View>
                             <View style={styles.infoItem}>
                                 <Icon name="clock" size={15} color='gray' style={styles.iconStyle} />
-                                <Text style={styles.infoValue}>{formatHour(this.props.dateTime)}</Text>
+                                <Text style={styles.infoValue}>{formatHour(this.props.startDateTime)}</Text>
                             </View>
                         </View>
                         <View style={styles.infoRow}>

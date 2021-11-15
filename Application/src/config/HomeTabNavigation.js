@@ -21,8 +21,6 @@ export default function HomeTabNavigation(props) {
                     tabStyle : {
                    
                     }
-                    
-                    
                 }}
             >
                 <Tab.Screen name="ADOTAR" component={() => <Animals onNavigateToDogInfo={props.onNavigateToDogInfo}/>} />

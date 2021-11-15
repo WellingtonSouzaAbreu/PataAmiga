@@ -77,26 +77,31 @@ module.exports = app => {
     const save = async (req, res) => {
         const { existsOrError, objectIsNull } = app.api.validation
 
-        const donation = await objectIsNull(req.body) ? res.status(400).send('Dados da doação não informados') : req.body
+        let donation = await objectIsNull(req.body) ? res.status(400).send('Dados da doação não informados') : req.body
 
-        const userId =/*  req.user.id  */ 1 // Default TODO Habilitar passport
-        donation.date = new Date(donation.date)
+        const userId = req.user.id
+        console.log(donation)
+        donation.date = donation.data ? new Date(donation.date) : new Date()
 
         if (!donation.donationType) donation.donationType = 'others'
 
-        if (!donation.cellNumber || !donation.name) {
-            await app.db('users')
-                .select('name', 'cellNumber')
-                .where({ id: userId })
-                .then(([userData]) => donation = { ...donation, ...userData })
-                .catch(err => console.log('Erro ao consultar dados do usuário'))
-        } 
-        
         try {
-            existsOrError(donation.name, 'Nome do doador não informado')
-            existsOrError(donation.cellNumber, 'Celular do doador não informado')
-            existsOrError(donation.date, 'Data não informada')
-            existsOrError(donation.description, 'Descrição não informada')
+
+            if (!donation.cellNumber || !donation.name) {
+                await app.db('users')
+                    .select('name', 'cellNumber')
+                    .where({ id: userId })
+                    .then(([userData]) => donation = { ...donation, ...userData })
+                    .catch(err => {
+                        console.log(err)
+                        throw 'Ocorreu um erro ao consultar dados do usuário!'
+                    })
+            }
+
+            existsOrError(donation.name, 'Nome do doador não informado!')
+            existsOrError(donation.cellNumber, 'Celular do doador não informado!')
+            existsOrError(donation.date, 'Data não informada!')
+            existsOrError(donation.description, 'Descrição não informada!')
         } catch (err) {
             return res.status(400).send(err)
         }
@@ -107,7 +112,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
-                    res.status(500).send('Erro ao cadastrar doação')
+                    res.status(500).send()
                 })
         } else {
             console.log('ToEdit')

@@ -68,7 +68,10 @@ module.exports = app => {
     const getEvents = async (req, res) => {
         await app.db('publications')
             .where({ publicationType: 'event' })
+            .where('startDateTime', '>', new Date(new Date().getTime() - 3600000))
+            .orderBy('startDateTime')
             .then(async events => {
+                console.log(events)
                 events = await browseEvents(events)
                 res.status(200).send(events)
             })
@@ -180,7 +183,6 @@ module.exports = app => {
                 imageURL: req.file.filename,
                 publicationId: req.body.publicationId
             }
-
 
             //Deletar as ultimas publication-pictures 
             app.db('publications-pictures')

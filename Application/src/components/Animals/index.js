@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, Image, Alert } from 'react-native'
+import { View, FlatList } from 'react-native'
 import axios from 'axios';
 
 import styles from './styles.js'
 
 import {baseApiUrl} from '../../common/baseApiUrl.js'
 import AnimalCard from '../AnimalCard'
+import { showAlert } from '../../common/commonFunctions.js';
 
 const initialState = {
     animals: []
@@ -18,12 +19,10 @@ export default class Animals extends Component {
     componentDidMount = async() => {
         await axios.get(`${baseApiUrl}/animal`)
             .then(res => {
-                console.log(res.data)
                 this.setState({animals: res.data})
             })
             .catch(err => {
-                console.log(err.response.data)
-                Alert.alert('Erro', 'Não foi possível obter o animais')
+                showAlert('Ops!', 'Ocorreu um erro ao obter animais!')
             })
     }
     

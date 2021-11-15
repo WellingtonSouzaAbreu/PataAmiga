@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
     header: {
         width: '100%',
-        height: Dimensions.get('window').height * 0.22,
+        height: Dimensions.get('window').height * 0.07,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
 
     headerText: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
         marginVertical: 2
     },
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     line: {
         width: '70%',
         padding: 1,
-        marginTop: 20,
+        marginTop: 15,
         marginBottom: 20,
         borderBottomColor: 'lightgray',
         borderBottomWidth: 1,
