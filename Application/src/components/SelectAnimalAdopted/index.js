@@ -21,7 +21,6 @@ class SelectAnimalAdopted extends Component {
         await this.getAnimalsAdopted()
     }
 
-
     getAnimalsAdopted = async () => {
         axios.get(`${baseApiUrl}/adoption/animal-select`)
             .then(res => this.setState({ animals: res.data }))

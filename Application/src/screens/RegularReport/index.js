@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { View, Text, Image, TextInput, TouchableOpacity, StatusBar, Modal, ScrollView, Alert } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, StatusBar, Modal} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { ImageBrowser } from 'expo-image-picker-multiple'
 import axios from 'axios'
+import { SliderBox } from 'react-native-image-slider-box'
 
 import styles from './styles'
 
 import { baseApiUrl } from "../../common/baseApiUrl.js";
+import { showAlert } from "../../common/commonFunctions";
 import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
 import SelectAnimalAdopted from "../../components/SelectAnimalAdopted";
-import { SliderBox } from 'react-native-image-slider-box'
-import { showAlert } from "../../common/commonFunctions";
 
 const initialState = {
 	adoptionId: null,
@@ -28,14 +28,13 @@ export default class RegularReport extends Component {
 	state = { ...initialState }
 
 	componentDidMount = async () => {
-		console.log(axios.defaults.headers.common['Authorization'])
 		await axios.get(`${baseApiUrl}/adoption/number-by-user`)
 			.then(res => {
 				this.setState({ numberOfAdoptions: res.data })
 			})
 			.catch(err => {
 				console.log(err.response.data)
-				Alert.alert('Ops!', 'Algo deu errado ao obter o número de adoções.')
+				showAlert('Ops!', 'Algo deu errado ao obter o número de adoções.')
 			})
 	}
 
@@ -66,13 +65,12 @@ export default class RegularReport extends Component {
 
 		await axios.post(`${baseApiUrl}/remote-monitoring`, { remoteMonitoring: { observations: this.state.observations, adoptionId: adoptionId } })
 			.then(res => {
-				console.log(res.data)
 				const remoteMonitoringId = res.data
 				this.saveImages(remoteMonitoringId)
 			})
 			.catch(err => {
 				console.log(err.response.data)
-				Alert.alert('Ops', 'Ocorreu um erro ao enviar relatório.')
+				showAlert('Ops', 'Ocorreu um erro ao enviar relatório.')
 			})
 	}
 
@@ -88,7 +86,6 @@ export default class RegularReport extends Component {
 
 			await axios.post(`${baseApiUrl}/remote-monitoring/picture`, imageData)
 				.then(res => {
-					console.log('foi')
 					picturesUploaded.push(true)
 				})
 				.catch(err => {
@@ -108,7 +105,7 @@ export default class RegularReport extends Component {
 
 	checkIfImagesAreSelected = () => {
 		if (this.state.imagesPack.length < 1) {
-			Alert.alert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
+			showAlert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
 			return false
 		} else {
 			return true

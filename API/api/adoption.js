@@ -22,11 +22,11 @@ module.exports = app => {
             .then(async (adoptions) => {
                 adoptions.aproximateAge = await estimateAllAges(adoptions)
                 adoptions = await walkAnimals(adoptions)
-                res.status(200).send(adoptions)
+                return res.status(200).send(adoptions)
             })
             .catch(err => {
                 console.log(err)
-                res.status(500).send(err)
+                return res.status(500).send(err)
             })
     }
 
@@ -45,7 +45,7 @@ module.exports = app => {
     }
 
 
-    const estimateAge = (dateOfBirth) => {
+    const estimateAge = async(dateOfBirth) => {
         let differenceInMonths = parseInt((Date.parse(new Date()) - Date.parse(dateOfBirth)) / 1000 / 60 / 60 / 24 / 30)
 
         if (differenceInMonths <= 1) {
@@ -139,24 +139,29 @@ module.exports = app => {
             })
     }
 
-    const getAnimalsByUserAdoption = async (req, res) => {
+    const getAnimalsByUserAdoption = async (req, res) => { // TODO
 
         const userId = req.user.id
 
         await app.db('adoptions')
-            .select('animalId')
+            .select('id as adoptionId','animalId')
             .where({ userId: userId })
-            .then(async (animalsId) => {
+            .then(async (adoptionData) => {
+
+                console.log('adoptionData: ')
+                console.log(adoptionData)
 
                 let animalsWithPicture = []
-                for ({ animalId } of animalsId) {
+                for (adoptedAnimal of adoptionData) {
 
                     await app.db('animals')
                         .select('id', 'name', 'breed', 'dateOfBirth')
-                        .where({ id: animalId })
+                        .first()
+                        .where({ id: adoptedAnimal.animalId })
                         .then(async (animal) => {
+                            animal.adoptionId = adoptedAnimal.adoptionId
                             animal.aproximateAge = await estimateAge(animal.dateOfBirth)
-                            animalsWithPicture.push(await getAnimalMainPicture(animal))
+                            animalsWithPicture.push(await getAnimalMainPicture([animal]))
                         })
                         .catch(err => {
                             console.log(err)
@@ -165,7 +170,7 @@ module.exports = app => {
                 }
 
                 animalsWithPicture = animalsWithPicture.map(([animalInArray]) => animalInArray)
-                // console.log(animalsWithPicture)
+                
                 res.status(200).send(animalsWithPicture)
             })
             .catch(err => {

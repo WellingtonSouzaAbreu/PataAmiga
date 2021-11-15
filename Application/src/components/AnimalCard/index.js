@@ -14,8 +14,7 @@ const AnimalCard = (props) => {
     }
 
     const selectAdoption = () => {
-        console.log(props.id)
-        props.onSelectAdoption(props.id)
+        props.onSelectAdoption(props.adoptionId)
     }
 
     return (

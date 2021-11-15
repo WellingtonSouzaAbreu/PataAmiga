@@ -4,15 +4,19 @@ const fs = require('fs')
 module.exports = app => {
 
     const getRemoteMonitoringsByAdoption = async (req, res) => {
+        const idAdoption = req.params.idAdoption
+        console.log(idAdoption)
+
         await app.db('remote-monitorings')
-            .where({ adoptionId: req.params.idAdoption })
+            .where({ adoptionId: idAdoption })
             .then(async (remoteMonitorings) => {
+                console.log(remoteMonitorings)
                 const remoteMonitoringsWithPictures = await getPictures(remoteMonitorings)
-                res.status(200).send(remoteMonitoringsWithPictures)
+                return res.status(200).send(remoteMonitoringsWithPictures)
             })
             .catch(err => {
                 console.log(err)
-                res.status(500).send(err)
+                return res.status(500).send(err)
             })
     }
 
@@ -38,6 +42,7 @@ module.exports = app => {
 
         const remoteMonitoring = await objectIsNull(req.body.remoteMonitoring) ? res.status(400).send('Dados do monitoramento remoto não informados') : req.body.remoteMonitoring
         remoteMonitoring.date = new Date()
+
 
         try {
             existsOrError(remoteMonitoring.date, 'Data não informada')

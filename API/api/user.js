@@ -13,6 +13,8 @@ module.exports = app => {
             idUser = req.user.id
         }
 
+        console.log(idUser)
+
         await app.db('users')
             .select('id', 'name', 'cellNumber', 'email', 'city', 'district', 'address', 'houseNumber', 'phone',)
             .where({ id: idUser })

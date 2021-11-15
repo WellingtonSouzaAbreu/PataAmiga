@@ -45,12 +45,12 @@ module.exports = app => {
         complaint.date = new Date()
 
         try {
-            existsOrError(complaint.description, 'Descrição não informado')
-            existsOrError(complaint.address, 'Endereço não informada')
-            existsOrError(complaint.complaintType, 'Tipo de denúncia não informado')
-            existsOrError(complaint.city, 'Cidade não informada')
-            existsOrError(complaint.district, 'Bairro não informado')
-            existsOrError(complaint.date, 'Data não informada')
+            existsOrError(complaint.description, 'Descrição não informado!')
+            existsOrError(complaint.address, 'Endereço não informada!')
+            existsOrError(complaint.complaintType, 'Tipo de denúncia não informado!')
+            existsOrError(complaint.city, 'Cidade não informada!')
+            existsOrError(complaint.district, 'Bairro não informado!')
+            existsOrError(complaint.date, 'Data não informada!')
         } catch (err) {
             return res.status(400).send(err)
         }

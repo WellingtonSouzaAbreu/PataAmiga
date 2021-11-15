@@ -37,8 +37,6 @@ export default class Profile extends Component {
     }
 
     loadUserData = async () => {
-        axios.defaults.headers['Authorization'] = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IldlbGxpbmd0b24gU291emEiLCJjZWxsTnVtYmVyIjoiOSA4NDQ2LTU5OTcifQ.xt5q1HUEsGtlR_1OafRUzObyAONOek_3WlAFwQKSrWE'
-
         await axios.get(`${baseApiUrl}/user/noUsed`)
             .then(res => this.setState({ ...res.data }))
             .catch(err => {
@@ -112,7 +110,7 @@ export default class Profile extends Component {
                             <Icon name="road" size={15} color='dimgray' style={{ marginRight: 15 }} />
                             <View style={styles.infoAreaText}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <Text style={styles.valueLabel}>{this.state.address + ' - ' || '---'} {this.state.houseNumber} </Text>
+                                    <Text style={styles.valueLabel}>{this.state.addresss}{this.state.houseNumber ? '-' : '--- '}{this.state.houseNumber} </Text>
                                 </ScrollView>
                                 <Text style={styles.label}>Rua</Text>
                             </View>

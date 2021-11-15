@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import axios from 'axios'
 
 import styles from './styles.js'
 
 import { baseApiUrl } from '../../common/baseApiUrl.js'
+import { showAlert } from '../../common/commonFunctions.js';
 
 const initialState = {
     description: null,
@@ -33,12 +33,12 @@ export default class Report extends Component {
     requestReport = async () => {
         await axios.post(`${baseApiUrl}/complaint`, { complaint: this.state })
             .then(res => {
-                Alert.alert('Oba', 'Denúncia realizada com sucesso!')
+                showAlert('Pronto!', 'Denúncia realizada com sucesso!')
                 this.setState({ ...initialState })
             })
             .catch(err => {
                 console.log(err.response.data)
-                Alert.alert('Ops!', err.response.data)
+                showAlert('Ops!', err.response ? err.response.data : 'Ocorreu um erro ao realizar denúncia!')
             })
     }
 
