@@ -12,7 +12,7 @@ import { showAlert } from "../../common/commonFunctions";
 
 const initialState = {
     name: null,
-    cellNumber: '55 55555-5555',
+    cellNumber: '',
     password: '5555',
     confirmPassword: null,
 
@@ -27,33 +27,43 @@ class Login extends Component {
 
     applyMaskToCellNumber = (text) => {
         let formatedText = text
+        const textLength = text.length
+        const writing = this.state.cellNumber.length < text.length
 
-        if (text.length == 2 && this.state.cellNumber.length < text.length) {
-            formatedText += ' '
-        }
-
-        if (text.length == 8 && this.state.cellNumber.length < text.length) {
-            formatedText += '-'
+        console.log(textLength)
+        if (writing) {
+            switch (textLength) {
+                case 0:
+                    // formatedText += '+55 '
+                    break
+                case 1:
+                    formatedText = `+55 (69) ${text}`
+                    break
+                case 6:
+                    formatedText += ' '
+                    break
+                case 14:
+                    formatedText += '-'
+                    break
+            }
         }
 
         this.setState({ cellNumber: formatedText })
     }
 
-    sendSms = async () => {
-        showAlert('Opa', 'Descomente a função sendSms')
-        /* const sms = await axios({
-            url: 'https://voice-app.zenvia.com/sms',
-            method: 'post',
-            headers: {
-                'Access-Token': '5c56b53fb97341dd8b1db520cced00fc'
-            },
-            data:{
-                'numero_destino': '5569992550949',
-                'mensagem': `Aqui é a Pata Amiga`
-            }
-        })
-        .then(res => console.log(res))
-        .catch(err => console.log(err.response.data)) */
+    forgotPassword = async () => {
+        await axios.post(`${baseApiUrl}/generate-recovery-password`, { user: this.state.cellNumber })
+            .then(async (res) => {
+                if (res.data.recoveryType == 'email') {
+                    showAlert('Pronto!', 'Foi enviado uma mensagem de recuperação de senha para o seu email')
+                } else {
+                    showAlert('Pronto!', 'Foi enviado uma mensagem de recuperação de senha para o seu celular')
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                showAlert('Ops!', err.response ? err.response.data : 'Houve um erro ao lhe enviar a mensagem de recuperação')
+            })
     }
 
     signinOrSignup = () => {
@@ -106,7 +116,6 @@ class Login extends Component {
         this.setState({ ...initialState, newUser: !this.state.newUser })
     }
 
-
     render() {
         return (
             <View style={styles.container}>
@@ -130,7 +139,7 @@ class Login extends Component {
                     }
 
                     <AuthInput icon='phone' placeholder="Número de celular..." /* autoFocus={true} */
-                        keyboardType='numeric' maxLength={13}
+                        keyboardType='numeric' maxLength={19}
                         value={this.state.cellNumber}
                         onChangeText={this.applyMaskToCellNumber}
                     />
@@ -151,7 +160,7 @@ class Login extends Component {
                     }
                     {
                         !this.state.newUser &&
-                        <TouchableOpacity style={styles.forgetPassword} onPress={this.sendSms}>
+                        <TouchableOpacity style={styles.forgetPassword} onPress={this.forgotPassword}>
                             <Text style={styles.forgetPasswordText}>Esqueci minha senha.</Text>
                         </TouchableOpacity>
                     }

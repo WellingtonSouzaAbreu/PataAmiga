@@ -96,6 +96,7 @@ module.exports = app => {
             if (!idUserForUpdate) existsOrError(user.confirmPassword, 'Confirmação de senha não informada')
 
             console.log(user.password, user.confirmPassword)
+            if(user.password.length < 8) throw 'Senha muito curta! Ela deve ter no mínimo 8 caracteres'
             if (user.password != user.confirmPassword) throw 'Senhas não conferem'
 
             if (!idUserForUpdate) {
