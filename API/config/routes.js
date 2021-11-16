@@ -27,6 +27,8 @@ module.exports = app => {
         .get(app.api.animal.getAnimals)
         .post(app.api.animal.save)
 
+    app.get('/animal/available-for-adoption', app.api.animal.getAnimalsAvailableForAdoption)
+
     app.get('/animal/select-options', app.api.animal.getAnimalSelectOptions)
 
     app.route('/animal/:id')
@@ -76,10 +78,10 @@ module.exports = app => {
         .get(app.api.interestedInAdoption.getInterestedsInAdoption)
 
     app.route('/interesteds-in-adoption/:animalId')
-        // .all(app.config.passport.authenticate())
+        .all(app.config.passport.authenticate())
         .post(app.api.interestedInAdoption.save)
 
-    app.delete('/interesteds-in-adoption/:id', app.api.interestedInAdoption.removeInterested)
+    app.delete('/interesteds-in-adoption/interest/:id', app.api.interestedInAdoption.removeInterested)
 
     app.put('/interesteds-in-adoption/toggle-state', app.api.interestedInAdoption.toggleVerifiedState)
 

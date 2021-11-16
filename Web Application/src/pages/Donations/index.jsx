@@ -37,8 +37,14 @@ class Donations extends Component {
 	state = { ...initialState }
 
 	componentDidMount = async () => {
+		await this.setDefaultAxiosHeader()
 		await this.loadDonations()
 	}
+
+	setDefaultAxiosHeader = async () => {
+        const userData = JSON.parse(localStorage.getItem('userData'))
+        axios.defaults.headers.common['Authorization'] = 'bearer ' + userData.token
+    }
 
 	loadDonations = async (noConcat) => {
 		let filterParams = ''

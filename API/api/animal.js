@@ -134,10 +134,11 @@ module.exports = app => {
                 throw err
             })
     }
-    
-    //TODO imprimir relatório de erros
-    
-    const getAnimals = async (req, res) => { //TODO implementar paginação..
+
+    //TODO alimentar relatório de erros
+
+    const getAnimals = async (req, res) => { 
+
         await app.db('animals')
             .select('id', 'name', 'breed', 'specie', 'dateOfBirth', 'sex')
             .then(async (animals) => {
@@ -149,6 +150,36 @@ module.exports = app => {
                 console.log(err)
                 return res.status(500).send()
             })
+    }
+
+    const getAnimalsAvailableForAdoption = async (req, res) => { //TODO implementar paginação..
+        let adoptedAnimalsId = await getAdoptedAnimals()
+        adoptedAnimalsId = await convertToArray(adoptedAnimalsId)
+
+        await app.db('animals')
+            .select('id', 'name', 'breed', 'specie', 'dateOfBirth', 'sex')
+            .where({ availableForAdoption: 1 })
+            .whereNotIn('id', adoptedAnimalsId)
+            .then(async (animals) => {
+                animals = await estimateAllAges(animals)
+                animals = await getAnimalMainPicture(animals)
+                return res.status(200).send(animals)
+            })
+            .catch(err => {
+                console.log(err)
+                return res.status(500).send()
+            })
+    }
+
+    const getAdoptedAnimals = async () => {
+        return await app.db('adoptions')
+            .select('animalId')
+            .then(adoptedAnimals => adoptedAnimals)
+            .catch(err => console.log('Nenhum animal foi adotado!'))
+    }
+
+    const convertToArray = async (adoptedAnimals) => {
+        return adoptedAnimals.map(({ animalId }) => animalId)
     }
 
     const estimateAllAges = async (animals) => {
@@ -179,7 +210,7 @@ module.exports = app => {
 
     const getAnimalSelectOptions = async (req, res) => {
         const animalPreviousSelected = req.query.animalPreviousSelected && req.query.animalPreviousSelected
-        
+
         await app.db('animals')
             .select('id', 'name', 'breed')
             .orderBy('name')
@@ -187,7 +218,7 @@ module.exports = app => {
                 console.log(animals)
                 let adoptedAnimals = await adoptedAnimalsId()
                 let temporaryHomeAnimals = await temporaryHomeAnimalsId()
-                animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id) || animal.id == animalPreviousSelected )
+                animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id) || animal.id == animalPreviousSelected)
                 animals = await animals.filter(animal => !temporaryHomeAnimals.includes(animal.id))
                 res.status(200).send(animals)
             })
@@ -433,5 +464,5 @@ module.exports = app => {
         res.status(200).send('Animal removido com sucesso!')
     }
 
-    return { getAnimalById, getAllDataOfAnimalById, getAnimals, getAnimalSelectOptions, save, savePicture, removeAnimal }
+    return { getAnimalById, getAllDataOfAnimalById, getAnimals, getAnimalsAvailableForAdoption, getAnimalSelectOptions, save, savePicture, removeAnimal }
 }

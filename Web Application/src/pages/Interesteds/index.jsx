@@ -66,7 +66,7 @@ class Interesteds extends Component {
     }
 
     deleteInterested = async (idInterested) => {
-        await axios.delete(`${baseApiUrl}/interesteds-in-adoption/${idInterested}`) // Array de id
+        await axios.delete(`${baseApiUrl}/interesteds-in-adoption/interest/${idInterested}`) // Array de id
             .then(_ => {
                 this.toggleSnackbarVisibility(true, `Interesse${idInterested.length > 1 ? 's' : ''} deletado${idInterested.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadInterestedsInAdopt(true)

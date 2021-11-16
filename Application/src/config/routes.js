@@ -35,7 +35,10 @@ const homeStack = createStackNavigator({
 
     DogInfo: {
         name: 'DogInfo',
-        screen: DogInfo
+        screen: DogInfo,
+        navigationOptions: {
+            headerTitle: 'Informações do animal'
+        }
     },
 
     /*     Animals:{

@@ -19,10 +19,11 @@ module.exports = app => {
             .select('interest.id', 'interest.description', 'interest.userId', 'interest.animalId', 'interest.verified', 'animals.name as animalName')
             .where('animals.name'.toLowerCase(), 'like', `%${animalName}%`)
             .offset(offset)
+            .limit(limit)
             .then(async interesteds => {
                 interesteds = await getUserNameAndCellNumberById(interesteds)
                 interesteds = await getPicturesOfInteresteds(interesteds)
-                // console.log(interesteds)
+                console.log(interesteds)
                 res.status(200).send(interesteds)
             })
             .catch(err => {
@@ -63,9 +64,11 @@ module.exports = app => {
 
         const interestedInAdoption = await objectIsNull(req.body.interestedInAdoption) ? res.status(400).send('Dados de interesse não informados') : req.body.interestedInAdoption
 
-        const userId = /* req.user.id  */ 1 //TODO Habilitar passport
+        const userId = req.user.id
         interestedInAdoption.userId = userId
         interestedInAdoption.animalId = req.params.animalId
+
+        console.log('req.user.id: ' + req.user.id)
 
         try {
             existsOrError(interestedInAdoption.description, 'Descrição não informada')
@@ -135,6 +138,7 @@ module.exports = app => {
     }
 
     const removeInterested = async (req, res) => {
+        console.log('Cheguei')
         const idInterested = req.params.id ? req.params.id : res.status(400).send('Identificação do interessado não informada')
 
         let interestedsId = idInterested.split(',')
