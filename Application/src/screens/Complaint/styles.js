@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
     inputForm: {
         width: '100%',
-        height: '70%', // TODO deve ser relativo
+        height: '70%', 
         margin: 5,
         justifyContent: 'space-between',
         padding: 0,

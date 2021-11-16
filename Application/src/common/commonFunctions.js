@@ -9,8 +9,8 @@ const formatHour = (hour) => {
     return moment(hour).format('HH:mm')
 }
 
-const showAlert = (title, message) => {
-    Alert.alert(title, message)
+const showAlert = (title, message, buttons) => {
+    Alert.alert(title, message, buttons)
 }
 
 export { formatDate, formatHour, showAlert }

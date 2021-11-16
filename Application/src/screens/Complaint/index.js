@@ -46,7 +46,6 @@ export default class Report extends Component {
         return (
             <ScrollView style={styles.scrollReport}>
                 <View style={styles.container}>
-                    {/* TODO Scrool meio travado, não é sempre que rola suave */}
                     <View style={styles.boxFormReport}>
                         <Text style={styles.title}>Fazer uma denuncia</Text>
                         <View style={styles.containerRadioSelect}>

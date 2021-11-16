@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
@@ -13,9 +13,20 @@ export default function HeaderMain({ navigation }) {
     }
 
     const navigateToSignin = async () => {
-        await AsyncStorage.removeItem('user')
-        axios.defaults.headers.common['Authorization'] = ''
-        navigation.navigate('Auth')
+
+        Alert.alert('Atenção', 'Deseja realmente sair da sua conta?', [
+            {
+                text: "Sim", onPress: async () => {
+                    await AsyncStorage.removeItem('user')
+                    axios.defaults.headers.common['Authorization'] = ''
+                    navigation.navigate('Auth')
+                }
+            },
+            {
+                text: "Não",
+                style: "cancel"
+            }
+        ])
     }
 
     return (

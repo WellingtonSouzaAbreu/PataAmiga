@@ -23,7 +23,6 @@ export default class Profile extends Component {
     state = { ...initialState }
 
     componentDidMount = () => {
-        console.log('Fui montado') //TODO Não recarrega quando retorna da stack (https://pt.stackoverflow.com/questions/446419/atualizar-useeffect-da-p%C3%A1gina-navigation-goback)
         this.loadUserData()
         const { navigation } = this.props;
 
@@ -110,7 +109,7 @@ export default class Profile extends Component {
                             <Icon name="road" size={15} color='dimgray' style={{ marginRight: 15 }} />
                             <View style={styles.infoAreaText}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <Text style={styles.valueLabel}>{this.state.addresss}{this.state.houseNumber ? '-' : '--- '}{this.state.houseNumber} </Text>
+                                    <Text style={styles.valueLabel}>{this.state.address}{this.state.address && this.state.houseNumber? ' - ' : '--- '}{this.state.houseNumber} </Text>
                                 </ScrollView>
                                 <Text style={styles.label}>Rua</Text>
                             </View>
@@ -132,7 +131,6 @@ export default class Profile extends Component {
                         <View style={styles.addressInfoRow}>
                             <Icon name="globe-americas" size={15} color='dimgray' style={{ marginRight: 15 }} />
                             <View style={styles.infoAreaText}>
-                                {/* // TODO Abarcar estados? (Lucas) */}
                                 <Text style={styles.valueLabel}>Rondônia</Text>
                                 <Text style={styles.label}>Estado</Text>
                             </View>

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, ScrollView, TextInput, Image, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native'
 import axios from 'axios'
 
 import styles from './styles'
 
 import { baseApiUrl } from '../../../common/baseApiUrl'
+import { showAlert } from '../../../common/commonFunctions'
 
 const initialState = {
 	id: null,
@@ -35,10 +36,10 @@ export default class CompleteProfile extends Component {
 		const user = { ...this.state }
 
 		await axios.put(`${baseApiUrl}/user/${this.state.id}`, { user })
-			.then(res => Alert.alert('Oba!', 'Seu perfil foi atualizado com sucesso', [{ text: "OK", onPress: () => this.props.navigation.goBack() }]))
+			.then(res => showAlert('Pronto!', 'Seu perfil foi atualizado com sucesso!', [{ text: "OK", onPress: () => this.props.navigation.goBack() }]))
 			.catch(err => {
 				console.log(err)
-				Alert.alert('Ops!', 'Algo deu errado ao atualizar o seu perfil.', <Button />)
+				showAlert('Ops!', err.response ? err.response.data : 'Algo deu errado ao atualizar o seu perfil. Tente novamente mais tarde')
 			})
 	}
 
@@ -51,7 +52,7 @@ export default class CompleteProfile extends Component {
 					<View style={styles.inputsArea}>
 						<TextInput style={styles.longInput} placeholder="Email"
 							value={this.state.email} onChangeText={(email) => this.setState({ email })} />
-						<TextInput style={styles.longInput} placeholder="RUA"
+						<TextInput style={styles.longInput} placeholder="Rua"
 							value={this.state.address} onChangeText={(address) => this.setState({ address })} />
 						<View style={styles.inputRow}>
 							<TextInput style={styles.shortInput} placeholder="Número " keyboardType={'number-pad'}
@@ -67,7 +68,7 @@ export default class CompleteProfile extends Component {
 						</View>
 					</View>
 					<TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
-						<Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Salvar {/* //TODO mandar o botão lá pra baixo, padronização*/}</Text>
+						<Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Salvar</Text>
 					</TouchableOpacity>
 				</View>
 			</View>

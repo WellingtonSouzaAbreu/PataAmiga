@@ -1,9 +1,11 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, ScrollView, Alert } from 'react-native'
-import { Button } from 'react-native-paper'
-import { baseApiUrl } from '../../../common/baseApiUrl'
+import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+
 import styles from './styles'
+
+import { showAlert } from './../../../common/commonFunctions.js'
+import { baseApiUrl } from '../../../common/baseApiUrl'
 
 const initialState = {
     id: null,
@@ -29,19 +31,40 @@ export default class EditProfile extends Component {
         this.setState({ ...this.props.navigation.state.params })
     }
 
+    applyMaskToCellNumber = (text) => {
+        let formatedText = text
+        const textLength = text.length
+        const writing = this.state.cellNumber.length < text.length
+
+        console.log(textLength)
+        if (writing) {
+            switch (textLength) {
+                case 1:
+                    formatedText = `+55 (69) 9${text}`
+                    break
+                case 15:
+                    formatedText = `${text.substring(0, text.length - 1)}-${text.substring(text.length - 1, text.length)}`
+                    break
+            }
+        } else {
+            if (textLength == 9) formatedText = `+55 (69) 9`
+            if (textLength == 16) formatedText = text.substring(0, text.length - 1)
+        }
+
+        this.setState({ cellNumber: formatedText })
+    }
+
     updateProfile = async () => {
         await axios.put(`${baseApiUrl}/user/${this.state.id}`, { user: { ...this.state } })
-            .then(res => Alert.alert('Oba!', 'Seu perfil foi atualizado com sucesso', [{ text: "OK", onPress: () => this.props.navigation.goBack() }]))
+            .then(res => showAlert('Pronto!', 'Seu perfil foi atualizado com sucesso!', [{ text: "OK", onPress: () => this.props.navigation.goBack() }]))
             .catch(err => {
                 console.log(err)
-                Alert.alert('Ops!', 'Algo deu errado ao atualizar o seu perfil.', <Button />)
+                showAlert('Ops!', err.response ? err.response.data : 'Algo deu errado ao atualizar o seu perfil. Tente mais tarde.')
             })
     }
 
     render() {
         return (
-
-            //<ScrollView>{/*  // TODO Ao colocar o Scroll, quebra o layout entre formCompleteProfile e saveButton */}
             <View style={styles.container}>
                 <View style={styles.formCompleteProfile}>
                     <TextInput style={styles.longInput} placeholder="Nome"
@@ -62,10 +85,10 @@ export default class EditProfile extends Component {
                     />
                     <TextInput style={styles.longInput} placeholder="Celular" keyboardType={'number-pad'}
                         value={this.state.cellNumber}
-                        onChangeText={(cellNumber) => this.setState({ cellNumber })}
+                        onChangeText={this.applyMaskToCellNumber}
                     />
                     <View style={styles.containerShortInput}>
-                        <TextInput style={styles.shortInput} placeholder="Número"  keyboardType={'number-pad'}
+                        <TextInput style={styles.shortInput} placeholder="Número" keyboardType={'number-pad'}
                             value={this.state.houseNumber}
                             onChangeText={(houseNumber) => this.setState({ houseNumber })}
                         />
@@ -83,9 +106,6 @@ export default class EditProfile extends Component {
                     <Text style={{ fontWeight: 'bold', color: '#fff', fontSize: 15 }}>Salvar</Text>
                 </TouchableOpacity>
             </View>
-            //</ScrollView>
-
-
         )
     }
 }

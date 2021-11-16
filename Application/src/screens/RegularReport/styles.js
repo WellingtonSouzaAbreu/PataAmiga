@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    // TODO tranformar em componente
     imageBrowserContainer: {
-        backgroundColor: 'rgba(0,0,0,0.1)', //TODO Efeito de transparência
+        backgroundColor: 'rgba(0,0,0,0.1)',
         height: '90%',
         padding: 0,
         borderColor: 'white',

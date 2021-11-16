@@ -9,7 +9,7 @@ export default function Slider(props) {
         console.log(Object.entries(props))
 
         Object.values(props).forEach(object => {
-            if(object.imageURL){
+            if (object.imageURL) {
                 imagesURL.push(`${baseApiUrl}/${props.imageSource}-pictures/${object.imageURL}`)
             }
         })
@@ -22,9 +22,11 @@ export default function Slider(props) {
 
     return (
         <SliderBox
+            onCurrentImagePressed={(indexImage) => props.onPress(true, indexImage)}
             dotColor="#F28749"
-            autoplay
-            circleLoop
-            images={imagesURL} />
+            /* autoplay */ //TODO
+            /* circleLoop */
+            images={imagesURL}
+        />
     )
 }

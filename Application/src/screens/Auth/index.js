@@ -13,7 +13,7 @@ import { showAlert } from "../../common/commonFunctions";
 const initialState = {
     name: null,
     cellNumber: '',
-    password: '5555',
+    password: '',
     confirmPassword: null,
 
     newUser: false,
@@ -34,15 +34,15 @@ class Login extends Component {
         if (writing) {
             switch (textLength) {
                 case 1:
-                    formatedText = `+55 (69) ${text}`
+                    formatedText = `+55 (69) 9${text}`
                     break
                 case 15:
                     formatedText = `${text.substring(0, text.length - 1)}-${text.substring(text.length - 1, text.length)}`
                     break
             }
         } else {
-            if (textLength == 8) formatedText = `+55 (69) `
-            if (textLength == 15) formatedText = text.substring(0, text.length - 1)
+            if (textLength == 9) formatedText = `+55 (69) 9`
+            if (textLength == 16) formatedText = text.substring(0, text.length - 1)
         }
 
         this.setState({ cellNumber: formatedText })
@@ -109,7 +109,6 @@ class Login extends Component {
     }
 
     cleanInputs = () => {
-        // this.nameInput.onFocus() // TODO adicionar foco
         this.setState({ ...initialState, newUser: !this.state.newUser })
     }
 
@@ -129,19 +128,19 @@ class Login extends Component {
                     <Text style={styles.formTitle}>{this.state.newUser ? 'Insira seus dados' : 'Bem vindo'}</Text>
                     {
                         this.state.newUser &&
-                        <AuthInput icon='user' placeholder='Nome....' /* autoFocus={true} */
+                        <AuthInput icon='user' placeholder='Nome....'
                             value={this.state.name}
                             onChangeText={(name) => this.setState({ name })}
                         />
                     }
 
-                    <AuthInput icon='phone' placeholder="Número de celular..." /* autoFocus={true} */
+                    <AuthInput icon='phone' placeholder="Número de celular..."
                         keyboardType='numeric' maxLength={19}
                         value={this.state.cellNumber}
                         onChangeText={this.applyMaskToCellNumber}
                     />
 
-                    <AuthInput icon={this.state.passwordHidden ? 'eye' : 'eye-slash'} placeholder="Senha..." keyboardType='numeric'
+                    <AuthInput icon={this.state.passwordHidden ? 'eye' : 'eye-slash'} placeholder="Senha..."
                         value={this.state.password} secureTextEntry={this.state.passwordHidden}
                         onChangeText={(password) => this.setState({ password })}
                         onToggleVisibility={() => this.setState({ passwordHidden: !this.state.passwordHidden })}
@@ -149,7 +148,7 @@ class Login extends Component {
 
                     {
                         this.state.newUser &&
-                        <AuthInput icon={this.state.confirmPasswordHidden ? 'eye' : 'eye-slash'} placeholder="Repetir senha..." keyboardType='numeric'
+                        <AuthInput icon={this.state.confirmPasswordHidden ? 'eye' : 'eye-slash'} placeholder="Repetir senha..."
                             value={this.state.confirmPassword} secureTextEntry={this.state.confirmPasswordHidden}
                             onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
                             onToggleVisibility={() => this.setState({ confirmPasswordHidden: !this.state.confirmPasswordHidden })}

@@ -19,9 +19,6 @@ function CustomDrawer({ ...props }) {
                     </View>
                 </View>
                 <DrawerNavigatorItems {...props} />
-                <View>
-                    {/* TODO Ia colocar algo aqui Lucas? */}
-                </View>
             </ScrollView>
         </View>
     )

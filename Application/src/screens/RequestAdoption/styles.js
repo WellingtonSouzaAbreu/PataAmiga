@@ -7,10 +7,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    // TODO tranformar em componente
-
     imageBrowserContainer: {
-        backgroundColor: 'ghostwhite', //TODO Efeito de transparência
+        backgroundColor: 'ghostwhite',
         height: '90%',
         padding: 0,
         borderColor: 'white',

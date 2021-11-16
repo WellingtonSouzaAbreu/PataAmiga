@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        resizeMode: 'cover' // TODO Retirar atributo e colocar modal
+        resizeMode: 'cover' 
     },
 
     basicInfosContainer: {

@@ -10,12 +10,15 @@ import styles from './styles'
 import { baseApiUrl } from '../../common/baseApiUrl';
 import { showAlert } from '../../common/commonFunctions';
 import Slider from './../../components/Slider'
+import CustomImageView from '../../components/CustomImageView';
 
 
 const initialState = {
     animal: {},
     adopted: false,
-    expressInterest: false
+    expressInterest: false,
+    imageViewOpened: false,
+    imageViewIndex: 0
 }
 
 export default class DogInfo extends Component {
@@ -56,12 +59,9 @@ export default class DogInfo extends Component {
             .catch(err => showAlert('Ops', err.response.data))
     }
 
-
-
-
     sendToWhatsApp = (text) => {
         text = `
-*E aí, que tal adotar um pet?!* 🐕
+*E aí, que tal adotar um pet?!* 🐕 🐈‍⬛
 
 Olha só essa fofura!
 Nós ${this.state.animal.sex == 'M' ? 'o' : 'a'} chamamos de ${this.state.animal.name}!
@@ -81,13 +81,22 @@ ${this.state.animal.othersCharacteristics}`
         Linking.openURL(`whatsapp://send?text=${text}`);
     }
 
+    toggleImageViewVisibility = (visibility, imageIndex) => {
+        if(imageIndex){
+            this.setState({ imageViewOpened: visibility, imageViewIndex:  imageIndex})
+        }else{
+            this.setState({ imageViewOpened: visibility})
+        }
+    }
+
     render() {
         return (
             <ScrollView style={{ backgroundColor: '#fff' }} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
+                    <CustomImageView imagesURL={this.state.animal.imagesURL} visible={this.state.imageViewOpened} index={this.state.imageViewIndex} imageSource='animal' onToggleImageViewVisibility={this.toggleImageViewVisibility} />
                     <View style={styles.imageContainer}>
                         {this.state.renderImage &&
-                            <Slider {...this.state.animal.imagesURL} imageSource='animal' />
+                            <Slider {...this.state.animal.imagesURL} imageSource='animal' onPress={this.toggleImageViewVisibility} />
                         }
                     </View>
                     <View style={styles.basicInfosContainer}>

@@ -173,7 +173,7 @@ module.exports = app => {
         let nodemailer = require('nodemailer');
 
         const senderUser = 'wellingtonsouza.wsa100@gmail.com'
-        const senderPassword = 'Outubro10'
+        const senderPassword = 'xxxxxxx' // TODO
         const recipient = email
 
         let remetente = nodemailer.createTransport({ //Configuração de remetente
@@ -226,7 +226,7 @@ module.exports = app => {
 
     const sendSms = async (cellNumber, url) => {
         const accountSid = 'AC654e478886b12bb8e06b522f26080d11';
-        const authToken = '8065532091fab11e8d8f74d4f45a2bca';
+        const authToken = '5c0d1fc88b53d1cd51d3c8d76d2ccba1';
         const client = require('twilio')(accountSid, authToken);
 
         const message = `
@@ -243,6 +243,7 @@ ${url}
                 return true
             })
             .catch(err => {
+                console.log(err)
                 return false
             })
     }

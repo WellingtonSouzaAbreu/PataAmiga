@@ -70,16 +70,16 @@ export default class RequestAdoption extends Component {
 
 		let valid = picturesUploaded.reduce((total = true, current) => total && current)
 		if (valid) {
-			showAlert('Oba!', 'Você é um candidato à adoção, aguarde que a ONG entrará em contato contigo')
+			showAlert('Pronto!', 'Você é um candidato à adoção, aguarde que a Associação Pata Amiga entrará em contato contigo.')
 			this.props.navigation.goBack()
 		} else {
-			showAlert('Erro!', 'Ocorreu um erro ao salvar as imagens!')
+			showAlert('Ops!', 'Ocorreu um erro ao salvar as imagens!')
 		}
 	}
 
 	checkIfImagesAreSelected = () => {
 		if (this.state.imagesPack.length < 1) {
-			showAlert('Ops!', 'Você não selecionou nenhuma imagem para enviar')
+			showAlert('Ops!', 'Você não selecionou nenhuma imagem para enviar.')
 			return false
 		} else {
 			return true
