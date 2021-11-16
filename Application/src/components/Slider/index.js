@@ -24,8 +24,8 @@ export default function Slider(props) {
         <SliderBox
             onCurrentImagePressed={(indexImage) => props.onPress(true, indexImage)}
             dotColor="#F28749"
-            /* autoplay */ //TODO
-            /* circleLoop */
+            autoplay 
+            circleLoop
             images={imagesURL}
         />
     )

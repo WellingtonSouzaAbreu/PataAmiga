@@ -17,7 +17,7 @@ const CustomImageView = (props) => {
     if (!props.imagesURL) {
         return (
             <View>
-                <Text>TEm nada não!</Text>
+                <Text>Não foi possível carregar as imagens!</Text>
             </View>
         )
     }
