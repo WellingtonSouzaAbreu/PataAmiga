@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = app => {
     
 
@@ -26,6 +28,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -40,6 +43,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -66,6 +70,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar colaborador!')
                 })
         } else {
@@ -75,6 +80,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao Editar colaborador!')
                 })
         }
@@ -92,6 +98,7 @@ module.exports = app => {
                 .then(_ => console.log(`Collaborador de id: ${idCollaborator} deletado`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar colaborador')
                 })
         })

@@ -1,4 +1,4 @@
-const user = require("./user")
+const path = require('path')
 
 module.exports = app => {
 
@@ -23,6 +23,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -38,6 +39,7 @@ module.exports = app => {
             .then(_ => res.status(200).send())
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -68,6 +70,7 @@ module.exports = app => {
             .then(([count]) => count[donationType])
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
 
@@ -94,6 +97,7 @@ module.exports = app => {
                     .then(([userData]) => donation = { ...donation, ...userData })
                     .catch(err => {
                         console.log(err)
+                        app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                         throw 'Ocorreu um erro ao consultar dados do usuário!'
                     })
             }
@@ -112,6 +116,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send()
                 })
         } else {
@@ -123,6 +128,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar doação')
                 })
         }
@@ -140,6 +146,7 @@ module.exports = app => {
                 .then(_ => console.log(`Doação de id: ${idDonation} deletada`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar doação')
                 })
         })

@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = app => {
 
     const getRescue = async(req,res) => {
@@ -9,6 +11,7 @@ module.exports = app => {
             .then(rescue => res.status(200).send(rescue))
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -42,6 +45,7 @@ module.exports = app => {
             .then(id => /* idRescue = id[0] */ res.status(200).send())
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send()
             })
 
@@ -58,6 +62,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar collaboradores envolvidos no resgate')
                 })
         } */

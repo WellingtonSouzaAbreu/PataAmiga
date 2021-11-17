@@ -1,8 +1,6 @@
+const path = require('path')
+
 module.exports = app => {
-
-    const getVeterinaryCares = async (req, res) => {
-
-    }
 
     const save = async (req, res) => {
         console.log(req.body)
@@ -22,6 +20,7 @@ module.exports = app => {
 
         } catch (err) {
             console.log(err)
+            app.api.bugReport.writeInBugReport(err, path.basename(__filename))
             return res.status(400).send(err)
         }
 
@@ -34,6 +33,7 @@ module.exports = app => {
                 .then(_ => res.status(200).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao atualizar cuidado veterinário!')
                 })
         } else {
@@ -42,6 +42,7 @@ module.exports = app => {
                 .then(_ => res.status(200).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao cadastrar cuidado veterinário!')
                 })
         }
@@ -54,6 +55,7 @@ module.exports = app => {
             .then(_ => res.status(204).send())
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send('Erro ao cadastrar gastos veterinários')
             }) */
     }
@@ -76,11 +78,12 @@ module.exports = app => {
                 .then(_ => console.log(`Cuidado veterinário de id: ${idVeterinaryCare} deletado`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar cuidado veterinário')
                 })
         })
 
         res.status(200).send('Cuidado veterinário removido com sucesso!')
     }
-    return { getVeterinaryCares, save, removeVeterinaryCare }
+    return { save, removeVeterinaryCare }
 }

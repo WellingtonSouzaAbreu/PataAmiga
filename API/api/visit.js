@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = app => {
 
     const getVisitsByAdoption = async (req, res) => {
@@ -8,6 +10,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -32,6 +35,7 @@ module.exports = app => {
             .then(_ => res.status(204).send())
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send('Erro ao cadastrar visita')
             })
     }
@@ -49,6 +53,7 @@ module.exports = app => {
                 .then(_ => console.log(`Visita de id: ${idVisit} deletado`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar visit')
                 })
         })

@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = app => {
 
     const getTemporaryHomes = async (req, res) => {
@@ -30,6 +32,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -49,6 +52,7 @@ module.exports = app => {
             .then(imagesURL => imagesURL.imageURL)
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 throw err
             })
 
@@ -102,6 +106,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar lar temporário')
                 })
         } else {
@@ -111,6 +116,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao atualizar lar temporário')
                 })
         }
@@ -129,6 +135,7 @@ module.exports = app => {
                 .then(_ => console.log(`Lar temporário de id: ${idTemporaryHome} deletado`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar lar temporário')
                 })
         })

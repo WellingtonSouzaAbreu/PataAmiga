@@ -1,0 +1,12 @@
+{"dateTime":"2021-11-17T16:24:52.094Z","file":"animal.js","message":{}}
+
+{"dateTime":"2021-11-17T16:25:34.673Z","file":"animal.js","message":{}}
+
+{"dateTime":"2021-11-17T16:26:30.111Z","file":"animal.js","message":{}}
+
+{"dateTime":"2021-11-17T16:27:35.276Z","file":"animal.js","message":{}}
+
+{}{}TypeError: Cannot read property 'dateOfBirth' of undefined{"dateTime":"2021-11-17T16:34:06.931Z","file":"animal.js","message":"TypeError: Cannot read property 'dateOfBirth' of undefined"}
+
+{"dateTime":"2021-11-17T16:34:38.763Z","file":"animal.js","message":"TypeError: Cannot read property 'dateOfBirth' of undefined"}
+

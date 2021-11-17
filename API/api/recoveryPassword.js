@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = app => {
     const jwt = require('jwt-simple')
     const { authSecret } = require('./../config/.env')
@@ -72,6 +74,7 @@ module.exports = app => {
                             })
                             .catch(err => {
                                 console.log(err)
+                                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                                 window.alert('Erro ao alterar senha!')
                             })
                     }
@@ -108,6 +111,7 @@ module.exports = app => {
                             })
                             .catch(err => {
                                 console.log(err)
+                                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                                 window.alert('Erro ao alterar senha!')
                             })
                     }
@@ -144,6 +148,7 @@ module.exports = app => {
 
         } catch (err) {
             console.log(err)
+            app.api.bugReport.writeInBugReport(err, path.basename(__filename))
             res.status(500).send(err)
         }
     }
@@ -158,6 +163,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
             })
     }
 
@@ -220,6 +226,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 return false
             })
     }
@@ -244,6 +251,7 @@ ${url}
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 return false
             })
     }
@@ -269,6 +277,7 @@ ${url}
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 return res.status(500).send(err)
             })
     }

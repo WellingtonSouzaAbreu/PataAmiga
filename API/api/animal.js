@@ -1,5 +1,6 @@
 const multer = require('multer')
 const fs = require('fs')
+var path = require('path');
 
 module.exports = app => {
 
@@ -20,6 +21,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -53,6 +55,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 throw err
             })
     }
@@ -74,6 +77,7 @@ module.exports = app => {
             .then(rescue => rescue)
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 throw err
             })
     }
@@ -84,20 +88,29 @@ module.exports = app => {
             .where({ animalId: animalId })
             .first()
             .then(adopted => adopted ? true : false)
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+            })
 
         extraInfo.temporaryHome = await app.db('temporary-homes')
             .where({ animalId: animalId })
             .first()
             .then(temporaryHome => temporaryHome ? true : false)
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+            })
 
         extraInfo.availableToAdoption = await app.db('animals') // TODO Como saber se ele é disponível para a adpção
             .select('availableForAdoption')
             .where({ id: animalId })
             .first()
             .then(({ availableForAdoption }) => availableForAdoption ? true : false)
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+            })
 
 
         return extraInfo
@@ -120,6 +133,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -131,13 +145,14 @@ module.exports = app => {
             .then(imagesURL => imagesURL)
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 throw err
             })
     }
 
     //TODO alimentar relatório de erros
 
-    const getAnimals = async (req, res) => { 
+    const getAnimals = async (req, res) => {
 
         await app.db('animals')
             .select('id', 'name', 'breed', 'specie', 'dateOfBirth', 'sex')
@@ -148,6 +163,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 return res.status(500).send()
             })
     }
@@ -167,6 +183,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 return res.status(500).send()
             })
     }
@@ -200,6 +217,7 @@ module.exports = app => {
                 .then(imageURL => animal.imageURL = imageURL ? imageURL.imageURL : null)
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     throw 'Erro o obter imagem do animal'
                     // res.status(500).send(err)
                 })
@@ -224,6 +242,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -234,6 +253,7 @@ module.exports = app => {
             .then(animalsId => animalsId.map(({ animalId }) => animalId))
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -244,6 +264,7 @@ module.exports = app => {
             .then(animalsId => animalsId.map(({ animalId }) => animalId))
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -283,6 +304,7 @@ module.exports = app => {
                 })
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar animal')
                 })
 
@@ -296,6 +318,7 @@ module.exports = app => {
                 })
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar cuidado veterinário')
                 })
 
@@ -306,6 +329,7 @@ module.exports = app => {
                 .then(id => console.log('Success => Resgate'))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar resgate')
                 })
 
@@ -324,6 +348,7 @@ module.exports = app => {
                 })
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar animal')
                 })
 
@@ -335,6 +360,7 @@ module.exports = app => {
                 .then(_ => console.log('Success => Resgate'))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar resgate')
                 })
 
@@ -384,6 +410,7 @@ module.exports = app => {
                             .then(_ => console.log('Registros deletados!'))
                             .catch(err => {
                                 console.log(err)
+                                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                                 console.log('Erro ao remover registros anteriores')
                             })
                         console.log('Registros anteriores deletados')
@@ -395,10 +422,14 @@ module.exports = app => {
                         .then(_ => res.status(204).send())
                         .catch(err => {
                             console.log(err)
+                            app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                             res.status(500).send(err)
                         })
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                })
 
 
         })
@@ -416,6 +447,7 @@ module.exports = app => {
                 console.log('Arquivo deletado com sucesso!');
             } else {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 console.log('Erro ao deletar arquivo.');
             }
         })
@@ -434,6 +466,7 @@ module.exports = app => {
                 .then(_ => console.log(`Animal de id: ${idAnimal} deletado`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar animal')
                 })
 
@@ -447,6 +480,7 @@ module.exports = app => {
                 })
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     console.log('Erro ao remover imagens anteriores')
                 })
 
@@ -457,6 +491,7 @@ module.exports = app => {
                 .then(_ => console.log('Registros deletados!'))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     console.log('Erro ao remover registros anteriores')
                 })
         })

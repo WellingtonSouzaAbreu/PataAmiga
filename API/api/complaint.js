@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = app => {
 
     const getComplaints = async (req, res) => {
@@ -18,6 +20,7 @@ module.exports = app => {
             .then(complaints => res.status(200).send(complaints))
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -34,6 +37,7 @@ module.exports = app => {
             .then(_ => res.status(200).send())
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -60,6 +64,7 @@ module.exports = app => {
             .then(_ => res.status(204).send())
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send('Erro ao cadastrar denúncia')
             })
     }
@@ -76,6 +81,7 @@ module.exports = app => {
                 .then(_ => console.log(`Denúncia de id: ${idComplaint} deletada`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar Denúncia')
                 })
         })

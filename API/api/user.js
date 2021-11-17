@@ -1,6 +1,7 @@
 const { authSecret } = require('./../config/.env')
 const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
+const path = require('path')
 
 module.exports = app => {
 
@@ -22,6 +23,7 @@ module.exports = app => {
             .then(user => res.status(200).send(user))
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -38,6 +40,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send(err)
             })
     }
@@ -114,6 +117,7 @@ module.exports = app => {
 
         } catch (err) {
             console.log(err)
+            app.api.bugReport.writeInBugReport(err, path.basename(__filename))
             return res.status(400).send(err)
         }
 
@@ -129,6 +133,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar usuário')
                 })
         } else {
@@ -138,6 +143,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Erro ao cadastrar usuário')
                 })
         }

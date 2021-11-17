@@ -1,5 +1,6 @@
 const multer = require('multer')
 const fs = require('fs')
+const path = require('path')
 
 module.exports = app => {
 
@@ -16,6 +17,7 @@ module.exports = app => {
             })
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 return res.status(500).send(err)
             })
     }
@@ -30,6 +32,7 @@ module.exports = app => {
                 })
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     console.log('Erro ao obter imagens de monitoramento')
                 })
         }
@@ -57,6 +60,7 @@ module.exports = app => {
             .then(id => res.status(200).json(id[0]))
             .catch(err => {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 res.status(500).send('Erro ao cadastrar monitoramento remoto')
             })
     }
@@ -91,6 +95,7 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send(err)
                 })
         })
@@ -109,6 +114,7 @@ module.exports = app => {
                 .then(_ => console.log(`Monitoramento remoto de id: ${idRemoteMonitoring} deletado`))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     res.status(500).send('Ocorreu um erro ao deletar monitoramento remoto')
                 })
 
@@ -122,6 +128,7 @@ module.exports = app => {
                 })
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     console.log('Erro ao remover imagens anteriores')
                 })
 
@@ -132,6 +139,7 @@ module.exports = app => {
                 .then(_ => console.log('Registros deletados!'))
                 .catch(err => {
                     console.log(err)
+                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                     console.log('Erro ao remover registros anteriores')
                 })
         })
@@ -151,6 +159,7 @@ module.exports = app => {
                 console.log('Arquivo deletado com sucesso!');
             } else {
                 console.log(err)
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
                 console.log('Erro ao deletar arquivo.');
             }
         })
