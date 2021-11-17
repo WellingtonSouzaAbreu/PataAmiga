@@ -55,9 +55,9 @@ class Adoptions extends Component {
 
     deleteAdoption = async (idAdoption) => {
         await axios.delete(`${baseApiUrl}/adoption/${idAdoption}`) // Array de id
-            .then(_ => {
-                this.toggleSnackbarVisibility(true, `Adoç${idAdoption.length > 1 ? 'ões' : 'ão'} deletada${idAdoption.length > 1 ? 's' : ''} com sucesso!`, 'success')
-                this.loadAdoptions(true)
+            .then(async _ => {
+                await this.toggleSnackbarVisibility(true, `Adoç${idAdoption.length > 1 ? 'ões' : 'ão'} deletada${idAdoption.length > 1 ? 's' : ''} com sucesso!`, 'success')
+                await this.loadAdoptions(true)
             })
             .catch(err => {
                 console.log(err)
@@ -90,7 +90,7 @@ class Adoptions extends Component {
         this.setState({ ...dataField, adoptions: [], currentPage: 0 }, this.loadAdoptions)
     }
 
-    toggleSnackbarVisibility = (visibility, message, type) => {
+    toggleSnackbarVisibility = async (visibility, message, type) => {
         if (visibility) {
             this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
         } else {

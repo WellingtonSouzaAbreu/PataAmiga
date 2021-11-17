@@ -1,11 +1,8 @@
 import { StyleSheet } from 'react-native'
 import commonStyles from './../../common/commonStyles.js'
 
-const b = { ...commonStyles.activeBorders }
-
 const styles = StyleSheet.create({
     container: {
-        // width: '100%',
         alignItems: 'center',
         backgroundColor: '#fff',
     },
@@ -21,7 +18,8 @@ const styles = StyleSheet.create({
         color: '#64718C',
         margin: 5,
         fontWeight: 'bold',
-        marginBottom: 40,
+        marginBottom: 20,
+        
     },
 
     containerRadioSelect: {
@@ -71,19 +69,22 @@ const styles = StyleSheet.create({
     },
 
     smallInput: {
+        borderWidth: 1,
+        borderColor: 'lightgray',
         width: '100%',
-        height: 40,
-        marginBottom: 10,
+        height: 50,
+        marginBottom: 30,
         backgroundColor: '#fff',
         textAlign: 'center',
     },
 
     descriptionInput: {
+        borderWidth: 1,
+        borderColor: 'lightgray',
         width: '100%',
         height: 100,
         backgroundColor: '#fff',
         textAlign: 'center',
-        marginBottom: 10,
     },
 
     reportButton: {
@@ -93,7 +94,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#64718C',
-        marginBottom: 15
+    },
+
+    legislationArea:{
+        marginHorizontal: 10,
+    },
+
+    legislationText: {
+        fontSize: 15,
+        color: '#64718c',
     }
 })
 

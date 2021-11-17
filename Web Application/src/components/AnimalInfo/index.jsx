@@ -13,16 +13,16 @@ import { baseApiUrl } from '../../services/baseApiUrl';
 
 export default function DetailsAnimal(props) {
 
-	function renderAnimalImages ()  {
-		
+	function renderAnimalImages() {
 		let carouselItems = []
-		props.animal.imagesURL.map((image, index) => {
-			carouselItems.push (
+		props.animal.imagesURL.map(({ imageURL }, index) => {
+			carouselItems.push(
 				<MDBCarouselItem itemId={index}>
-					<MDBCarouselElement src={`${baseApiUrl}/animal-pictures/${image.imageURL}`} alt='...' />
+					<MDBCarouselElement src={`${baseApiUrl}/animal-pictures/${imageURL}`} alt='...' />
 				</MDBCarouselItem>
 			)
 		})
+
 		return carouselItems
 	}
 
@@ -30,9 +30,9 @@ export default function DetailsAnimal(props) {
 		<div className={styles.container}>
 			<div className={styles.imgsDescription}>
 				<div className={styles.containerCarousel} >
-					<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
+					<MDBCarousel showIndicators showControls className={styles.carouselImages}>
 						<MDBCarouselInner>
-							{ !!props.animal.imagesURL ?  renderAnimalImages() : null}
+							{!!props.animal.imagesURL ? renderAnimalImages() : null}
 						</MDBCarouselInner>
 					</MDBCarousel>
 				</div>

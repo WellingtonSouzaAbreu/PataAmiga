@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity, ScrollView, Linking } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import axios from 'axios'
 
@@ -44,12 +44,12 @@ export default class Report extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.scrollReport}>
+            <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.boxFormReport}>
                         <Text style={styles.title}>Fazer uma denuncia</Text>
                         <View style={styles.containerRadioSelect}>
-                            <Text style={styles.complaintTypeLabel}>Tipo da denúncia</Text>
+                            <Text style={styles.complaintTypeLabel}>Motivo da denúncia</Text>
                             <View style={styles.radioComponent}>
                                 <View style={styles.radioContainer}>
                                     <RadioButton
@@ -74,7 +74,7 @@ export default class Report extends Component {
                     </View>
                     <View style={styles.inputForm}>
                         <View style={styles.inputArea}>
-                             <TextInput
+                            <TextInput
                                 style={styles.smallInput}
                                 value={this.state.city}
                                 placeholder={'Cidade'}
@@ -111,9 +111,12 @@ export default class Report extends Component {
                             <Text style={{ fontWeight: 'bold', color: '#fff' }}>Denunciar</Text>
                         </TouchableOpacity>
                     </View>
+                    <TouchableOpacity style={styles.legislationArea} onPress={() => Linking.openURL('http://www.planalto.gov.br/ccivil_03/leis/l9605.htm')}>
+                        <Text style={styles.legislationText}>Deseja saber o que a lei diz sobre a proteção dos animais? Clique aqui.</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
-        )
 
+        )
     }
 }

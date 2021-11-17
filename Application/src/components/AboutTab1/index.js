@@ -8,7 +8,7 @@ export default class AboutTab1 extends Component {
         return (
             <View style={styles.container}>
                 <ScrollView  showsVerticalScrollIndicator={false}>
-                    <Text style={styles.txtStatic}>Pegamos os cães, cuidamos e procuramos um novo lar</Text>
+                    <Text style={styles.txtStatic}>Pegamos os animais, cuidamos e procuramos um novo lar para eles</Text>
                     <Image style={styles.AboutImg1} source={require('./../../assets/imgs/img2.jpg')} />
                     <Text style={styles.txtStatic}>Pegamos os cães, cuidamos e procuramos um novo lar, Pegamos os cães, cuidamos e procuramos lar</Text>
                     <ScrollView horizontal={true} style={styles.aboutScroll}

@@ -198,7 +198,7 @@ class AddAdoption extends Component {
         await axios.post(`${baseApiUrl}/adoption`, { adoption })
             .then(_ => {
                 this.toggleSnackbarVisibility(true, `Adoção cadastrada com sucesso!`, 'success')
-                this.props.onRefresh()
+                this.props.onRefresh(true)
             })
             .catch(err => {
                 console.log(err)

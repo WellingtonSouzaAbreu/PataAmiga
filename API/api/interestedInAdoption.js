@@ -23,7 +23,7 @@ module.exports = app => {
             .then(async interesteds => {
                 interesteds = await getUserNameAndCellNumberById(interesteds)
                 interesteds = await getPicturesOfInteresteds(interesteds)
-                console.log(interesteds)
+                // console.log(interesteds)
                 res.status(200).send(interesteds)
             })
             .catch(err => {
@@ -33,9 +33,11 @@ module.exports = app => {
     }
 
     const getUserNameAndCellNumberById = async (interesteds) => {
+        console.log(interesteds)
         for (interested of interesteds) {
             await app.db('users')
                 .select('name as userName', 'cellNumber')
+                .where({id: interested.userId})
                 .first()
                 .then(userData => {
                     interested.userName = userData.userName

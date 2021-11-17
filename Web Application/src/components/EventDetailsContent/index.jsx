@@ -102,7 +102,6 @@ function EventDetailsContent(props) {
     function renderPublicationImages() {
         let carouselItems = []
         props.publication.imagesURL.map(({imageURL}, index) => {
-            console.log(`${baseApiUrl}/publication-pictures/${imageURL}`)
             carouselItems.push(
                 <MDBCarouselItem itemId={index}>
                     <MDBCarouselElement src={`${baseApiUrl}/publication-pictures/${imageURL}`} alt='...' />
