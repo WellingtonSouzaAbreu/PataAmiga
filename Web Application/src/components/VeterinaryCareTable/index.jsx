@@ -7,6 +7,8 @@ import styles from './styles.module.css'
 
 import { formatDate } from './../../common/commonFunctions.js'
 
+import VeterinaryCareEditModal from './../VeterinaryCareEditModal'
+
 export default function VeterinaryCareTable(props) {
     const renderAnamnese = (anamnese) => {
         return (
@@ -16,12 +18,12 @@ export default function VeterinaryCareTable(props) {
         )
     }
 
-    const onRowDelete = (rowsSelected) => {
+    const onRowDelete = async (rowsSelected) => {
         console.log(rowsSelected)
         let veterinaryCareIdSelected = rowsSelected.data.map(rowSelected => props.veterinaryCares[rowSelected.index].id)
 
         console.log(veterinaryCareIdSelected)
-        props.onDelete(veterinaryCareIdSelected)
+         props.onDelete(veterinaryCareIdSelected)
     }
 
     return (
@@ -29,6 +31,15 @@ export default function VeterinaryCareTable(props) {
             title={"Histórico Venterinário"}
             data={props.veterinaryCares}
             columns={[
+                /*    {
+                       name: "id",
+                       label: "ID",
+                       options: {
+                           filter: false,
+                           sort: false,
+                           display: false
+                       }
+                   }, */
                 {
                     name: "dateOfVeterinaryCare",
                     label: "Data",
@@ -75,13 +86,26 @@ export default function VeterinaryCareTable(props) {
                 },
                 {
                     name: "anamnese",
-                    label: "Foi internado",
+                    label: "Relatório",
                     options: {
                         filter: true,
                         sort: false,
                         display: false
                     }
                 },
+                {
+                    name: "edit",
+                    label: "Editar",
+                    options: {
+                        filter: false,
+                        sort: false,
+                        customBodyRender: (value, tableMeta) => {
+                            const index = tableMeta.rowIndex
+                            console.log(props.veterinaryCares)
+                            return <VeterinaryCareEditModal edit={true} veterinaryCare={props.veterinaryCares[index]} onRefresh={props.onRefresh} />
+                        }
+                    }
+                }
             ]}
             options={{
                 filterType: 'checkbox',

@@ -5,19 +5,20 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
+        console.log(req.body)
         const { existsOrError, objectIsNull } = app.api.validation
 
         const veterinaryCare = await objectIsNull(req.body.veterinaryCare) ? res.status(400).send('Dados do cuidado veterinário não informados') : req.body.veterinaryCare
 
         // const costsVeterinaries = [...veterinaryCare.costsVeterinaries] // Obsoleto
         // delete veterinaryCare.costsVeterinaries // Obsoleto
-
         // veterinaryCare.totalCostOfTreatment = getTotalCostOfTreatment(costsVeterinaries)
 
         try {
-            existsOrError(veterinaryCare.veterinaryName, 'Nome do veterinário não informado')
-            existsOrError(veterinaryCare.totalCostOfTreatment, 'Custo total do tratamento não informado')
-            existsOrError(veterinaryCare.dateOfVeterinaryCare, 'Data não informada')
+            existsOrError(veterinaryCare.veterinaryName, 'Nome do veterinário não informado!')
+            existsOrError(veterinaryCare.totalCostOfTreatment, 'Custo total do tratamento não informado!')
+            existsOrError(veterinaryCare.dateOfVeterinaryCare, 'Data não informada!')
+            if (!Number.isInteger(parseFloat(veterinaryCare.totalCostOfTreatment))) throw 'Informe um valor numérico nos custos veterinários!'
 
         } catch (err) {
             console.log(err)
@@ -26,14 +27,24 @@ module.exports = app => {
 
         veterinaryCare.dateOfVeterinaryCare = veterinaryCare.dateOfVeterinaryCare.split('Z')[0]
 
-        // let idVeterinaryCare Obsoleto
-        await app.db('veterinary-cares')
-            .insert(veterinaryCare)
-            .then(id => /* idVeterinaryCare = id[0] */res.status(200).send())
-            .catch(err => {
-                console.log(err)
-                res.status(500).send('Erro ao cadastrar cuidado veterinário')
-            })
+        if (veterinaryCare.id) {
+            await app.db('veterinary-cares')
+                .update(veterinaryCare)
+                .where({ id: veterinaryCare.id })
+                .then(_ => res.status(200).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao atualizar cuidado veterinário!')
+                })
+        } else {
+            await app.db('veterinary-cares')
+                .insert(veterinaryCare)
+                .then(_ => res.status(200).send())
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send('Ocorreu um erro ao cadastrar cuidado veterinário!')
+                })
+        }
 
         // Obsoleto
         /* costsVeterinaries.map(cost => cost.veterinaryCareId = idVeterinaryCare)

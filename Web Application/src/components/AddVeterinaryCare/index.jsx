@@ -19,13 +19,15 @@ import { baseApiUrl } from '../../services/baseApiUrl';
 
 const initialState = {
     dateOfVeterinaryCare: new Date(),
-    needOfHospitalization: false,
-    needOfMedication: false,
+    needOfHospitalization: 0,
+    needOfMedication: 0,
     totalCostOfTreatment: null,
     anamnese: null,
     veterinaryName: null,
     animalId: null,
     costsVeterinaries: [], // TODO atualizar custos
+
+    editMode: false,
 
     snackbarVisible: false,
     snackbarMessage: '',
@@ -35,6 +37,13 @@ const initialState = {
 class AddVeterinaryCare extends Component {
 
     state = { ...initialState }
+
+    componentDidMount = () => {
+        if (this.props.edit && !this.state.editMode) {
+            console.log(this.props.veterinaryCare)
+            this.setState({ ...this.props.veterinaryCare, editMode: true })
+        }
+    }
 
     needOfHospitalization = () => {
         return (
@@ -46,8 +55,8 @@ class AddVeterinaryCare extends Component {
                     value={this.state.needOfHospitalization}
                     onChange={(e) => this.setState({ needOfHospitalization: e.target.value })}
                 >
-                    <MenuItem value={true}>Sim</MenuItem>
-                    <MenuItem value={false}>Não</MenuItem>
+                    <MenuItem value={1}>Sim</MenuItem>
+                    <MenuItem value={0}>Não</MenuItem>
                 </Select>
             </FormControl>
         )
@@ -63,8 +72,8 @@ class AddVeterinaryCare extends Component {
                     value={this.state.needOfMedication}
                     onChange={(e) => this.setState({ needOfMedication: e.target.value })}
                 >
-                    <MenuItem value={true}>Sim</MenuItem>
-                    <MenuItem value={false}>Não</MenuItem>
+                    <MenuItem value={1}>Sim</MenuItem>
+                    <MenuItem value={0}>Não</MenuItem>
                 </Select>
 
             </FormControl>
@@ -72,10 +81,22 @@ class AddVeterinaryCare extends Component {
     };
 
     saveVeterinaryCare = async () => {
-        await axios.post(` ${baseApiUrl}/veterinary-care`, { veterinaryCare: { ...this.state, animalId: this.props.animalId } })
+        let veterinaryCare = {
+            dateOfVeterinaryCare: this.state.dateOfVeterinaryCare,
+            needOfHospitalization: this.state.needOfHospitalization,
+            needOfMedication: this.state.needOfMedication,
+            totalCostOfTreatment: this.state.totalCostOfTreatment,
+            anamnese: this.state.anamnese,
+            veterinaryName: this.state.veterinaryName,
+            animalId: this.props.edit ? this.props.veterinaryCare.animalId : this.props.animalId,
+        }
+
+        if (this.props.veterinaryCare) veterinaryCare.id = this.props.veterinaryCare.id
+
+        await axios.post(` ${baseApiUrl}/veterinary-care`, { veterinaryCare })
             .then(async _ => {
-                await this.props.onRefresh()
-                this.toggleSnackbarVisibility(true,`Dados veterinários salvos com sucesso!`, 'success')
+                this.toggleSnackbarVisibility(true, `Dados veterinários salvos com sucesso!`, 'success')
+                this.props.onRefresh()
             })
             .catch(err => {
                 console.log(err)

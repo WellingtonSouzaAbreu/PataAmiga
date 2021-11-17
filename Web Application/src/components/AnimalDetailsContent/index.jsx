@@ -40,8 +40,9 @@ class AnimalDetailsContent extends Component {
 
     deleteVeterinaryCare = async (idVeterinaryCare) => {
         await axios.delete(`${baseApiUrl}/veterinary-care/${idVeterinaryCare}`) // Array de id
-            .then(_ => {
+            .then(async _ => {
                 this.toggleSnackbarVisibility(true, `Dado${idVeterinaryCare.length > 1 ? 's' : ''} veterinário${idVeterinaryCare.length > 1 ? 's' : ''} deletado${idVeterinaryCare.length > 1 ? 's' : ''} com sucesso!`, 'success')
+                this.loadAnimal()
             })
             .catch(err => {
                 console.log(err)
@@ -49,7 +50,7 @@ class AnimalDetailsContent extends Component {
             })
     }
 
-    toggleSnackbarVisibility = (visibility, message, type) => {
+    toggleSnackbarVisibility = async (visibility, message, type) => {
         if (visibility) {
             this.setState({ snackbarVisible: visibility, snackbarMessage: message, snackbarType: type })
         } else {

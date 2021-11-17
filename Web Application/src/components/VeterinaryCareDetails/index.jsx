@@ -9,7 +9,7 @@ export default function DetailsVeterinary(props){
     return(
         <div>
             <AddVeterinaryCare animalId={props.animalId} onRefresh={props.onRefresh}/>
-            <VeterinaryCareTable veterinaryCares={props.veterinaryCares} onDelete={props.onDelete}/>
+            <VeterinaryCareTable veterinaryCares={props.veterinaryCares} onDelete={props.onDelete} onRefresh={props.onRefresh}/>
         </div>
     )
 }
