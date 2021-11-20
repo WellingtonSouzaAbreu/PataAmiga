@@ -9,7 +9,7 @@ const PhotoSelectIndicator = (props) => {
             justifyContent: 'flex-end',
         }}>
             <View style={{
-                backgroundColor: 'yellow',
+                backgroundColor: '#f27b35',
                 width: '20%',
                 height: '20%',
                 borderRadius: 20,
@@ -17,7 +17,7 @@ const PhotoSelectIndicator = (props) => {
                 justifyContent: 'center',
                 margin: 4
             }}>
-                <Text style={{ color: 'black' }}>{props.value}</Text>
+                <Text style={{ color: 'white' }}>{props.value}</Text>
             </View>
         </View>
     )

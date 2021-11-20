@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View, Image, Alert, Share, TouchableOpacity } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
-import { Linking } from 'react-native';
+import { Linking, ScrollView } from 'react-native';
 
 import styles from './styles'
 

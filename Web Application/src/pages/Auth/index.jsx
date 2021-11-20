@@ -26,6 +26,7 @@ class Auth extends Component {
 
     componentDidMount = async () => {
         await this.setDefaultAxiosHeader()
+
     }
 
     setDefaultAxiosHeader = async () => {
@@ -88,7 +89,7 @@ class Auth extends Component {
             <>
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.container}>
-                    {this.state.redirect && <Redirect to='/home' />}
+                    {this.state.redirect && <Redirect to='/animais' />}
                     <div className={styles.authCard}>
                         <div className={styles.titleContainer}>
                             <div className={styles.pipe}></div>

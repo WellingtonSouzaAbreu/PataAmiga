@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     formCompleteProfile: {
         width: '100%',
         paddingHorizontal: 10,
-        marginBottom: 15,
+        marginBottom: 100,
         justifyContent: 'center',
     },
 

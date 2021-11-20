@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert } from 'react-native'
+import { Text, View, TextInput, Image, ScrollView, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
 

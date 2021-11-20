@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         shadowRadius: 3.46,
 
         elevation: 4,
-        // justifyContent: 'space-between',
     },
 
     imageAndNameContainer: {
@@ -152,7 +151,7 @@ const styles = StyleSheet.create({
 
     profileButtonsContainer: {
         width: '100%',
-        marginTop: 50,
+        marginTop: 110,
         marginBottom: 15,
         flexDirection: 'row',
         justifyContent: 'space-around'

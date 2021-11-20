@@ -56,12 +56,11 @@ module.exports = app => {
                                     <div class='form'>
                                         <h3>Recuparação de senha</h3>
                                         <div>
-                                            <label>Nova senha: <input type='password' id='password' /></label> <span>(ViewPassword - ícone)</span>
+                                            <label>Nova senha: <input type='password' id='password' /></label> <span></span>
                                         </div>
                                         <br />
                                         <div>
-                                            <label>Confirmar senha: <input type='password' id='confirmPassword' /></label> <span>(ViewPassword -
-                                                ícone)</span>
+                                            <label>Confirmar senha: <input type='password' id='confirmPassword' /></label> <span></span>
                                         </div>
                                         <br />
                                         <div  style="visibility: hidden;">
@@ -179,7 +178,7 @@ module.exports = app => {
         let nodemailer = require('nodemailer');
 
         const senderUser = 'wellingtonsouza.wsa100@gmail.com'
-        const senderPassword = 'xxxxxxx' // TODO
+        const senderPassword = 'Outubro10' // TODO
         const recipient = email
 
         let remetente = nodemailer.createTransport({ //Configuração de remetente
@@ -233,7 +232,7 @@ module.exports = app => {
 
     const sendSms = async (cellNumber, url) => {
         const accountSid = 'AC654e478886b12bb8e06b522f26080d11';
-        const authToken = '5c0d1fc88b53d1cd51d3c8d76d2ccba1';
+        const authToken = '8af1015ccb239d33814810ad2f621e6f';
         const client = require('twilio')(accountSid, authToken);
 
         const message = `

@@ -8,19 +8,6 @@ const styles = StyleSheet.create({
         
     },
 
-    /* AboutTopElement: {
-        width: '100%',
-        height: 150,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-
-    LogoImg: {
-        width: 150,
-        height: 150,
-        resizeMode: 'contain'
-    }, */
-    
     containerTabs: {
         flex: 1,
         width: '100%'

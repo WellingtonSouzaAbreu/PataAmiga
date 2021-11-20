@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { View, Text, Image, FlatList, Alert, TouchableOpacity} from 'react-native'
+import { View, Text,  FlatList, Alert, TouchableOpacity} from 'react-native'
 import { Button } from 'galio-framework'
 import Icon from 'react-native-vector-icons/FontAwesome'
 

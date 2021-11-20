@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React from 'react'
 import { SliderBox } from "react-native-image-slider-box";
 import { baseApiUrl } from '../../common/baseApiUrl';
 

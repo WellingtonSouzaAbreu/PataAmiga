@@ -22,7 +22,6 @@ export default class EventScreen extends Component {
             .catch(err => showAlert('Erro', 'Não foi possível obter os eventos!'))
     }
 
-    //{/* <Image style={styles.headerImage} source={require('./../../assets/imgs/events2.png')} /> */} {/* TODO Scroll e flatlist dá bosta */}
     render() {
         return (
             <View style={styles.container}>

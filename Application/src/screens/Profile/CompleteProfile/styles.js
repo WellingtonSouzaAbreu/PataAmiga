@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
 
     saveButton: {
-        marginTop: 100,
+        marginTop: 70,
         width: '100%',
         height: 47,
         backgroundColor: '#64718C',

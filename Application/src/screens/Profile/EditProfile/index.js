@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native'
 
 import styles from './styles'
 
@@ -65,47 +65,51 @@ export default class EditProfile extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.formCompleteProfile}>
-                    <TextInput style={styles.longInput} placeholder="Nome"
-                        value={this.state.name}
-                        onChangeText={(name) => this.setState({ name })}
-                    />
-                    <TextInput style={styles.longInput} placeholder="Email"
-                        value={this.state.email}
-                        onChangeText={(email) => this.setState({ email })}
-                    />
-                    <TextInput style={styles.longInput} placeholder="Rua"
-                        value={this.state.address}
-                        onChangeText={(address) => this.setState({ address })}
-                    />
-                    <TextInput style={styles.longInput} placeholder="Telefone" keyboardType={'number-pad'}
-                        value={this.state.phone}
-                        onChangeText={(phone) => this.setState({ phone })}
-                    />
-                    <TextInput style={styles.longInput} placeholder="Celular" keyboardType={'number-pad'}
-                        value={this.state.cellNumber}
-                        onChangeText={this.applyMaskToCellNumber}
-                    />
-                    <View style={styles.containerShortInput}>
-                        <TextInput style={styles.shortInput} placeholder="Número" keyboardType={'number-pad'}
-                            value={this.state.houseNumber}
-                            onChangeText={(houseNumber) => this.setState({ houseNumber })}
+            <KeyboardAvoidingView style={styles.container}
+                behavior='height'
+            >
+                <ScrollView>
+                    <View style={styles.formCompleteProfile}>
+                        <TextInput style={styles.longInput} placeholder="Nome"
+                            value={this.state.name}
+                            onChangeText={(name) => this.setState({ name })}
                         />
-                        <TextInput style={styles.shortInput} placeholder="Bairro"
-                            value={this.state.district}
-                            onChangeText={(district) => this.setState({ district })}
+                        <TextInput style={styles.longInput} placeholder="Email"
+                            value={this.state.email}
+                            onChangeText={(email) => this.setState({ email })}
+                        />
+                        <TextInput style={styles.longInput} placeholder="Rua"
+                            value={this.state.address}
+                            onChangeText={(address) => this.setState({ address })}
+                        />
+                        <TextInput style={styles.longInput} placeholder="Telefone" keyboardType={'number-pad'}
+                            value={this.state.phone}
+                            onChangeText={(phone) => this.setState({ phone })}
+                        />
+                        <TextInput style={styles.longInput} placeholder="Celular" keyboardType={'number-pad'}
+                            value={this.state.cellNumber}
+                            onChangeText={this.applyMaskToCellNumber}
+                        />
+                        <View style={styles.containerShortInput}>
+                            <TextInput style={styles.shortInput} placeholder="Número" keyboardType={'number-pad'}
+                                value={this.state.houseNumber}
+                                onChangeText={(houseNumber) => this.setState({ houseNumber })}
+                            />
+                            <TextInput style={styles.shortInput} placeholder="Bairro"
+                                value={this.state.district}
+                                onChangeText={(district) => this.setState({ district })}
+                            />
+                        </View>
+                        <TextInput style={styles.longInput} placeholder="Cidade "
+                            value={this.state.city}
+                            onChangeText={(city) => this.setState({ city })}
                         />
                     </View>
-                    <TextInput style={styles.longInput} placeholder="Cidade "
-                        value={this.state.city}
-                        onChangeText={(city) => this.setState({ city })}
-                    />
-                </View>
-                <TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
-                    <Text style={{ fontWeight: 'bold', color: '#fff', fontSize: 15 }}>Salvar</Text>
-                </TouchableOpacity>
-            </View>
+                    <TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
+                        <Text style={{ fontWeight: 'bold', color: '#fff', fontSize: 15 }}>Salvar</Text>
+                    </TouchableOpacity>
+                </ScrollView>
+            </KeyboardAvoidingView>
         )
     }
 }

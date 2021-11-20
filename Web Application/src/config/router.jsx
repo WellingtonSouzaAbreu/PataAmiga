@@ -6,7 +6,6 @@ import Auth from '../pages/Auth'
 import Donations from './../pages/Donations'
 import Events from './../pages/Events'
 import Complaints from './../pages/Complaints'
-import Home from './../pages/Home'
 import Collaborators from './../pages/Collaborators'
 import Animals from './../pages/Animals'
 import TemporaryHome from './../pages/TemporaryHome'
@@ -16,7 +15,6 @@ export default props =>
     <Switch>
         <Route exact path="/login" component={Auth} />
         <Route exact path="/adocoes" component={Adoptions} />
-        <Route exact path="/home" component={Home} />
         <Route exact path="/doacoes" component={Donations} />
         <Route exact path="/eventos" component={Events} />
         <Route exact path="/denuncias" component={Complaints} />
@@ -24,5 +22,5 @@ export default props =>
         <Route exact path="/animais" component={Animals} />
         <Route exact path="/interessados" component={Interesteds} />
         <Route exact path="/lar-temporario" component={TemporaryHome} />
-        <Redirect from="*" to="/home" />
+        <Redirect from="*" to="/login" />
     </Switch>

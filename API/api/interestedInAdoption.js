@@ -36,6 +36,7 @@ module.exports = app => {
 
     const getUserNameAndCellNumberById = async (interesteds) => {
         console.log(interesteds)
+        console.log(interesteds)
         for (interested of interesteds) {
             await app.db('users')
                 .select('name as userName', 'cellNumber')

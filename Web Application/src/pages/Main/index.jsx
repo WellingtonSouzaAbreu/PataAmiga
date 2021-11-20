@@ -5,7 +5,6 @@ import styles from './styles.module.css'
 
 
 import Routes from './../../config/router.jsx'
-import classNames from 'classnames';
 
 export default function Main() {
 	return (
@@ -17,12 +16,6 @@ export default function Main() {
 				</div>
 				<ul className={styles.navList}>
 					<li >
-						<Link to='/painel-de-controle' >
-							<i className="bx bxs-heart" />
-							<span className={styles.linksName}>Home</span>
-						</Link>
-					</li>
-					<li >
 						<Link to="/adocoes">
 							<i class="fas fa-heart"></i>
 							<span className={styles.linksName}>Adoção</span>
@@ -33,9 +26,7 @@ export default function Main() {
 							<i class="fas fa-dog"></i>
 							<span className={styles.linksName}>Animais</span>
 						</Link>
-
 					</li>
-
 					<li>
 						<Link to="/interessados">
 							<i class="far fa-id-card"></i>
@@ -87,8 +78,6 @@ export default function Main() {
 					</li>
 
 				</ul>
-
-
 			</div>
 			<section className={styles.homeSection} id="content">
 				<Routes></Routes>

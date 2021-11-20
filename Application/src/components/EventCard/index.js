@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Text, Modal, View, TouchableOpacity, Image } from 'react-native'
+import { Text, Modal, View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { ScrollView } from 'react-native-gesture-handler'
 
 import styles from './styles.js'
 

@@ -1,4 +1,3 @@
-import commonStyles from '../../common/commonStyles.js'
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({

@@ -49,8 +49,6 @@ const styles = StyleSheet.create({
   },
 
   forgetPassword: {
-    // borderColor: 'red',
-    // borderWidth: 1,
     alignSelf: 'flex-start',
     marginVertical: 15
   },

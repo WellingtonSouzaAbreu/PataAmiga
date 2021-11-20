@@ -1,6 +1,5 @@
-import React, { useState, } from 'react'
-import { View, Modal, Text, TouchableOpacity, ScrollView } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import React from 'react'
+import { View,  Text,  ScrollView } from 'react-native'
 import styles from './styles'
 
 export default function ModalContentEventDetail() {

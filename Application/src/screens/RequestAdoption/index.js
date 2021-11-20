@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, TextInput, Modal, StatusBar, ScrollView, TouchableOpacity, Alert } from "react-native";
-import { Button } from 'galio-framework';
+import { View, Text, Image, TextInput, Modal, StatusBar, ScrollView, TouchableOpacity } from "react-native";
 import axios from 'axios'
 import { ImageBrowser } from 'expo-image-picker-multiple'
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -88,7 +87,7 @@ export default class RequestAdoption extends Component {
 
 	render() {
 		return (
-			<View style={styles.container}>
+			<ScrollView style={styles.container}>
 				<StatusBar />
 				<Modal
 					animationType='slide'
@@ -171,7 +170,7 @@ export default class RequestAdoption extends Component {
 						</View>
 					</View>
 				</ScrollView>
-			</View>
+			</ScrollView>
 		);
 	}
 

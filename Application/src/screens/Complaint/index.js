@@ -17,15 +17,6 @@ const initialState = {
     locale: null
 }
 
-/* 
-description: 'Tem um mendigo comendo um cahorro',
-    address: 'Av. José R. dos Reis Filho',
-    complaintType: 'Maus tratos',
-    city: 'Novo Horizonte',
-    district: 'Centro',
-    locale: 'Casa abandonada'
-*/
-
 export default class Report extends Component {
 
     state = { ...initialState }

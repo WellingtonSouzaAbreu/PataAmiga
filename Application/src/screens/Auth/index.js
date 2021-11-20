@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Image, StatusBar, TouchableOpacity } from "react-native";
-import { Input, Button } from 'galio-framework';
+import { Button } from 'galio-framework';
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -49,6 +49,7 @@ class Login extends Component {
     }
 
     forgotPassword = async () => {
+        showAlert('Aguarde', 'Estamos te enviando uma mensagem de recuperação de senha!')
         await axios.post(`${baseApiUrl}/generate-recovery-password`, { user: this.state.cellNumber })
             .then(async (res) => {
                 if (res.data.recoveryType == 'email') {
@@ -114,7 +115,9 @@ class Login extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.container}
+                behavior={'height'}
+            >
                 <StatusBar />
                 <View style={styles.logoSloganArea}>
                     <Image style={styles.logoImg} source={require('./../../assets/imgs/Logo.png')} />
