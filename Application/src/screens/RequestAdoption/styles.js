@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet , Dimensions} from 'react-native'
 import commonStyles from './../../common/commonStyles.js'
 
 const styles = StyleSheet.create({
@@ -43,17 +43,17 @@ const styles = StyleSheet.create({
 
     headerElement: {
         width: '100%',
-        height: 150,
+        height: Dimensions.get('window').height * 0.20,
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 2,
-        borderBottomColor: 'lightblue',
+        borderBottomColor: '#F27F3D',
         marginBottom: 20
     },
 
     imgElement: {
-        width: 120,
-        height: 120,
+        width: Dimensions.get('window').width * 0.45,
+        height: Dimensions.get('window').height * 0.45,
         justifyContent: 'center',
         alignItems: 'center',
         resizeMode: 'contain',

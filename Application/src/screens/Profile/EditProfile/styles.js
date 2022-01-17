@@ -2,12 +2,8 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
-        height: '15%',
-
-        paddingVertical: 10,
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        paddingVertical: 10,
         backgroundColor: 'white',
     },
 
@@ -35,6 +31,13 @@ const styles = StyleSheet.create({
         height: 50,
         borderBottomWidth: 1,
         borderBottomColor: '#cdcdcd'
+    },
+
+    buttonArea: {
+        width: '100%',
+        justifyContent: 'center', 
+        alignItems: 'center',
+        marginBottom: 10
     },
 
     saveButton: {

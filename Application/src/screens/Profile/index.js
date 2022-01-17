@@ -136,7 +136,7 @@ export default class Profile extends Component {
                                 </View>
                             </View>
                         </View>
-                    </ScrollView > {/* ScrollView exota botões para fora do layout */}
+                    </ScrollView >
                     <View style={styles.profileButtonsContainer}>
                         <TouchableOpacity style={styles.editProfileButton} onPress={() => this.props.navigation.navigate('EditProfile', { ...this.state })}>
                             <Icon name="user-edit" size={20} color='dimgray' style={{ marginRight: 15 }} />

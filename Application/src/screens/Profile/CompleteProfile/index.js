@@ -45,9 +45,11 @@ export default class CompleteProfile extends Component {
 
 	render() {
 		return (
-			<ScrollView>
-				<View style={styles.container}>
-					<Image style={styles.headerImage} source={require('./../../../assets/imgs/profileaddinfo.png')} />
+			<View style={styles.container}>
+				<ScrollView style={{ flex: 1 }}>
+					<View style={styles.imageArea}>
+						<Image style={styles.headerImage} source={require('./../../../assets/imgs/profileaddinfo.png')} />
+					</View>
 					<Text style={styles.title}>Estas Informações são necessárias para o procedimento de adoção</Text>
 					<View style={styles.formCompleteProfile}>
 						<View style={styles.inputsArea}>
@@ -68,12 +70,12 @@ export default class CompleteProfile extends Component {
 								value={this.state.state} onChangeText={(state) => this.setState({ state })} /> //TODO Não alocado no banco */}
 							</View>
 						</View>
-						<TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
-							<Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Salvar</Text>
-						</TouchableOpacity>
 					</View>
-				</View>
-			</ScrollView>
+				</ScrollView>
+				<TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
+					<Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Salvar</Text>
+				</TouchableOpacity>
+			</View>
 		)
 	}
 }

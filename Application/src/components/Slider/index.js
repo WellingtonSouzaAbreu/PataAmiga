@@ -27,7 +27,7 @@ export default function Slider(props) {
             autoplay
             circleLoop
             images={imagesURL}
-            style={props.style}
+            style={props.style && props.style}
 
         />
     )

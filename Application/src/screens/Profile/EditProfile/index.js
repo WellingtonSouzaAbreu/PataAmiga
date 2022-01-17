@@ -65,10 +65,8 @@ export default class EditProfile extends Component {
 
     render() {
         return (
-            <KeyboardAvoidingView style={styles.container}
-                behavior='height'
-            >
-                <ScrollView>
+            <View style={{backgroundColor: 'white', flex: 1}}>
+                <ScrollView style={styles.container}>
                     <View style={styles.formCompleteProfile}>
                         <TextInput style={styles.longInput} placeholder="Nome"
                             value={this.state.name}
@@ -105,11 +103,13 @@ export default class EditProfile extends Component {
                             onChangeText={(city) => this.setState({ city })}
                         />
                     </View>
+                </ScrollView>
+                <View style={styles.buttonArea}>
                     <TouchableOpacity style={styles.saveButton} onPress={this.updateProfile}>
                         <Text style={{ fontWeight: 'bold', color: '#fff', fontSize: 15 }}>Salvar</Text>
                     </TouchableOpacity>
-                </ScrollView>
-            </KeyboardAvoidingView>
+                </View>
+            </View>
         )
     }
 }

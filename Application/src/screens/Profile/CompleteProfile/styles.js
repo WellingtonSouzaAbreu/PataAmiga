@@ -1,23 +1,29 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions} from 'react-native'
 
 const styles = StyleSheet.create({
 
     scrollContainer: {
-        flex: 1 ,
+        flex: 1,
         borderColor: 'red', borderWidth: 1,
         height: '100%',
     },
 
     container: {
+        padding: 5,
         flex: 1,
         alignItems: 'center',
         backgroundColor: 'white',
         justifyContent: 'space-between'
     },
 
+    imageArea: {
+        width: '100%',
+        alignItems: 'center'
+    },
+    
     headerImage: {
-        width: 120,
-        height: 120,
+        width: Dimensions.get('window').width * 0.25,
+        height: Dimensions.get('window').height * 0.25,
         resizeMode: 'cover',
         marginVertical: 10,
     },
@@ -25,7 +31,7 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: 16,
-        marginBottom: 15,
+        marginBottom: 30,
         color: '#64718C',
         marginHorizontal: 10
     },

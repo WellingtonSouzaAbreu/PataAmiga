@@ -30,12 +30,12 @@ export default class EventScreen extends Component {
                     <Text style={styles.headerText}>Confira aqui nossos proximos eventos</Text>
                 </View>
                 <View style={styles.line}></View>
-                {!this.state.events && <Text style={styles.headerText}>Não possui eventos próximos</Text>}
+                {!this.state.events.length && <Text style={styles.headerText}>Não possui eventos próximos</Text>}
                 <FlatList
                     style={styles.flatlistEvents}
                     data={this.state.events}
                     renderItem={({ item }) => <EventCard {...item} />}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                 >
 
                 </FlatList>

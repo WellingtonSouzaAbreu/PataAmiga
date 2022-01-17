@@ -38,7 +38,7 @@ export default class EventCard extends Component {
 
                 {/* <Image style={styles.eventImage} source={{uri: `${baseApiUrl}/publication-pictures/${this.props.imagesURL[0].imageURL}`}} /> */}
                 <TouchableOpacity style={styles.scroll} onPress={() => this.setModalVisible(true)} >
-                <Slider {...this.props.imagesURL} imageSource='publication' />
+                <Slider {...this.props.imagesURL} imageSource='publication'/>
                     <View style={styles.eventInfo}>
                         <Text style={styles.title}>{this.props.title}</Text>
                         <View style={styles.infoRow}>

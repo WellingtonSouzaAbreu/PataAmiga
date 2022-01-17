@@ -156,6 +156,7 @@ export default class RequestAdoption extends Component {
 						/>
 
 						<View style={styles.areaButtons}>
+							<Text style={{marginBottom: 5}}>Imagens selecionadas: {this.state.imagesPack.length}</Text>
 							<TouchableOpacity style={styles.selectImageButton} onPress={this.toggleImageBrowserVisibility}>
 								<Icon name="camera" size={15} color='#FFF' style={{ marginRight: 15 }} />
 								<Text style={styles.buttonText}>Selecionar imagem</Text>

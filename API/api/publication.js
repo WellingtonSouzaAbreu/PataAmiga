@@ -98,6 +98,8 @@ module.exports = app => {
         await app.db('publications')
             .select('id', 'title', 'startDateTime', 'history', 'reasonRescue', 'animalName')
             .where({ publicationType: 'done' })
+            .where('startDateTime', '>', new Date(new Date().getTime() - 3600000))
+            .orderBy('startDateTime')
             .then(async dones => {
                 dones = await browseDones(dones)
                 console.log(dones)
