@@ -126,10 +126,11 @@ const styles = StyleSheet.create({
     },
 
     descriptionContainer: {
+        flex: 1,
         width: '100%',
         padding: 15,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
     },
 
     descriptionLabel: {
@@ -155,6 +156,7 @@ const styles = StyleSheet.create({
     },
 
     buttonContainer: {
+        marginTop: 10,
         width: '97%',
     },
 

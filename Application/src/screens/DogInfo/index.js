@@ -81,105 +81,107 @@ ${this.state.animal.othersCharacteristics}`
     }
 
     toggleImageViewVisibility = (visibility, imageIndex) => {
-        if(imageIndex){
-            this.setState({ imageViewOpened: visibility, imageViewIndex:  imageIndex})
-        }else{
-            this.setState({ imageViewOpened: visibility})
+        if (imageIndex) {
+            this.setState({ imageViewOpened: visibility, imageViewIndex: imageIndex })
+        } else {
+            this.setState({ imageViewOpened: visibility })
         }
     }
 
     render() {
         return (
-            <ScrollView style={{ backgroundColor: '#fff' }} showsVerticalScrollIndicator={false}>
-                <View style={styles.container}>
-                    <CustomImageView imagesURL={this.state.animal.imagesURL} visible={this.state.imageViewOpened} index={this.state.imageViewIndex} imageSource='animal' onToggleImageViewVisibility={this.toggleImageViewVisibility} />
-                    <View style={styles.imageContainer}>
-                        {this.state.renderImage &&
-                            <Slider {...this.state.animal.imagesURL} imageSource='animal' onPress={this.toggleImageViewVisibility} />
-                        }
+            // <ScrollView style={{ backgroundColor: '#fff' }} showsVerticalScrollIndicator={false}>
+            <View style={styles.container}>
+                <CustomImageView imagesURL={this.state.animal.imagesURL} visible={this.state.imageViewOpened} index={this.state.imageViewIndex} imageSource='animal' onToggleImageViewVisibility={this.toggleImageViewVisibility} />
+                <View style={styles.imageContainer}>
+                    {this.state.renderImage &&
+                        <Slider {...this.state.animal.imagesURL} imageSource='animal' onPress={this.toggleImageViewVisibility} style={styles.dogImage} />
+                    }
+                </View>
+                <View style={styles.basicInfosContainer}>
+                    <View style={styles.headerInfos}>
+                        <View style={styles.headerInfo}>
+                            <Icon name="dog" size={17} color='gray' style={styles.iconStyle} />
+                            <Text style={styles.infoValue}>{this.state.animal.name}</Text>
+                        </View>
+                        <View style={styles.headerInfo}>
+                            <Icon name="paw" size={17} color='gray' style={styles.iconStyle} />
+                            <Text style={styles.infoValue}>{this.state.animal.breed}</Text>
+                        </View>
                     </View>
-                    <View style={styles.basicInfosContainer}>
-                        <View style={styles.headerInfos}>
-                            <View style={styles.headerInfo}>
-                                <Icon name="dog" size={17} color='gray' style={styles.iconStyle} />
-                                <Text style={styles.infoValue}>{this.state.animal.name}</Text>
+                    <View style={styles.infoCardsContainer}>
+                        <View style={styles.InfoGroup}>
+                            <View style={styles.cardInfo}>
+                                <Text style={styles.infoLabel}>Castrado</Text>
+                                {this.state.animal.castrated
+                                    ? <Icon name="check" size={17} color='#64718C' style={styles.iconStyle} />
+                                    : <Icon name="times" size={17} color='#64718C' style={styles.iconStyle} />
+                                }
                             </View>
-                            <View style={styles.headerInfo}>
-                                <Icon name="paw" size={17} color='gray' style={styles.iconStyle} />
-                                <Text style={styles.infoValue}>{this.state.animal.breed}</Text>
+                            <View style={styles.cardInfo}>
+                                <Text style={styles.infoLabel}>Vacinado</Text>
+                                <Icon name="check" size={17} color='#64718C' style={styles.iconStyle} />
                             </View>
-                        </View>
-                        <View style={styles.infoCardsContainer}>
-                            <View style={styles.InfoGroup}>
-                                <View style={styles.cardInfo}>
-                                    <Text style={styles.infoLabel}>Castrado</Text>
-                                    {this.state.animal.castrated
-                                        ? <Icon name="check" size={17} color='#64718C' style={styles.iconStyle} />
-                                        : <Icon name="times" size={17} color='#64718C' style={styles.iconStyle} />
-                                    }
-                                </View>
-                                <View style={styles.cardInfo}>
-                                    <Text style={styles.infoLabel}>Vacinado</Text>
-                                    <Icon name="check" size={17} color='#64718C' style={styles.iconStyle} />
-                                </View>
-                                <View style={styles.cardInfo}>
-                                    <Text style={styles.infoLabel}>Sexo</Text>
-                                    {this.state.animal.sex == 'F'
-                                        ? <Icon name="venus" size={17} color='#64718C' style={styles.iconStyle} />
-                                        : <Icon name="mars" size={17} color='#64718C' style={styles.iconStyle} />
-                                    }
-                                </View>
+                            <View style={styles.cardInfo}>
+                                <Text style={styles.infoLabel}>Sexo</Text>
+                                {this.state.animal.sex == 'F'
+                                    ? <Icon name="venus" size={17} color='#64718C' style={styles.iconStyle} />
+                                    : <Icon name="mars" size={17} color='#64718C' style={styles.iconStyle} />
+                                }
                             </View>
                         </View>
+                    </View>
 
-                        <View style={styles.otherInfosContainer}>
-                            <View style={styles.infoArea}>
-                                <View style={styles.otherInfoGroup}>
-                                    <Icon name="paw" size={17} color='gray' style={styles.iconStyle} />
-                                    <Text style={styles.infoLabel}>Especie: </Text>
-                                    <Text style={styles.infoValue}>{this.state.animal.specie}</Text>
-                                </View>
-                                <View style={styles.otherInfoGroup}>
-                                    <Icon name="palette" size={17} color='gray' style={styles.iconStyle} />
-                                    <Text style={styles.infoLabel}>Cor: </Text>
-                                    <Text style={styles.infoValue}>{this.state.animal.color}</Text>
-                                </View>
-                                <View style={styles.otherInfoGroup}>
-                                    <Icon name="clock" size={17} color='gray' style={styles.iconStyle} />
-                                    <Text style={styles.infoLabel}>Idade: </Text>
-                                    <Text style={styles.infoValue}>{this.state.animal.aproximateAge}</Text>
-                                </View>
+                    <View style={styles.otherInfosContainer}>
+                        <View style={styles.infoArea}>
+                            <View style={styles.otherInfoGroup}>
+                                <Icon name="paw" size={17} color='gray' style={styles.iconStyle} />
+                                <Text style={styles.infoLabel}>Especie: </Text>
+                                <Text style={styles.infoValue}>{this.state.animal.specie}</Text>
                             </View>
-                            <View style={styles.shareArea}>
-                                <TouchableOpacity style={styles.shareButton} onPress={this.sendToWhatsApp}>
-                                    <Icon name="share-alt" size={20} color='#64718C' style={styles.iconStyle} />
-                                </TouchableOpacity>
+                            <View style={styles.otherInfoGroup}>
+                                <Icon name="palette" size={17} color='gray' style={styles.iconStyle} />
+                                <Text style={styles.infoLabel}>Cor: </Text>
+                                <Text style={styles.infoValue}>{this.state.animal.color}</Text>
+                            </View>
+                            <View style={styles.otherInfoGroup}>
+                                <Icon name="clock" size={17} color='gray' style={styles.iconStyle} />
+                                <Text style={styles.infoLabel}>Idade: </Text>
+                                <Text style={styles.infoValue}>{this.state.animal.aproximateAge}</Text>
                             </View>
                         </View>
+                        <View style={styles.shareArea}>
+                            <TouchableOpacity style={styles.shareButton} onPress={this.sendToWhatsApp}>
+                                <Icon name="share-alt" size={20} color='#64718C' style={styles.iconStyle} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
+                </View>
+                <ScrollView horizontal={false}>
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.descriptionLabel}>Informações adicionais</Text>
                         <Text style={styles.descriptionValue}>
                             {this.state.animal.othersCharacteristics}
                         </Text>
                     </View>
-                    <View style={styles.buttonContainer}>
-                        {
-                            !this.state.adopted && !this.state.expressInterest
-                                ? <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => this.props.navigation.navigate('RequestAdoption', { animalId: this.state.animal.id })}>
-                                    <Text style={styles.buttonLabel}>Manifestar interesse</Text>
+                </ScrollView>
+                <View style={styles.buttonContainer}>
+                    {
+                        !this.state.adopted && !this.state.expressInterest
+                            ? <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => this.props.navigation.navigate('RequestAdoption', { animalId: this.state.animal.id })}>
+                                <Text style={styles.buttonLabel}>Manifestar interesse</Text>
+                            </TouchableOpacity>
+                            : !this.state.adopted
+                                ? <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => showAlert('Ops!', 'Você já manifestou interesse neste animal, por favor, aguarde que a Pata Amiga entrará em contato com você!')}>
+                                    <Text style={styles.buttonLabel}>Você já se candidatou</Text>
                                 </TouchableOpacity>
-                                : !this.state.adopted
-                                    ? <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => showAlert('Ops!', 'Você já manifestou interesse neste animal, por favor, aguarde que a Pata Amiga entrará em contato com você!')}>
-                                        <Text style={styles.buttonLabel}>Você já se candidatou</Text>
-                                    </TouchableOpacity>
-                                    : <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => showAlert('Ops!', 'Esse dog já foi adotado por você!')}>
-                                        <Text style={styles.buttonLabel}>Já adotado</Text>
-                                    </TouchableOpacity>
-                        }
-                    </View>
+                                : <TouchableOpacity style={styles.buttonExpressInterest} onPress={() => showAlert('Ops!', 'Esse dog já foi adotado por você!')}>
+                                    <Text style={styles.buttonLabel}>Já adotado</Text>
+                                </TouchableOpacity>
+                    }
                 </View>
-            </ScrollView>
+            </View>
+            // </ScrollView>
         )
 
     }

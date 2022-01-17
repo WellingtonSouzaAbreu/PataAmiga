@@ -12,14 +12,14 @@ export default function HomeTabNavigation(props) {
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName="Quem somos?"
+                initialRouteName="ADOTAR"
                 tabBarOptions={{
                     activeTintColor: '#F27F3D',
                     inactiveTintColor: '#64718C',
                     indicatorStyle: '#F53669',
                     pressColor : '#F27F3D',
                     tabStyle : {
-                   
+                        flex: 1,
                     }
                 }}
             >

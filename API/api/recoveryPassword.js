@@ -1,4 +1,5 @@
 const path = require('path')
+const baseApiUrl = 'http://192.168.2.183:500'
 
 module.exports = app => {
     const jwt = require('jwt-simple')
@@ -43,7 +44,7 @@ module.exports = app => {
                 <script>
                     const checkState = async() => {
                         const endpoint = location.href.split('/')[4]
-                await axios.get(\`http://192.168.2.183:500/already-changed?endpoint=\` + endpoint)
+                await axios.get(\`${baseApiUrl}/already-changed?endpoint=\` + endpoint)
                             .then(res => {
                                 if(res.data){
                                     document.getElementsByClassName('container')[0].innerHTML = \`
@@ -100,7 +101,7 @@ module.exports = app => {
                         // TODO Tornar o ip dinâmico
                         const endpoint = location.href.split('/')[4]
 
-                        await axios.put(\`http://192.168.2.183:500/recovery-password?endpoint=\` + endpoint, { password, token })
+                        await axios.put(\`${baseApiUrl}/recovery-password?endpoint=\` + endpoint, { password, token })
                             .then(res => {
                                 document.getElementsByClassName('container')[0].innerHTML = \`
                                     <h2 style="margin: auto;">Senha alterada com sucesso!</h2>
@@ -125,7 +126,7 @@ module.exports = app => {
 
         app.config.middlewares.newRoutes(`/recuperar-senha/${endpoint}`, HTMLPage)
 
-        const url = `http://192.168.2.183:500/recuperar-senha/${endpoint}`
+        const url = `${baseApiUrl}/recuperar-senha/${endpoint}`
 
         try {
 
@@ -232,7 +233,7 @@ module.exports = app => {
 
     const sendSms = async (cellNumber, url) => {
         const accountSid = 'AC654e478886b12bb8e06b522f26080d11';
-        const authToken = '8af1015ccb239d33814810ad2f621e6f';
+        const authToken = 'eba35f05b708c4f580dff930f506b96b';
         const client = require('twilio')(accountSid, authToken);
 
         const message = `

@@ -29,7 +29,7 @@ class TemporaryHomeTable extends Component {
 							</MDBCarouselInner>
 						</MDBCarousel>
 					</div>
-					<MDBInput type="textarea" label="Descrição" value={temporaryHome.othersCharacteristics} disabled className={styles.description} />{/* TODO  ^*/}
+					<MDBInput type="textarea" label="Descrição" value={temporaryHome.othersCharacteristics} disabled className={styles.description} />
 				</div>
 				<div className={styles.otherDescriptions}>
 					<div className={styles.group}>
@@ -68,7 +68,7 @@ class TemporaryHomeTable extends Component {
 					</div>
 				</div>
 				<div className={styles.divider3}>
-					<MDBInput value={`Nome: ${temporaryHome.adopterName}\nTelefone: ${temporaryHome.cellNumber}`} type="textarea" label="Voluntário" disabled className={styles.volunter} /> {/* // TODO  temporary não acessível*/}
+					<MDBInput value={`Nome: ${temporaryHome.adopterName}\nTelefone: ${temporaryHome.cellNumber}`} type="textarea" label="Voluntário" disabled className={styles.volunter} />
 				</div>
 			</div>
 		)

@@ -2,8 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     scrollContainer: {
-        width: '100%',
-        height: '100%',
+        flex: 1,
     },
 
     container: {
@@ -25,6 +24,8 @@ const styles = StyleSheet.create({
     },
 
     title: {
+        marginTop: 20,
+        marginBottom: 40,
         fontSize: 17,
         color: '#64718C',
         fontWeight: 'bold',
@@ -68,18 +69,17 @@ const styles = StyleSheet.create({
 
     formRequest: {
         width: '100%',
-        height: 200,
+        flex: 1,
         backgroundColor: '#fff',
         marginTop: 20,
         borderRadius: 4,
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
     },
 
 
     requestInput: {
         width: '100%',
-        height: 40,
         backgroundColor: '#f2f2f2',
         textAlign: 'center'
     },

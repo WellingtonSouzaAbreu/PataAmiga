@@ -21,11 +21,12 @@ export default class Report extends Component {
 
     state = { ...initialState }
 
-    requestReport = async () => {
+    requestComplaint = async () => {
         await axios.post(`${baseApiUrl}/complaint`, { complaint: this.state })
-            .then(res => {
+            .then(_ => {
                 showAlert('Pronto!', 'Denúncia realizada com sucesso!')
                 this.setState({ ...initialState })
+                this.props.navigation.goBack()
             })
             .catch(err => {
                 console.log(err.response.data)
@@ -35,8 +36,9 @@ export default class Report extends Component {
 
     render() {
         return (
-            <ScrollView>
-                <View style={styles.container}>
+
+            <View style={styles.container}>
+                <ScrollView  style={{width: '100%'}}>
                     <View style={styles.boxFormReport}>
                         <Text style={styles.title}>Fazer uma denuncia</Text>
                         <View style={styles.containerRadioSelect}>
@@ -97,17 +99,15 @@ export default class Report extends Component {
                                 multiline={true}
                             />
                         </View>
-
-                        <TouchableOpacity style={styles.reportButton} onPress={this.requestReport}>
-                            <Text style={{ fontWeight: 'bold', color: '#fff' }}>Denunciar</Text>
-                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.legislationArea} onPress={() => Linking.openURL('http://www.planalto.gov.br/ccivil_03/leis/l9605.htm')}>
-                        <Text style={styles.legislationText}>Deseja saber o que a lei diz sobre a proteção dos animais? Clique aqui.</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-
+                </ScrollView>
+                <TouchableOpacity style={styles.legislationArea} onPress={() => Linking.openURL('http://www.planalto.gov.br/ccivil_03/leis/l9605.htm')}>
+                    <Text style={styles.legislationText}>Deseja saber o que a lei diz sobre a proteção dos animais? Clique aqui.</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.reportButton} onPress={this.requestComplaint}>
+                    <Text style={{ fontWeight: 'bold', color: '#fff' }}>Denunciar</Text>
+                </TouchableOpacity>
+            </View>
         )
     }
 }

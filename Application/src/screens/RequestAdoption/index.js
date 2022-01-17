@@ -87,7 +87,7 @@ export default class RequestAdoption extends Component {
 
 	render() {
 		return (
-			<ScrollView style={styles.container}>
+			<View style={styles.container}>
 				<StatusBar />
 				<Modal
 					animationType='slide'
@@ -138,39 +138,37 @@ export default class RequestAdoption extends Component {
 					</TouchableOpacity>
 				</Modal>
 
-				<ScrollView style={{ flex: 1, width: '100%' }}>
-					<View style={styles.headerElement}>
-						<Image style={styles.imgElement} source={require('./../../assets/imgs/homerequest.png')} />
-						<Text style={{ fontWeight: 'bold', fontSize: 22 }}>Onde ele vai morar?</Text>
-					</View>
-					<View style={styles.containerUpload}>
-						<View style={styles.formUpload}>
+				<View style={styles.headerElement}>
+					<Image style={styles.imgElement} source={require('./../../assets/imgs/homerequest.png')} />
+					<Text style={{ fontWeight: 'bold', fontSize: 22 }}>Onde ele vai morar?</Text>
+				</View>
+				<View style={styles.containerUpload}>
+					<View style={styles.formUpload}>
 
-							<Text style={styles.descriptionLabel}>Enviar Descrição</Text>
-							<TextInput
-								value={this.state.description}
-								placeholder="Detalhes"
-								style={styles.descriptionInput}
-								multiline={true}
-								numberOfLines={5}
-								onChangeText={(description) => this.setState({ description })}
-							/>
+						<Text style={styles.descriptionLabel}>Enviar Descrição</Text>
+						<TextInput
+							value={this.state.description}
+							placeholder="Detalhes"
+							style={styles.descriptionInput}
+							multiline={true}
+							numberOfLines={5}
+							onChangeText={(description) => this.setState({ description })}
+						/>
 
-							<View style={styles.areaButtons}>
-								<TouchableOpacity style={styles.selectImageButton} onPress={this.toggleImageBrowserVisibility}>
-									<Icon name="camera" size={15} color='#FFF' style={{ marginRight: 15 }} />
-									<Text style={styles.buttonText}>Selecionar imagem</Text>
-								</TouchableOpacity>
+						<View style={styles.areaButtons}>
+							<TouchableOpacity style={styles.selectImageButton} onPress={this.toggleImageBrowserVisibility}>
+								<Icon name="camera" size={15} color='#FFF' style={{ marginRight: 15 }} />
+								<Text style={styles.buttonText}>Selecionar imagem</Text>
+							</TouchableOpacity>
 
-								<TouchableOpacity style={styles.uploadImageButton} onPress={this.sendRequestAdoption}>
-									<Icon name="upload" size={15} color='#FFF' style={{ marginRight: 15 }} />
-									<Text style={styles.buttonText}>Enviar</Text>
-								</TouchableOpacity>
-							</View>
+							<TouchableOpacity style={styles.uploadImageButton} onPress={this.sendRequestAdoption}>
+								<Icon name="upload" size={15} color='#FFF' style={{ marginRight: 15 }} />
+								<Text style={styles.buttonText}>Enviar</Text>
+							</TouchableOpacity>
 						</View>
 					</View>
-				</ScrollView>
-			</ScrollView>
+				</View>
+			</View>
 		);
 	}
 

@@ -7,14 +7,14 @@ import HomeTabNavigation from '../../config/HomeTabNavigation'
 import { showAlert } from '../../common/commonFunctions'
 
 export default class Home extends Component {
-
     navigateToDogInfo = (id) => {
         this.props.navigation.navigate('DogInfo', { id })
     }
 
+
     render() {
         return (
-            <ScrollView>
+            <ScrollView horizontal={false}>
                 <View style={styles.container}>
                     <View style={styles.btnGridContainer}>
                         <View style={styles.gridButton}>

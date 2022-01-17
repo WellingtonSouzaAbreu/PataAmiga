@@ -95,47 +95,48 @@ export default class Profile extends Component {
                 </View>
                 {this.renderProfileCompletarionAlert()}
                 <View style={styles.personalInfoContainer}>
-
-                    <View style={styles.infoArea}>
-                        <Icon name="phone" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                        <View style={styles.infoAreaText}>
-                            <Text style={styles.valueLabel}>{this.state.phone || '---'}</Text>
-                            <Text style={styles.label}>Telefone</Text>
-                        </View>
-                    </View>
-                    <View style={styles.addressInfos}>
-                        <Text style={styles.addressTitle}>Endereço</Text>
-                        <View style={styles.addressInfoRow}>
-                            <Icon name="road" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                    <ScrollView horizontal={false}>
+                        <View style={styles.infoArea}>
+                            <Icon name="phone" size={15} color='dimgray' style={{ marginRight: 15 }} />
                             <View style={styles.infoAreaText}>
-                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <Text style={styles.valueLabel}>{this.state.address}{this.state.address && this.state.houseNumber? ' - ' : '--- '}{this.state.houseNumber} </Text>
-                                </ScrollView>
-                                <Text style={styles.label}>Rua</Text>
+                                <Text style={styles.valueLabel}>{this.state.phone || '---'}</Text>
+                                <Text style={styles.label}>Telefone</Text>
                             </View>
                         </View>
-                        <View style={styles.addressInfoRow}>
-                            <Icon name="map-signs" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                            <View style={styles.infoAreaText}>
-                                <Text style={styles.valueLabel}>{this.state.district || '---'}</Text>
-                                <Text style={styles.label}>Bairro</Text>
+                        <View style={styles.addressInfos}>
+                            <Text style={styles.addressTitle}>Endereço</Text>
+                            <View style={styles.addressInfoRow}>
+                                <Icon name="road" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                                <View style={styles.infoAreaText}>
+                                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                        <Text style={styles.valueLabel}>{this.state.address}{this.state.address && this.state.houseNumber ? ' - ' : '--- '}{this.state.houseNumber} </Text>
+                                    </ScrollView>
+                                    <Text style={styles.label}>Rua</Text>
+                                </View>
+                            </View>
+                            <View style={styles.addressInfoRow}>
+                                <Icon name="map-signs" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                                <View style={styles.infoAreaText}>
+                                    <Text style={styles.valueLabel}>{this.state.district || '---'}</Text>
+                                    <Text style={styles.label}>Bairro</Text>
+                                </View>
+                            </View>
+                            <View style={styles.addressInfoRow}>
+                                <Icon name="building" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                                <View style={styles.infoAreaText}>
+                                    <Text style={styles.valueLabel}>{this.state.city || '---'}</Text>
+                                    <Text style={styles.label}>Cidade</Text>
+                                </View>
+                            </View>
+                            <View style={styles.addressInfoRow}>
+                                <Icon name="globe-americas" size={15} color='dimgray' style={{ marginRight: 15 }} />
+                                <View style={styles.infoAreaText}>
+                                    <Text style={styles.valueLabel}>Rondônia</Text>
+                                    <Text style={styles.label}>Estado</Text>
+                                </View>
                             </View>
                         </View>
-                        <View style={styles.addressInfoRow}>
-                            <Icon name="building" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                            <View style={styles.infoAreaText}>
-                                <Text style={styles.valueLabel}>{this.state.city || '---'}</Text>
-                                <Text style={styles.label}>Cidade</Text>
-                            </View>
-                        </View>
-                        <View style={styles.addressInfoRow}>
-                            <Icon name="globe-americas" size={15} color='dimgray' style={{ marginRight: 15 }} />
-                            <View style={styles.infoAreaText}>
-                                <Text style={styles.valueLabel}>Rondônia</Text>
-                                <Text style={styles.label}>Estado</Text>
-                            </View>
-                        </View>
-                    </View>
+                    </ScrollView > {/* ScrollView exota botões para fora do layout */}
                     <View style={styles.profileButtonsContainer}>
                         <TouchableOpacity style={styles.editProfileButton} onPress={() => this.props.navigation.navigate('EditProfile', { ...this.state })}>
                             <Icon name="user-edit" size={20} color='dimgray' style={{ marginRight: 15 }} />

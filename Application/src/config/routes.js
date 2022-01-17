@@ -192,17 +192,6 @@ const menuDrawerRoutes = {
         }
     },
 
-   /*  LastAdopion: {
-        name: 'LastAdoption',
-        screen: LastAdoptions,
-        navigationOptions: {
-            title: 'UTIMAS ADOÇÕES',
-            drawerIcon: ({ tintColor }) => (
-                <Icon name="dog" size={20} color='#F28749' style={{ marginVertical: 2 }} />
-            )
-        }
-    }, */
-
     RegularReport: {
         name: 'RegularReport',
         screen: RegularReport,

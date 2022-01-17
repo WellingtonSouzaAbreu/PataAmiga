@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { Text, View, TextInput, Image, ScrollView, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
 
@@ -33,10 +33,9 @@ class Donation extends Component {
 
     render() {
         return (
-            <ScrollView indicatorStyle={false} showsVerticalScrollIndicator={false}
-                style={styles.scrollContainer} >
-                <View style={styles.container} >
 
+            <View style={{ flex: 1, padding: 7 }}>
+                <ScrollView style={styles.container} >
                     <View style={styles.imgContainer} >
                         <Image source={require('../../assets/imgs/donation.png')}
                             style={styles.imgDonation}
@@ -63,21 +62,22 @@ class Donation extends Component {
                             <Text style={{ fontSize: 15, color: 'dimgray' }}> 884184112 - 14 </Text>
                         </View>
                     </View>
-
-                    <View style={styles.formRequest} >
+                    <View style={styles.formRequest}>
                         <Text style={styles.title} > Precisa - se também de panos velhos, ração e remédios. </Text>
                         <TextInput style={styles.requestInput}
+                            multiline={true}
+                            numberOfLines={5}
                             placeholder="Item para doação"
                             value={this.state.donation.description}
                             onChangeText={(description) => this.setState({ donation: { description } })}
                         />
-                        <TouchableOpacity style={styles.requestButton}
-                            onPress={this.requestCollect} >
-                            <Text style={{ fontWeight: 'bold', color: '#fff' }} > Solicitar</Text>
-                        </TouchableOpacity>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+                <TouchableOpacity style={styles.requestButton}
+                    onPress={this.requestCollect} >
+                    <Text style={{ fontWeight: 'bold', color: '#fff' }} > Solicitar</Text>
+                </TouchableOpacity>
+            </View>
         )
     }
 }

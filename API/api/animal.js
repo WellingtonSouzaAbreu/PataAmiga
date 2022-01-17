@@ -233,7 +233,6 @@ module.exports = app => {
             .select('id', 'name', 'breed')
             .orderBy('name')
             .then(async (animals) => {
-                console.log(animals)
                 let adoptedAnimals = await adoptedAnimalsId()
                 let temporaryHomeAnimals = await temporaryHomeAnimalsId()
                 animals = await animals.filter(animal => !adoptedAnimals.includes(animal.id) || animal.id == animalPreviousSelected)

@@ -3,6 +3,7 @@ import commomStyles from './../../common/commonStyles'
 
 const styles = StyleSheet.create({
     container: {
+        padding: 7,
         flex: 1,
         alignItems: 'center',
     },
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     },
 
     personalInfoContainer: {
-        margin: 8,
+        margin: 3,
         padding: 5,
         backgroundColor: 'white'
     },
@@ -151,10 +152,8 @@ const styles = StyleSheet.create({
 
     profileButtonsContainer: {
         width: '100%',
-        marginTop: 110,
-        marginBottom: 15,
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
     },
 
     editProfileButton: {

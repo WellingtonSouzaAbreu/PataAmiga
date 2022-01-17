@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     containerTabNavigationHome: {
         width: '100%',
         flex: 1,
-        backgroundColor: '#cdcdcd'
+        backgroundColor: 'green'
     },
 
     txtButton: {

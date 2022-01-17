@@ -261,7 +261,7 @@ class AddAdoption extends Component {
                             </div>
                         </AccordionDetails>
                     </Accordion>
-                    <button onClick={this.saveAdoption}>Cadastrar adoção</button> // Provisótio TODO
+                    <button onClick={this.saveAdoption}>Cadastrar adoção</button> 
                 </div>
             </>
         )

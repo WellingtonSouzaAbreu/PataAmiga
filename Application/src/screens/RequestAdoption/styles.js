@@ -4,7 +4,6 @@ import commonStyles from './../../common/commonStyles.js'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
     },
 
     imageBrowserContainer: {
@@ -72,10 +71,13 @@ const styles = StyleSheet.create({
     },
 
     formUpload: {
+        flex: 1,
         width: '100%',
         alignItems: 'center',
+        justifyContent: 'space-between',
         backgroundColor: 'white',
         padding: 5,
+        
     },
 
     descriptionLabel: {
@@ -100,7 +102,6 @@ const styles = StyleSheet.create({
     areaButtons:{
         width: '100%',
         marginTop: 30,
-        marginBottom: 30,
     },
 
     selectImageButton: {

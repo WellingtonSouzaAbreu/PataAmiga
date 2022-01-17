@@ -32,7 +32,7 @@ export default class LastAdoptionsScreen extends Component{
                     <FlatList style={styles.flatlistAdopteds}
                     data={this.state.animalAdopteds}
                     renderItem={({item}) => <AdoptedCard {...item}/>}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                     />
                 </View>
             </View>

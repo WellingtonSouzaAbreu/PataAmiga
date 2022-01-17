@@ -17,6 +17,10 @@ export default class Animals extends Component {
     state = { ...initialState }
 
     componentDidMount = async () => {
+        await this.loadAnimals()
+    }
+
+    loadAnimals = async () => {
         await axios.get(`${baseApiUrl}/animal/available-for-adoption`)
             .then(res => {
                 console.log(res.data)
@@ -35,7 +39,7 @@ export default class Animals extends Component {
                     style={styles.flatlistDogs}
                     data={this.state.animals}
                     renderItem={({ item }) => <AnimalCard {...item} onNavigateToDogInfo={this.props.onNavigateToDogInfo} />}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                 />
             </View>
         )

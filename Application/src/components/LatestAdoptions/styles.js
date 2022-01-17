@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f2f2f2',
+        backgroundColor: '#ffffff',
         alignItems: 'center',
         paddingBottom: 5,
         paddingHorizontal: 4
@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     containerScroll: {
         width: '100%',
         flex: 1,
-        // ...commonStyles.activeBorders
     }
 })
 export default styles

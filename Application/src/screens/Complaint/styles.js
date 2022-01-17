@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        paddingBottom: 7,
         alignItems: 'center',
         backgroundColor: '#fff',
     },
@@ -61,7 +63,6 @@ const styles = StyleSheet.create({
 
     inputArea: {
         width: '95%',
-        height: '85%',
         paddingVertical: 20,
         alignItems: 'center',
         justifyContent: 'space-around',
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
 
     legislationArea:{
         marginHorizontal: 10,
+        marginVertical: 20
     },
 
     legislationText: {

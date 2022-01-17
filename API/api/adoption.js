@@ -146,7 +146,7 @@ module.exports = app => {
             })
     }
 
-    const getAnimalsByUserAdoption = async (req, res) => { // TODO
+    const getAnimalsByUserAdoption = async (req, res) => { 
 
         const userId = req.user.id
 
