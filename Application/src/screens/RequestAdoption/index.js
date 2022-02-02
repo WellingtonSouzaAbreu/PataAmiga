@@ -9,6 +9,7 @@ import styles from './styles.js'
 import { baseApiUrl } from "../../common/baseApiUrl.js";
 import PhotoSelectIndicator from './../../components/PhotoSelectIndicator'
 import { showAlert } from "../../common/commonFunctions.js";
+import {SliderBox} from 'react-native-image-slider-box'
 
 const initialState = {
 	description: null,
@@ -138,13 +139,20 @@ export default class RequestAdoption extends Component {
 					</TouchableOpacity>
 				</Modal>
 
-				<View style={styles.headerElement}>
-					<Image style={styles.imgElement} source={require('./../../assets/imgs/homerequest.png')} />
-					<Text style={{ fontWeight: 'bold', fontSize: 22 }}>Onde ele vai morar?</Text>
-				</View>
+				{
+					!this.state.imagesPack.length
+						? <View style={styles.headerElement}>
+							<Image style={styles.imgElement} source={require('./../../assets/imgs/homerequest.png')} />
+							<Text style={{ fontWeight: 'bold', fontSize: 22 }}>Onde ele vai morar?</Text>
+						</View>
+						: <SliderBox
+							dotColor="#F28749"
+							circleLoop
+							images={this.state.imagesPack.map(image => image.uri) || []}
+						/>
+				}
 				<View style={styles.containerUpload}>
 					<View style={styles.formUpload}>
-
 						<Text style={styles.descriptionLabel}>Enviar Descrição</Text>
 						<TextInput
 							value={this.state.description}
@@ -156,7 +164,6 @@ export default class RequestAdoption extends Component {
 						/>
 
 						<View style={styles.areaButtons}>
-							<Text style={{marginBottom: 5}}>Imagens selecionadas: {this.state.imagesPack.length}</Text>
 							<TouchableOpacity style={styles.selectImageButton} onPress={this.toggleImageBrowserVisibility}>
 								<Icon name="camera" size={15} color='#FFF' style={{ marginRight: 15 }} />
 								<Text style={styles.buttonText}>Selecionar imagem</Text>

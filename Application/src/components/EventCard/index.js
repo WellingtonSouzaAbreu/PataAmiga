@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import { Text, Modal, View, TouchableOpacity } from 'react-native'
+import { Text, Modal, View, TouchableOpacity, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import styles from './styles.js'
 
-import Slider from './../../components/Slider'
+import { baseApiUrl } from '../../common/baseApiUrl.js'
 import { formatDate, formatHour } from './../../common/commonFunctions.js'
 import EventDetails from '../EventDetails'
+import CustomImageView from './../../components/CustomImageView'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 const initialState = {
     modalVisible: false,
@@ -36,9 +38,9 @@ export default class EventCard extends Component {
                     <EventDetails {...this.props} />
                 </Modal>
 
-                {/* <Image style={styles.eventImage} source={{uri: `${baseApiUrl}/publication-pictures/${this.props.imagesURL[0].imageURL}`}} /> */}
+                    <Image style={styles.eventImage} source={{ uri: `${baseApiUrl}/publication-pictures/${this.props.imagesURL[0].imageURL}` }} />
+
                 <TouchableOpacity style={styles.scroll} onPress={() => this.setModalVisible(true)} >
-                <Slider {...this.props.imagesURL} imageSource='publication'/>
                     <View style={styles.eventInfo}>
                         <Text style={styles.title}>{this.props.title}</Text>
                         <View style={styles.infoRow}>

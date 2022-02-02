@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { View, Text, Image, TextInput, TouchableOpacity, StatusBar, Modal} from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, StatusBar, Modal } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { ImageBrowser } from 'expo-image-picker-multiple'
 import axios from 'axios'
-import { SliderBox } from 'react-native-image-slider-box'
+import { SliderBox } from "react-native-image-slider-box";
 
 import styles from './styles'
 
@@ -34,7 +34,7 @@ export default class RegularReport extends Component {
 			})
 			.catch(err => {
 				console.log(err.response.data)
-				showAlert('Ops!', 'Algo deu errado ao obter o número de adoções.')
+				showAlert('Ops!', err.response ? err.response.data : 'Algo deu errado ao obter o número de adoções.')
 			})
 	}
 
@@ -70,7 +70,7 @@ export default class RegularReport extends Component {
 			})
 			.catch(err => {
 				console.log(err.response.data)
-				showAlert('Ops', 'Ocorreu um erro ao enviar relatório.')
+				showAlert('Ops!', err.response ? err.response.data : 'Ocorreu um erro ao enviar relatório.')
 			})
 	}
 
@@ -109,6 +109,16 @@ export default class RegularReport extends Component {
 			return false
 		} else {
 			return true
+		}
+	}
+
+	toggleImageViewVisibility = (visibility, imageIndex = 0) => {
+		console.log(visibility)
+		console.log(imageIndex)
+		if (imageIndex) {
+			this.setState({ imageViewOpened: visibility, imageViewIndex: imageIndex })
+		} else {
+			this.setState({ imageViewOpened: visibility })
 		}
 	}
 
@@ -177,15 +187,16 @@ export default class RegularReport extends Component {
 					</TouchableOpacity>
 				</Modal>
 				{
-					this.state.imagesPack != []
+					!this.state.imagesPack.length
 						? <View style={styles.headerElement}>
 							<Image style={styles.imgElement} source={require('./../../assets/imgs/upload.png')} />
 							<Text style={{ fontWeight: 'bold', fontSize: 22, color: '#64718C' }}>Relatório Quinzenal</Text>
 						</View>
-						: <SliderBox
+						:
+						<SliderBox
 							dotColor="#F28749"
 							circleLoop
-							images={['https://source.unsplash.com/1024x768/?nature']}
+							images={this.state.imagesPack.map(image => image.uri) || []}
 						/>
 				}
 				<View style={styles.containerUpload}>

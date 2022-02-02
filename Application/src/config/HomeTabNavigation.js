@@ -17,15 +17,14 @@ export default function HomeTabNavigation(props) {
                     activeTintColor: '#F27F3D',
                     inactiveTintColor: '#64718C',
                     indicatorStyle: '#F53669',
-                    pressColor : '#F27F3D',
-                    tabStyle : {
+                    pressColor: '#F27F3D',
+                    tabStyle: {
                         flex: 1,
                     }
                 }}
             >
-                <Tab.Screen name="ADOTAR" component={() => <Animals onNavigateToDogInfo={props.onNavigateToDogInfo}/>} />
+                <Tab.Screen name="ADOTAR" component={() => <Animals onNavigateToDogInfo={props.onNavigateToDogInfo} />} />
                 <Tab.Screen name="ADOTADOS" component={LastAdoptions} />
-
             </Tab.Navigator>
         </NavigationContainer>
     )

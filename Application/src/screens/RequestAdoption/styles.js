@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     },
 
     imgElement: {
-        width: Dimensions.get('window').width * 0.45,
-        height: Dimensions.get('window').height * 0.45,
+        width: '70%',
+        height: '70%',
         justifyContent: 'center',
         alignItems: 'center',
         resizeMode: 'contain',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     descriptionLabel: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 20,
+        marginTop: 10,
     },
 
     descriptionInput: {

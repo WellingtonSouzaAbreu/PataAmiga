@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import commonStyles from './../../common/commonStyles.js'
 
 const styles = StyleSheet.create({
     container: {
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
     // ^
 
     headerElement: {
+        flex: 1,
         width: '100%',
         height: 150,
         justifyContent: 'center',
@@ -60,21 +60,22 @@ const styles = StyleSheet.create({
     },
 
     containerUpload: {
-        width: '100%',
-        height: '100%',
         flex: 1,
+        /*  width: '100%',
+         height: '100%', */
         alignItems: 'center',
         justifyContent: 'space-around',
         borderRadius: 5,
     },
 
     formUpload: {
+        flex: 1,
         width: '100%',
         padding: 10,
         alignItems: 'center',
         backgroundColor: 'white',
         justifyContent: 'space-between',
-        
+
     },
 
     observationsInput: {
@@ -112,8 +113,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: '#F27F3D',
-        marginBottom: 10,
-        marginBottom: 15
+        marginBottom: 5,
     },
 
     buttonText: {

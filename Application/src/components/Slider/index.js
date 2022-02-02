@@ -3,7 +3,7 @@ import { SliderBox } from "react-native-image-slider-box";
 import { baseApiUrl } from '../../common/baseApiUrl';
 
 export default function Slider(props) {
-    const setImagesURL = () => {
+    function setImagesURL(){
         let imagesURL = []
 
         console.log(Object.entries(props))
@@ -26,7 +26,10 @@ export default function Slider(props) {
             dotColor="#F28749"
             autoplay
             circleLoop
-            images={imagesURL}
+            images={[
+                "http://192.168.2.183:500/publication-pictures/1637419697088_dobermann.jpg",
+                "http://192.168.2.183:500/publication-pictures/1637419697088_dobermann.jpg",
+              ]}
             style={props.style && props.style}
 
         />

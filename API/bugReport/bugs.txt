@@ -12,3 +12,15 @@
 
 {"dateTime":"2022-01-15T20:03:09.335Z","file":"interestedInAdoption.js","message":"Descrição não informada"}
 
+{"dateTime":"2022-02-02T17:16:12.174Z","file":"adoption.js","message":"TypeError: Cannot set property 'adoptionId' of undefined"}
+
+{"dateTime":"2022-02-02T17:16:12.179Z","file":"adoption.js","message":"TypeError: Cannot set property 'adoptionId' of undefined"}
+
+{"dateTime":"2022-02-02T17:16:42.081Z","file":"adoption.js","message":"TypeError: Cannot set property 'adoptionId' of undefined"}
+
+{"dateTime":"2022-02-02T17:16:42.086Z","file":"adoption.js","message":"TypeError: Cannot set property 'adoptionId' of undefined"}
+
+{"dateTime":"2022-02-02T17:17:02.418Z","file":"adoption.js","message":"TypeError: Cannot set property 'adoptionId' of undefined"}
+
+{"dateTime":"2022-02-02T17:17:02.421Z","file":"adoption.js","message":"TypeError: Cannot set property 'adoptionId' of undefined"}
+

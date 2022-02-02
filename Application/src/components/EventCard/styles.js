@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: Dimensions.get('window').height * 0.50,
+        height: Dimensions.get('window').height * 0.35,
         backgroundColor: 'white',
         marginBottom: 20,
 
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         elevation: 4,
         borderRadius: 5,
     },
-    
+
     title: {
         color: '#64718C',
         fontSize: 16,
@@ -25,44 +25,44 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 2,
     },
-    
+
     eventImage: {
         resizeMode: 'cover',
         width: '100%',
         height: '60%',
     },
-    
+
     eventInfo: {
         paddingHorizontal: 10,
         height: '40%',
     },
-    
-    scroll:{
+
+    scroll: {
         flex: 1
     },
-    
-    
+
+
     infoRow: {
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 2,
     },
-    
+
     iconStyle: {
         marginRight: 7,
     },
-    
+
     infoItem: {
         alignItems: 'center',
         flexDirection: 'row',
     },
-    
+
     infoValue: {
         marginRight: 20,
         color: '#64718C',
     }
-    
+
 })
 
 export default styles
