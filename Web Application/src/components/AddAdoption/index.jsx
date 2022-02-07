@@ -35,16 +35,22 @@ class AddAdoption extends Component {
     state = { ...initialState }
 
     componentDidMount = async () => {
+        console.log(this.props.adoption)
         const animalsSelect = await this.getAnimalsSelectOptions()
         const collaboratorsSelect = await this.getCollaboratorsSelectOptions()
 
         console.log(animalsSelect)
 
-        this.setState({ animalsSelect, collaboratorsSelect, ...(this.props.edit ? this.props.adoption : {}) })
+        this.setState({ // TODO gambiarara
+            animalsSelect,
+            collaboratorsSelect,
+            ...(this.props.edit ? this.props.adoption : {}),
+            usersSelect: this.props.edit ? [{id: this.props.userId, label: `${this.props.adoption.adopterName - this.props.adoption.cellNumber}`}] : null
+        })
     }
 
     getAnimalsSelectOptions = async () => {
-        return await axios.get(`${baseApiUrl}/animal/select-options${this.props.edit ? `?animalPreviousSelected=${this.props.adoption.id}` : ''}`)
+        return await axios.get(`${baseApiUrl}/animal/select-options${this.props.edit ? `?animalPreviousSelected=${this.props.adoption.animalId}` : ''}`)
             .then(res => res.data)
             .catch(err => {
                 console.log(err)
@@ -68,7 +74,7 @@ class AddAdoption extends Component {
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={this.props.editMode ? this.props.adoption.animalId : this.state.animalId}
+                    value={this.props.edit ? this.props.adoption.animalId : this.state.animalId}
                     onChange={(e) => this.setState({ animalId: e.target.value })}
                 >
                     <MenuItem value={null} >Selecione um animal</MenuItem>
@@ -83,7 +89,7 @@ class AddAdoption extends Component {
 
         return this.state.animalsSelect.map(animal => {
             return (
-                <MenuItem value={animal.id}>{`${animal.id} - ${animal.name}`}</MenuItem>
+                <MenuItem value={animal.id} /* selected={this.props.edit} */>{`${animal.id} - ${animal.name}`}</MenuItem>
             )
         })
     }
@@ -95,7 +101,7 @@ class AddAdoption extends Component {
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={this.props.editMode ? this.props.adoption.collaboratorId : this.state.collaboratorId}
+                    value={this.props.edit ? this.props.adoption.collaboratorId : this.state.collaboratorId}
                     onChange={(e) => this.setState({ collaboratorId: e.target.value })}
                 >
                     <MenuItem value={null}  >Selecione um colaborador</MenuItem>
@@ -117,13 +123,11 @@ class AddAdoption extends Component {
     selectGuardian = () => {
         return (
             <FormControl className={classNames(styles.select, this.props.edit && styles.selectEdit)} >
-                {/* <InputLabel id="demo-simple-select-helper-label">Novo guardião</InputLabel> */}
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
                     options={this.state.usersSelect}
                     sx={{ width: 300 }}
-                    // inputValue={this.state.userId}
                     onChange={(e) => this.setState({ userId: e.target.id })}
                     renderOption={(props, user) => {
                         return <div {...props} id={user.id}>{user.label}</div>
@@ -134,17 +138,6 @@ class AddAdoption extends Component {
                         />
                     }}
                 />
-                {/*  <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
-                    value={this.props.editMode ? this.props.adoption.userId : this.state.userId}
-                    onChange={(e) => this.setState({ userId: e.target.value })}
-                >
-                    <MenuItem value={null}  >Selecione um guardião</MenuItem>
-                    <MenuItem value={1}>Gabriel</MenuItem>
-                    <MenuItem value={2}>Natalia</MenuItem>
-                    <MenuItem value={3}>José</MenuItem>
-                </Select> */}
             </FormControl>
         )
     }
@@ -160,30 +153,16 @@ class AddAdoption extends Component {
 
     loadUserSelectOptions = async (query) => {
         return await axios.get(`${baseApiUrl}/user/select-options?userName=${query}`)
-            .then(res => res.data)
+            .then(res => {
+                console.log('userdata')
+                console.log(res.data)
+                return res.data
+            })
             .catch(err => {
                 console.log(err)
                 this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Houve um erro ao obter lista de usuários com estas letras!`, 'error')
             })
     }
-
-    /* selectPeriodAdoption = () => {
-        return (
-            <FormControl className={classNames(styles.select, this.props.edit && styles.selectEdit)} >
-                <InputLabel id="demo-simple-select-helper-label">Período</InputLabel>
-                <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
-
-                >
-                    <MenuItem value={null}>Selecione</MenuItem>
-                    <MenuItem value={10}>1 Mês</MenuItem>
-                    <MenuItem value={20}>2 Meses</MenuItem>
-                    <MenuItem value={30}>3 Meses</MenuItem>
-                </Select>
-            </FormControl>
-        )
-    } */
 
     saveAdoption = async () => {
         const adoption = {
@@ -221,47 +200,52 @@ class AddAdoption extends Component {
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.container}>
                     <Accordion
-                        defaultExpanded={true}
-                        className={styles.acordion}
+                        elevation={0}
+                        defaultExpanded={this.props.edit ? true : false}
+
+                        className={classNames(styles.acordion)}
                     >
                         <AccordionSummary
                             expandIcon={<i className='bx bx-down-arrow-alt'></i>}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
-                            <Typography className={classNames(styles.heading, this.props.edit && styles.headingEdit)} >
-                                <i className='bx bxs-calendar-plus'></i>
+                            <Typography className={styles.heading} >
+                                <i class="far fa-plus-square"></i>
                                 <span className={styles.spanAdjust}>{this.props.edit ? 'Editar adoção' : 'Registrar adoção'}   </span>
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails >
-                            <div className={styles.containerForm}>
-                                <div className={styles.containerInputBt}>
-                                    {this.selectAnimal()}
-                                    <div className={styles.btModal}>
-                                        {this.state.animalId && <AnimalDetails idAnimal={this.state.animalId} />}
-                                    </div>
-
-                                </div>
-                                <div className={styles.containerInput}>
-                                    {this.selectGuardian()}
-                                </div>
-                                <div className={classNames(styles.containerInput)}>
+                            <div className={classNames(styles.containerForm, this.props.edit && styles.containerFormEdit)}>
+                                <div className={styles.containerDataPicker} >
                                     <CustomDatePicker label={'Data da adoção'} value={this.state.dateAdoption}
                                         onChangeDate={(dateAdoption) => this.setState({ dateAdoption })}
                                     />
                                 </div>
-                                {/* <div className={classNames(styles.containerInput)}>
-                                {this.selectPeriodAdoption()}
-                            </div> */}
-                                <div className={styles.containerInput}>
-                                    {this.selectCollaborator()}
+                                <div className={classNames(styles.containerSelectAnimalGuardian, this.props.edit && styles.containerSelectAnimalGuardianEdit)}>
+                                    <div className={classNames(styles.containerSelectAnimal, this.props.edit && styles.containerSelectAnimalEdit)}>
+                                        {this.selectAnimal()}
+                                        <div className={styles.btModalInfo, this.props.edit}>
+                                            {this.state.animalId && <AnimalDetails idAnimal={this.state.animalId} />}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={classNames(styles.guardianCollaboratorGroup)}>
+                                    <div className={styles.containerSlectCollaborator} >
+                                        {this.selectGuardian()}
+                                    </div>
+                                    <div className={styles.containerSlectCollaborator}>
+                                        {this.selectCollaborator()}
+                                    </div>
+                                </div>
+                                <div className={styles.containerButton}>
+                                    <button onClick={this.saveAdoption} className={classNames(styles.btRegisterAdoption, this.props.edit && styles.btRegisterAdoptionEdit)}>Cadastrar adoção</button>
                                 </div>
 
                             </div>
+
                         </AccordionDetails>
                     </Accordion>
-                    <button onClick={this.saveAdoption}>Cadastrar adoção</button> 
                 </div>
             </>
         )

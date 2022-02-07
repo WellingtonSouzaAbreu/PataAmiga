@@ -1,64 +1,149 @@
 .container {
-    
-    width: 100%;
+    width: 99%;
 }
 
 .heading {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f27b35;
-    
+    color:  #F27B35;
+    font-weight: 400;
+    padding: 5px;
+    width: 22%;
+ 
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
 }
 
 .spanAdjust {
-    margin-left: 15px;
-    font-weight: bold;
+    margin-left: 10px;
+    width: 100%;
 }
 
 .containerForm {
+    width: 109%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.containerForm .containerSelectAnimalGuardian {
+    width: 22%;
+}
+
+.containerForm .containerSelectAnimal {
     width: 100%;
-
     display: flex;
     flex-direction: row;
+}
+
+.select {
+    width: 100%;
+}
+
+
+.selectEdit{
+    /* width: 100%; */
+}
+
+.containerForm .containerSelectAnimal .btModalInfo {
+    margin-top: 5px;
+    display: flex;
     align-items: center;
-}
-
-.containerForm .containerInput {
-    width: 15%;
-    margin-right: 15px;
-}
-
-.containerForm .containerInputBt {
-    width: 15%;
-    display: flex;
-    flex-direction: row;
-}
-
-.containerForm .containerInputBt .btModal {
-  
-    display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    align-items: flex-end;
-
     
 }
 
-.containerForm .containerInputBt .btModal i {
-    border-radius: 100%;
-    width: 30px;
-    height: 30px;
+.animalSelect {
+    width: 100%;
+}
+
+.containerForm .containerSelectGuardian {
+    width: 22%;
+    padding-top: 5px;
+   
+}
+
+.guardianSelect {
+    width: 100%;
+}
+
+.containerForm .containerDataPicker {
+    padding-bottom: 8px;
+    width: 150px;
+}
+
+.containerForm .containerSlectCollaborator{
+    width: 100%;
+}
+
+.guardianCollaboratorGroup{
+    margin-bottom: 15px;
+   height: 110px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.collaboratorSelect{
+    width: 100%;
+}
+
+.containerForm .btRegisterAdoption {
+    height: 40px;
+    border: none;
+    width: 100%;
+    background-color: #F27B35;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 3px;
+
+}
+
+.containerForm .containerButton{
+    width: 22%;
+    padding-top: 5px;
+}
+
+
+.containerFormEdit {
+    width: 100%;
     display: flex;
-
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.containerForm .containerInputBt .btModal i:hover{
-    transform: scale(1.05);
-    transition: 0.2s;
-
+.containerFormEdit .containerSlectCollaborator {
+    margin-top: 10px;
+    padding-bottom: 20px;
 }
-.select {
+
+.containerFormEdit .containerSelectAnimalGuardianEdit {
+    width: 300px;
+}
+
+.containerFormEdit .containerSelectAnimalGuardianEdit .containerSelectAnimalEdit {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerFormEdit .containerSelectAnimalGuardianEdit .containerSelectAnimalEdit i {
+    margin-top: 10px;
+    width: 10px;
+}
+
+.containerFormEdit .containerButton {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.guardianSelectEdit {
+    margin-top: 15px;
+    width: 100%;
+  
+}
+
+.guardianSelectEdit .autoCompleteEdit {
     width: 100%;
 }

@@ -11,7 +11,7 @@ import AuthInput from "../../components/AuthInput";
 import { showAlert } from "../../common/commonFunctions";
 
 const initialState = {
-    name: null,
+    name: '',
     cellNumber: '',
     password: '',
     confirmPassword: null,
