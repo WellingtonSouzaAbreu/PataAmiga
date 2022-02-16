@@ -112,6 +112,8 @@
         background: #f2f2f2;
         border-radius: 4px;
         padding: 10px;
+        margin-top: 10px;
+
     }
 
     .groupGuardianInfo {
@@ -121,13 +123,11 @@
         flex-direction: column;
     }
 
-    .groupGuardianInfo div {
+    .infoGroup{
         flex-direction: column;
         display: flex;
-        width: 40%;
-     
-        margin: 1px;
-        
+        width: 100%;
+        margin: 1px 0px ;
     }
     
     .andressGuardian {
@@ -142,7 +142,7 @@
     .avNumber {
         display: flex;
         width: 100%;
-   
+        flex-direction: column;
     }
 
     .avNumber div {

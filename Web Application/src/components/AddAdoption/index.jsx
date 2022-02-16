@@ -27,7 +27,8 @@ const initialState = {
 
     snackbarVisible: false,
     snackbarMessage: '',
-    snackbarType: 'info'
+    snackbarType: 'info',
+    accordionExtended: false,
 }
 
 class AddAdoption extends Component {
@@ -35,7 +36,6 @@ class AddAdoption extends Component {
     state = { ...initialState }
 
     componentDidMount = async () => {
-        console.log(this.props.adoption)
         const animalsSelect = await this.getAnimalsSelectOptions()
         const collaboratorsSelect = await this.getCollaboratorsSelectOptions()
 
@@ -45,7 +45,7 @@ class AddAdoption extends Component {
             animalsSelect,
             collaboratorsSelect,
             ...(this.props.edit ? this.props.adoption : {}),
-            usersSelect: this.props.edit ? [{id: this.props.userId, label: `${this.props.adoption.adopterName - this.props.adoption.cellNumber}`}] : null
+            usersSelect: this.props.edit ? [{ id: this.props.userId, label: `${this.props.adoption.adopterName} - ${this.props.adoption.cellNumber}` }] : null
         })
     }
 
@@ -126,7 +126,7 @@ class AddAdoption extends Component {
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
-                    options={this.state.usersSelect}
+                    options={this.state.usersSelect || []}
                     sx={{ width: 300 }}
                     onChange={(e) => this.setState({ userId: e.target.id })}
                     renderOption={(props, user) => {
@@ -134,7 +134,7 @@ class AddAdoption extends Component {
                     }}
                     renderInput={(params) => {
                         return <TextField {...params} label='Nome do guardião'
-                            value={this.state.userName} onChange={this.updateUserField}
+                            value={this.props.edit ? this.props.adopterName : this.state.userName} onChange={this.updateUserField}
                         />
                     }}
                 />
@@ -145,6 +145,7 @@ class AddAdoption extends Component {
     updateUserField = async (e) => {
         if (e.target.value.length >= 3) {
             const usersSelect = await this.loadUserSelectOptions(e.target.value)
+            console.log(usersSelect)
             this.setState({ usersSelect })
         }
 
@@ -177,6 +178,14 @@ class AddAdoption extends Component {
         await axios.post(`${baseApiUrl}/adoption`, { adoption })
             .then(_ => {
                 this.toggleSnackbarVisibility(true, `Adoção cadastrada com sucesso!`, 'success')
+                this.setState({
+                    animalId: null,
+                    userId: null,
+                    userName: null,
+                    dateAdoption: new Date(),
+                    collaboratorId: null,
+                    accordionExtended: false 
+                })
                 this.props.onRefresh(true)
             })
             .catch(err => {
@@ -202,13 +211,14 @@ class AddAdoption extends Component {
                     <Accordion
                         elevation={0}
                         defaultExpanded={this.props.edit ? true : false}
-
+                        expanded={this.state.accordionExtended}
                         className={classNames(styles.acordion)}
                     >
                         <AccordionSummary
                             expandIcon={<i className='bx bx-down-arrow-alt'></i>}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
+                            onClick={() => this.setState({ accordionExtended: !this.state.accordionExtended })}
                         >
                             <Typography className={styles.heading} >
                                 <i class="far fa-plus-square"></i>
@@ -239,7 +249,10 @@ class AddAdoption extends Component {
                                     </div>
                                 </div>
                                 <div className={styles.containerButton}>
-                                    <button onClick={this.saveAdoption} className={classNames(styles.btRegisterAdoption, this.props.edit && styles.btRegisterAdoptionEdit)}>Cadastrar adoção</button>
+                                    <button onClick={this.saveAdoption}
+                                        className={classNames(styles.btRegisterAdoption, this.props.edit && styles.btRegisterAdoptionEdit)}>
+                                        {this.props.edit ? 'Salvar alterações' : 'Cadastrar adoção'}
+                                    </button>
                                 </div>
 
                             </div>

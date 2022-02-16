@@ -91,39 +91,35 @@ export default function AdoptionsAnimalsDetails(props) {
 				<div className={styles.cardContent}>
 					<strong className={styles.title}>Guardião </strong>
 					<div className={styles.infoNameGuardian}>
-						<strong>Nome</strong>
 						<span>{props.adoption.adopterName}</span>
 					</div>
 					<div className={styles.contactGuardian}>
 						<span>Contatos</span>
 						<div className={styles.groupGuardianInfo}>
-							<div>
+							<div className={styles.infoGroup}>
 								<strong className={styles.titleInfo}>Telefone</strong>
-								<strong>{props.adoption.phone}</strong>
+								<strong>{props.adoption.phone || 'Não cadastrado'}</strong>
 							</div>
-							<div>
+							<div className={styles.infoGroup}>
 								<strong className={styles.titleInfo} >Celular</strong>
-								<strong>{props.adoption.cellNumber}</strong>
+								<strong>{props.adoption.cellNumber || 'Não cadastrado'}</strong>
 							</div>
-							<div>
+							<div className={styles.infoGroup}>
 								<strong className={styles.titleInfo} >Email</strong>
-								<strong>{props.adoption.email}</strong>
+								<strong>{props.adoption.email || 'Não cadastrado'}</strong>
 							</div>
 						</div>
 						<div className={styles.andressGuardian}>
 							<span>Endereço</span>
 							<div className={styles.avNumber}>
-								<div>
-									<strong className={styles.titleInfo}>Rua: </strong>
-									<strong>{props.adoption.address}</strong>
+								<div className={styles.infoGroup}>
+									<strong className={styles.titleInfo}>Rua: {props.adoption.address || 'Não cadastrado'}</strong>
 								</div>
-								<div>
-									<strong className={styles.titleInfo} >N: </strong>
-									<strong>{props.adoption.houseNumber}</strong>
+								<div className={styles.infoGroup}>
+									<strong className={styles.titleInfo} >N: {props.adoption.houseNumber || 'Não cadastrado'}</strong>
 								</div>
-								<div>
-									<strong className={styles.titleInfo} >Bairro: </strong>
-									<strong>{props.adoption.district}</strong>
+								<div className={styles.infoGroup}>
+									<strong className={styles.titleInfo} >Bairro: {props.adoption.district || 'Não cadastrado'}</strong>
 								</div>
 							</div>
 							<div>
