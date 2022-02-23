@@ -102,8 +102,8 @@ class TemporaryHome extends Component {
         return (
             <div className={styles.container}>
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-                <div className={styles.pageName}>
-                    <span>LARES TEMPORÁRIOS</span>
+                <div className={styles.pageName} onClick={this.loadTemporaryHomes}>
+                    <span className={styles.title}>LARES TEMPORÁRIOS</span>
                 </div>
                 <div className={styles.tableContainer}>
                     <AddTemporaryHome onRefresh={this.loadTemporaryHomes} />

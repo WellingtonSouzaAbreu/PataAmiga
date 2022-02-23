@@ -18,8 +18,8 @@ import classNames from "classnames";
 
 const initialState = {
     date: new Date(),
-    adopterName: null,
-    cellNumber: null,
+    adopterName: '',
+    cellNumber: '',
     animalId: null,
 
     editMode: false,
@@ -28,6 +28,8 @@ const initialState = {
     snackbarVisible: false,
     snackbarMessage: '',
     snackbarType: 'info',
+
+    accordionExtended: false
 }
 
 class AddTemporaryHome extends Component {
@@ -55,15 +57,16 @@ class AddTemporaryHome extends Component {
     }
 
     selectAnimal = () => {
+        console.log(this.props.temporaryHome && this.props.temporaryHome.animalId)
         return (
             <FormControl className={classNames(styles.select, this.props.edit && styles.selectEdit)} >
                 <InputLabel id="demo-simple-select-helper-label">Animal</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
+                    className={classNames(this.props.edit && styles.editSelect)}
                     value={this.props.editMode ? this.props.temporaryHome.animalId : this.state.animalId}
                     onChange={(e) => this.setState({ animalId: e.target.value })}
-
                 >
                     <MenuItem value={null}  >Selecione um animal</MenuItem>
                     {this.renderSelectOptions()}
@@ -93,7 +96,13 @@ class AddTemporaryHome extends Component {
                 this.toggleSnackbarVisibility(true, `Lar temporário cadastrado com sucesso!`, 'success')
                 this.props.edit
                     ? this.props.onRefresh(true)
-                    : this.setState({ ...initialState, animalsSelect: this.state.animalsSelect }, () => { this.props.onRefresh(true); this.loadAnimalsToSelect() })
+                    : this.setState({
+                        ...initialState,
+                        animalsSelect: this.state.animalsSelect,
+                        snackbarVisible: true,
+                        snackbarMessage: 'Lar temporário cadastrado com sucesso!',
+                        snackbarType: 'success'
+                    }, () => { this.props.onRefresh(true); this.loadAnimalsToSelect() })
             })
             .catch(err => {
                 console.log(err)
@@ -115,15 +124,18 @@ class AddTemporaryHome extends Component {
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.container}>
                     <Accordion
-                        defaultExpanded={this.props.edit ? true : false}
+                        elevation={0}
                         className={styles.acordion}
+                        defaultExpanded={this.props.edit ? true : false}
+                        expanded={this.props.edit || this.state.accordionExtended}
                     >
                         <AccordionSummary
                             expandIcon={<i className='bx bx-down-arrow-alt'></i>}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
+                            onClick={() => this.setState({ accordionExtended: !this.state.accordionExtended })}
                         >
-                            <Typography className={styles.heading} >
+                            <Typography className={classNames(styles.headAcordion, this.props.edit && styles.Headacordion)} >
                                 <i className='bx bxs-calendar-plus'></i>
                                 <span className={styles.spanAdjust}>{this.props.edit ? 'Editar lar temporário' : 'Cadastrar lar temporário'}   </span>
                             </Typography>
@@ -135,23 +147,22 @@ class AddTemporaryHome extends Component {
                                         value={this.state.date} onChangeDate={this.changeDate}
                                     />
                                 </div>
-
-                                <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit)}>
-                                    <MDBInput className={styles.inputRegister} label="Nome do voluntário" outline
-                                        value={this.state.adopterName} onChange={(e) => this.setState({ adopterName: e.target.value })}
-                                    />
+                                <div className={classNames(styles.containerInputSelect, this.props.edit && styles.containerInputEdit)}>
+                                    {this.selectAnimal()}
                                 </div>
+
                                 <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit)}>
                                     <MDBInput className={styles.inputRegister} label="Telefone" outline
                                         value={this.state.cellNumber} onChange={(e) => this.setState({ cellNumber: e.target.value })}
                                     />
                                 </div>
-                                <div className={classNames(styles.containerInputSelect, this.props.edit && styles.containerInputEdit)}>
-                                    {this.selectAnimal()}
-
+                                <div className={classNames(styles.containerInput, this.props.edit && styles.containerInputEdit)}>
+                                    <MDBInput className={styles.inputRegister} label="Nome do voluntário" outline
+                                        value={this.state.adopterName} onChange={(e) => this.setState({ adopterName: e.target.value })}
+                                    />
                                 </div>
 
-                                <button className={styles.buttonSubmitForm} onClick={this.saveTemporaryHome}>
+                                <button className={classNames(styles.buttonSubmitForm, this.props.edit && styles.buttonSubmitFormEdit)} onClick={this.saveTemporaryHome}>
                                     {this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
                                 </button>
                             </div>

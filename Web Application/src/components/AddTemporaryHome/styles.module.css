@@ -7,6 +7,21 @@
     width: 100%;
 }
 
+.headAcordion {
+    color:  #F27B35;
+    font-weight: 400;
+    padding: 5px;
+    width: 50%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+}
+
+.headAcordion i {
+    margin-right: 10px;
+}
+
 .formTH {
     width: 100%;
     display: flex;
@@ -14,34 +29,21 @@
     align-items: center; 
 }
 
-.formTHEdit {
-    display: flex;
-    flex-direction: column;
-}
 
 .containerInput div {
     margin-right: 10px;
-    
+    margin-bottom: 12px;
 }
+
 
 .select {
     width: 100%;
 }
 
-.selectEdit {
-    width: 100%;
-    
-}
-
-
-.containerInputEdit {
-    width: 100%;
-
-}
-
 .containerInputSelect {
     width: 15%;
     margin-right: 10px;
+    margin-bottom: 11px;
 }
 .buttonSubmitForm {
     width: 200px;
@@ -50,4 +52,29 @@
     border: none;
     background-color: coral;
     color: #fff;
+}
+
+
+.formTHEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerInputEdit {
+    width: 100%;
+}
+
+.selectEdit {
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.selectEdit .editSelect {
+    width: 100%;
+}
+
+.buttonSubmitFormEdit {
+    width: 100%;
 }
