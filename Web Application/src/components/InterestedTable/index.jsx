@@ -50,7 +50,7 @@ class InterestedTable extends Component {
 						options: {
 							filter: true,
 							sort: true,
-							customBodyRender: (verified) => verified == 1 ? 'Sim' : 'Não'
+							customBodyRender: (verified) => verified == 1 ? <i className='fas fa-check checked'></i>: <i className='fas fa-times uncheked'></i>
 						}
 					},
 					{
@@ -72,7 +72,7 @@ class InterestedTable extends Component {
 					elevation: 0,
 					filter: false,
 					print: false,
-					textLabels: () => 'Não achei nada',
+					textLabels: () => 'Nada encontrado',
 					searchPlaceholder: 'Nome...',
 					rowsPerPage: this.props.rowsPerPage,
 					rowHover: true,

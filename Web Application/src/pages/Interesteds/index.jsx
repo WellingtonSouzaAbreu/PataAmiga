@@ -112,10 +112,10 @@ class Interesteds extends Component {
 
     render() {
         return (
-            <div className={styles.container}>
+            <div className={styles.container}> 
                  <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-                <div className={styles.pageName}>
-                    <span>INTERESSADOS</span>
+                <div className={styles.pageName} onClick={this.loadInterestedsInAdopt}>
+                    <span className={styles.title}>INTERESSADOS</span>
                 </div>
                 <div className={styles.tableContainer}>
                     <InterestedTable interestedsInAdopt={this.state.interestedsInAdopt} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}

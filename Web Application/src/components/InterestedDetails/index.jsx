@@ -54,13 +54,13 @@ export default function InterestedModalDetails(props) {
 	return (
 		<div>
 			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
-				<i class='bx bxs-edit'></i>
+				<i class='fas fa-edit'></i>
 			</IconButton>
 
 			<Modal
 				className={styles.modal}
 				open={open}
-				onClose={handleClose}
+				onClose={handleClose} 
 				closeAfterTransition
 			>
 				<Fade in={open}>
@@ -90,8 +90,9 @@ export default function InterestedModalDetails(props) {
 								<MDBInput value={props.interestedInAdopt.description} type="textarea" label="Descrição" disabled className={styles.description} outline />
 							</div>
 							<div>
-								<button onClick={() => props.onToggleStateOfInterest(!props.interestedInAdopt.verified, props.interestedInAdopt.id)}>{props.interestedInAdopt.verified ? 'Não Verificar' : 'Verificar'}</button>
-								
+								<button className={styles.buttonVerify}
+								 onClick={() => props.onToggleStateOfInterest(!props.interestedInAdopt.verified, props.interestedInAdopt.id)}
+								 >{props.interestedInAdopt.verified ? 'Não Verificar' : 'Verificar'}</button>
 							</div>
 						</div>
 					</div>
