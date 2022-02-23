@@ -63,18 +63,18 @@ class AnimalDetailsContent extends Component {
             <>
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div>
-                    <Tabs >
+                    <Tabs selectedTabClassName={styles.selectedTab}>
                         <TabList className={styles.tabContainer}>
                             <Tab className={styles.tabs}>
-                                <i className='bx bx-detail bx-sm'></i> {/* TODO tem como deixar a aba selecionada destacada? */}
+                                <i class="fas fa-dog"></i>
                                 <span>Informações do Animal</span>
                             </Tab>
                             <Tab className={styles.tabs}>
-                                <i className='bx bx-plus-medical bx-sm' ></i>
+                            <i class="fas fa-stethoscope"></i>
                                 <span>Cuidados Veterinários</span>
                             </Tab>
                             <Tab className={styles.tabs}>
-                                <i class='bx bxl-flutter bx-sm'></i>
+                            <i class="fas fa-first-aid"></i>
                                 <span>Informações do Resgate</span>
                             </Tab>
                         </TabList>

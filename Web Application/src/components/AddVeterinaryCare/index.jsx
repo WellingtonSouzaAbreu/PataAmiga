@@ -12,6 +12,7 @@ import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import axios from 'axios'
+import classNames from 'classnames';
 
 import CustomDatePicker from './../CustomDatePicker/index.jsx'
 import CustomSnackbar from './../CustomSnackbar'
@@ -21,13 +22,14 @@ const initialState = {
     dateOfVeterinaryCare: new Date(),
     needOfHospitalization: 0,
     needOfMedication: 0,
-    totalCostOfTreatment: null,
-    anamnese: null,
-    veterinaryName: null,
-    animalId: null,
+    totalCostOfTreatment: '',
+    anamnese: '',
+    veterinaryName: '',
+    animalId: '',
     costsVeterinaries: [], // TODO atualizar custos
 
     editMode: false,
+    accordionExtended: false,
 
     snackbarVisible: false,
     snackbarMessage: '',
@@ -96,7 +98,7 @@ class AddVeterinaryCare extends Component {
         await axios.post(` ${baseApiUrl}/veterinary-care`, { veterinaryCare })
             .then(async _ => {
                 this.toggleSnackbarVisibility(true, `Dados veterinários salvos com sucesso!`, 'success')
-                this.props.onRefresh()
+                this.setState({ ...initialState }, this.props.onRefresh)
             })
             .catch(err => {
                 console.log(err)
@@ -117,41 +119,54 @@ class AddVeterinaryCare extends Component {
             <>
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.container}>
-                    <Accordion>
+                    <Accordion
+                        elevation={0}
+                        defaultExpanded={this.props.edit ? true : false}
+                        expanded={this.state.accordionExtended}
+                    >
                         <AccordionSummary
                             expandIcon={<i className='bx bx-down-arrow-alt'></i>}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
+                            onClick={() => this.setState({ accordionExtended: !this.state.accordionExtended })}
                         >
                             <Typography className={styles.heading}>
-                                <i className='bx bxs-calendar-plus'></i>
+                                <i className="fas fa-plus"></i>
                                 <span className={styles.spanAdjust}>Adicionar relatório médico</span>
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <div className={styles.containerForm}>
-                                <div className={styles.formMedic}>
-                                    <CustomDatePicker label={'Data'} value={this.state.dateOfVeterinaryCare} onChangeDate={(date) => this.setState({ dateOfVeterinaryCare: date })} />
+                            <div className={classNames(styles.containerForm, this.props.edit && styles.containerFormEdit)}>
+                                <div className={classNames(styles.formMedic, this.props.edit && styles.formMedicEdit)}>
+                                    <div className={styles.dateCare}>
+                                        <CustomDatePicker label={'Data'} value={this.state.dateOfVeterinaryCare} onChangeDate={(date) => this.setState({ dateOfVeterinaryCare: date })} />
+                                    </div>
+
                                     {this.needOfHospitalization()}
                                     {this.needOfMedication()}
-                                    <FormControl fullWidth className={styles.inputCost}>
-                                        <InputLabel htmlFor="standard-adornment-amount">Custos</InputLabel>
-                                        <Input
-                                            id="standard-adornment-amount"
-                                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                                            value={this.state.totalCostOfTreatment}
-                                            onChange={(e) => this.setState({ totalCostOfTreatment: e.target.value })}
-                                        />
-                                    </FormControl>
-                                    <FormControl fullWidth className={styles.medicName}>
-                                        <InputLabel htmlFor="standard-adornment-amount">Médico Veterinário</InputLabel>
-                                        <Input
-                                            id="standard-adornment-amount"
-                                            startAdornment={<InputAdornment position="start"><i class='bx bx-user'></i></InputAdornment>}
-                                            value={this.state.veterinaryName}
-                                            onChange={(e) => this.setState({ veterinaryName: e.target.value })}
-                                        />
-                                    </FormControl>
+                                    <div className={styles.inputCost}>
+                                        <FormControl fullWidth >
+                                            <InputLabel htmlFor="standard-adornment-amount">Custos</InputLabel>
+                                            <Input
+                                                id="standard-adornment-amount"
+                                                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                                className={styles.inputC}
+                                                value={this.state.totalCostOfTreatment}
+                                                onChange={(e) => this.setState({ totalCostOfTreatment: e.target.value })}
+                                            />
+                                        </FormControl>
+                                    </div>
+                                    <div className={classNames(styles.medicName, this.props.edit && styles.btTest)}>
+                                        <FormControl fullWidth >
+                                            <InputLabel htmlFor="standard-adornment-amount">Médico Veterinário</InputLabel>
+                                            <Input
+                                                id="standard-adornment-amount"
+                                                startAdornment={<InputAdornment position="start"><i class='bx bx-user'></i></InputAdornment>}
+                                                value={this.state.veterinaryName}
+                                                onChange={(e) => this.setState({ veterinaryName: e.target.value })}
+                                            />
+                                        </FormControl>
+                                    </div>
                                 </div>
                                 <div className={styles.containerDiagnostic}>
                                     <MDBInput type="textarea" label="Relatório" className={styles.diagnostic}

@@ -24,6 +24,14 @@ class AnimalsTable extends Component {
             <MUIDataTable
                 title={"Lista de Animais"}
                 data={this.props.animals}
+                downloadOptions={{
+                    filename: 'Animais.csv',
+                    separator: ',',
+                    filterOptions: {
+                        useDisplayedColumnsOnly: false,
+                        useDisplayedRowsOnly: true,
+                    }
+                }}
                 columns={[
                     {
                         name: "id",

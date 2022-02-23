@@ -46,7 +46,7 @@ export default function AnimalEditModal(props) {
 	return (
 		<div>
 			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
-				<i class='bx bxs-edit'></i>
+				<i class='fas fa-edit'></i>
 			</IconButton>
 
 			<Modal

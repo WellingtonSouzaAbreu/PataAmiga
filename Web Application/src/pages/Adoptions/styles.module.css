@@ -5,25 +5,13 @@
     background-color: #F27B35;
     height: 50px;
     color: #fff;
- 
 }
+
+.title{
+    cursor: pointer;
+}
+
 .container {
     height: 100vh;
     background-color: #ffffff;
 }
-/* 
-.heading {
-    color:  #F27B35;
-    font-weight: 400;
-    padding: 5px;
-    width: 12%;
- 
-    height: 40px;
-    display: flex;
-    align-items: center;
-    border-radius: 2px;
-}
-
-.heading i  {
-    margin-right: 10px;
-} */

@@ -1,5 +1,6 @@
 .container {
-   width: 100%;
+    width: 100%;
+
 }
 
 .spanAdjust {
@@ -11,18 +12,32 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-.formMedic {
-    width: 100%;
-    height: 90px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
 }
 
-.dateOfCare {
-    width: 15%;
-    margin: 5px;
+.heading {
+    color: #F27B35;
+}
+
+.formMedicEdit {
+    background-color: firebrick;
+}
+
+.formMedic {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 2px;
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.dateCare {
+    margin-bottom: 5px;
+
+    margin-right: 5px;
 }
 
 .needInternationSelect {
@@ -37,19 +52,27 @@
     margin-top: 7px;
     margin-right: 5px;
     margin-left: 5px;
+
 }
 
 .needMedicamentSelect {
     width: 20%;
-    margin-top: 6px;  
+    margin-top: 6px;
     margin-right: 5px;
     margin-left: 5px;
 }
+
 .inputCost {
     width: 15%;
     margin-top: 7px;
     margin-right: 5px;
     margin-left: 5px;
+
+}
+
+.inputCost .inputC {
+
+    width: 100%;
 }
 
 .diagnostic {
@@ -62,5 +85,13 @@
     border: none;
     height: 40px;
     font-weight: bold;
-    color: gray;
+    color: #FFFFFF;
+    background-color: #F27B35;
+
+}
+
+.formMedicEdit {
+    display:flex;
+    width: 100%;
+    background-color: aqua;
 }

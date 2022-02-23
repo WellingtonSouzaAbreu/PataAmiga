@@ -1,13 +1,12 @@
 .container {
     width: 100%;
  }
- 
-
  .containerForm {
      width: 100%;
      display: flex;
      flex-direction: column;
  }
+
  .formMedic {
      width: 100%;
      height: 90px;
@@ -23,19 +22,14 @@
     margin: 5px;
    
  }
- 
 
  .dateOfCare {
     width: 100%;
-  
- 
  }
  
  .needInternationSelect {
      width: 100%;
      margin-top: 6px;
-     
-   
  }
  
  .medicName {
@@ -48,7 +42,6 @@
  }
  .inputCost {
      width: 20%;
-   
  }
  
  .diagnostic {

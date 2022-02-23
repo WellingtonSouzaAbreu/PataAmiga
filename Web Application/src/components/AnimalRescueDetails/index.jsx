@@ -113,7 +113,6 @@ class AnimalDetailsRescue extends Component {
             <div className={styles.container}>
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.box}>
-                    {/* <span>Informações do Resgate</span> */} {/* TODO achei redundante */}
                     <div className={classNames(styles.dateOfRescueMoved)}>
                         <div className={styles.dataRescue}>
                             <CustomDatePicker label={'Data do Resgate'} value={this.state.dateOfRescue}

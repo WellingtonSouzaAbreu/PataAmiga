@@ -6,8 +6,11 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
 
 import { baseApiUrl } from '../../services/baseApiUrl';
 import CustomSnackbar from './../CustomSnackbar'
@@ -38,7 +41,9 @@ const initialState = {
 
 	snackbarVisible: false,
 	snackbarMessage: '',
-	snackbarType: 'info'
+	snackbarType: 'info',
+
+	accordionExtended: false
 }
 
 class AddAnimal extends Component {
@@ -187,7 +192,7 @@ class AddAnimal extends Component {
 
 		if (valid.reduce((total, current) => total && current, true)) {
 			this.toggleSnackbarVisibility(true, `Animal cadastrado com sucesso!`, 'success')
-			this.props.onRefresh()
+			this.setState({ ...initialState }, this.props.onRefresh)
 		} else {
 			this.toggleSnackbarVisibility(true, `Erro ao cadastrar animal!`, 'error')
 		}
@@ -204,51 +209,72 @@ class AddAnimal extends Component {
 	render() {
 		let steps = ['Informações do animal']
 
-		if(!this.props.edit ){
+		if (!this.props.edit) {
 			steps.push('Dados veterinários', 'Resgate')
 		}
 
 		return (
-			<div className={styles.root}>
-				<CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-				<Stepper activeStep={this.state.activeStep} orientation="vertical">
-					{steps.map((label, index) => (
-						<Step key={label}>
-							<StepLabel>{label}</StepLabel>
-							<StepContent>
-								<Typography>{this.getStepContent(index)}</Typography>
-								<div className={styles.actionsContainer}>
-									<div>
-										<Button
-											disabled={this.state.activeStep === 0}
-											onClick={this.backStep}
-											className={styles.button}
-										>
-											Anterior
-										</Button>
-										<Button
-											variant="contained"
-											color="primary"
-											onClick={this.state.activeStep === steps.length - 1 ? this.saveAnimal : this.nextStep}
-											className={styles.button}
-										>
-											{this.state.activeStep === steps.length - 1 ? 'Finalizar' : 'Proximo'}
-										</Button>
-									</div>
-								</div>
-							</StepContent>
-						</Step>
-					))}
-				</Stepper>
-				{this.state.activeStep === steps.length && (
-					<Paper square elevation={0} className={styles.resetContainer}>
-						<Typography>Todas as informações foram inseridas. O animal foi registrado no sistema.</Typography>
-						<Button onClick={this.resetSteps} className={styles.button}>
-							Recomeçar
-						</Button>
-					</Paper>
-				)}
-			</div>
+			<Accordion
+				className={styles.accordion}
+				elevation={0}
+				defaultExpanded={this.props.edit ? true : false}
+				expanded={this.props.edit || this.state.accordionExtended}
+			>
+				<AccordionSummary
+					expandIcon={<i className='bx bx-down-arrow-alt'></i>}
+					aria-controls="panel1a-content"
+					id="panel1a-header"
+					onClick={() => this.setState({ accordionExtended: !this.state.accordionExtended })}
+				>
+					<Typography className={styles.heading}>
+						<i class="far fa-plus-square"></i>
+						<span className={styles.spanAdjust}>{this.props.edit ? 'Editar Animal': 'Cadastrar Animal'}</span>
+					</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<div className={styles.root}>
+						<CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
+						<Stepper activeStep={this.state.activeStep} orientation="vertical">
+							{steps.map((label, index) => (
+								<Step key={label}>
+									<StepLabel>{label}</StepLabel>
+									<StepContent>
+										<Typography>{this.getStepContent(index)}</Typography>
+										<div className={styles.actionsContainer}>
+											<div>
+												<Button
+													disabled={this.state.activeStep === 0}
+													onClick={this.backStep}
+													className={styles.button}
+												>
+													Anterior
+												</Button>
+												<Button
+													variant="contained"
+													color="primary"
+													onClick={this.state.activeStep === steps.length - 1 ? this.saveAnimal : this.nextStep}
+													className={styles.button}
+												>
+													{this.state.activeStep === steps.length - 1 ? 'Finalizar' : 'Proximo'}
+												</Button>
+											</div>
+										</div>
+									</StepContent>
+								</Step>
+							))}
+						</Stepper>
+						{this.state.activeStep === steps.length && (
+							<Paper square elevation={0} className={styles.resetContainer}>
+								<Typography>Todas as informações foram inseridas. O animal foi registrado no sistema.</Typography>
+								<Button onClick={this.resetSteps} className={styles.button}>
+									Recomeçar
+								</Button>
+							</Paper>
+						)}
+					</div>
+				</AccordionDetails>
+			</Accordion>
+
 		);
 	}
 }

@@ -4,6 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { MDBCheckbox } from 'mdb-react-ui-kit';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { DropzoneArea } from 'material-ui-dropzone'
 
@@ -98,7 +99,7 @@ export default function StepInfoAnimal(props) {
 
 		if (!!files.length) {
 			props.onSelectPicture(pictures)
-		} 
+		}
 		return
 	}
 
@@ -106,39 +107,38 @@ export default function StepInfoAnimal(props) {
 
 	return (
 		<div className={classNames(styles.container)}>
-			<div className={styles.formCreate}>
-				<div className={styles.containerForm}>
-					<div className={styles.sectionDiv}>
+			<div className={classNames(styles.formCreate, props.edit && styles.formCreateEdit)}>
+				<div className={classNames(styles.containerForm, props.edit && styles.containerFormEdit)}>
+					<div className={classNames(styles.sectionDiv, props.edit && styles.sectionDivEdit)}>
 						<MDBInput label="Nome provisório" className={styles.inputs} outline
 							value={props.animal.name} onChange={(e) => props.onChange({ name: e.target.value })} />
 						<MDBInput label="Cor" className={styles.inputs} outline
 							value={props.animal.color} onChange={(e) => props.onChange({ color: e.target.value })} />
-
-						{/* TODO Estilizar checkbox (Não entendi esse componente, parece bugado)*/}
-						<MDBInput label="Disponível para adoção?" type="checkbox" id=""
-							checked={props.animal.availableForAdoption} onChange={(e) => props.onChange({ availableForAdoption: e.target.checked })}
+						<CustomDatePicker label={'Nascimento aproximado'} className={styles.inputs}
+							value={props.animal.dateOfBirth} onChangeDate={props.onChangeDate}
 						/>
-
 					</div>
-					<div className={styles.sectionDiv}>
+
+					<div className={classNames(!props.edit && styles.sectionDiv)}>
 						<MDBInput label="Especie" className={styles.inputs} outline
 							value={props.animal.specie} onChange={(e) => props.onChange({ specie: e.target.value })} />
 						<MDBInput label="Raça" className={styles.inputs} outline
 							value={props.animal.breed} onChange={(e) => props.onChange({ breed: e.target.value })} />
-						<CustomDatePicker label={'Idade Aproximada'} className={styles.inputs}
-							value={props.animal.dateOfBirth} onChangeDate={props.onChangeDate}
-						/>
+						<div className={styles.check}>
+							<MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Disponível para adoção' checked={props.animal.availableForAdoption} onChange={(e) => props.onChange({ availableForAdoption: e.target.checked })} />
+						</div>
 					</div>
-					<div className={styles.sectionDiv}>
+
+					<div className={classNames(!props.edit && styles.sectionDiv)}>
 						<div className={styles.castredSex}>
 							<SelectAnimalSex />
 							<SelectCastrated />
 						</div>
-						<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput} // TODO Este campo não está com rolagem
+						<MDBInput type="textarea" label="Descrição" className={classNames(styles.descriptionInput, props.edit && styles.descriptionInputEdit)}
 							value={props.animal.othersCharacteristics} onChange={(e) => props.onChange({ othersCharacteristics: e.target.value })}
 						/>
 					</div>
-					<div className={styles.sectionUploadSubmit}>
+					<div className={classNames(styles.sectionUploadSubmit, props.edit && styles.sectionUploadSubmitEdit)}>
 						<UploadAnimalImages />
 					</div>
 				</div>

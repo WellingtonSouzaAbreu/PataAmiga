@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) =>
 			border: 'none',
 			borderRadius: 5,
 			boxShadow: theme.shadows[5],
-			width: '60%',
-			height: '75vh',
+			width: '80%',
+			height: '80vh',
 			overflowY: 'auto'
 		},
 	}),
@@ -45,7 +45,7 @@ export default function AnimalDetails(props) {
 	return (
 		<div>
 			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
-				<i className='bx bxs-detail' ></i>
+				<i className='fas fa-info' ></i>
 			</IconButton>
 
 			<Modal

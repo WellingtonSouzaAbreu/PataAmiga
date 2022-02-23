@@ -25,69 +25,78 @@ class CollaboratorsTable extends Component {
             <MUIDataTable
                 title={"Lista de Voluntários"}
                 data={[...this.props.collaborators]}
-                columns={[
-                    {
-                        name: "id",
-                        label: "ID",
-                        options: {
-                            filter: false,
-                            sort: false,
-                            display: true // TODO false
-                        }
-                    },
-                    {
-                        name: "name",
-                        label: "Nome",
-                        options: {
-                            filter: true,
-                            sort: true,
-                            searchable: false
-                        }
-                    },
-                    {
-                        name: "dateOfBirth",
-                        label: "Nascimento",
-                        options: {
-                            filter: true,
-                            sort: false,
-                            searchable: false,
-                            customBodyRender: dateOfBirth => formatDate(dateOfBirth)
-
-                        }
-                    },
-                    {
-                        name: "city",
-                        label: "Cidade",
-                        options: {
-                            filter: true,
-                            sort: false,
-                            searchable: false
-                        }
-                    },
-                    {
-                        name: "cellNumber",
-                        label: "Telefone",
-                        options: {
-                            filter: true,
-                            sort: false,
-                            searchable: false
-                        }
-                    },
-
-                    {
-                        name: "edit",
-                        label: "Editar",
-                        options: {
-                            filter: true,
-                            sort: false,
-                            searchable: false,
-                            customBodyRender: (value, tableMeta) => {
-                                const index = tableMeta.rowIndex
-                                return <CollaboratorEditModal collaborator={this.props.collaborators[index]} edit={true} onRefresh={this.props.onRefresh} />
+                downloadOptions={{
+                    filename: 'Colaboradores.csv',
+                    separator: ',',
+                    filterOptions: {
+                        useDisplayedColumnsOnly: true,
+                        useDisplayedRowsOnly: false,
+                    }
+                }}
+                columns={
+                    [
+                        {
+                            name: "id",
+                            label: "ID",
+                            options: {
+                                filter: false,
+                                sort: false,
+                                display: true // TODO false
                             }
-                        }
-                    },
-                ]
+                        },
+                        {
+                            name: "name",
+                            label: "Nome",
+                            options: {
+                                filter: true,
+                                sort: true,
+                                searchable: false
+                            }
+                        },
+                        {
+                            name: "dateOfBirth",
+                            label: "Nascimento",
+                            options: {
+                                filter: true,
+                                sort: false,
+                                searchable: false,
+                                customBodyRender: dateOfBirth => formatDate(dateOfBirth)
+
+                            }
+                        },
+                        {
+                            name: "city",
+                            label: "Cidade",
+                            options: {
+                                filter: true,
+                                sort: false,
+                                searchable: false
+                            }
+                        },
+                        {
+                            name: "cellNumber",
+                            label: "Telefone",
+                            options: {
+                                filter: true,
+                                sort: false,
+                                searchable: false
+                            }
+                        },
+
+                        {
+                            name: "edit",
+                            label: "Editar",
+                            options: {
+                                filter: true,
+                                sort: false,
+                                searchable: false,
+                                customBodyRender: (value, tableMeta) => {
+                                    const index = tableMeta.rowIndex
+                                    return <CollaboratorEditModal collaborator={this.props.collaborators[index]} edit={true} onRefresh={this.props.onRefresh} />
+                                }
+                            }
+                        },
+                    ]
                 }
                 options={{
                     filterType: 'checkbox',

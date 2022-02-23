@@ -6,16 +6,12 @@
     padding: 15px;
     flex-direction: column;
     height: 45vh;
-
-
-
 }
 
 .andressLocale {
     width: 100%;
     display: flex;
     flex-direction: row;
-    
 }
 
 .dateOfRescueMoved {
@@ -23,27 +19,19 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    
 }
 
 .dateOfRescueMoved .dataRescue {
-
-    margin-right: 15px;
-    
+margin-right: 15px;
 }
 
 .dateOfRescueMoved .movedToCanil {
- 
     width: 72%;
 }
-
-
-
 
 .andressLocale .infoAndress {
     width: 60%;
     margin-right: 15px;
-    
 }
 
 .box {
@@ -76,8 +64,6 @@
     width: 100%;
 }
 
-
-
 .container .box .policeSuport .selectPoliceSuport {
     width: 30%;
     margin-right: 15px;
@@ -92,8 +78,10 @@
 }
 
 .btContainer .btEdit {
-    width: 20%;
+    width: 100%;
     height: 40px;
     border: none;
-    background-color: gray;
+    background-color: #F27B35;
+    color: white;
 }
+

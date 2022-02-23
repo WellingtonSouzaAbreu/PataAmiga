@@ -30,7 +30,7 @@ export default function DetailsAnimal(props) {
 		<div className={styles.container}>
 			<div className={styles.imgsDescription}>
 				<div className={styles.containerCarousel} >
-					<MDBCarousel showIndicators showControls className={styles.carouselImages}>
+					<MDBCarousel showIndicators showControls fade className={styles.carouselImages}>
 						<MDBCarouselInner>
 							{!!props.animal.imagesURL ? renderAnimalImages() : null}
 						</MDBCarouselInner>
@@ -60,10 +60,6 @@ export default function DetailsAnimal(props) {
 					</div>
 					<div>
 						<div className={styles.groupString}>
-							<strong>Apelido</strong>
-							<span>{props.animal.surname}</span>
-						</div>
-						<div className={styles.groupString}>
 							<strong>Raça</strong>
 							<span>{props.animal.breed}</span>
 						</div>
@@ -81,15 +77,15 @@ export default function DetailsAnimal(props) {
 				<div className={styles.groupIndicators}>
 					<div className={styles.stringIndicators}>
 						<strong>Adotado?</strong>
-						<button disabled>{props.animal.extraInfo.adopted ? 'Sim' : 'Não'}</button>
+						<button style={{ color: props.animal.extraInfo.adopted ? 'green' : 'red' }}>{props.animal.extraInfo.adopted ? 'Sim' : 'Não'}</button>
 					</div>
 					<div className={styles.stringIndicators}>
 						<strong>Lar temporário?</strong>
-						<button>{props.animal.extraInfo.temporaryHome ? 'Sim' : 'Não'}</button>
+						<button style={{ color: props.animal.extraInfo.temporaryHome ? 'green' : 'red' }}>{props.animal.extraInfo.temporaryHome ? 'Sim' : 'Não'}</button>
 					</div>
 					<div className={styles.stringIndicators}>
 						<strong>Disponível para adoção?</strong>
-						<button disabled>{props.animal.extraInfo.availableToAdoption ? 'Sim' : 'Não'}</button>
+						<button style={{ color:  props.animal.extraInfo.availableToAdoption ? 'green' : 'red' }}>{props.animal.extraInfo.availableToAdoption ? 'Sim' : 'Não'}</button>
 					</div>
 				</div>
 			</div>

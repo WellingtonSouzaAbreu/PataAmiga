@@ -49,33 +49,22 @@ class StepAnimalRescue extends Component {
     render() {
         return (
             <div className={styles.container} >
-                <CustomDatePicker label={'Data de resgate'} value={this.props.rescue.dateOfRescue}
-                    onChangeDate={this.props.onChangeDate}
-                />
-                <div>
-                    <div className={styles.localeRescue}>
-                        <div>
-                            <MDBInput label="Endereço" className={styles.andress} outline
-                                value={this.props.rescue.address} onChange={(e) => this.props.onChange({ address: e.target.value })}
-                            />
-                        </div>
-                        <div>
-                            <MDBInput label="Local" className={styles.andress} outline
-                                value={this.props.rescue.locale} onChange={(e) => this.props.onChange({ locale: e.target.value })}
-                            />
-                        </div>
-                    </div>
-                    <div className={styles.policeSupport}>
-                        <div>
-                            {this.selectPoliceSupport()}
-                        </div>
-                        <div>
-                            <MDBInput label="Número do BO" className={styles.boNumber} outline
-                                value={this.props.rescue.BONumber} onChange={(e) => this.props.onChange({ BONumber: e.target.value })}
-                            />
-                        </div>
-                    </div>
-                    <div className={styles.dateRescue}>
+                <div className={styles.group}>
+                    <CustomDatePicker label={'Data de resgate'} value={this.props.rescue.dateOfRescue}
+                        onChangeDate={this.props.onChangeDate}
+                    />
+
+                    <div>
+                        <MDBInput label="Endereço" className={styles.andress} outline
+                            value={this.props.rescue.address} onChange={(e) => this.props.onChange({ address: e.target.value })}
+                        />
+                        <MDBInput label="Local" className={styles.andress} outline
+                            value={this.props.rescue.locale} onChange={(e) => this.props.onChange({ locale: e.target.value })}
+                        />
+                        {this.selectPoliceSupport()}
+                        <MDBInput label="Número do BO" className={styles.boNumber} outline
+                            value={this.props.rescue.BONumber} onChange={(e) => this.props.onChange({ BONumber: e.target.value })}
+                        />
                         {this.selectForwardedToKennel()}
                     </div>
                 </div>

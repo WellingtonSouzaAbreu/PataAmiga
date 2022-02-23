@@ -211,7 +211,7 @@ class AddAdoption extends Component {
                     <Accordion
                         elevation={0}
                         defaultExpanded={this.props.edit ? true : false}
-                        expanded={this.state.accordionExtended}
+                        expanded={this.props.edit || this.state.accordionExtended}
                         className={classNames(styles.acordion)}
                     >
                         <AccordionSummary
@@ -222,7 +222,7 @@ class AddAdoption extends Component {
                         >
                             <Typography className={styles.heading} >
                                 <i class="far fa-plus-square"></i>
-                                <span className={styles.spanAdjust}>{this.props.edit ? 'Editar adoção' : 'Registrar adoção'}   </span>
+                                <span className={styles.spanAdjust}>{this.props.edit ? 'Editar adoção' : 'Cadastrar adoção'}   </span>
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails >

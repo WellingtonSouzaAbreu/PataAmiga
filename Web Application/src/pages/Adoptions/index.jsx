@@ -103,7 +103,7 @@ class Adoptions extends Component {
             <div className={styles.container} >
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.pageName} onClick={this.loadAdoptions}>
-                    <span>ADOÇÕES</span>
+                    <span className={styles.title}>ADOÇÕES</span>
                 </div>
                 <AddAdoption onRefresh={this.loadAdoptions} />
                 <AdoptionsTable adoptions={this.state.adoptions} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}

@@ -65,7 +65,7 @@ export default function Main() {
 					<li>
 						<Link to="/colaboradores">
 							<i class="fas fa-users"></i>
-							<span className={styles.linksName}>Voluntários</span>
+							<span className={styles.linksName}>Colaboradores</span>
 						</Link>
 
 					</li>
