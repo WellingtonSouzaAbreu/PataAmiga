@@ -4,24 +4,35 @@
 }
 
 .heading {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f27b35;
+    color:  #F27B35;
+    font-weight: 400;
+    padding: 5px;
+    width: 52%;
+ 
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
     
 }
 
 .spanAdjust {
-    margin-left: 15px;
-    font-weight: bold;
+    margin-left: 10px;
 }
 
 .formCreate {
     display: flex;
-    width: 50%;
-    flex-direction: row;
+    width: 100%;
+    flex-direction: column;
     justify-content: space-around; 
+    
 }
 
+.containerInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .formCreateEdit {
     display: flex;
     width: 100%;
@@ -30,16 +41,16 @@
 }
 
 .nameDescription {
-    width: 48%;
+    width: 49%;
 }
 
 .locationEvent {
-    width: 48%;
+    width: 49%;
 
 }
 
 .confirmButton {
-    width: 50%;
+    width: 100%;
     display: flex;
     align-items: flex-end;
     padding-bottom: 20px;
@@ -83,4 +94,9 @@
     display: flex;
     
     flex-direction: column;
+}
+
+.containerInputEdit {
+    width: 100%;
+   
 }

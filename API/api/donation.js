@@ -110,6 +110,8 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
+        console.log(donation.id)
+
         if (!donation.id) {
             await app.db('donations')
                 .insert(donation)

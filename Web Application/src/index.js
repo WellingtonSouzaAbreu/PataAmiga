@@ -9,12 +9,15 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 
 import reportWebVitals from './reportWebVitals';
-import Main from './pages/Main/index.jsx';
+import Auth from './pages/Auth';
+import AuthRouter from './config/authRouter.jsx'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Main />
+      <AuthRouter>
+        <Auth />
+      </AuthRouter>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

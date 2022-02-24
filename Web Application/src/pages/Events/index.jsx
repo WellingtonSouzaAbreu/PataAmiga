@@ -55,9 +55,11 @@ class Events extends Component {
 
     deletePublication = async (idPublication) => {
         await axios.delete(`${baseApiUrl}/publication/${idPublication}`) // Array de id
-            .then(_ => {
-                this.toggleSnackbarVisibility(true, `Publicaç${idPublication.length > 1 ? 'ões' : ''} deletada${idPublication.length > 1 ? 's' : ''} com sucesso!`, 'success')
-                this.loadPublications(true)
+            .then(async _ => {
+                 this.toggleSnackbarVisibility(true, `Publicaç${idPublication.length > 1 ? 'ões' : 'ão'} deletada${idPublication.length > 1 ? 's' : ''} com sucesso!`, 'success')
+                setTimeout(() => {
+                    this.loadPublications(true)
+                }, 1000)
             })
             .catch(err => {
                 console.log(err)
@@ -102,8 +104,8 @@ class Events extends Component {
         return (
             <div className={styles.container}>
                  <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-                <div className={styles.pageName}>
-                    <span>PUBLICAÇÕES</span>
+                <div className={styles.pageName} onClick={this.loadPublications}>
+                    <span className={styles.title}>PUBLICAÇÕES</span>
                 </div>
                 <div className={styles.addEvent}>
                     <AddEvent onRefresh={this.loadPublications} />

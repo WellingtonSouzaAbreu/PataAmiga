@@ -40,6 +40,8 @@ const initialState = {
 	snackbarMessage: '',
 	snackbarType: 'info',
 
+	accordionExtended: false,
+
 	editMode: false
 }
 
@@ -106,7 +108,7 @@ class AddEvent extends Component {
 				reference: this.state.reference,
 				publicationType: this.state.publicationType,
 				startDateTime: this.state.startDateTime,
-				endDateTime: this.state.endDateTime
+				endDateTime: this.state.endDateTime,
 			}
 		} else {
 			return {
@@ -116,7 +118,7 @@ class AddEvent extends Component {
 				reasonRescue: this.state.reasonRescue,
 				publicationType: this.state.publicationType,
 				startDateTime: this.state.startDateTime,
-				endDateTime: this.state.endDateTime
+				endDateTime: this.state.endDateTime,
 			}
 		}
 	}
@@ -142,8 +144,8 @@ class AddEvent extends Component {
 		})
 
 		if (valid.reduce((total, current) => total && current, true)) {
-			this.toggleSnackbarVisibility(true, `Publicação cadastrada com sucesso!`, 'success')
-			this.props.onRefresh(true)
+			this.toggleSnackbarVisibility(true, `Publicação ${this.props.edit ? 'atualizada' : 'cadastrada'} com sucesso!`, 'success')
+			this.setState({...initialState}, await this.props.onRefresh(true))
 		} else {
 			this.toggleSnackbarVisibility(true, `Erro ao cadastrar publicação!`, 'error')
 		}
@@ -183,106 +185,112 @@ class AddEvent extends Component {
 			<div className={styles.container} >
 				<CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
 				<Accordion
+					className={styles.accordion}
+					elevation={0}
 					defaultExpanded={this.props.edit ? true : false}
+					expanded={this.props.edit || this.state.accordionExtended}
 				>
 					<AccordionSummary
 						expandIcon={<i className='bx bx-down-arrow-alt'></i>}
 						aria-controls="panel1a-content"
 						id="panel1a-header"
+						onClick={() => this.setState({ accordionExtended: !this.state.accordionExtended })}
 					>
 						<Typography className={styles.heading}>
 							<i className={this.props.edit ? 'bx bxs-edit' : 'bx bxs-layer-plus'}></i>
 							<span className={styles.spanAdjust}>{this.props.edit ? 'Editar publicação' : 'Cadastrar publicação'}</span>
 						</Typography>
 					</AccordionSummary>
-					<AccordionDetails className={classNames(styles.containerForm, this.props.edit && styles.containerFormEdit)}>
-						<div className={classNames(styles.formCreate, this.props.edit && styles.formCreateEdit)}>
-							<div className={styles.nameDescription}>
-								<FormControl className={styles.fullWidthAdjsut} >
-									<InputLabel id="demo-simple-select-helper-label">Tipo de publicação</InputLabel>
-									<Select
-										labelId="demo-simple-select-helper-label"
-										id="demo-simple-select-helper"
-										value={this.state.publicationType}
-										onChange={(e) => this.setState({ ...initialState, publicationType: e.target.value })}
-									>
-										<MenuItem value=""></MenuItem>
-										<MenuItem value={'event'}>Evento</MenuItem>
-										<MenuItem value={'done'}>História de adoção</MenuItem>
-									</Select>
-									<FormHelperText>Selecione uma opção</FormHelperText>
-								</FormControl>
+					<AccordionDetails className={classNames(styles.containerForm)}>
+						<div className={classNames(styles.formCreate)}>
+							<div className={classNames(styles.containerInput)}>
+								<div className={styles.nameDescription}>
+									<FormControl className={styles.fullWidthAdjsut} >
+										<InputLabel id="demo-simple-select-helper-label">Tipo de publicação</InputLabel>
+										<Select
+											labelId="demo-simple-select-helper-label"
+											id="demo-simple-select-helper"
+											value={this.state.publicationType}
+											onChange={(e) => this.setState({ ...initialState, accordionExtended: true, publicationType: e.target.value })}
+										>
+											<MenuItem value=""></MenuItem>
+											<MenuItem value={'event'}>Evento</MenuItem>
+											<MenuItem value={'done'}>História de adoção</MenuItem>
+										</Select>
+										<FormHelperText>Selecione uma opção</FormHelperText>
+									</FormControl>
 
-								{
-									this.state.publicationType === 'event'
-										? <CustomDateTimePicker
-											label={'Data e hora de início'}
-											value={this.state.startDateTime} onChangeDateTime={this.changeStartDateTime}
-										/>
-										: null
-								}
-								<CustomDateTimePicker
-									label={this.state.publicationType === 'event' ? 'Data e hora de encerramento' : 'Publicação visível até'}
-									value={this.state.endDateTime} onChangeDateTime={this.changeEndDateTime}
-								/>
-
-								<MDBInput label={this.state.publicationType === 'event' ? 'Nome do evento' : 'Nome da história'} outline
-									value={this.state.title} onChange={e => this.setState({ title: e.target.value })}
-								/>
-								{
-									this.state.publicationType === 'event'
-										? <>
-
-											<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput} outline
-												value={this.state.description} onChange={e => this.setState({ description: e.target.value })}
+									{
+										this.state.publicationType === 'event'
+											? <CustomDateTimePicker
+												label={'Data e hora de início'}
+												value={this.state.startDateTime} onChangeDateTime={this.changeStartDateTime}
 											/>
-										</>
-										: <MDBInput type="textarea" label="História do animal" className={styles.descriptionInput} outline
-											value={this.state.history} onChange={e => this.setState({ history: e.target.value })}
-										/>
-								}
+											: null
+									}
+									<CustomDateTimePicker
+										label={this.state.publicationType === 'event' ? 'Data e hora de encerramento' : 'Publicação visível até'}
+										value={this.state.endDateTime} onChangeDateTime={this.changeEndDateTime}
+									/>
+
+									<MDBInput label={this.state.publicationType === 'event' ? 'Nome do evento' : 'Nome da história'} outline
+										value={this.state.title} onChange={e => this.setState({ title: e.target.value })}
+									/>
+									{
+										this.state.publicationType === 'event'
+											? <>
+
+												<MDBInput type="textarea" label="Descrição" className={styles.descriptionInput} outline
+													value={this.state.description} onChange={e => this.setState({ description: e.target.value })}
+												/>
+											</>
+											: <MDBInput type="textarea" label="História do animal" className={styles.descriptionInput} outline
+												value={this.state.history} onChange={e => this.setState({ history: e.target.value })}
+											/>
+									}
+								</div>
+								<div className={styles.locationEvent}>
+									{
+										this.state.publicationType === 'event'
+											? <>
+												<MDBInput label="Cidade" outline
+													value={this.state.city} onChange={e => this.setState({ city: e.target.value })}
+												/>
+												<MDBInput label="Bairro" outline
+													value={this.state.district} onChange={e => this.setState({ district: e.target.value })}
+												/>
+												<MDBInput label="Endereço" outline
+													value={this.state.address} onChange={e => this.setState({ address: e.target.value })}
+												/>
+												<MDBInput label="Referência" outline
+													value={this.state.reference} onChange={e => this.setState({ reference: e.target.value })}
+												/>
+											</>
+											: <>
+												<MDBInput label="Nome do animal" outline
+													value={this.state.animalName} onChange={e => this.setState({ animalName: e.target.value })}
+												/>
+												<MDBInput label="Razão do resgate" outline
+													value={this.state.reasonRescue} onChange={e => this.setState({ reasonRescue: e.target.value })}
+												/>
+											</>
+									}
+									<DropzoneArea
+										// clearOnUnmount={true}
+										dropzoneClass={styles.boxUpload}
+										initialFiles={!this.state.pictures.length ? this.loadImagesURL() : []}
+										filesLimit={3}
+										acceptedFiles={['image/*']}
+										dropzoneText={`Carregar imagens(max: 3)`}
+										onChange={(files) => this.updateSelectedPictures(files)}
+									/>
+								</div>
 							</div>
-							<div className={styles.locationEvent}>
-								{
-									this.state.publicationType === 'event'
-										? <>
-											<MDBInput label="Cidade" outline
-												value={this.state.city} onChange={e => this.setState({ city: e.target.value })}
-											/>
-											<MDBInput label="Bairro" outline
-												value={this.state.district} onChange={e => this.setState({ district: e.target.value })}
-											/>
-											<MDBInput label="Endereço" outline
-												value={this.state.address} onChange={e => this.setState({ address: e.target.value })}
-											/>
-											<MDBInput label="Referência" outline
-												value={this.state.reference} onChange={e => this.setState({ reference: e.target.value })}
-											/>
-										</>
-										: <>
-											<MDBInput label="Nome do animal" outline
-												value={this.state.animalName} onChange={e => this.setState({ animalName: e.target.value })}
-											/>
-											<MDBInput label="Razão do resgate" outline
-												value={this.state.reasonRescue} onChange={e => this.setState({ reasonRescue: e.target.value })}
-											/>
-										</>
-								}
-								<DropzoneArea
-									// clearOnUnmount={true}
-									dropzoneClass={styles.boxUpload}
-									initialFiles={!this.state.pictures.length ? this.loadImagesURL() : []} // TODO Initial Files não funciona
-									filesLimit={3}
-									acceptedFiles={['image/*']}
-									dropzoneText={`Carregar imagens(max: 3)`}
-									onChange={(files) => this.updateSelectedPictures(files)}
-								/>
+							<div className={classNames(styles.confirmButton, this.props.edit && styles.confirmButtonEdit)}>
+								<button className={styles.buttonCreateEvent} onClick={this.savePublication}>
+									{this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
+								</button>
 							</div>
-						</div>
-						<div className={classNames(styles.confirmButton, this.props.edit && styles.confirmButtonEdit)}>
-							<button className={styles.buttonCreateEvent} onClick={this.savePublication}>
-								{this.props.edit ? 'Salvar alterações' : 'Cadastrar'}
-							</button>
 						</div>
 					</AccordionDetails>
 				</Accordion>

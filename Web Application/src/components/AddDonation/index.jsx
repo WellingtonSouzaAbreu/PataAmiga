@@ -14,6 +14,7 @@ import CustomSnackbar from '../CustomSnackbar';
 import DatePicker from './../CustomDatePicker/index.jsx'
 
 const initialState = {
+    id: null ,
     name: '',
     cellNumber: '',
     description: '',
@@ -40,6 +41,7 @@ class AddDonation extends Component {
 
     saveDonation = async () => {
         const donation = {
+            id: this.state.id,
             name: this.state.name,
             cellNumber: this.state.cellNumber,
             description: this.state.description,
