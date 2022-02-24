@@ -106,8 +106,8 @@ class Collaborators extends Component {
         return (
             <div className={styles.container} >
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-                <div className={styles.pageName}>
-                    <span onClick={this.loadCollaborators}>COLABORADORES</span>
+                <div className={styles.pageName}  onClick={this.loadCollaborators}>
+                    <span className={styles.title}>COLABORADORES</span>
                 </div>
                 <AddCollaborator onRefresh={this.loadCollaborators} />
                 <CollaboratorsTable collaborators={this.state.collaborators} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}

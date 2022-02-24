@@ -113,7 +113,7 @@ class ComplaintsTable extends Component {
 						filterType: 'checkbox',
 						filter: false,
 						print: false,
-						download: false,
+						download: true,
 						elevation: 0,
 						expandableRows: true,
 						expandableRowsHeader: true,

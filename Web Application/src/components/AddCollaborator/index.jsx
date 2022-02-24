@@ -22,7 +22,9 @@ const initialState = {
     editMode: false,
     snackbarVisible: false,
     snackbarMessage: '',
-    snackbarType: 'info'
+    snackbarType: 'info',
+
+    accordionExtended: false
 }
 
 class AddCollaborator extends Component {
@@ -72,13 +74,16 @@ class AddCollaborator extends Component {
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
                 <div className={styles.container}>
                     <Accordion
+                    className={styles.acordion}
+                    elevation={0}
                         defaultExpanded={this.props.edit ? true : false}
-                        className={styles.acordion}
+                        expanded={this.props.edit || this.state.accordionExtended}
                     >
                         <AccordionSummary
                             expandIcon={<i className='bx bx-down-arrow-alt'></i>}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
+                            onClick={() => this.setState({ accordionExtended: !this.state.accordionExtended })}
                         >
                             <Typography className={classNames(styles.heading, this.props.edit && styles.headingEdit)} >
                                 <i className='bx bxs-calendar-plus'></i>

@@ -26,12 +26,12 @@ class DonationsTable extends Component {
 				columns={[
 					{
 						name: "donationReceived",
-						label: "Recebido",
+						label:  <i className='fas fa-clipboard-check'/>,
 						options: {
 							filter: true,
 							sort: true,
 							display: true,
-							customBodyRender: (donationReceived) => donationReceived ? 'Sim' : 'Não' 
+							customBodyRender: (donationReceived) => donationReceived ? <i className='fas fa-check'/> :<i className='fas fa-times'/>  
 						}
 					},
 					{

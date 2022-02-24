@@ -1,15 +1,18 @@
-.container {
-    height: 100vh;
-    background-color: #ffffff;
-    
-}
-
 .pageName {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #F27B35;
     height: 50px;
-    color: #F27B35;
- 
+    color: #fff;
 }
+
+.title{
+    cursor: pointer;
+}
+
+.container {
+    height: 100vh;
+    background-color: #ffffff;
+}
+

@@ -66,3 +66,5 @@
 
 {"dateTime":"2022-02-03T14:32:48.863Z","file":"recoveryPassword.js","message":"Houve um erro ao enviar mensagem de recuperação para o seu email!"}
 
+{"dateTime":"2022-02-23T18:47:25.528Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+

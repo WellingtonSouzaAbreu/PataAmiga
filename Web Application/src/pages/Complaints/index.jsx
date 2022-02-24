@@ -102,8 +102,8 @@ class Report extends Component {
         return (
             <div className={styles.container}>
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-                <div className={styles.pageName}>
-                    <span onClick={this.loadComplaints}>DENÚNCIAS</span>
+                <div className={styles.pageName} onClick={this.loadComplaints}>
+                    <span className={styles.title}>DENÚNCIAS</span>
                 </div>
                 <div className={styles.containerTable}>
                     <ComplaintsTable complaints={this.state.complaints} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}

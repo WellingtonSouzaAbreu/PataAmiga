@@ -52,6 +52,9 @@ class AddDonation extends Component {
             .then(_ => {
                 this.toggleSnackbarVisibility(true, `Doação cadastrada com sucesso!`, 'success')
                 this.props.onRefresh(true)
+                if (!this.props.edit) {
+                    this.setState({ ...initialState })
+                }
             })
             .catch(err => {
                 console.log(err)

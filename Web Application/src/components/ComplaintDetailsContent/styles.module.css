@@ -38,5 +38,10 @@
 }
 
 .btnVerify {
-    background-color: coral;
+    background-color: #ff6e1f;
+    color: white;
+}
+
+.btnVerify:hover{
+    background-color: #F27B35;
 }
