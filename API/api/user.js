@@ -101,10 +101,10 @@ module.exports = app => {
             if (!idUserForUpdate) existsOrError(user.confirmPassword, 'Confirmação de senha não informada')
 
             console.log(user.password, user.confirmPassword)
-            if(!idUserForUpdate && user.password.length < 8) throw 'Senha muito curta! Ela deve ter no mínimo 8 caracteres'
+            if (!idUserForUpdate && user.password.length < 8) throw 'Senha muito curta! Ela deve ter no mínimo 8 caracteres'
             if (user.password != user.confirmPassword) throw 'Senhas não conferem'
 
-            if(user.email && !user.email.match(/\S+@\w+\.\w{2,6}(\.\w{2})?/g)) throw 'Por favor, insira um email válido!'
+            if (user.email && !user.email.match(/\S+@\w+\.\w{2,6}(\.\w{2})?/g)) throw 'Por favor, insira um email válido!'
 
             if (!idUserForUpdate) {
                 const userFromDB = await app.db('users')
@@ -155,7 +155,12 @@ module.exports = app => {
     }
 
     const validateToken = (req, res, next) => {
-        let tokenFromHeader = req.headers.authorization ? req.headers.authorization : res.status(400).send('Token não informado. Realizar login novamente pode resolver o problema')
+        let tokenFromHeader
+        if (req.headers.authorization) {
+            tokenFromHeader = req.headers.authorization.split(' ')[1]
+        } else {
+            return res.status(400).send('Token não informado. Realizar login novamente pode resolver o problema')
+        }
 
         try {
             if (tokenFromHeader) {
@@ -166,7 +171,7 @@ module.exports = app => {
         } catch (e) {
             // problema com o token
         }
-        res.status(400).send('Falha ao autenticar o token')
+        return res.status(400).send(false)
 
     }
 

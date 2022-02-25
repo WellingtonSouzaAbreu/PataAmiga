@@ -29,9 +29,11 @@ class Auth extends Component {
 
     }
 
-    setDefaultAxiosHeader = async () => {
+    setDefaultAxiosHeader = async () => { // TODO ValidateToken
         const userData = JSON.parse(localStorage.getItem('userData'))
-        axios.defaults.headers.common['Authorization'] = 'bearer ' + userData.token
+        if (userData) {
+            axios.defaults.headers.common['Authorization'] = 'bearer ' + userData.token
+        }
     }
 
     signin = async () => {
@@ -86,30 +88,28 @@ class Auth extends Component {
 
     render() {
         return (
-            <>
-                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-                <div className={styles.container}>
-                    {this.state.redirect && <Redirect to='/animais' />}
-                    <div className={styles.authCard}>
-                        <div className={styles.titleContainer}>
-                            <div className={styles.pipe}></div>
-                            <h3 className={styles.title}>Entre</h3>
-                        </div>
-                        <div className={styles.form}>
-                            <MDBInput type='text' label='Usuário' className={styles.input}
-                                value={this.state.user} onChange={(e) => this.setState({ user: e.target.value })}
-                            />
-                            <MDBInput type='password' label='Senha' className={styles.input}
-                                value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })}
-                            />
-                            <Link to='/login' >
-                                <span className={styles.forgotPassword} onClick={this.forgotPassword}>Esqueceu a senha?</span>
-                            </Link>
-                            <button className={styles.loginButton} onClick={this.signin}> Entrar</button>
-                        </div>
+            <div className={styles.container}>
+                {this.state.redirect && <Redirect to='/animais' />}
+                <div className={styles.authCard}>
+                    <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
+                    <div className={styles.titleContainer}>
+                        <div className={styles.pipe}></div>
+                        <h3 className={styles.title}>Entre</h3>
+                    </div>
+                    <div className={styles.form}>
+                        <MDBInput type='text' label='Usuário' className={styles.input}
+                            value={this.state.user} onChange={(e) => this.setState({ user: e.target.value })}
+                        />
+                        <MDBInput type='password' label='Senha' className={styles.input}
+                            value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })}
+                        />
+                        <Link to='/login' >
+                            <span className={styles.forgotPassword} onClick={this.forgotPassword}>Esqueceu a senha?</span>
+                        </Link>
+                        <button className={styles.loginButton} onClick={this.signin}> Entrar</button>
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }

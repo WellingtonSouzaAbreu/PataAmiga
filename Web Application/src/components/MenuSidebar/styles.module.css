@@ -5,29 +5,19 @@ body {
    min-height: 100%;
    display: flex;
    width: 100%;
+   justify-content: center;
 }
 
 .sidebar{
   position: relative;
   left: 0;
   top: 0;
-  min-height: 100vh;
-  min-width: 250px;
+  min-height: 100%;
+  min-width: 18vw;
   background: #F27B35;
   padding: 6px 14px;
 }
 
-.noSidebar{
-  position: relative;
-  left: 0;
-  top: 0;
-  min-height: 100vh;
-  min-width: 250px;
-  background: #F27B35;
-  padding: 6px 14px;
-  visibility: hidden;
-  width: 0;
-}
 
 .sidebar .logoDetails{
   height: 60px;
@@ -57,7 +47,7 @@ body {
   line-height: 60px;
 }
 .navList{
-  height: calc(100% - 62px);
+  height: calc(100% - 62px); /* TODO */
   
   
 }
@@ -81,7 +71,6 @@ body {
 }
 .sidebar li a:hover{
   background: #FFF;
-  
 }
 
 .sidebar li a .linksName{
@@ -104,9 +93,9 @@ body {
 }
 
 .homeSection{
-  width: calc(100vw - 250px);
+  width: 80.7vw;
   background: #fff;
-  min-height: 100vh;
+  min-height: 100%;
   position: relative;
   overflow: auto;
 }

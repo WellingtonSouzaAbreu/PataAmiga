@@ -5,6 +5,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 
+import styles from './styles.module.css'
+
 import AddCollaborator from "../AddCollaborator/index.jsx";
 
 const useStyles = makeStyles((theme) =>
@@ -47,9 +49,9 @@ export default function CollaboratorEditModal(props) {
 
 	return (
 		<div>
-			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
-                <i class='bx bxs-edit'></i>
-			</IconButton>
+			<div className={styles.icon}>
+				<i class='bx bxs-edit' onClick={handleOpen}></i>
+			</div>
 
 			<Modal
 				className={classes.modal}
@@ -63,7 +65,7 @@ export default function CollaboratorEditModal(props) {
 			>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<AddCollaborator collaborator={props.collaborator} edit={props.edit} onCloseModal={handleClose} onRefresh={props.onRefresh}/>
+						<AddCollaborator collaborator={props.collaborator} edit={props.edit} onCloseModal={handleClose} onRefresh={props.onRefresh} />
 					</div>
 				</Fade>
 			</Modal>

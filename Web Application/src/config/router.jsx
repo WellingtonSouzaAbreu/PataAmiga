@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom'
 
 import Adoptions from '../pages/Adoptions'
 import Auth from '../pages/Auth'
@@ -10,17 +10,22 @@ import Collaborators from './../pages/Collaborators'
 import Animals from './../pages/Animals'
 import TemporaryHome from './../pages/TemporaryHome'
 import Interesteds from './../pages/Interesteds'
+// import NotFound from './../pages/NotFound'
+
+import PrivateRoute from './PrivateRoute'
 
 export default props =>
-    <Switch>
-        <Route exact path="/login" component={Auth} />
-        <Route exact path="/adocoes" component={Adoptions} />
-        <Route exact path="/doacoes" component={Donations} />
-        <Route exact path="/eventos" component={Events} />
-        <Route exact path="/denuncias" component={Complaints} />
-        <Route exact path="/colaboradores" component={Collaborators} />
-        <Route exact path="/animais" component={Animals} />
-        <Route exact path="/interessados" component={Interesteds} />
-        <Route exact path="/lar-temporario" component={TemporaryHome} />
-        <Redirect from="*" to="/login" />
-    </Switch>
+    <BrowserRouter>
+        <Switch>
+            <Route exact path="/login" component={Auth} />
+            <PrivateRoute exact path="/adocoes" component={Adoptions} />
+            <PrivateRoute exact path="/doacoes" component={Donations} />
+            <PrivateRoute exact path="/eventos" component={Events} />
+            <PrivateRoute exact path="/denuncias" component={Complaints} />
+            <PrivateRoute exact path="/colaboradores" component={Collaborators} />
+            <PrivateRoute exact path="/animais" component={Animals} />
+            <PrivateRoute exact path="/interessados" component={Interesteds} />
+            <PrivateRoute exact path="/lar-temporario" component={TemporaryHome} />
+            <Redirect from="*" to="/login" />
+        </Switch>
+    </BrowserRouter>
