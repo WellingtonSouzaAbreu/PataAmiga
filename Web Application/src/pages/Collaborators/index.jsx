@@ -56,7 +56,7 @@ class Collaborators extends Component {
     deleteCollaborator = async (idCollaborator) => {
         await axios.delete(`${baseApiUrl}/collaborator/${idCollaborator}`) // Array de id
             .then(_ => {
-                this.toggleSnackbarVisibility(true, `Collaborador${idCollaborator.length > 1 ? 'es' : ''} deletado${idCollaborator.length > 1 ? 's': ''} com sucesso!`, 'success')
+                this.toggleSnackbarVisibility(true, `Collaborador${idCollaborator.length > 1 ? 'es' : ''} deletado${idCollaborator.length > 1 ? 's' : ''} com sucesso!`, 'success')
                 this.loadCollaborators(true)
             })
             .catch(err => {
@@ -106,7 +106,7 @@ class Collaborators extends Component {
         return (
             <div className={styles.container} >
                 <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
-                <div className={styles.pageName}  onClick={this.loadCollaborators}>
+                <div className={styles.pageName} onClick={this.loadCollaborators}>
                     <span className={styles.title}>COLABORADORES</span>
                 </div>
                 <AddCollaborator onRefresh={this.loadCollaborators} />

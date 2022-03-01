@@ -1,6 +1,8 @@
 const app = require('express')()
 const consign = require('consign')
-const port = 500
+const https = require('https');
+const fs = require('fs')
+const port = 443
 
 app.db = require('./config/db.js')
 
@@ -17,6 +19,13 @@ app.get('/teste', (req, res) => {
     res.send('Conexão estabelecida')
 })
 
-app.listen(port, () => {
-    console.log(`Server running in port ${port}`)
+const options = {
+    key: fs.readFileSync('certificate.key'),
+    cert: fs.readFileSync('certificate.crt')
+};
+
+console.log(options)
+
+https.createServer(options, app).listen(port, () => {
+    console.log(`Server running in port ...${port}`)
 })

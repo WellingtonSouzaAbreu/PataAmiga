@@ -1,46 +1,11 @@
-import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom'
 
 import styles from './styles.module.css'
 import axios from 'axios'
 
-import { baseApiUrl } from '../../services/baseApiUrl.js'
-
 export default function Main(props) {
 
-	const [redirect, setRedirect] = useState(false)
-	const [logged, setLogged] = useState(false)
-
-	const routeSelected = async (e, route) => {
-		console.log(route)
-		if (route != '/login') {
-			console.log(axios.defaults.headers.common['Authorization'])
-			const validToken = await axios.post(`${baseApiUrl}/validate-token`)
-				.then(res => res.data)
-				.catch(err => console.log(err))
-
-			console.log(validToken)
-			if (validToken) {
-				console.log('Token VÀLIDO!')
-				setLogged(true)
-				return
-			} else {
-				console.log(redirect)
-				console.log('Token INVÀLIDO!')
-				redirectToLogin()
-				setLogged(false)
-				return null
-			}
-		}
-	}
-
-	const redirectToLogin = () => {
-		 setRedirect(true)
-		 setTimeout(() => {
-			setRedirect(false)
-		 },500)
-		 return
-	}
 
 	const onShowLogin = () => {
 		axios.defaults.headers.common['Authorization'] = ''
@@ -49,7 +14,6 @@ export default function Main(props) {
 
 	return (
 		<body>
-			{redirect && <Redirect to='/login' />}
 			<div className={styles.sidebar}>
 				<div className={styles.logoDetails}>
 					<i class="fas fa-paw"></i>
@@ -57,7 +21,7 @@ export default function Main(props) {
 				</div>
 				<ul className={styles.navList} >
 					<li >
-						<Link to="/adocoes" tabindex="-1" onClick={(e) => routeSelected(e, '/adocoes')}>
+						<Link to="/adocoes" tabindex="-1" >
 							<i class="fas fa-heart" ></i>
 							<span className={styles.linksName} >Adoção</span>
 						</Link>

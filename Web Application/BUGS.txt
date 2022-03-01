@@ -1,0 +1,36 @@
+GERAL
+* Linhas da tabela piscando ao deletar
+* Não está responsivo
+
+ADOÇÕES
+* Acompanhamento sem estilo
+* Nome do guardião não some quando retorna o initialState
+* Nome do guardião não aparece ao abrir o editModal
+
+MENU
+* Indicar qual aba do menu está selecionada
+
+ANIMAL
+* Reorganizar addAnimal(primeira aba)
+* Rolagem da descrição do animal não funcionando
+
+DONATION
+* Detalhes(descrição) sem rolagem
+
+EVENTS
+* InitialFiles do browser não funciona ao editar imagens
+
+MENU SIDEBAR
+* Em alguns componentes a altura fica infinita
+
+
+
+
+
+
+
+
+-----------------------------
+Questões a serem respondidas:
+* Qual o valor de Elevation dos componentes Add?
+* Manter as linhas das tabelas estreitas ou espessas?
