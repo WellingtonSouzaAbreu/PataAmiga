@@ -7,7 +7,8 @@ import styles from './styles.module.css'
 
 import { formatDate } from './../../common/commonFunctions.js'
 
-import VeterinaryCareEditModal from './../VeterinaryCareEditModal'
+import CustomModal from './../CustomModal/index.jsx'
+import AddVeterinaryCare from './../AddVeterinaryCare/index.jsx'
 
 export default function VeterinaryCareTable(props) {
     const renderAnamnese = (anamnese) => {
@@ -99,10 +100,14 @@ export default function VeterinaryCareTable(props) {
                     options: {
                         filter: false,
                         sort: false,
-                        customBodyRender: (value, tableMeta) => {
+                        customBodyRender: (_, tableMeta) => {
                             const index = tableMeta.rowIndex
                             console.log(props.veterinaryCares)
-                            return <VeterinaryCareEditModal edit={true} veterinaryCare={props.veterinaryCares[index]} onRefresh={props.onRefresh} />
+                            return (
+                                <CustomModal width={'80%'} height={'55%'} icon={'fas fa-edit'}>
+                                    <AddVeterinaryCare  edit={true} veterinaryCare={props.veterinaryCares[index]} onRefresh={props.onRefresh}/>
+                                </CustomModal>
+                            )
                         }
                     }
                 }

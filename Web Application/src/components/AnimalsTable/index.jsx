@@ -1,8 +1,9 @@
 import { Component } from 'react'
 import MUIDataTable from "mui-datatables";
 
-import AnimalDetails from "./../AnimalDetails/index.jsx";
-import AnimalEditModal from './../AnimalEditModal/index.jsx'
+import CustomModal from './../CustomModal'
+import AddAnimal from './../AddAnimal'
+import AnimalDetailsContent from "./../AnimalDetailsContent/index.jsx";
 
 const initialState = {}
 
@@ -87,7 +88,11 @@ class AnimalsTable extends Component {
                         options: {
                             filter: true,
                             sort: false,
-                            customBodyRender: (value, tableMeta) => <AnimalDetails idAnimal={tableMeta.rowData[0]} /> // Id do registro
+                            customBodyRender: (_, tableMeta) => (
+                                <CustomModal width={'80%'} height={'80%'} icon={'fas fa-info'}>
+                                    <AnimalDetailsContent idAnimal={tableMeta.rowData[0]} /> {/* Id do registro */}
+                                </CustomModal>
+                            )
                         }
                     },
                     {
@@ -96,9 +101,13 @@ class AnimalsTable extends Component {
                         options: {
                             filter: true,
                             sort: false,
-                            customBodyRender: (value, tableMeta) => {
+                            customBodyRender: (_, tableMeta) => {
                                 const index = tableMeta.rowIndex
-                                return <AnimalEditModal idAnimal={this.props.animals[index].id} edit={true} onRefresh={this.props.onRefresh}/> 
+                                return (
+                                    <CustomModal width={'80%'} height={'80%'} icon={'fas fa-edit'}>
+                                        <AddAnimal idAnimal={this.props.animals[index].id} edit={true} onRefresh={this.props.onRefresh} />
+                                    </CustomModal>
+                                )
                             }
                         }
                     },

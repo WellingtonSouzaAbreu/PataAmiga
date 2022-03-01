@@ -24,12 +24,6 @@ MENU SIDEBAR
 * Em alguns componentes a altura não fica infinita(Denúncias)
 
 
-
-
-
-
-
-
 -----------------------------
 Questões a serem respondidas:
 * Qual o valor de Elevation dos componentes Add?

@@ -53,9 +53,9 @@ export default function InterestedModalDetails(props) {
 
 	return (
 		<div>
-			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
+			<div onClick={handleOpen}>
 				<i class='fas fa-edit'></i>
-			</IconButton>
+			</div>
 
 			<Modal
 				className={styles.modal}

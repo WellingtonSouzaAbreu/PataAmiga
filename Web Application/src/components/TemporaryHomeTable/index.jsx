@@ -14,7 +14,8 @@ import styles from './styles.module.css'
 
 import { baseApiUrl } from './../../services/baseApiUrl.js'
 import { formatDate } from './../../common/commonFunctions.js'
-import TemporaryHomeEditModal from './../TemporaryHomeEditModal'
+import CustomModal from '../CustomModal';
+import AddTemporaryHome from '../AddTemporaryHome';
 
 class TemporaryHomeTable extends Component {
 	renderAnimalDetails(temporaryHome) {
@@ -137,7 +138,11 @@ class TemporaryHomeTable extends Component {
 							sort: false,
 							customBodyRender: (value, tableMeta) => {
 								const index = tableMeta.rowIndex
-								return <TemporaryHomeEditModal temporaryHome={this.props.temporaryHomes[index]} edit={true} onRefresh={this.props.onRefresh} />
+								return (
+									<CustomModal width={'50%'} height={'50%'} icon={'fas fa-edit'}>
+										<AddTemporaryHome  temporaryHome={this.props.temporaryHomes[index]} edit={true} onRefresh={this.props.onRefresh}/>
+									</CustomModal>
+								)
 							}
 						}
 					},

@@ -41,12 +41,12 @@ export default function AnimalDetails(props) {
 		setVisibility(false);
 	};
 
-
+	
 	return (
 		<div>
-			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
-				<i className='fas fa-info' ></i>
-			</IconButton>
+			<div onClick={handleOpen}>
+				<i className={`${props.icon}`} ></i>
+			</div>
 
 			<Modal
 				className={classes.modal}

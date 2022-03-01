@@ -4,7 +4,8 @@ import IconButton from '@material-ui/core/IconButton';
 
 import { formatDate } from '../../common/commonFunctions.js'
 import EventDetails from "../EventDetails";
-import EventEditModal from '../EventEditModal/index.jsx';
+import CustomModal from '../CustomModal';
+import AddEvent from '../AddEvent/index.jsx';
 
 class EventTable extends Component {
 
@@ -76,7 +77,11 @@ class EventTable extends Component {
                                 sort: false,
                                 customBodyRender: (value, tableMeta) => {
                                     const index = tableMeta.rowIndex
-                                    return <EventEditModal idPublication={this.props.publications[index].id} edit={true} onRefresh={this.props.onRefresh}/>
+                                    return (
+                                        <CustomModal width={'80%'} height={'80%'} icon={'fas fa-edit'}>
+                                            <AddEvent idPublication={this.props.publications[index].id} edit={true} onRefresh={this.props.onRefresh} />
+                                        </CustomModal>
+                                    )
                                 }
                             }
                         },

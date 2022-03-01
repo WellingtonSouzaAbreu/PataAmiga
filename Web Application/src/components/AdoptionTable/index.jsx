@@ -3,8 +3,10 @@ import MUIDataTable from "mui-datatables";
 import { formatDate } from '../../common/commonFunctions.js'
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
+
+import CustomModal from './../CustomModal'
+import AddAdoption from '../AddAdoption/index.jsx';
 import AdoptionDetails from '../AdoptionDetails/index.jsx';
-import AdoptionEditModal from '../AdoptionEditModal/index.jsx';
 
 class AdoptionsTable extends Component {
 
@@ -70,7 +72,11 @@ class AdoptionsTable extends Component {
                             sort: false,
                             customBodyRender: (value, tableMeta) => {
                                 const index = tableMeta.rowIndex
-                                return < AdoptionEditModal adoption={this.props.adoptions[index]} edit={true} onRefresh={this.props.onRefresh} />
+                                return (
+                                    <CustomModal width={'50%'} height={'50%'} icon={'fas fa-edit'}>
+                                        <AddAdoption adoption = { this.props.adoptions[index] } edit = { true} onRefresh = { this.props.onRefresh } />
+                                    </CustomModal>
+                                ) 
                             }
                         }
                     }

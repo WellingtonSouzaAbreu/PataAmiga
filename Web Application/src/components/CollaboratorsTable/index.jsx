@@ -2,7 +2,8 @@ import { Component } from 'react'
 import MUIDataTable from "mui-datatables";
 
 import { formatDate } from './../../common/commonFunctions.js'
-import CollaboratorEditModal from './../../components/CollaboratorEditModal/index.jsx';
+import CustomModal from './../../components/CustomModal';
+import AddCollaborator from './../AddCollaborator'
 
 const initialState = {
 
@@ -90,9 +91,13 @@ class CollaboratorsTable extends Component {
                                 filter: true,
                                 sort: false,
                                 searchable: false,
-                                customBodyRender: (value, tableMeta) => {
+                                customBodyRender: (_, tableMeta) => {
                                     const index = tableMeta.rowIndex
-                                    return <CollaboratorEditModal collaborator={this.props.collaborators[index]} edit={true} onRefresh={this.props.onRefresh} />
+                                    return (
+                                        <CustomModal  width={'50%'} height={'53%'} icon={'fas fa-edit'}>
+                                            <AddCollaborator collaborator={this.props.collaborators[index]} edit={true} onRefresh={this.props.onRefresh} />
+                                        </CustomModal>
+                                    )
                                 }
                             }
                         },

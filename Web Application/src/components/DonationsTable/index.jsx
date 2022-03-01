@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { IconButton } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 
 import { formatDate } from '../../common/commonFunctions.js'
-import DonationEditModal from '../DonationEditModal/index.jsx';
+import CustomModal from "../CustomModal";
+import AddDonation from '../AddDonation';
 
 class DonationsTable extends Component {
 
@@ -26,12 +26,12 @@ class DonationsTable extends Component {
 				columns={[
 					{
 						name: "donationReceived",
-						label:  <i className='fas fa-clipboard-check'/>,
+						label: <i className='fas fa-clipboard-check' />,
 						options: {
 							filter: true,
 							sort: true,
 							display: true,
-							customBodyRender: (donationReceived) => donationReceived ? <i className='fas fa-check'/> :<i className='fas fa-times'/>  
+							customBodyRender: (donationReceived) => donationReceived ? <i className='fas fa-check' /> : <i className='fas fa-times' />
 						}
 					},
 					{
@@ -76,9 +76,9 @@ class DonationsTable extends Component {
 							customBodyRender: (value, tableMeta) => {
 								const index = tableMeta.rowIndex
 								return (
-									<IconButton aria-label="delete" color="primary" onClick={() => this.showDonationDetails(this.props.donations[index])}>
-										<i className='bx bx-calendar-edit'></i>
-									</IconButton>
+									<div onClick={() => this.showDonationDetails(this.props.donations[index])}>
+										<i className='fas fa-info'></i>
+									</div>
 								)
 							}
 						}
@@ -89,9 +89,13 @@ class DonationsTable extends Component {
 						options: {
 							filter: true,
 							sort: false,
-							customBodyRender: (value, tableMeta) => {
+							customBodyRender: (_, tableMeta) => {
 								const index = tableMeta.rowIndex
-								return <DonationEditModal donation={this.props.donations[index]} edit={true} onRefresh={this.props.onRefresh}/>
+								return (
+									<CustomModal width={'80%'} height={'80%'} icon={'fas fa-edit'}>
+										<AddDonation donation = { this.props.donations[index] } edit = { true} onRefresh = { this.props.onRefresh } />
+									</CustomModal>
+								)
 							}
 						}
 					}
