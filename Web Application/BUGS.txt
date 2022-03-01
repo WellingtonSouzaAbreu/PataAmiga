@@ -21,7 +21,7 @@ EVENTS
 * InitialFiles do browser não funciona ao editar imagens
 
 MENU SIDEBAR
-* Em alguns componentes a altura fica infinita
+* Em alguns componentes a altura não fica infinita(Denúncias)
 
 
 

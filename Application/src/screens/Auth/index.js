@@ -12,8 +12,8 @@ import { showAlert } from "../../common/commonFunctions";
 
 const initialState = {
     name: '',
-    cellNumber: '',
-    password: '',
+    cellNumber: '+55 (69) 99284-6582',
+    password: '10101010',
     confirmPassword: null,
 
     newUser: false,
@@ -82,6 +82,7 @@ class Login extends Component {
                 await this.props.navigation.navigate('Home')
             })
             .catch(err => {
+                console.log(err)
                 showAlert('Ops!', err.response ? err.response.data : 'Ocorreu um erro ao tentar acessar o aplicativo, verifique sua conexão!')
             })
     }

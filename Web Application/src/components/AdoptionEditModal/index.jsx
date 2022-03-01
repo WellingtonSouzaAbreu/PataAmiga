@@ -44,9 +44,9 @@ export default function AdoptionEditModal(props) {
 
 	return (
 		<div>
-			<IconButton aria-label="delete" color="primary" onClick={handleOpen}>
+			<div onClick={handleOpen}>
 				<i class='bx bxs-edit'></i>
-			</IconButton>
+			</div>
 
 			<Modal
 				className={classes.modal}
