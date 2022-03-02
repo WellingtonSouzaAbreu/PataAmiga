@@ -18,7 +18,6 @@ const initialState = {
     remoteMonitorings: [],
     visits: [],
 
-    // Visit
     visitDate: new Date(),
     visitReport: 'Foi louco',
 

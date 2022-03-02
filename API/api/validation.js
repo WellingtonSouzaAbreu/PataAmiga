@@ -27,14 +27,13 @@ module.exports = app => {
     }
 
     const objectIsNull = (object) => {
-        if(!object) return true
-        
+        if (!object) return true
+
         if (typeof object == 'object') {
             return Object.keys(object).length == 0
         } else {
             return false
         }
-
     }
 
     return { existsOrError, setFirstLetterUpperCase, setAllWordsWithInitialUpperCase, objectIsNull }

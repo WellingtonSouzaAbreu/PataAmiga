@@ -104,15 +104,23 @@ class Collaborators extends Component {
 
     render() {
         return (
-            <div className={styles.container} >
-                <CustomSnackbar visible={this.state.snackbarVisible} message={this.state.snackbarMessage} type={this.state.snackbarType} onClose={this.toggleSnackbarVisibility} />
+            <div className={styles.container} data-testid={'collaborators'}>
+                <CustomSnackbar visible={this.state.snackbarVisible} data-testid='snackbar-collaborators'
+                    message={this.state.snackbarMessage} type={this.state.snackbarType}
+                    onClose={this.toggleSnackbarVisibility}
+                />
                 <div className={styles.pageName} onClick={this.loadCollaborators}>
                     <span className={styles.title}>COLABORADORES</span>
                 </div>
                 <AddCollaborator onRefresh={this.loadCollaborators} />
-                <CollaboratorsTable collaborators={this.state.collaborators} currentPage={this.state.currentPage} rowsPerPage={this.state.rowsPerPage}
-                    onDelete={this.deleteCollaborator} onRefresh={this.loadCollaborators}
-                    onChangePage={this.changePage} onChangeRowsPerPage={this.changeRowsPerPage} onChangeSearchParams={this.changeSearchParams}
+                <CollaboratorsTable collaborators={this.state.collaborators}
+                    currentPage={this.state.currentPage}
+                    rowsPerPage={this.state.rowsPerPage}
+                    onDelete={this.deleteCollaborator}
+                    onRefresh={this.loadCollaborators}
+                    onChangePage={this.changePage}
+                    onChangeRowsPerPage={this.changeRowsPerPage}
+                    onChangeSearchParams={this.changeSearchParams}
                     onSetCollaboratorToEdit={this.setCollaboratorToEdit}
                 />
             </div>

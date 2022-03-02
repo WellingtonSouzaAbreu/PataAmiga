@@ -136,7 +136,7 @@ module.exports = app => {
 
     app.delete('/visit/:id', app.api.visit.removeVisit)
 
-    app.get('/visit/:idAdoption', app.api.visit.getVisitsByAdoption)
+    app.get('/visit/:adoptionId', app.api.visit.getVisitsByAdoption)
 
     app.post('/generate-recovery-password', app.api.recoveryPassword.generateStaticPage)
 

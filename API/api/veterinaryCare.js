@@ -8,10 +8,6 @@ module.exports = app => {
 
         const veterinaryCare = await objectIsNull(req.body.veterinaryCare) ? res.status(400).send('Dados do cuidado veterinário não informados') : req.body.veterinaryCare
 
-        // const costsVeterinaries = [...veterinaryCare.costsVeterinaries] // Obsoleto
-        // delete veterinaryCare.costsVeterinaries // Obsoleto
-        // veterinaryCare.totalCostOfTreatment = getTotalCostOfTreatment(costsVeterinaries)
-
         try {
             existsOrError(veterinaryCare.veterinaryName, 'Nome do veterinário não informado!')
             existsOrError(veterinaryCare.totalCostOfTreatment, 'Custo total do tratamento não informado!')
@@ -46,25 +42,7 @@ module.exports = app => {
                     res.status(500).send('Ocorreu um erro ao cadastrar cuidado veterinário!')
                 })
         }
-
-        // Obsoleto
-        /* costsVeterinaries.map(cost => cost.veterinaryCareId = idVeterinaryCare)
-
-        await app.db('costs-veterinaries')
-            .insert(costsVeterinaries)
-            .then(_ => res.status(204).send())
-            .catch(err => {
-                console.log(err)
-                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
-                res.status(500).send('Erro ao cadastrar gastos veterinários')
-            }) */
     }
-
-    /* const getTotalCostOfTreatment = (costsVeterinaries) => {
-        let totalCost = 0
-        costsVeterinaries.map(cost => totalCost += cost.value)
-        return totalCost
-    } */
 
     const removeVeterinaryCare = async (req, res) => {
         const idVeterinaryCare = req.params.id ? req.params.id : res.status(400).send('Identificação do cuidado veterinário não informado')

@@ -1,24 +1,28 @@
 const path = require('path')
 
 module.exports = app => {
+    const { existsOrError, objectIsNull } = app.api.validation
+    const { showLog, convertStringToDate, convertStringWithCommaToArray, isNumber } = app.api.commonFunctions
 
     const getVisitsByAdoption = async (req, res) => {
+        const adoptionId = isNumber(req.params.adoptionId) && req.params.adoptionId
+        if (!adoptionId) return res.status(400).send('Não foi possível identificar a adoção!')
+
         await app.db('visits')
-            .where({ adoptionId: req.params.idAdoption })
+            .where({ adoptionId })
             .then(visits => {
-                res.status(200).send(visits)
+                return res.status(200).send(visits)
             })
             .catch(err => {
-                console.log(err)
+                showLog(err, 'error')
                 app.api.bugReport.writeInBugReport(err, path.basename(__filename))
-                res.status(500).send(err)
+                return res.status(500).send(err)
             })
     }
 
     const save = async (req, res) => {
-        const { existsOrError, objectIsNull } = app.api.validation
-
-        const visit = await objectIsNull(req.body.visit) ? res.status(400).send('Dados da visita não informados') : req.body.visit
+        const visit = !objectIsNull(req.body.visit) && req.body.visit
+        if (!visit) return res.status(400).send('Dados da visita não informados!')
 
         try {
             existsOrError(visit.report, 'Relatório não informado')
@@ -28,37 +32,39 @@ module.exports = app => {
             return res.status(400).send(err)
         }
 
-        visit.date = new Date(visit.date)
+        visit.date = convertStringToDate(visit.date)
 
         await app.db('visits')
             .insert(visit)
             .then(_ => res.status(204).send())
             .catch(err => {
-                console.log(err)
+                showLog(err, 'error')
                 app.api.bugReport.writeInBugReport(err, path.basename(__filename))
-                res.status(500).send('Erro ao cadastrar visita')
+                return res.status(500).send('Erro ao cadastrar visita!')
             })
     }
 
     const removeVisit = async (req, res) => {
-        const idVisit = req.params.id ? req.params.id : res.status(400).send('Identificação da visita não informada')
+        const idVisit = isNumber(req.params.id) && req.params.id
+            
+        if(!idVisit) return res.status(400).send('Identificação da visita não informada!')
 
-        let visitsId = idVisit.split(',')
-        console.log(visitsId)
+        let visitsId = convertStringWithCommaToArray(idVisit)
+        showLog(visitsId)
 
-        visitsId.forEach(async (idVisit) => {
+        visitsId.forEach(async (id) => {
             await app.db('visits')
-                .where({ id: idVisit })
+                .where({ id })
                 .del()
-                .then(_ => console.log(`Visita de id: ${idVisit} deletado`))
+                .then(_ => showLog(`Visita de id: ${id} deletado`))
                 .catch(err => {
-                    console.log(err)
+                    showLog(err, 'error')
                     app.api.bugReport.writeInBugReport(err, path.basename(__filename))
-                    res.status(500).send('Ocorreu um erro ao deletar visit')
+                    return res.status(500).send()
                 })
         })
 
-        res.status(200).send('Animal removido com sucesso!')
+        return res.status(204).send()
     }
 
     return { getVisitsByAdoption, save, removeVisit }

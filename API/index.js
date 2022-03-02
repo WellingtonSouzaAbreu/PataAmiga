@@ -2,7 +2,7 @@ const app = require('express')()
 const consign = require('consign')
 const https = require('https');
 const fs = require('fs')
-const port = 443
+const port = 500
 
 app.db = require('./config/db.js')
 
@@ -24,8 +24,8 @@ const options = {
     cert: fs.readFileSync('certificate.crt')
 };
 
-console.log(options)
-
-https.createServer(options, app).listen(port, () => {
+https.createServer(options, app)/* .listen(port, () => { // Listem impede o jest de encerrar
     console.log(`Server running in port ...${port}`)
-})
+}) */
+
+module.exports = app
