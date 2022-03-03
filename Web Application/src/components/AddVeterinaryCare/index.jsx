@@ -95,7 +95,8 @@ class AddVeterinaryCare extends Component {
 
         if (this.props.veterinaryCare) veterinaryCare.id = this.props.veterinaryCare.id
 
-        await axios.post(` ${baseApiUrl}/veterinary-care`, { veterinaryCare })
+        const method = this.props.edit ? 'put' : 'post'
+        await axios[method](` ${baseApiUrl}/veterinary-care`, { veterinaryCare })
             .then(async _ => {
                 this.toggleSnackbarVisibility(true, `Dados veterinários salvos com sucesso!`, 'success')
                 this.setState({ ...initialState }, this.props.onRefresh)

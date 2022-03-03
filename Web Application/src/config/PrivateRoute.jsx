@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import Main from '../components/MenuSidebar'
+import MenuSidebar from '../components/MenuSidebar'
 
 const isLogged = () => {
     // window.alert(!!localStorage.getItem('userData'))
@@ -8,7 +8,7 @@ const isLogged = () => {
 }
 
 const PrivateRoute = props => isLogged()
-    ? <Main><Route {...props} /></Main>
+    ? <MenuSidebar><Route {...props} /></MenuSidebar>
     : <Redirect to="/login" />
 
 export default PrivateRoute

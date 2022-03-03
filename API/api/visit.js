@@ -1,8 +1,8 @@
 const path = require('path')
 
 module.exports = app => {
-    const { existsOrError, objectIsNull } = app.api.validation
-    const { showLog, convertStringToDate, convertStringWithCommaToArray, isNumber } = app.api.commonFunctions
+    const { existsOrError, objectIsNull, isNumber } = app.api.validation
+    const { showLog, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
 
     const getVisitsByAdoption = async (req, res) => {
         const adoptionId = isNumber(req.params.adoptionId) && req.params.adoptionId
@@ -25,9 +25,9 @@ module.exports = app => {
         if (!visit) return res.status(400).send('Dados da visita não informados!')
 
         try {
-            existsOrError(visit.report, 'Relatório não informado')
-            existsOrError(visit.adoptionId, 'Adoção não informada')
-            existsOrError(visit.date, 'Data não informada')
+            existsOrError(visit.report, 'Relatório não informado!')
+            existsOrError(visit.adoptionId, 'Adoção não informada!')
+            existsOrError(visit.date, 'Data não informada!')
         } catch (err) {
             return res.status(400).send(err)
         }
@@ -45,8 +45,7 @@ module.exports = app => {
     }
 
     const removeVisit = async (req, res) => {
-        const idVisit = isNumber(req.params.id) && req.params.id
-            
+        const idVisit = req.params.id && req.params.id
         if(!idVisit) return res.status(400).send('Identificação da visita não informada!')
 
         let visitsId = convertStringWithCommaToArray(idVisit)

@@ -108,3 +108,13 @@
 
 {"dateTime":"2022-03-02T22:02:25.404Z","file":"visit.js","message":"Error: insert into `visits` (`adoptionId`, `date`, `id`, `report`) values (1, '2021-02-02 00:00:00.000', 112, 'Tudo tranquilo') - ER_DUP_ENTRY: Duplicate entry '112' for key 'visits.PRIMARY'"}
 
+{"dateTime":"2022-03-03T17:23:41.666Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-03T17:25:37.648Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-03T17:27:37.300Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-03T17:28:29.530Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-03T17:29:50.205Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+

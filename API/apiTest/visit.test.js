@@ -1,6 +1,6 @@
-const {request, app } = require('./mainTests.js')
+const {request, app } = require('../apiTestConfig/requires.js')
 
-const { visit } = require('./dataTest.js')
+const { visit } = require('../apiTestConfig/dataTest.js')
 
 describe('Testing api/visit.js', () => {
     test('Should return an empty object and statusCode=204 | route: POST /visit', async () => {
