@@ -11,7 +11,7 @@ describe('Testing api/validation.js', () => {
         expect(existsOrError(validPossibilities[2], 'err')).toEqual(undefined)
         expect(existsOrError(validPossibilities[3], 'err')).toEqual(undefined)
 
-        /* expect(existsOrError(invalidPossibilities[0], 'err')).toThrow('err')
+        /* expect(existsOrError(invalidPossibilities[0], 'err')).toThrow('err') //TODO
         expect(existsOrError(invalidPossibilities[1], 'err')).toThrow('err')
         expect(existsOrError(invalidPossibilities[2], 'err')).toThrow('err')
         expect(existsOrError(invalidPossibilities[3], 'err')).toThrow('err')

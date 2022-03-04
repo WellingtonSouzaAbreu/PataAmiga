@@ -4,6 +4,21 @@ module.exports = app => {
     const { existsOrError, objectIsNull, isNumber } = app.api.validation
     const { showLog, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
 
+    const getVeterinaryCareById = async (req, res) => {
+        const idVeterinaryCare = isNumber(req.params.id) && req.params.id
+        if (!idVeterinaryCare) return res.status(400).send('Não foi possível encontrar o cuidado veterinário selecionado!')
+
+        await app.db('veterinary-cares')
+            .where({ id: idVeterinaryCare })
+            .first()
+            .then(veterinaryCare => res.status(200).json(veterinaryCare))
+            .catch(err => {
+                showLog(err, 'err')
+                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                return res.status(500).send('Ocorreu um erro ao obter cuidado veterinário!')
+            })
+    }
+
     const save = async (req, res) => {
         const veterinaryCare = !objectIsNull(req.body.veterinaryCare) && req.body.veterinaryCare
         if (!veterinaryCare) return res.status(400).send('Dados do cuidado veterinário não informados!')
@@ -75,7 +90,7 @@ module.exports = app => {
 
         return res.status(204).send()
     }
-    return { save, update, removeVeterinaryCare }
+    return { getVeterinaryCareById, save, update, removeVeterinaryCare }
 }
 
-// 67 lines -> 80 lines
+// 67 -> 93

@@ -118,3 +118,19 @@
 
 {"dateTime":"2022-03-03T17:29:50.205Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
 
+{"dateTime":"2022-03-04T18:24:08.903Z","file":"veterinaryCare.js","message":"Error: select * from `veterinary-care` where `id` = '1' limit 1 - ER_NO_SUCH_TABLE: Table 'friend_paw_test.veterinary-care' doesn't exist"}
+
+{"dateTime":"2022-03-04T18:59:29.158Z","file":"user.js","message":"Confirmação de senha não informada"}
+
+{"dateTime":"2022-03-04T19:00:32.055Z","file":"user.js","message":"Usuário já cadastrado"}
+
+{"dateTime":"2022-03-04T19:04:15.087Z","file":"user.js","message":"TypeError: user.email.match is not a function"}
+
+{"dateTime":"2022-03-04T19:06:22.902Z","file":"user.js","message":"TypeError: user.email.match is not a function"}
+
+{"dateTime":"2022-03-04T19:06:38.332Z","file":"user.js","message":"Usuário já cadastrado"}
+
+{"dateTime":"2022-03-04T19:07:20.336Z","file":"user.js","message":"Usuário já cadastrado"}
+
+{"dateTime":"2022-03-04T19:40:27.339Z","file":"user.js","message":"Senhas não conferem"}
+

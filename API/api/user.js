@@ -82,7 +82,7 @@ module.exports = app => {
             exp: currentDateInSeconds + (60 * 60 * 24 * 3) */
         }
 
-        res.json({
+        return res.json({
             ...payload,
             token: jwt.encode(payload, authSecret)
         })
@@ -178,3 +178,4 @@ module.exports = app => {
     return { getUserById, getUserSelectOptions, signin, save, validateToken }
 }
 
+// 179 -> 
