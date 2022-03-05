@@ -95,7 +95,6 @@ module.exports = app => {
         .get(app.api.publication.getPublicationsSummarized)
 
     app.get('/publication/event', app.api.publication.getEvents)
-
     app.get('/publication/done', app.api.publication.getDones)
 
     app.route('/publication/:id')
@@ -129,19 +128,19 @@ module.exports = app => {
         .get(app.api.user.getUserById)
         .put(app.api.user.update)
 
-    app.post('/veterinary-care', app.api.veterinaryCare.save)
-    app.put('/veterinary-care', app.api.veterinaryCare.update)
-    app.get('/veterinary-care/:id', app.api.veterinaryCare.getVeterinaryCareById)
-    app.delete('/veterinary-care/:id', app.api.veterinaryCare.removeVeterinaryCare)
+    app.route('/veterinary-care')
+        .post(app.api.veterinaryCare.save)
+        .put(app.api.veterinaryCare.update)
+
+    app.route('/veterinary-care/:id')
+        .get(app.api.veterinaryCare.getVeterinaryCareById)
+        .delete(app.api.veterinaryCare.removeVeterinaryCare)
 
     app.post('/visit', app.api.visit.save)
-
     app.delete('/visit/:id', app.api.visit.removeVisit)
-
     app.get('/visit/:adoptionId', app.api.visit.getVisitsByAdoption)
 
     app.post('/generate-recovery-password', app.api.recoveryPassword.generateStaticPage)
-
     app.put('/recovery-password', app.api.recoveryPassword.saveNewPassword)
 
     app.get('/already-changed', app.api.recoveryPassword.endpointAlreadyUsed)

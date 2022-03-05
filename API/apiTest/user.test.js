@@ -3,7 +3,7 @@ const { app, request } = require('./../apiTestConfig/requires.js')
 const { existsOrError, objectIsNull, isNumber } = app.api.validation
 const { concatNameAndCellNumber } = require('./../api/user.js')
 
-const { token, user, getRandomEmail, getRandomCellNumber } = require('./../apiTestConfig/dataTest.js')
+const { token, errorMessageIdentifier, user, getRandomEmail, getRandomCellNumber } = require('./../apiTestConfig/dataTest.js')
 
 describe('Testing api/user.js', () => {
     test('Should return user data by id and statusCode=200 | route: GET /user/:id', async () => {
@@ -35,14 +35,14 @@ describe('Testing api/user.js', () => {
         const res = await request(app).get('/user/select-options?userName=Ad')
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Digite pelo menos 3 letras para iniciar a pesquisa!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message for URL without params and statusCode=400 | route: GET /user/select-options', async () => {
         const res = await request(app).get('/user/select-options')
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Digite pelo menos 3 letras para iniciar a pesquisa!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return a empty object and statusCode=204 | route: POST /signup', async () => {
@@ -76,7 +76,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Dados do usuário não informados!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when not send user name and statusCode=400 | route: POST /signup', async () => {
@@ -94,7 +94,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Nome não informado!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
 
@@ -112,7 +112,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Celular não informado!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when not send user password and statusCode=400 | route: POST /signup', async () => {
@@ -128,7 +128,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Senha não informada!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when not send user confirmPassword and statusCode=400 | route: POST /signup', async () => {
@@ -144,7 +144,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Confirmação de senha não informada!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send user password.length < 8 and statusCode=400 | route: POST /signup', async () => {
@@ -161,7 +161,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Senha muito curta! Ela deve ter no mínimo 8 caracteres!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send user password and confirm password not equals and statusCode=400 | route: POST /signup', async () => {
@@ -178,7 +178,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Senhas não conferem!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send invalid email and statusCode=400 | route: POST /signup', async () => {
@@ -195,7 +195,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Por favor, insira um email válido!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send cellNumber that already exists and statusCode=400 | route: POST /signup', async () => {
@@ -211,7 +211,7 @@ describe('Testing api/user.js', () => {
             });
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Usuário já cadastrado!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return a user data, token and statusCode=200 | route: POST /signin', async () => {
@@ -254,7 +254,7 @@ describe('Testing api/user.js', () => {
             .post('/validate-token')
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Token não informado. Realizar login novamente pode resolver o problema!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return am empty object, changing houseNumber of 5555 to 1000 and statusCode=204 | route PUT /user/:id', async () => {
@@ -302,7 +302,7 @@ describe('Testing api/user.js', () => {
             }).set('Authorization', token);
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Nome não informado!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when not send user cellNumber and statusCode=400 | route PUT /user/:id', async () => {
@@ -318,7 +318,7 @@ describe('Testing api/user.js', () => {
             }).set('Authorization', token);
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Celular não informado!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send password.length < 8 and statusCode=400 | route PUT /user/:id', async () => {
@@ -333,7 +333,7 @@ describe('Testing api/user.js', () => {
             }).set('Authorization', token);
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Senha muito curta! Ela deve ter no mínimo 8 caracteres!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when passwords send not match and statusCode=400 | route PUT /user/:id', async () => {
@@ -348,7 +348,7 @@ describe('Testing api/user.js', () => {
             }).set('Authorization', token);
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Senhas não conferem!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send invalid email and statusCode=400 | route PUT /user/:id', async () => {
@@ -364,6 +364,6 @@ describe('Testing api/user.js', () => {
             }).set('Authorization', token);
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Por favor, insira um email válido!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 })

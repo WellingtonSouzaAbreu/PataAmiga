@@ -1,6 +1,6 @@
 const { request, app } = require('../apiTestConfig/requires.js')
 
-const { visit } = require('../apiTestConfig/dataTest.js')
+const { visit, errorMessageIdentifier } = require('../apiTestConfig/dataTest.js')
 
 describe('Testing api/visit.js', () => {
     test('Should return visits by adoption and statusCode=200 | route: GET /visit/:adoptionId', async () => {
@@ -12,7 +12,7 @@ describe('Testing api/visit.js', () => {
     test('Should return error message when send invalid adoptionId and statusCode=400 | route: GET /visit/:adoptionId', async () => {
         const res = await request(app).get('/visit/invalid')
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Não foi possível identificar a adoção!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return an empty object and statusCode=204 | route: POST /visit', async () => {
@@ -26,7 +26,7 @@ describe('Testing api/visit.js', () => {
         expect(res.body).toEqual({})
     })
 
-    test('Should return error message and statusCode=400 | route: POST /visit', async () => {
+    test('Should return error message when not send visit object and statusCode=400 | route: POST /visit', async () => {
         const res = await request(app)
             .post('/visit')
             .send({
@@ -34,7 +34,7 @@ describe('Testing api/visit.js', () => {
             })
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Dados da visita não informados!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send invalid report and statusCode=400 | route: POST /visit', async () => {
@@ -45,7 +45,7 @@ describe('Testing api/visit.js', () => {
             })
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Relatório não informado!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send invalid adoptionId and statusCode=400 | route: POST /visit', async () => {
@@ -56,18 +56,18 @@ describe('Testing api/visit.js', () => {
             })
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Adoção não informada!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return error message when send invalid date and statusCode=400 | route: POST /visit', async () => {
         const res = await request(app)
             .post('/visit')
             .send({
-                visit: { ...visit , date: ''}
+                visit: { ...visit, date: '' }
             })
 
         expect(res.statusCode).toEqual(400)
-        expect(res.error.text).toEqual('Data não informada!')
+        expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
     test('Should return an empty object and statusCode=204  | route: DELETE /visit/:id', async () => {

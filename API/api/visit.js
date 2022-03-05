@@ -1,11 +1,11 @@
 const path = require('path')
 
 module.exports = app => {
-    const { existsOrError, objectIsNull, isNumber } = app.api.validation
+    const { existsOrError, objectIsNull, isValidId } = app.api.validation
     const { showLog, showAndRegisterError, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
 
     const getVisitsByAdoption = async (req, res) => {
-        const adoptionId = isNumber(req.params.adoptionId) && req.params.adoptionId
+        const adoptionId = isValidId(req.params.adoptionId) && req.params.adoptionId
         if (!adoptionId) return res.status(400).send('Não foi possível identificar a adoção!')
 
         await app.db('visits')
@@ -43,7 +43,7 @@ module.exports = app => {
     }
 
     const removeVisit = async (req, res) => {
-        const idVisit = req.params.id && req.params.id
+        const idVisit = isValidId(req.params.id) && req.params.id
         if (!idVisit) return res.status(400).send('Identificação da visita não informada!')
 
         let visitsId = convertStringWithCommaToArray(idVisit)

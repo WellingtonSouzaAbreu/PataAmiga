@@ -20,9 +20,21 @@ module.exports = app => {
         return !isNaN(value)
     }
 
+    const isValidId = (value) => {
+        try {
+            if(!isNumber(value)) throw 'NaN'
+            
+            const numericValue = Number.parseInt(value)
+            return Number.isInteger(numericValue) && numericValue > 0
+        } catch (err) {
+            return false
+        }
+    }
+
     return {
         existsOrError,
         objectIsNull,
-        isNumber
+        isNumber,
+        isValidId
     }
 }

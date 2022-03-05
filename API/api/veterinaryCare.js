@@ -1,11 +1,11 @@
 const path = require('path')
 
 module.exports = app => {
-    const { existsOrError, objectIsNull, isNumber } = app.api.validation
-    const { showLog, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
+    const { existsOrError, objectIsNull, isNumber , isValidId} = app.api.validation
+    const { showLog, showAndRegisterError, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
 
     const getVeterinaryCareById = async (req, res) => {
-        const idVeterinaryCare = isNumber(req.params.id) && req.params.id
+        const idVeterinaryCare = isValidId(req.params.id) && req.params.id
         if (!idVeterinaryCare) return res.status(400).send('Não foi possível encontrar o cuidado veterinário selecionado!')
 
         await app.db('veterinary-cares')
@@ -13,8 +13,7 @@ module.exports = app => {
             .first()
             .then(veterinaryCare => res.status(200).json(veterinaryCare))
             .catch(err => {
-                showLog(err, 'err')
-                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send('Ocorreu um erro ao obter cuidado veterinário!')
             })
     }
@@ -30,8 +29,7 @@ module.exports = app => {
             if (!isNumber(veterinaryCare.totalCostOfTreatment)) throw 'Informe um valor numérico nos custos veterinários!'
 
         } catch (err) {
-            showLog(err, 'error')
-            app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+            showAndRegisterError(err, path.basename(__filename))
             return res.status(400).send(err)
         }
 
@@ -41,8 +39,7 @@ module.exports = app => {
             .insert(veterinaryCare)
             .then(_ => res.status(204).send())
             .catch(err => {
-                showLog(err, 'error')
-                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send('Ocorreu um erro ao cadastrar cuidado veterinário!')
             })
     }
@@ -53,8 +50,9 @@ module.exports = app => {
 
         try {
             existsOrError(veterinaryCare.id, 'Não foi possível identificar o cuidado veterinário atual!')
+            existsOrError(isValidId(veterinaryCare.id), 'Identificador inválido!')
         } catch (err) {
-            return res.status(500).send(err)
+            return res.status(400).send(err)
         }
 
         veterinaryCare.dateOfVeterinaryCare = convertStringToDate(veterinaryCare.dateOfVeterinaryCare)
@@ -64,14 +62,13 @@ module.exports = app => {
             .where({ id: veterinaryCare.id })
             .then(_ => res.status(204).send())
             .catch(err => {
-                showLog(err, 'error')
-                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send('Ocorreu um erro ao atualizar cuidado veterinário!')
             })
     }
 
     const removeVeterinaryCare = async (req, res) => {
-        const idVeterinaryCare = req.params.id && req.params.id
+        const idVeterinaryCare = isValidId(req.params.id) && req.params.id
         if (!idVeterinaryCare) return res.status(400).send('Identificação do cuidado veterinário não informado!')
 
         let veterinaryCaresId = convertStringWithCommaToArray(idVeterinaryCare)
@@ -82,8 +79,7 @@ module.exports = app => {
                 .del()
                 .then(_ => showLog(`Cuidado veterinário de id: ${id} deletado`))
                 .catch(err => {
-                    showLog(err, 'error')
-                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                    showAndRegisterError(err, path.basename(__filename))
                     return res.status(500).send('Ocorreu um erro ao deletar cuidado veterinário!')
                 })
         })

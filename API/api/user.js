@@ -5,10 +5,10 @@ const path = require('path')
 
 module.exports = app => {
     const { showLog, showAndRegisterError } = app.api.commonFunctions
-    const { isNumber } = app.api.validation
+    const {  isValidId } = app.api.validation
 
     const getUserById = async (req, res) => {
-        let idUser = isNumber(req.params.id) ? req.params.id : req.user.id // Quando não é passado parâmetros pela URL, pega-se o vindo de passport
+        let idUser = isValidId(req.params.id) ? req.params.id : req.user.id // Quando não é passado parâmetros pela URL, pega-se o vindo de passport
 
         if (!idUser) return res.status(400).send('Não foi possível localizar usuário!')
 
@@ -102,7 +102,7 @@ module.exports = app => {
         const { existsOrError, objectIsNull } = app.api.validation
 
         const user = !objectIsNull(req.body.user) && req.body.user
-        const idUserForUpdate = req.params.id || null // for update - from URL
+        const idUserForUpdate = isValidId(req.params.id) // for update - from URL
 
         if (!user || !idUserForUpdate) return res.status(400).send('Dados do usuário não informados!')
 

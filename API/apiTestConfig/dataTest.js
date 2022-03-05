@@ -10,6 +10,7 @@ const getRandomCellNumber = () => {
     return `${Math.ceil(Math.random() * 10000009999 + 100000000)}`
 }
 
+const errorMessageIdentifier = '!'
 const token = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJjZWxsTnVtYmVyIjoiQWRtaW4ifQ.FVUUYnkNYvQYEuF8HsbdzG9O1ylfMYx3jndD80U0GQI'
 
 const user = {
@@ -40,4 +41,12 @@ const veterinaryCare = {
     animalId: 1
 }
 
-module.exports = { getRandomEmail,getRandomCellNumber, token, user, veterinaryCare, visit }
+module.exports = {
+    getRandomEmail,
+    getRandomCellNumber,
+    errorMessageIdentifier,
+    token,
+    user,
+    veterinaryCare,
+    visit
+}
