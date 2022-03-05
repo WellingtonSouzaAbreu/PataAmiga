@@ -1,4 +1,5 @@
 const chalk = require('chalk')
+const {writeInBugReport} = require('../bugReport/bugReport.js')
 
 const showLog = (message, logType) => {
     let customMessage
@@ -8,6 +9,11 @@ const showLog = (message, logType) => {
         customMessage = chalk.green(message)
     }
     return console.log(customMessage)
+}
+
+const showAndRegisterError = (err, filename) => {
+    showLog(err, 'error')
+    writeInBugReport(err, filename)
 }
 
 const convertStringToDate = (stringDate) => {
@@ -40,6 +46,7 @@ const setAllWordsWithInitialUpperCase = (text) => {
 
 module.exports = {
     showLog,
+    showAndRegisterError,
     convertStringToDate,
     convertStringWithCommaToArray,
     setFirstLetterUpperCase,

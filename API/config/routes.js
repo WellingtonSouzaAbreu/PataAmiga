@@ -127,7 +127,7 @@ module.exports = app => {
     app.route('/user/:id')
         .all(app.config.passport.authenticate())
         .get(app.api.user.getUserById)
-        .put(app.api.user.save)
+        .put(app.api.user.update)
 
     app.post('/veterinary-care', app.api.veterinaryCare.save)
     app.put('/veterinary-care', app.api.veterinaryCare.update)

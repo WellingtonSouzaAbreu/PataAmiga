@@ -134,3 +134,721 @@
 
 {"dateTime":"2022-03-04T19:40:27.339Z","file":"user.js","message":"Senhas não conferem"}
 
+{"dateTime":"2022-03-05T13:52:28.393Z","file":"user.js","message":"Nome não informado"}
+
+{"dateTime":"2022-03-05T14:20:31.027Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:20:54.940Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:28:12.783Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:28:12.873Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T14:28:13.013Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T14:28:13.164Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T14:28:54.569Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:28:54.658Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T14:28:54.751Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T14:28:54.829Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T14:31:11.350Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:31:11.440Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T14:31:11.536Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T14:31:11.615Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T14:34:53.057Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:34:53.150Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T14:34:53.226Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T14:34:53.299Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T14:35:19.484Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:35:19.573Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T14:35:19.665Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T14:35:19.769Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T14:38:54.161Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T14:38:54.245Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T14:38:54.315Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T14:38:54.384Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:00:19.266Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:00:20.002Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:00:20.069Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:00:20.130Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:00:20.202Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:00:23.625Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:00:23.745Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:00:23.856Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:00:23.942Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:00:24.019Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:08:26.704Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:08:27.486Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:08:27.553Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:08:27.637Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:08:27.707Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:08:30.045Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:08:30.131Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:08:30.208Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:08:30.279Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:08:30.352Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:14:17.316Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:14:18.016Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:14:18.089Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:14:18.153Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:14:18.226Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:14:21.039Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:14:21.125Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:14:21.194Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:14:21.266Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:14:21.353Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:16:38.205Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:16:38.926Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:16:39.041Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:16:39.212Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:16:39.313Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:16:41.914Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:16:41.999Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:16:42.069Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:16:42.142Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:16:42.223Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:19:45.794Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:19:45.847Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:19:45.897Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:19:45.950Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:19:45.991Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:19:46.042Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:19:46.088Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:19:48.009Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:19:48.055Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:19:48.102Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:19:48.150Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:19:48.197Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:24:25.802Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:24:25.935Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:24:26.010Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:24:26.095Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:24:26.180Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:24:26.247Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:24:26.314Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:24:26.397Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:24:32.270Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:24:32.367Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:24:32.453Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:24:32.523Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:24:32.594Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:25:34.768Z","file":"user.js","message":"ReferenceError: user is not defined"}
+
+{"dateTime":"2022-03-05T15:25:34.885Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:25:34.962Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:25:35.027Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:25:35.095Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:25:35.176Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:25:35.243Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:25:35.313Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:25:41.014Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:25:41.096Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:25:41.190Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:25:41.285Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:25:41.366Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:26:16.527Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:26:16.709Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:26:16.768Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:26:16.847Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:26:16.929Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:26:16.994Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:26:17.127Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:26:17.233Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:26:23.013Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:26:23.091Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:26:23.160Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:26:23.230Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:26:23.299Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:30:16.611Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:30:16.723Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:30:16.775Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:30:16.832Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:30:16.900Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:30:16.960Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:30:17.023Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:30:17.089Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:30:17.157Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:30:22.985Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:30:23.060Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:30:23.131Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:30:23.200Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:30:23.272Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:31:44.773Z","file":"user.js","message":"ReferenceError: cellNumber is not defined"}
+
+{"dateTime":"2022-03-05T15:31:45.103Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:31:45.233Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:31:45.320Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:31:45.653Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:31:45.816Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:31:45.931Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:31:46.023Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:31:46.100Z","file":"user.js","message":"ReferenceError: cellNumber is not defined"}
+
+{"dateTime":"2022-03-05T15:31:51.763Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:31:51.832Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:31:51.990Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:31:52.073Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:31:52.182Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:32:57.063Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:32:57.190Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:32:57.288Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:32:57.412Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:32:57.525Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:32:57.613Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:32:57.829Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:32:57.994Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:32:58.092Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:33:00.498Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:33:00.580Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:33:00.691Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:33:00.793Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:33:00.896Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:34:08.308Z","file":"user.js","message":"ReferenceError: cellNumber is not defined"}
+
+{"dateTime":"2022-03-05T15:34:08.442Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:34:08.502Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:34:08.583Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:34:08.652Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:34:08.720Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:34:08.798Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:34:08.894Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:34:08.973Z","file":"user.js","message":"ReferenceError: cellNumber is not defined"}
+
+{"dateTime":"2022-03-05T15:34:11.311Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:34:11.393Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:34:11.490Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:34:11.600Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:34:11.817Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:36:36.426Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:36:36.553Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:36:36.686Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:36:36.808Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:36:36.919Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:36:37.022Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:36:37.138Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:36:37.288Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T15:36:39.178Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:36:39.259Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:36:39.328Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:36:39.397Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:36:39.470Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:37:22.372Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:37:22.500Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:37:22.712Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:37:22.796Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:37:22.877Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:37:22.960Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:37:23.035Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:37:23.120Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:37:23.202Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:37:25.171Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:37:25.261Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:37:25.341Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:37:25.426Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:37:25.508Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:38:47.503Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:38:47.658Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:38:47.723Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:38:47.822Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:38:47.911Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:38:48.006Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:38:48.096Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:38:48.200Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:38:48.282Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:38:50.415Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:38:50.519Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:38:50.619Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:38:50.734Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:38:50.819Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:40:26.160Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:40:26.308Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:40:26.377Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:40:26.461Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:40:26.539Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:40:26.618Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:40:26.702Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:40:26.790Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:40:26.869Z","file":"user.js","message":"Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [cellNumber] query: select `cellNumber` from `users` where `cellNumber` = ? limit ?"}
+
+{"dateTime":"2022-03-05T15:40:29.061Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:40:29.192Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:40:29.269Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:40:29.340Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:40:29.409Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:41:39.085Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:41:39.260Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:41:39.477Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:41:39.646Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:41:40.016Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:41:40.413Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:41:40.577Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:41:40.817Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T15:41:42.891Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:41:42.976Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:41:43.044Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:41:43.132Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:41:43.227Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:45:22.607Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:45:22.679Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:45:22.772Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:45:22.845Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:45:22.917Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:45:23.019Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:45:23.093Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:45:23.190Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T15:45:24.999Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:45:25.552Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:45:26.074Z","file":"user.js","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot remove headers after they are sent to the client"}
+
+{"dateTime":"2022-03-05T15:45:26.124Z","file":"user.js","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot remove headers after they are sent to the client"}
+
+{"dateTime":"2022-03-05T15:45:26.148Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:45:26.554Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:45:26.954Z","file":"user.js","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot remove headers after they are sent to the client"}
+
+{"dateTime":"2022-03-05T15:45:27.012Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:45:27.380Z","file":"user.js","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot remove headers after they are sent to the client"}
+
+{"dateTime":"2022-03-05T15:45:27.897Z","file":"user.js","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot remove headers after they are sent to the client"}
+
+{"dateTime":"2022-03-05T15:49:20.526Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:49:20.609Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:49:20.686Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:49:20.771Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:49:20.853Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:49:20.940Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:49:21.050Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:49:21.155Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T15:49:23.841Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:49:23.938Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:49:24.081Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:49:24.187Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:49:24.366Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:50:44.909Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:50:45.003Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:50:45.114Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:50:45.200Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:50:45.285Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:50:45.391Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:50:45.497Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:50:45.584Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T15:50:47.752Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:50:47.845Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:50:47.930Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:50:48.004Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:50:48.084Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:54:24.001Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:54:24.084Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:54:24.181Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:54:24.275Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:54:24.374Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:54:24.448Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:54:24.543Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:54:24.664Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T15:54:26.810Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:54:26.909Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:54:26.991Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:54:27.066Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:54:27.148Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:55:14.961Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:55:15.035Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:55:15.116Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:55:15.187Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:55:15.259Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:55:15.350Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:55:15.419Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:55:15.504Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T15:58:08.503Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T15:58:08.578Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T15:58:08.668Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T15:58:08.747Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T15:58:08.815Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T15:58:08.882Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T15:58:08.953Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T15:58:09.032Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T16:02:24.586Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T16:02:24.685Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T16:02:24.771Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T16:02:24.872Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T16:02:24.954Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T16:05:23.782Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T16:05:23.856Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T16:05:23.941Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T16:05:23.997Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T16:05:24.070Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T16:05:24.138Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T16:05:24.206Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T16:05:24.286Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T16:05:26.334Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T16:05:26.418Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T16:05:26.511Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T16:05:26.601Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T16:05:26.689Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T16:07:41.114Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T16:07:41.189Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T16:07:41.261Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T16:07:41.327Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T16:07:41.389Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T16:07:41.451Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T16:07:41.524Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T16:07:41.600Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T16:07:43.556Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T16:07:43.649Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T16:07:43.719Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T16:07:43.792Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T16:07:43.874Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T16:10:37.838Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T16:10:37.915Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T16:10:37.995Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-05T16:10:38.072Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-05T16:10:38.141Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T16:10:38.208Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T16:10:38.276Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-05T16:10:38.355Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-05T16:10:40.340Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-05T16:10:40.439Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-05T16:10:40.513Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-05T16:10:40.590Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-05T16:10:40.656Z","file":"user.js","message":"Por favor, insira um email válido!"}
+

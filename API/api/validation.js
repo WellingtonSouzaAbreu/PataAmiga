@@ -20,5 +20,9 @@ module.exports = app => {
         return !isNaN(value)
     }
 
-    return { existsOrError, objectIsNull, isNumber }
+    return {
+        existsOrError,
+        objectIsNull,
+        isNumber
+    }
 }

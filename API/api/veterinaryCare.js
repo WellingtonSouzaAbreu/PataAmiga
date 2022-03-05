@@ -84,13 +84,18 @@ module.exports = app => {
                 .catch(err => {
                     showLog(err, 'error')
                     app.api.bugReport.writeInBugReport(err, path.basename(__filename))
-                    return res.status(500).send('Ocorreu um erro ao deletar cuidado veterinário')
+                    return res.status(500).send('Ocorreu um erro ao deletar cuidado veterinário!')
                 })
         })
 
         return res.status(204).send()
     }
-    return { getVeterinaryCareById, save, update, removeVeterinaryCare }
+    return {
+        getVeterinaryCareById,
+        save,
+        update,
+        removeVeterinaryCare
+    }
 }
 
-// 67 -> 93
+// 67 -> 

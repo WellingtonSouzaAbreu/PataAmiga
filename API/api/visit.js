@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = app => {
     const { existsOrError, objectIsNull, isNumber } = app.api.validation
-    const { showLog, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
+    const { showLog, showAndRegisterError, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
 
     const getVisitsByAdoption = async (req, res) => {
         const adoptionId = isNumber(req.params.adoptionId) && req.params.adoptionId
@@ -14,8 +14,7 @@ module.exports = app => {
                 return res.status(200).send(visits)
             })
             .catch(err => {
-                showLog(err, 'error')
-                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send(err)
             })
     }
@@ -38,15 +37,14 @@ module.exports = app => {
             .insert(visit)
             .then(_ => res.status(204).send())
             .catch(err => {
-                showLog(err, 'error')
-                app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send('Erro ao cadastrar visita!')
             })
     }
 
     const removeVisit = async (req, res) => {
         const idVisit = req.params.id && req.params.id
-        if(!idVisit) return res.status(400).send('Identificação da visita não informada!')
+        if (!idVisit) return res.status(400).send('Identificação da visita não informada!')
 
         let visitsId = convertStringWithCommaToArray(idVisit)
         showLog(visitsId)
@@ -57,8 +55,7 @@ module.exports = app => {
                 .del()
                 .then(_ => showLog(`Visita de id: ${id} deletado`))
                 .catch(err => {
-                    showLog(err, 'error')
-                    app.api.bugReport.writeInBugReport(err, path.basename(__filename))
+                    showAndRegisterError(err, path.basename(__filename))
                     return res.status(500).send()
                 })
         })
@@ -66,7 +63,11 @@ module.exports = app => {
         return res.status(204).send()
     }
 
-    return { getVisitsByAdoption, save, removeVisit }
+    return {
+        getVisitsByAdoption,
+        save,
+        removeVisit
+    }
 }
 
-// 80 -> 70
+// 80 -> 70 -> 71 -> 
