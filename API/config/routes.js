@@ -112,7 +112,7 @@ module.exports = app => {
     app.post('/remote-monitoring/picture', app.api.remoteMonitoring.savePicture)
 
     app.route('/rescue/:animalId')
-        .get(app.api.rescue.getRescue)
+        .get(app.api.rescue.getRescueByAnimalId)
         .put(app.api.rescue.update)
 
     app.route('/temporary-home/:id')

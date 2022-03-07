@@ -113,6 +113,7 @@ module.exports = app => {
             existsOrError(temporaryHome.date, 'Data não informada!')
             existsOrError(isValidId(temporaryHome.animalId), 'Animal não informado!')
         } catch (err) {
+            showAndRegisterError(err, path.basename(__filename))
             return res.status(400).send(err)
         }
 
@@ -140,6 +141,7 @@ module.exports = app => {
             existsOrError(temporaryHome.date, 'Data não informada!')
             existsOrError(isValidId(temporaryHome.animalId), 'Animal não informado!')
         } catch (err) {
+            showAndRegisterError(err, path.basename(__filename))
             return res.status(400).send(err)
         }
 

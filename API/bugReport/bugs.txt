@@ -416,3 +416,409 @@
 
 {"dateTime":"2022-03-07T16:04:43.913Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
 
+{"dateTime":"2022-03-07T19:34:23.611Z","file":"rescue.js","message":"Data não informado"}
+
+{"dateTime":"2022-03-07T19:59:43.194Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T19:59:43.415Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T19:59:43.515Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T19:59:43.738Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:01:10.417Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:01:10.594Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:01:10.669Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:01:10.821Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:03:51.646Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:03:51.892Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:03:51.988Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:03:52.085Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:03:52.183Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:05:02.251Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:05:02.525Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:05:02.632Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:05:02.744Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:05:02.859Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:06:50.921Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:06:51.186Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:06:51.260Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:06:51.350Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:06:51.433Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:07:57.910Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:07:58.132Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:07:58.255Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:07:58.357Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:07:58.477Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:09:34.829Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:09:35.029Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:09:35.189Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:09:35.803Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:10:57.780Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:10:58.026Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:10:58.139Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:10:58.358Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:10:58.507Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:11:34.891Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:11:35.048Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:11:35.149Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:11:35.356Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:11:35.441Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:12:43.189Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:12:43.328Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:12:43.405Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:12:43.565Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:12:43.643Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:13:42.981Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:13:43.199Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:13:43.284Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:13:43.485Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:13:43.575Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:13:43.690Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:15:02.990Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:15:03.152Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:15:03.245Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:15:03.542Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:15:03.668Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:15:03.801Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:16:26.211Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:16:26.395Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:16:26.509Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:16:26.758Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:16:26.860Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:16:26.967Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:17:18.851Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:17:19.012Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:17:19.091Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:17:19.257Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:17:19.429Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:17:19.527Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:18:49.857Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:18:50.017Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:18:50.103Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:18:50.291Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:18:50.482Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:18:50.603Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:19:39.827Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:19:39.959Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:19:40.036Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:19:40.119Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:19:40.204Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:19:40.429Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:20:12.879Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:20:13.025Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:20:13.112Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:20:13.280Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:20:13.354Z","file":"rescue.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-07T20:20:13.582Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:21:44.912Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:21:45.049Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:21:45.140Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:21:45.305Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:21:45.475Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:21:45.581Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:22:01.849Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:22:02.100Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:22:02.302Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:22:02.589Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:22:02.723Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:22:02.879Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:22:35.940Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:22:36.111Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:22:36.228Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:22:36.440Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:22:36.623Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:22:36.725Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:28:48.408Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:28:48.716Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:28:48.819Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:28:49.087Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:28:49.404Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:28:49.575Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:29:12.172Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:29:12.366Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:29:12.442Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:29:12.620Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:29:12.800Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:29:12.899Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:29:26.847Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:29:27.032Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:29:27.127Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:29:27.397Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:29:27.598Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:29:27.671Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:31:47.518Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:31:47.668Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:31:47.740Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:31:47.817Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:31:59.212Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:31:59.516Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:31:59.601Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:31:59.718Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:34:50.865Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:34:50.964Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:34:51.320Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:34:51.504Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:34:51.572Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:35:03.911Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:35:04.037Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:35:04.279Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:35:04.493Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:35:04.588Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:35:34.016Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:35:34.129Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:35:34.255Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:35:46.658Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:35:46.787Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:35:46.905Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:36:00.914Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:36:01.041Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:36:01.148Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:36:16.364Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:36:16.524Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:36:16.631Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:37:54.341Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:37:54.482Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:37:54.568Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:37:54.648Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:39:46.328Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:39:46.463Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:39:46.539Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:40:18.904Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? and `animalId` = ?"}
+
+{"dateTime":"2022-03-07T20:40:19.029Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:40:19.104Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:40:19.199Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:42:25.328Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:42:25.397Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:42:25.468Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:43:05.791Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:43:05.877Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:43:05.942Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:44:47.874Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ?"}
+
+{"dateTime":"2022-03-07T20:44:48.014Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:44:48.084Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:44:48.146Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:45:18.491Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? and `animalId` = ?"}
+
+{"dateTime":"2022-03-07T20:45:18.594Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:45:18.659Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:45:18.719Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:46:57.231Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:46:57.388Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:46:57.489Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:46:57.611Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:47:51.720Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:47:51.871Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:47:51.960Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:47:52.043Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:49:17.773Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update `rescues` set `forwardedToKennel` = ?, `policeSupport` = ?, `locale` = ?, `BONumber` = ?, `address` = ?, `dateOfRescue` = ?, `veterinaryCareId` = ?, `animalId` = ? where `id` = ? or (`animalId` = ?)"}
+
+{"dateTime":"2022-03-07T20:49:17.870Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:49:17.938Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:49:18.003Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:50:33.080Z","file":"rescue.js","message":"Error: Undefined binding(s) detected when compiling WHERE. Undefined column(s): [id] query: where `id` = ?"}
+
+{"dateTime":"2022-03-07T20:50:33.201Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:50:33.277Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:50:33.353Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:51:40.003Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:51:40.081Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:51:41.122Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-07T20:51:59.691Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-07T20:51:59.768Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-07T20:52:00.520Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+

@@ -14,7 +14,14 @@ const errorMessageIdentifier = '!'
 const token = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJjZWxsTnVtYmVyIjoiQWRtaW4ifQ.FVUUYnkNYvQYEuF8HsbdzG9O1ylfMYx3jndD80U0GQI'
 
 const rescue = {
-    
+    forwardedToKennel: 1,
+    policeSupport: 1,
+    locale: 'Casa',
+    BONumber: '5555',
+    address: 'Av. das Flores',
+    dateOfRescue: '2021-11-20T03:00:00.000Z',
+    veterinaryCareId: 1,
+    animalId: 1
 }
 
 const temporaryHome = {
