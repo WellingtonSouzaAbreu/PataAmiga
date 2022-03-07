@@ -13,6 +13,35 @@ const getRandomCellNumber = () => {
 const errorMessageIdentifier = '!'
 const token = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJjZWxsTnVtYmVyIjoiQWRtaW4ifQ.FVUUYnkNYvQYEuF8HsbdzG9O1ylfMYx3jndD80U0GQI'
 
+const rescue = {
+    
+}
+
+const temporaryHome = {
+    date: '2021-11-20T03:00:00.000Z',
+    adopterName: 'Gabriel',
+    cellNumber: '69984465997',
+    animalId: 1
+}
+
+const temporaryHomeWithAnimalUserInfo = {
+    adopterName: 'Gabriel',
+    animalId: 1,
+    animalImageURL: 'gato.jpg',
+    animalName: 'Totó',
+    aproximateAge: '21 anos',
+    availableForAdoption: 1,
+    breed: 'Show',
+    castrated: 1,
+    cellNumber: '69984465997',
+    color: 'red',
+    date: '2021-11-20T03:00:00.000Z',
+    dateOfBirth: '2000-10-10T02:00:00.000Z',
+    othersCharacteristics: 'Is cool',
+    sex: 'M',
+    specie: 'Dog'
+}
+
 const user = {
     name: 'Administrador',
     cellNumber: 'Admin',
@@ -46,6 +75,9 @@ module.exports = {
     getRandomCellNumber,
     errorMessageIdentifier,
     token,
+    rescue,
+    temporaryHome,
+    temporaryHomeWithAnimalUserInfo,
     user,
     veterinaryCare,
     visit

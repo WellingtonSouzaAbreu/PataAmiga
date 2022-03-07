@@ -68,12 +68,15 @@ module.exports = app => {
     }
 
     const removeVeterinaryCare = async (req, res) => {
-        const idVeterinaryCare = isValidId(req.params.id) && req.params.id
+        const idVeterinaryCare = req.params.id && req.params.id
         if (!idVeterinaryCare) return res.status(400).send('Identificação do cuidado veterinário não informado!')
 
         let veterinaryCaresId = convertStringWithCommaToArray(idVeterinaryCare)
 
-        veterinaryCaresId.forEach(async (id) => {
+        const validIds = veterinaryCaresId.filter(id => isValidId(id))
+        if(!validIds.length) return res.status(400).send('Não foi informado nenhum identificador válido!')
+
+        validIds.forEach(async (id) => {
             await app.db('veterinary-cares')
                 .where({ id })
                 .del()

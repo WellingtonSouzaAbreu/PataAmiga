@@ -3,7 +3,7 @@ const { request, app } = require('../apiTestConfig/requires.js')
 const { veterinaryCare, errorMessageIdentifier } = require('./../apiTestConfig/dataTest.js')
 
 describe('Testing api/visit.js', () => {
-    test('Should return veterinary care data and statusCode=200 | route: GET /veterinay-care/:id', async () => {
+    test('Should return array containing veterinary care data and statusCode=200 | route: GET /veterinay-care/:id', async () => {
         const res = await request(app).get('/veterinary-care/1')
         expect(res.statusCode).toEqual(200)
         expect(res.body).toEqual({ ...veterinaryCare, id: 1 })

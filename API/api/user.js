@@ -55,7 +55,6 @@ module.exports = app => {
         const { existsOrError, objectIsNull } = app.api.validation
 
         const user = !objectIsNull(req.body.user) && req.body.user
-
         if (!user) return res.status(400).send('Dados do usuário não informados!')
 
         try {

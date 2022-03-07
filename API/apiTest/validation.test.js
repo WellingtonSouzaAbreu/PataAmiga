@@ -45,11 +45,14 @@ describe('Testing api/validation.js', () => {
         expect(isValidId('1')).toEqual(true)
         expect(isValidId(1)).toEqual(true)
     })
-
+    
     test('Should return false for booleans, strings and integer numbers < 0', () => {
+        expect(isValidId('1,2')).toEqual(false)
         expect(isValidId('1a')).toEqual(false)
         expect(isValidId(0)).toEqual(false)
         expect(isValidId('x')).toEqual(false)
+        expect(isValidId([1,2])).toEqual(false)
+        expect(isValidId({})).toEqual(false)
         expect(isValidId(false)).toEqual(false)
         expect(isValidId(true)).toEqual(false)
         expect(isValidId(null)).toEqual(false)

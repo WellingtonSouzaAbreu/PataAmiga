@@ -43,13 +43,16 @@ module.exports = app => {
     }
 
     const removeVisit = async (req, res) => {
-        const idVisit = isValidId(req.params.id) && req.params.id
+        const idVisit = req.params.id && req.params.id
         if (!idVisit) return res.status(400).send('Identificação da visita não informada!')
 
         let visitsId = convertStringWithCommaToArray(idVisit)
         showLog(visitsId)
 
-        visitsId.forEach(async (id) => {
+        const validIds = visitsId.filter(id => isValidId(id))
+        if(!validIds.length) return res.status(400).send('Não foi informado nenhum identificador válido!')
+
+        validIds.forEach(async (id) => {
             await app.db('visits')
                 .where({ id })
                 .del()

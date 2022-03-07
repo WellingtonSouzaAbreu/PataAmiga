@@ -115,10 +115,13 @@ module.exports = app => {
         .get(app.api.rescue.getRescue)
         .put(app.api.rescue.update)
 
-    app.delete('/temporary-home/:id', app.api.temporaryHome.removeTemporaryHome)
+    app.route('/temporary-home/:id')
+        .get(app.api.temporaryHome.getTemporaryHomeById)
+        .delete(app.api.temporaryHome.removeTemporaryHome)
 
     app.route('/temporary-home')
         .get(app.api.temporaryHome.getTemporaryHomes)
+        .put(app.api.temporaryHome.update)
         .post(app.api.temporaryHome.save)
 
     app.get('/user/select-options', app.api.user.getUserSelectOptions)

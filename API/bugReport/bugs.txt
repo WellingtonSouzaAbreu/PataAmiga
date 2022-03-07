@@ -292,3 +292,127 @@
 
 {"dateTime":"2022-03-05T20:18:06.757Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
 
+{"dateTime":"2022-03-07T15:04:31.711Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:07:31.162Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:07:58.705Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:08:53.125Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:09:19.637Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:11:01.648Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:12:59.909Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:13:00.377Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:19:59.326Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:21:07.219Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:23:10.643Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`) values ('Gabriel', 'esr', '69984465997', '2021-11-20 00:00:00.000') - ER_TRUNCATED_WRONG_VALUE_FOR_FIELD: Incorrect integer value: 'esr' for column 'animalId' at row 1"}
+
+{"dateTime":"2022-03-07T15:23:10.966Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:23:28.483Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:33:28.321Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:34:36.117Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:35:18.539Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:36:09.718Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:37:00.563Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:37:01.025Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:37:31.743Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:49:00.824Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:50:29.622Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:51:25.678Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:52:10.748Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T15:54:33.413Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T16:00:29.251Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T16:02:04.921Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-07T16:02:04.960Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-07T16:02:05.007Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-07T16:02:05.058Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-07T16:02:05.104Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-07T16:02:05.154Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-07T16:02:05.195Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-07T16:02:05.256Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-07T16:02:07.093Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-07T16:02:07.168Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-07T16:02:07.243Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-07T16:02:07.336Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-07T16:02:07.435Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-07T16:02:10.485Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-07T16:02:15.279Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-07T16:02:15.337Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-03-07T16:02:15.375Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-07T16:02:15.419Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-03-07T16:04:28.932Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-07T16:04:28.987Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-03-07T16:04:29.033Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-07T16:04:29.086Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-03-07T16:04:34.820Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-07T16:04:34.912Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-07T16:04:35.031Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-07T16:04:35.103Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-07T16:04:35.176Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-07T16:04:35.248Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-07T16:04:35.331Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-07T16:04:35.440Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-07T16:04:38.432Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-07T16:04:38.510Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-07T16:04:38.578Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-07T16:04:38.650Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-07T16:04:38.728Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-07T16:04:43.913Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+

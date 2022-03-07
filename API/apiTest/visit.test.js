@@ -5,7 +5,9 @@ const { visit, errorMessageIdentifier } = require('../apiTestConfig/dataTest.js'
 describe('Testing api/visit.js', () => {
     test('Should return visits by adoption and statusCode=200 | route: GET /visit/:adoptionId', async () => {
         const res = await request(app).get('/visit/1')
+        const isArray = Array.isArray(res.body)
         expect(res.statusCode).toEqual(200)
+        expect(isArray).toEqual(true)
         expect(res.body[0]).toEqual({ ...visit, id: 1 })
     })
 
