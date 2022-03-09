@@ -89,13 +89,13 @@ describe('Testing api/temporaryHome.js', () => {
         expect(resAfterUpdate.body).toEqual({ ...temporaryHome, id: 1, adopterName: 'Wellington' })
 
         await request(app) //Recovery default data
-            .post('/temporary-home')
+            .put('/temporary-home')
             .send({ temporaryHome: { ...temporaryHome, id: 1 } })
     })
 
     test('Should return error message when not send temporaryHomeObject and statusCode=400 | route: PUT /temporary-home', async () => {
         const res = await request(app)
-            .post('/temporary-home')
+            .put('/temporary-home')
             .send({ noTemporaryHome: { ...temporaryHome } })
 
         expect(res.statusCode).toEqual(400)
@@ -104,7 +104,7 @@ describe('Testing api/temporaryHome.js', () => {
 
     test('Should return error message when send invalid adopterName and statusCode=400 | route: PUT /temporary-home', async () => {
         const res = await request(app)
-            .post('/temporary-home')
+            .put('/temporary-home')
             .send({ temporaryHome: { ...temporaryHome, id: 1, adopterName: '' } })
 
         expect(res.statusCode).toEqual(400)
@@ -113,7 +113,7 @@ describe('Testing api/temporaryHome.js', () => {
 
     test('Should return error message when send invalid cellNumber and statusCode=400 | route: PUT /temporary-home', async () => {
         const res = await request(app)
-            .post('/temporary-home')
+            .put('/temporary-home')
             .send({ temporaryHome: { ...temporaryHome, id: 1, cellNumber: '' } })
 
         expect(res.statusCode).toEqual(400)
@@ -122,7 +122,7 @@ describe('Testing api/temporaryHome.js', () => {
 
     test('Should return error message when send invalid date and statusCode=400 | route: PUT /temporary-home', async () => {
         const res = await request(app)
-            .post('/temporary-home')
+            .put('/temporary-home')
             .send({ temporaryHome: { ...temporaryHome, id: 1, date: '' } })
 
         expect(res.statusCode).toEqual(400)
@@ -131,16 +131,16 @@ describe('Testing api/temporaryHome.js', () => {
 
     test('Should return error message when send invalid animalId and statusCode=400 | route: PUT /temporary-home', async () => {
         const res = await request(app)
-            .post('/temporary-home')
+            .put('/temporary-home')
             .send({ temporaryHome: { ...temporaryHome, id: 1, animalId: '' } })
 
         expect(res.statusCode).toEqual(400)
         expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
-    test('Should return error message when send invalid animalId and statusCode=400 | route: POST /temporary-home', async () => {
+    test('Should return error message when send invalid animalId and statusCode=400 | route: PUT /temporary-home', async () => {
         const res = await request(app)
-            .post('/temporary-home')
+            .put('/temporary-home')
             .send({ temporaryHome: { ...temporaryHome, animalId: '' } })
 
         expect(res.statusCode).toEqual(400)
@@ -158,7 +158,7 @@ describe('Testing api/temporaryHome.js', () => {
             .send({ temporaryHome: { ...temporaryHome, id: 1 } })
     })
 
-    test('Should return empty object when delete temporaryHome, sending 1 valid id and statusCode=200 | route: DELETE /temporary-home/:id', async () => {
+    test('Should return empty object when delete temporaryHome, sending one valid id and statusCode=200 | route: DELETE /temporary-home/:id', async () => {
         const res = await request(app).delete('/temporary-home/1,x')
 
         expect(res.statusCode).toEqual(204)
@@ -169,7 +169,7 @@ describe('Testing api/temporaryHome.js', () => {
             .send({ temporaryHome: { ...temporaryHome, id: 1 } })
     })
 
-    test('Should return erro message when send invalid id statusCode=200 | route: DELETE /temporary-home/:id', async () => {
+    test('Should return erro message when send all invalid id statusCode=200 | route: DELETE /temporary-home/:id', async () => {
         const res = await request(app).delete('/temporary-home/1x,y')
 
         expect(res.statusCode).toEqual(400)

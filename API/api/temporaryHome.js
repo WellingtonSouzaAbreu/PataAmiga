@@ -5,17 +5,15 @@ module.exports = app => {
     const { isValidId } = app.api.validation
 
     const getTemporaryHomes = async (req, res) => {
-        let animalName = req.query.animalName ? req.query.animalName.toLowerCase() : ''
-        let page = !!req.query.page ? req.query.page : 0
-        let rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10 // Rows per page
+        const animalName = req.query.animalName ? req.query.animalName.toLowerCase() : ''
+        const page = !!req.query.page ? req.query.page : 0
+        const rowsPerPage = req.query.rowsPerPage ? req.query.rowsPerPage : 10 // Rows per page
 
-        showLog(req.query)
+        const offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
+        const limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
 
-        let offset = page > 0 ? (page * rowsPerPage) + 1 : page * rowsPerPage
-        let limit = parseInt(rowsPerPage) + 1 // Deixar o paginator ativo
-
-        //showLog(`Limit: ${limit}`)
-        //showLog(`Offset: ${offset}`)
+        // showLog(`Limit: ${limit}`)
+        // showLog(`Offset: ${offset}`)
 
         await app.db('temporary-homes')
             .innerJoin('animals', 'animals.id', '=', 'temporary-homes.animalId')

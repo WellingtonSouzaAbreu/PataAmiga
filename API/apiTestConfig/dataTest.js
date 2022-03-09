@@ -13,6 +13,15 @@ const getRandomCellNumber = () => {
 const errorMessageIdentifier = '!'
 const token = 'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJjZWxsTnVtYmVyIjoiQWRtaW4ifQ.FVUUYnkNYvQYEuF8HsbdzG9O1ylfMYx3jndD80U0GQI'
 
+
+
+const collaborator = {
+    name: 'Lucas Martins',
+    city: 'Rolim de Moura',
+    cellNumber: '69984565241',
+    dateOfBirth: '2000-11-20T02:00:00.000Z'
+}
+
 const rescue = {
     forwardedToKennel: 1,
     policeSupport: 1,
@@ -82,6 +91,7 @@ module.exports = {
     getRandomCellNumber,
     errorMessageIdentifier,
     token,
+    collaborator,
     rescue,
     temporaryHome,
     temporaryHomeWithAnimalUserInfo,

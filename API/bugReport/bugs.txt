@@ -822,3 +822,913 @@
 
 {"dateTime":"2022-03-07T20:52:00.520Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
 
+{"dateTime":"2022-03-08T19:17:28.291Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-08T19:17:28.352Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-08T19:17:28.441Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-08T19:17:28.398Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-08T19:17:28.496Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-08T19:17:28.534Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-08T19:17:28.579Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-08T19:17:28.625Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-08T19:17:30.477Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-08T19:17:30.531Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-08T19:17:30.585Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-08T19:17:30.629Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-08T19:17:30.681Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-08T19:17:33.066Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-08T19:17:33.124Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-03-08T19:17:33.174Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:17:33.226Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-03-08T19:17:37.230Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-08T19:17:37.324Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-08T19:17:39.115Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-08T19:17:42.005Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:17:42.049Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:17:42.096Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:17:42.140Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:17:42.594Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-08T19:17:42.674Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:17:42.725Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:17:42.769Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:17:42.810Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:17:42.854Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:22:42.718Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:22:42.853Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:22:42.934Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:22:43.000Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:22:43.353Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-08T19:22:43.491Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:22:43.582Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:22:43.670Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:22:43.769Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:22:43.845Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:24:48.262Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:24:48.374Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:24:48.474Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:24:48.581Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:24:49.656Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-20 00:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-03-08T19:24:49.808Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:24:49.916Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:24:50.022Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:24:50.113Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:24:50.193Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:26:40.169Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:26:40.251Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:26:40.333Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:26:40.414Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:26:40.952Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:26:41.050Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:26:41.144Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:26:41.233Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:26:41.354Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:27:06.372Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-08T19:27:06.424Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-08T19:27:06.493Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-08T19:27:06.530Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-08T19:27:06.592Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-08T19:27:06.674Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-08T19:27:06.731Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-08T19:27:06.798Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-08T19:27:08.804Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-08T19:27:08.971Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-08T19:27:09.081Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-08T19:27:09.187Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-08T19:27:09.247Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-08T19:27:11.434Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:27:11.487Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:27:11.545Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:27:11.587Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:27:12.143Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:27:12.236Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-08T19:27:12.337Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:27:12.407Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:27:12.474Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-08T19:27:16.233Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-08T19:27:16.368Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-08T19:27:17.533Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-08T19:27:19.812Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-08T19:27:19.895Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-03-08T19:27:20.000Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-08T19:27:20.075Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-03-08T20:07:07.261Z","file":"collaborator.js","message":"Nome não infomado"}
+
+{"dateTime":"2022-03-08T20:07:07.358Z","file":"collaborator.js","message":"Cidade não infomada"}
+
+{"dateTime":"2022-03-08T20:07:07.432Z","file":"collaborator.js","message":"Celular não infomado"}
+
+{"dateTime":"2022-03-08T20:07:07.504Z","file":"collaborator.js","message":"Data de nascimento não infomada"}
+
+{"dateTime":"2022-03-08T20:09:09.527Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-08T20:09:09.640Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-08T20:09:09.709Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-08T20:09:09.769Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-08T20:09:43.123Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-08T20:09:43.202Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-08T20:09:43.263Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-08T20:09:43.330Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-08T20:15:25.759Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-08T20:15:25.858Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-08T20:15:25.934Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-08T20:15:26.020Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T13:49:43.273Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T13:49:43.415Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T13:49:43.542Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T13:49:43.650Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T13:52:46.634Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T13:52:46.739Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T13:52:46.819Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T13:52:46.897Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T13:53:40.489Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T13:53:40.576Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T13:53:40.651Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T13:53:40.720Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T13:54:54.084Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T13:54:54.157Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T13:54:54.225Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T13:54:54.306Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T13:56:03.401Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T13:56:03.480Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T13:56:03.537Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T13:56:03.596Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:01:38.096Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:01:38.204Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:01:38.264Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:01:38.368Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:02:11.341Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:02:11.419Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:02:11.478Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:02:11.557Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:02:46.521Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:02:46.602Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:02:46.673Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:02:46.748Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:03:28.506Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:03:28.581Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:03:28.642Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:03:28.703Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:03:56.304Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:03:56.380Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:03:56.458Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:03:56.529Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:07:39.411Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:07:39.516Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:07:39.594Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:07:39.674Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:07:41.395Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:07:41.518Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:07:41.585Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:07:41.655Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:08:38.693Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:08:38.766Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:08:38.831Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:08:38.884Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:08:40.067Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:08:40.342Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:08:40.451Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:08:40.603Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:09:55.847Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:09:55.921Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:09:55.982Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:09:56.048Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:09:57.738Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:09:57.799Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:09:57.867Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:09:57.951Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:14:38.672Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:14:38.825Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:14:38.935Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:14:39.059Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:14:40.710Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:14:40.811Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:14:40.939Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:14:41.079Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:18:35.732Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:18:35.820Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:18:35.919Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:18:36.069Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:18:36.542Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:18:36.665Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:18:36.843Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:19:10.491Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:19:10.597Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:19:10.694Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:19:10.773Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:19:15.891Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:19:15.954Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:19:16.021Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:19:16.131Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:21:13.796Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:21:13.895Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:21:14.012Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:21:14.130Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:21:16.052Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:21:16.169Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:21:16.290Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:21:16.425Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:16.990Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:17.084Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:17.201Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:17.297Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:20.130Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:20.214Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:20.287Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:20.363Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:54.592Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:54.689Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:54.759Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:54.834Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:55.028Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:55.101Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:23:55.199Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:23:55.313Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:25:21.688Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:25:21.768Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:25:21.835Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:25:21.896Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:25:23.583Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:25:23.655Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:25:23.730Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:25:23.803Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:26:02.742Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:26:02.870Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:26:02.965Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:26:03.037Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:26:07.735Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:26:07.824Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:26:07.903Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:26:07.982Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:26:12.794Z","file":"collaborator.js","message":"Error: delete from `collaborators` where `id` = 'x' - ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'x'"}
+
+{"dateTime":"2022-03-09T14:28:05.988Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:28:06.078Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:28:06.141Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:28:06.204Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:28:09.021Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:28:09.107Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:28:09.182Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:28:09.255Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:28:12.539Z","file":"collaborator.js","message":"Error: delete from `collaborators` where `id` = 'x' - ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: 'x'"}
+
+{"dateTime":"2022-03-09T14:29:23.038Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:29:23.120Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:29:23.190Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:29:23.261Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:29:25.027Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:29:25.178Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:29:25.112Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:29:25.264Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:29:26.695Z","file":"collaborator.js","message":"Error: insert into `collaborators` (`cellNumber`, `city`, `dateOfBirth`, `id`, `name`) values ('69984565241', 'Rolim de Moura', '2000-11-20 00:00:00.000', 1, 'Lucas Martins') - ER_DUP_ENTRY: Duplicate entry '1' for key 'collaborators.PRIMARY'"}
+
+{"dateTime":"2022-03-09T14:31:01.820Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:31:01.949Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:31:02.074Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:31:02.189Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:31:02.442Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:31:02.536Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:31:02.663Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:31:02.822Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:33:18.444Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:33:18.532Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:33:18.612Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:33:18.677Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:33:19.960Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:33:20.071Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:33:20.175Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:33:20.310Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:55:29.867Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:55:29.978Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:55:30.057Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:55:30.134Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:55:30.979Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:55:31.046Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:55:31.122Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:55:31.203Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:56:18.517Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:56:18.599Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:56:18.678Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:56:18.748Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:56:19.248Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:56:19.311Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:56:19.377Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:56:19.440Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:59:07.440Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:59:07.534Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:59:07.606Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:59:07.670Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T14:59:08.321Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T14:59:08.387Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T14:59:08.452Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T14:59:08.523Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:00:57.668Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:00:57.775Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:00:57.845Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:00:57.915Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:00:58.069Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:00:58.145Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:00:58.210Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:00:58.294Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:01:52.778Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:01:52.871Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:01:52.930Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:01:53.009Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:01:53.670Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:01:53.748Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:01:53.816Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:01:53.893Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:13.652Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:13.774Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:13.857Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:13.927Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:15.466Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:15.542Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:15.610Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:15.723Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:51.912Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:52.027Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:52.107Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:52.170Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:52.526Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:52.609Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:02:52.686Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:02:52.769Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:05:26.593Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:05:26.695Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:05:26.766Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:05:26.829Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:05:27.728Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:05:27.799Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:05:27.860Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:05:27.939Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:07:19.335Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:07:19.409Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:07:19.476Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:07:19.544Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:07:20.167Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:07:20.228Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:07:20.331Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:07:20.409Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:10:45.032Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:10:45.108Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:10:45.179Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:10:45.257Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:10:46.197Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:10:46.284Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:10:46.365Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:10:46.437Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:13:09.942Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:13:10.050Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:13:10.116Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:13:10.173Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:13:10.757Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:13:10.827Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:13:10.899Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:13:10.966Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:17:30.257Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:17:30.336Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:17:30.398Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:17:30.455Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:17:31.835Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:17:31.928Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:17:32.021Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:17:32.136Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:22:58.556Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:22:58.634Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:22:58.692Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:22:58.756Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:23:03.846Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:23:03.906Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:23:03.967Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:23:04.024Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:08.241Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:08.334Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:08.432Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:08.511Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:09.145Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:09.221Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:09.300Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:09.378Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:32.522Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:32.597Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:32.657Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:32.722Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:33.382Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:33.467Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:24:33.535Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:24:33.609Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:26:01.741Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:26:01.835Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:26:01.927Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:26:02.000Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:26:02.519Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:26:02.594Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:26:02.664Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:26:02.740Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:27:16.907Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-09T15:27:16.955Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-09T15:27:17.116Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-09T15:27:17.023Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-09T15:27:17.068Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-09T15:27:17.180Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-09T15:27:17.227Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-09T15:27:17.288Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-09T15:27:18.958Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-09T15:27:19.018Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-09T15:27:19.082Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-09T15:27:19.130Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-09T15:27:19.194Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-09T15:27:21.431Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:27:21.491Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:27:21.538Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:27:21.716Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:27:22.172Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:27:22.226Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:27:22.280Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:27:22.336Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:27:24.952Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-09T15:27:24.983Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-09T15:27:26.056Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-09T15:27:29.081Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-09T15:27:29.131Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-09T15:27:29.190Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-09T15:27:29.238Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-09T15:27:29.598Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-09T15:27:29.648Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-09T15:27:29.703Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-09T15:27:29.746Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-09T15:27:29.786Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-09T15:27:32.114Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-09T15:27:32.160Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-03-09T15:27:32.214Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-09T15:27:32.264Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-03-09T15:31:47.823Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:31:47.913Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:31:47.985Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:31:48.056Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T15:31:49.214Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T15:31:49.397Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T15:31:49.507Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T15:31:49.584Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T16:25:49.621Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T16:25:49.729Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T16:25:49.825Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T16:25:49.897Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T16:25:51.838Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T16:25:51.958Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T16:25:52.064Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T16:25:52.321Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T16:32:35.847Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T16:32:35.907Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T16:32:35.959Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T16:32:36.021Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-09T16:32:36.572Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-09T16:32:36.624Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-09T16:32:36.683Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-09T16:32:36.745Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
