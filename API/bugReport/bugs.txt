@@ -1732,3 +1732,107 @@
 
 {"dateTime":"2022-03-09T16:32:36.745Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
 
+{"dateTime":"2022-03-11T12:15:42.651Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-11T12:15:42.693Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-11T12:15:42.769Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-11T12:15:42.818Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-11T12:15:42.874Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-11T12:15:42.920Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-11T12:15:42.966Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-11T12:15:43.029Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-11T12:15:44.998Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-11T12:15:45.055Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-11T12:15:45.111Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-11T12:15:45.163Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-11T12:15:45.214Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-11T12:15:48.235Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-11T12:15:48.300Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-11T12:15:48.351Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-11T12:15:48.399Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-11T12:15:48.843Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-11T12:15:48.899Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-11T12:15:48.957Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-11T12:15:49.019Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-11T12:15:52.391Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-11T12:15:52.428Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-11T12:15:52.464Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-11T12:15:52.496Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-11T12:15:53.259Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-11T12:15:53.299Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-11T12:15:53.359Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-11T12:15:53.402Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-11T12:15:53.456Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-11T12:15:56.326Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-11T12:15:56.388Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-11T12:15:57.775Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-11T12:16:03.290Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-11T12:16:03.343Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-03-11T12:16:03.403Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-11T12:16:03.448Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-03-11T13:25:32.397Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:25:32.340', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:28:58.784Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:28:58.715', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:31:37.042Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:31:36.970', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:31:37.372Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `di`, `district`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:31:37.277', 'Agressão', 1, 'Centro', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'di' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:32:46.205Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:32:46.139', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:32:46.354Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `di`, `district`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:32:46.319', 'Agressão', 1, 'Centro', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'di' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:33:47.899Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:33:47.840', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:33:48.136Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `di`, `district`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:33:48.093', 'Agressão', 1, 'Centro', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'di' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:34:04.878Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:34:04.812', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:34:05.111Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `di`, `district`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:34:05.014', 'Agressão', 1, 'Centro', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'di' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:35:15.494Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:35:15.409', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:35:36.432Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:35:36.372', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:35:49.253Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:35:49.187', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:36:25.231Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:36:25.170', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-11T13:37:23.122Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:37:23.056', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+

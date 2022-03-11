@@ -59,6 +59,7 @@ module.exports = app => {
         .put(app.api.complaint.changeStateOfComplaint)
 
     app.route('/complaint/:id')
+        .get(app.api.complaint.getComplaintById)
         .delete(app.api.complaint.removeComplaint)
 
     app.route('/donation')

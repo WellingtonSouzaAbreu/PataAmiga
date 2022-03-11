@@ -22,6 +22,17 @@ const collaborator = {
     dateOfBirth: '2000-11-20T02:00:00.000Z'
 }
 
+complaint = {
+    description: 'Agressão',
+    address: 'Av. das Flores',
+    date: '2022-03-11T03:00:00.000Z',
+    verified: 0,
+    locale: 'Casa',
+    complaintType: 'Maus tratos',
+    city: 'Novo Horizonte',
+    district: 'Centro'
+}
+
 const rescue = {
     forwardedToKennel: 1,
     policeSupport: 1,
@@ -92,6 +103,7 @@ module.exports = {
     errorMessageIdentifier,
     token,
     collaborator,
+    complaint,
     rescue,
     temporaryHome,
     temporaryHomeWithAnimalUserInfo,
