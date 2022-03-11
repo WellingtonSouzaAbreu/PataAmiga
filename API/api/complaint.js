@@ -89,7 +89,7 @@ module.exports = app => {
     const removeComplaint = async (req, res) => {
         const { validateRequestDataForDelete, deleteFromDatabase } = app.api.requests
 
-        const target = 'complaint'
+        const target = 'denúncia'
         const targetTable = 'complaints'
         let validIds
 

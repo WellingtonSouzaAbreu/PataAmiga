@@ -139,7 +139,6 @@ describe('Testing api/complaint.js', () => {
 
     test('Should return empty object when delete complaint and statusCode:204 | route: DELETE /complaint/:id', async () => {
         const res = await request(app).delete('/complaint/1')
-
         expect(res.statusCode).toEqual(204)
         expect(res.body).toEqual({})
 
@@ -152,7 +151,6 @@ describe('Testing api/complaint.js', () => {
 
     test('Should return empty object when delete complaint, sending one valid id and statusCode=200 | route: DELETE /complaint/:id', async () => {
         const res = await request(app).delete('/complaint/1,x')
-
         expect(res.statusCode).toEqual(204)
         expect(res.body).toEqual({})
 
@@ -163,7 +161,6 @@ describe('Testing api/complaint.js', () => {
 
     test('Should return erro message when send all invalid id statusCode=200 | route: DELETE /complaint/:id', async () => {
         const res = await request(app).delete('/complaint/1x,y')
-
         expect(res.statusCode).toEqual(400)
         expect(res.error.text).toMatch(errorMessageIdentifier)
     })

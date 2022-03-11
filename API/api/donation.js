@@ -97,13 +97,13 @@ module.exports = app => {
         const { existsOrError, objectIsNull } = app.api.validation
 
         let donation = !objectIsNull(req.body) && req.body // TODO This is a only place where not use a object in the body request  
-        if(!donation) return  res.status(400).send('Dados da doação não informados!') 
+        if (!donation) return res.status(400).send('Dados da doação não informados!')
 
         const userId = isValidId(req.user.id) && req.user.id
         if (!userId) return res.status(400).send('Não foi possível identificar seus dados!')
 
         donation.date = donation.data ? new Date(donation.date) : new Date()
-        donation.donationType = !donation.donationType && 'others'
+        if (!donation.donationType) donation.donationType = 'others'
 
         try {
             if (!donation.cellNumber || !donation.name) {
@@ -146,22 +146,25 @@ module.exports = app => {
     }
 
     const removeDonation = async (req, res) => {
-        const idDonation = req.params.id ? req.params.id : res.status(400).send('Identificação da publicação não informada')
+        const { validateRequestDataForDelete, deleteFromDatabase } = app.api.requests
 
-        let donationsId = idDonation.split(',')
+        const target = 'doação'
+        const targetTable = 'donations'
+        let validIds
 
-        donationsId.forEach(async (idDonation) => {
-            await app.db('donations')
-                .where({ id: idDonation })
-                .del()
-                .then(_ => showLog(`Doação de id: ${idDonation} deletada`))
-                .catch(err => {
-                    showAndRegisterError(err, path.basename(__filename))
-                    return res.status(500).send('Ocorreu um erro ao deletar doação')
-                })
-        })
+        try {
+            validIds = await validateRequestDataForDelete(req, target)
+        } catch (err) {
+            return res.status(400).send(err)
+        }
 
-        res.status(200).send('Doações removidas com sucesso!')
+        const executed = await deleteFromDatabase(validIds, target, targetTable)
+
+        if (executed) {
+            return res.status(204).send()
+        } else {
+            return res.status(500).send(`Ocorreu um erro ao deletar ${target}!`)
+        }
     }
 
 

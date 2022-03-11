@@ -59,7 +59,7 @@ describe('Testing api/donation.js', () => {
         expect(res.statusCode).toEqual(204)
         expect(res.body).toEqual({})
     })
-    
+
     test('Should return empty object when send invalid date and statusCode=204 | route: POST /donation', async () => {
         const res = await request(app)
             .post('/donation')
@@ -80,8 +80,35 @@ describe('Testing api/donation.js', () => {
         expect(res.error.text).toMatch(errorMessageIdentifier)
     })
 
+    test('Should return empty object when send invalid cellNumber and statusCode=204 | route: PUT /donation', async () => {
+        const res = await request(app)
+            .put('/donation')
+            .send({ ...donation, id: 1, cellNumber: '' })
+            .set('Authorization', token)
 
-    // PUT 
+        expect(res.statusCode).toEqual(204)
+        expect(res.body).toEqual({})
+    })
+
+    test('Should return empty object when send invalid date and statusCode=204 | route: PUT /donation', async () => {
+        const res = await request(app)
+            .put('/donation')
+            .send({ ...donation, id: 1, date: '' })
+            .set('Authorization', token)
+
+        expect(res.statusCode).toEqual(204)
+        expect(res.body).toEqual({})
+    })
+
+    test('Should return error message when send invalid description and statusCode=400 | route: PUT /donation', async () => {
+        const res = await request(app)
+            .put('/donation')
+            .send({ ...donation, id: 1, description: '' })
+            .set('Authorization', token)
+
+        expect(res.statusCode).toEqual(400)
+        expect(res.error.text).toMatch(errorMessageIdentifier)
+    })
 
     test('Should return empty object when change donationReceived of 0 to 1 and statusCode=200 | route: PUT /donation/change-state/:id/:state', async () => {
         const res = await request(app).put('/donation/change-state/1/true')
@@ -102,6 +129,35 @@ describe('Testing api/donation.js', () => {
 
     test('Should return error message when send invalid state and statusCode=400 | route: PUT /donation/change-state/:id/:state', async () => {
         const res = await request(app).put('/donation/change-state/1/falsuMemo')
+        expect(res.statusCode).toEqual(400)
+        expect(res.error.text).toMatch(errorMessageIdentifier)
+    })
+
+    test('Should return empty object when delete donation and statusCode:204 | route: DELETE /donation/:id', async () => {
+        const res = await request(app).delete('/donation/1')
+
+        expect(res.statusCode).toEqual(204)
+        expect(res.body).toEqual({})
+
+        await request(app) // Recovery default
+            .post('/donation')
+            .send({ ...donation, id: 1 })
+    })
+
+    test('Should return empty object when delete donation, sending one valid id and statusCode=200 | route: DELETE /donation/:id', async () => {
+        const res = await request(app).delete('/donation/1,x')
+
+        expect(res.statusCode).toEqual(204)
+        expect(res.body).toEqual({})
+
+        await request(app) // Recovey default
+            .post('/donation')
+            .send({ ...donation, id: 1 })
+    })
+
+    test('Should return erro message when send all invalid id statusCode=200 | route: DELETE /donation/:id', async () => {
+        const res = await request(app).delete('/donation/1x,y')
+
         expect(res.statusCode).toEqual(400)
         expect(res.error.text).toMatch(errorMessageIdentifier)
     })
