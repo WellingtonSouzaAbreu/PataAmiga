@@ -1,6 +1,6 @@
-const { app, request } = require('./../apiTestConfig/requires.js')
+const { app, request } = require('../apiTestConfig/requires.js')
 
-const { collaborator, errorMessageIdentifier } = require('./../apiTestConfig/dataTest.js')
+const { collaborator, errorMessageIdentifier } = require('../apiTestConfig/dataTest.js')
 
 describe('Testing api/collaborator.js', () => {
     test('Should return array with collaborator data and statusCode=200 | route: GET /collaborator', async () => {

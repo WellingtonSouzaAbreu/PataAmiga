@@ -71,6 +71,7 @@ module.exports = app => {
         .put(app.api.donation.changeStateOfDonation)
 
     app.route('/donation/:id')
+        .get(app.api.donation.getDonationById)
         .delete(app.api.donation.removeDonation)
 
     app.route('/donation/number-of-donations-received')

@@ -1836,3 +1836,7 @@
 
 {"dateTime":"2022-03-11T13:37:23.122Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-11 10:37:23.056', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
 
+{"dateTime":"2022-03-11T15:44:24.882Z","file":"donation.js","message":"Error: update `donations` set `donationReceived` = 1 where `id` = '1x' - ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: '1x'"}
+
+{"dateTime":"2022-03-11T15:45:45.169Z","file":"donation.js","message":"Error: update `donations` set `donationReceived` = 1 where `id` = '1x' - ER_TRUNCATED_WRONG_VALUE: Truncated incorrect DOUBLE value: '1x'"}
+

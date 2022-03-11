@@ -1,8 +1,9 @@
 const path = require('path')
 
 module.exports = app => {
-    // TODO Error app.api.commonfunctions undefined
-    // const { showLog, showAndRegisterError, convertStringToDate, convertStringWithCommaToArray } = app.api.commonFunctions
+    // TODO Error app.api.commonfunctions undefined || Afetando todos os testes
+    // const { showLog, showAndRegisterError } = app.api.commonFunctions
+
     const getCollaborators = async (req, res) => {
         const name = req.query.name ? req.query.name.toLowerCase() : ''
         const page = !!req.query.page ? req.query.page : 0

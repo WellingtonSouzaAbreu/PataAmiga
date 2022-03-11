@@ -22,7 +22,7 @@ const collaborator = {
     dateOfBirth: '2000-11-20T02:00:00.000Z'
 }
 
-complaint = {
+const complaint = {
     description: 'Agressão',
     address: 'Av. das Flores',
     date: '2022-03-11T03:00:00.000Z',
@@ -31,6 +31,16 @@ complaint = {
     complaintType: 'Maus tratos',
     city: 'Novo Horizonte',
     district: 'Centro'
+}
+
+const donation ={
+    description: 'Tapete',
+    date: '2022-03-11T03:00:00.000Z',
+    donationType: 'others',
+    donationReceived: 0,
+    name: 'Wellington',
+    cellNumber:'+55 (69) 98449-8330',
+
 }
 
 const rescue = {
@@ -104,6 +114,7 @@ module.exports = {
     token,
     collaborator,
     complaint,
+    donation,
     rescue,
     temporaryHome,
     temporaryHomeWithAnimalUserInfo,

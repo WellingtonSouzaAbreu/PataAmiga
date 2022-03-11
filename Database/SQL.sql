@@ -129,7 +129,6 @@ CREATE TABLE IF NOT EXISTS `donations` (
     date DATE NOT NULL,
     donationType VARCHAR(15),
     donationReceived BOOLEAN,
-    amount INT(11),
     name VARCHAR(50) NOT NULL,
     cellNumber VARCHAR(20) NOT NULL,
     PRIMARY KEY(id)
