@@ -107,11 +107,11 @@ module.exports = app => {
 
     app.post('/publication/picture', app.api.publication.savePicture)
 
-    app.post('/remote-monitoring', app.api.remoteMonitoring.save)
+    app.post('/remote-monitoring', app.api.remoteMonitoring.save) 
 
     app.delete('/remote-monitoring/:id', app.api.remoteMonitoring.removeRemoteMonitoring)
 
-    app.get('/remote-monitoring/:idAdoption', app.api.remoteMonitoring.getRemoteMonitoringsByAdoption)
+    app.get('/remote-monitoring/:adoptionId', app.api.remoteMonitoring.getRemoteMonitoringsByAdoption)
 
     app.post('/remote-monitoring/picture', app.api.remoteMonitoring.savePicture)
 

@@ -40,7 +40,12 @@ const donation ={
     donationReceived: 0,
     name: 'Wellington',
     cellNumber:'+55 (69) 98449-8330',
+}
 
+const remoteMonitoring = {
+    date: '2021-11-20T03:00:00.000Z',
+    observations: 'Ela está bem',
+    adoptionId: 1
 }
 
 const rescue = {
@@ -115,6 +120,7 @@ module.exports = {
     collaborator,
     complaint,
     donation,
+    remoteMonitoring,
     rescue,
     temporaryHome,
     temporaryHomeWithAnimalUserInfo,
