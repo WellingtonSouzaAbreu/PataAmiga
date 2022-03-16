@@ -1,5 +1,4 @@
 const multer = require('multer')
-const fs = require('fs')
 const path = require('path')
 
 module.exports = app => {
@@ -47,8 +46,8 @@ module.exports = app => {
         const { existsOrError, objectIsNull } = app.api.validation
 
         const remoteMonitoring = !objectIsNull(req.body.remoteMonitoring) && req.body.remoteMonitoring
-        if(!remoteMonitoring) return res.status(400).send('Dados do monitoramento remoto não informados!') 
-    
+        if (!remoteMonitoring) return res.status(400).send('Dados do monitoramento remoto não informados!')
+
         remoteMonitoring.date = new Date()
 
         try {
@@ -104,64 +103,31 @@ module.exports = app => {
     }
 
     const removeRemoteMonitoring = async (req, res) => {
-        const idRemoteMonitoring = req.params.id ? req.params.id : res.status(400).send('Identificação do monitoramento remoto não informada')
+        const { validateRequestDataForDelete, deleteFromDatabase, deleteFromPictureDatabase } = app.api.requests
 
-        let remoteMonitoringsId = idRemoteMonitoring.split(',')
-        showLog(remoteMonitoringsId)
+        const target = 'monitoramento remoto'
+        const targetTable = 'remote-monitorings'
+        const secondaryTarget = 'imagens'
+        const secondaryTargetTable = 'remote-monitoring-pictures'
+        const fieldNameWhere = 'remoteMonitoringId'
+        let validIds
 
-        remoteMonitoringsId.forEach(async (idRemoteMonitoring) => {
-            await app.db('remote-monitorings')
-                .where({ id: idRemoteMonitoring })
-                .del()
-                .then(_ => showLog(`Monitoramento remoto de id: ${idRemoteMonitoring} deletado`))
-                .catch(err => {
-                    showAndRegisterError(err, path.basename(__filename))
-                    return res.status(500).send('Ocorreu um erro ao deletar monitoramento remoto')
-                })
+        try {
+            validIds = await validateRequestDataForDelete(req, target)
+        } catch (err) {
+            return res.status(400).send(err)
+        }
 
-            await app.db('remote-monitoring-pictures')
-                .select('imageURL')
-                .where({ remoteMonitoringId: idRemoteMonitoring })
-                .then(async imagesURL => {
-                    if (imagesURL.length > 0) {
-                        await deleteSavedFiles(imagesURL)
-                    }
-                })
-                .catch(err => {
-                    showAndRegisterError(err, path.basename(__filename))
-                    showLog('Erro ao remover imagens anteriores')
-                })
+        const unlinkedPicture = await deleteFromPictureDatabase(validIds, secondaryTargetTable, fieldNameWhere)
+        const executed = await deleteFromDatabase(validIds, target, targetTable) && await deleteFromDatabase(validIds, secondaryTarget, secondaryTargetTable, fieldNameWhere)
 
-            await app.db('remote-monitoring-pictures')
-                .select('imageURL')
-                .where({ remoteMonitoringId: idRemoteMonitoring })
-                .del()
-                .then(_ => showLog('Registros deletados!'))
-                .catch(err => {
-                    showAndRegisterError(err, path.basename(__filename))
-                    showLog('Erro ao remover registros anteriores')
-                })
-        })
-
-        res.status(200).send('Monitoramento remoto removido com sucesso!')
-    }
-
-    const deleteSavedFiles = async (imagesURL) => {
-        for (imageURL of imagesURL) {
-            await deleteFile(`${__dirname}/../_remoteMonitoringPictures/${imageURL.imageURL}`)
+        if (executed && unlinkedPicture) {
+            return res.status(204).send()
+        } else {
+            return res.status(500).send(`Ocorreu um erro ao deletar ${target}!`)
         }
     }
-
-    const deleteFile = (filePath) => {
-        fs.unlink(filePath, (err) => {
-            if (!err) {
-                showLog('Arquivo deletado com sucesso!');
-            } else {
-                showAndRegisterError(err, path.basename(__filename))
-                showLog('Erro ao deletar arquivo.');
-            }
-        })
-    }
-
     return { getRemoteMonitoringsByAdoption, save, savePicture, removeRemoteMonitoring }
 }
+
+// 150 -> 
