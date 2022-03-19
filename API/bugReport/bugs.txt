@@ -1862,3 +1862,99 @@
 
 {"dateTime":"2022-03-16T15:50:35.933Z","file":"requests.js","message":"Error: ENOENT: no such file or directory, unlink 'C:\\Users\\welli\\My Things\\PataAmiga\\API\\_remoteMonitoringPictures\\test.txt'"}
 
+{"dateTime":"2022-03-19T13:22:56.337Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-19T13:22:56.431Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-19T13:22:56.557Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-19T13:22:56.728Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-19T13:22:57.671Z","file":"collaborator.js","message":"Nome não infomado!"}
+
+{"dateTime":"2022-03-19T13:22:57.766Z","file":"collaborator.js","message":"Cidade não infomada!"}
+
+{"dateTime":"2022-03-19T13:22:57.861Z","file":"collaborator.js","message":"Celular não infomado!"}
+
+{"dateTime":"2022-03-19T13:22:57.938Z","file":"collaborator.js","message":"Data de nascimento não infomada!"}
+
+{"dateTime":"2022-03-19T13:23:06.771Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-03-19 10:23:06.714', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-03-19T13:23:18.443Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-19T13:23:18.496Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-19T13:23:18.604Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-03-19T13:23:18.544Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-03-19T13:23:18.703Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-19T13:23:18.816Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-19T13:23:18.916Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-19T13:23:19.002Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-03-19T13:23:23.618Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-03-19T13:23:23.697Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-03-19T13:23:23.800Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-03-19T13:23:23.900Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-03-19T13:23:24.002Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-03-19T13:23:30.082Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-19T13:23:30.171Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-19T13:23:30.257Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-19T13:23:30.334Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-19T13:23:32.013Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-03-19T13:23:32.191Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-19T13:23:32.116Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-03-19T13:23:32.386Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-19T13:23:32.490Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-03-19T13:23:42.939Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-03-19T13:23:43.016Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-03-19T13:23:43.187Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-03-19T13:23:43.686Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-03-19T13:23:56.960Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-03-19T13:23:57.067Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-03-19T13:24:00.140Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-03-19T14:50:05.618Z","file":"recoveryPassword.js","message":"Error: The 'To' number 69992846582 is not a valid phone number."}
+
+{"dateTime":"2022-03-19T14:50:05.657Z","file":"recoveryPassword.js","message":"Houve um erro ao enviar mensagem de recuperação para o seu celular!"}
+
+{"dateTime":"2022-03-19T14:51:24.037Z","file":"recoveryPassword.js","message":"Error: The 'To' number 69992846582 is not a valid phone number."}
+
+{"dateTime":"2022-03-19T14:51:24.077Z","file":"recoveryPassword.js","message":"Houve um erro ao enviar mensagem de recuperação para o seu celular!"}
+
+{"dateTime":"2022-03-19T14:51:55.148Z","file":"recoveryPassword.js","message":"Error: The 'To' number 69992846582 is not a valid phone number."}
+
+{"dateTime":"2022-03-19T14:51:55.174Z","file":"recoveryPassword.js","message":"Houve um erro ao enviar mensagem de recuperação para o seu celular!"}
+
+{"dateTime":"2022-03-19T14:55:23.079Z","file":"recoveryPassword.js","message":"Error: The 'To' number 69992846582 is not a valid phone number."}
+
+{"dateTime":"2022-03-19T14:55:23.119Z","file":"recoveryPassword.js","message":"Houve um erro ao enviar mensagem de recuperação para o seu celular!"}
+
+{"dateTime":"2022-03-19T14:55:49.824Z","file":"recoveryPassword.js","message":"Error: The 'To' number 69992846582 is not a valid phone number."}
+
+{"dateTime":"2022-03-19T14:55:49.844Z","file":"recoveryPassword.js","message":"Houve um erro ao enviar mensagem de recuperação para o seu celular!"}
+

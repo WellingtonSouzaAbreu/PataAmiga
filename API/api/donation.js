@@ -102,7 +102,7 @@ module.exports = app => {
         const userId = isValidId(req.user.id) && req.user.id
         if (!userId) return res.status(400).send('Não foi possível identificar seus dados!')
 
-        donation.date = donation.data ? new Date(donation.date) : new Date()
+        donation.date = donation.date ? new Date(donation.date) : new Date()
         if (!donation.donationType) donation.donationType = 'others'
 
         try {
