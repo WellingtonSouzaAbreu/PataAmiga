@@ -49,7 +49,7 @@ class Auth extends Component {
             })
             .catch(err => {
                 console.log(err)
-                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Ocorreu um erro ao tentar realizar login, verifique a sua conexão com a rede!`, err.response.status == 400 ? 'warning' : 'error')
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Ocorreu um erro ao tentar realizar login, verifique a sua conexão com a rede!`,  'error')
             })
     }
 
@@ -73,8 +73,8 @@ class Auth extends Component {
                 this.toggleSnackbarVisibility(true, `Mensagem de recuperação de senha enviada, verifique seu email`, 'success')
             })
             .catch(err => {
-                console.log(err)
-                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Ocorreu um erro ao enviar mensagem de recuparação de senha para o usuário ${this.state.user}!`, err.response.status == 400 ? 'warning' : 'error')
+                console.log(err.response)
+                this.toggleSnackbarVisibility(true, err.response ? err.response.data : `Ocorreu um erro ao enviar mensagem de recuparação de senha para o usuário ${this.state.user}!`,  'error')
             })
     }
 

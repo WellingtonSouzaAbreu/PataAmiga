@@ -5,7 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import LastAdoptions from '../components/LatestAdoptions'
 import Animals from '../components/Animals'
 
-
 const Tab = createMaterialTopTabNavigator();
 
 export default function HomeTabNavigation(props) {
@@ -23,7 +22,7 @@ export default function HomeTabNavigation(props) {
                     }
                 }}
             >
-                <Tab.Screen name="ADOTAR" component={() => <Animals onNavigateToDogInfo={props.onNavigateToDogInfo} />} />
+                <Tab.Screen name="ADOTAR" component={<Animals onNavigateToDogInfo={props.onNavigateToDogInfo} />} />
                 <Tab.Screen name="ADOTADOS" component={LastAdoptions} />
             </Tab.Navigator>
         </NavigationContainer>

@@ -6,36 +6,39 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: '#EEE8AA',
-    padding: 10
+    backgroundColor: '#ffffff',
+    padding: 10,
   },
 
   logoSloganArea: {
     flex: 1,
-    width: '100%'
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   logoImg: {
-    width: '100%',
-    height: '70%',
-    resizeMode: 'contain'
+    width: '30%',
+    height: '30%',
+    resizeMode: 'contain',
+    marginBottom: 20
   },
 
   sloganArea: {
-    flex: 1,
     justifyContent: 'center',
-    marginBottom: 10
+    marginBottom: 20,
   },
 
   slogan: {
-    fontSize: 15,
+    fontSize: 17,
     textAlign: 'center',
-    color: 'white',
-    ...commonStyles.textShadow
+    color: '#00326F',
+    fontWeight: 'bold'
+    // ...commonStyles.textShadow
   },
 
   form: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#00326F',
     alignSelf: 'stretch',
     borderRadius: 5,
     paddingHorizontal: 15,
@@ -45,7 +48,9 @@ const styles = StyleSheet.create({
 
   formTitle: {
     fontSize: 18,
-    marginBottom: 10
+    marginBottom: 10,
+    color: '#ffffff',
+    fontWeight: 'bold'
   },
 
   forgetPassword: {
@@ -55,19 +60,25 @@ const styles = StyleSheet.create({
 
   forgetPasswordText: {
     fontSize: 11,
-    color: 'gray',
+    color: '#ffffff',
     alignSelf: 'flex-start',
     textDecorationLine: 'underline'
   },
 
   button: {
     width: '100%',
-    marginTop: 20
+    marginTop: 20,
   },
 
   registerButton: {
     marginTop: 10,
     marginBottom: 30
+  },
+
+  registerButtonLabel: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 14
   },
 
   textButton: {

@@ -14,7 +14,6 @@ export default class Home extends Component {
 
     render() {
         return (
-            <ScrollView horizontal={false}>
                 <View style={styles.container}>
                     <View style={styles.btnGridContainer}>
                         <View style={styles.gridButton}>
@@ -52,7 +51,6 @@ export default class Home extends Component {
                         <HomeTabNavigation onNavigateToDogInfo={this.navigateToDogInfo} />
                     </View>
                 </View>
-            </ScrollView>
         )
     }
 }

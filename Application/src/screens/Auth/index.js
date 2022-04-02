@@ -123,8 +123,8 @@ class Login extends Component {
                 <View style={styles.logoSloganArea}>
                     <Image style={styles.logoImg} source={require('./../../assets/imgs/Logo.png')} />
                     <View style={styles.sloganArea}>
-                        <Text style={styles.slogan}>Ajude a salvar um a vida de um cãozinho</Text>
-                        <Text style={styles.slogan}>Adote.</Text>
+                        <Text style={styles.slogan}>Quanto ao amor, você não pode comprar</Text>
+                        <Text style={styles.slogan}>Mas pode adotar</Text>
                     </View>
                 </View>
 
@@ -164,7 +164,11 @@ class Login extends Component {
                             <Text style={styles.forgetPasswordText}>Esqueci minha senha.</Text>
                         </TouchableOpacity>
                     }
-                    <Button style={styles.button} color="#4682B4" onPress={this.signinOrSignup}>{this.state.newUser ? 'Cadastrar' : 'Entrar'}</Button>
+                    <Button style={styles.button} color="#FF9900" onPress={this.signinOrSignup}>
+                        <Text style={styles.registerButtonLabel}>
+                            {this.state.newUser ? 'Cadastrar' : 'Entrar'}
+                        </Text>
+                    </Button>
                 </View>
                 <TouchableOpacity style={styles.registerButton} onPress={this.cleanInputs}>
                     <Text style={styles.textButton}>{this.state.newUser ? 'Já possui conta?' : 'Ainda não possui conta?'}</Text>
