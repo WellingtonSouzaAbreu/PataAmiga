@@ -1,6 +1,5 @@
 const app = require('express')()
 const consign = require('consign')
-const https = require('https');
 const fs = require('fs')
 const port = 500
 
@@ -19,13 +18,8 @@ app.get('/teste', (req, res) => {
     res.send('Conexão estabelecida')
 })
 
-const options = {
-    key: fs.readFileSync('certificate.key'),
-    cert: fs.readFileSync('certificate.crt')
-};
-
-https.createServer(options, app)/* .listen(port, () => { // Listem impede o jest de encerrar
+app.listen(port, () => { // Listem impede o jest de encerrar
     console.log(`Server running in port ...${port}`)
-}) */
+})
 
 module.exports = app

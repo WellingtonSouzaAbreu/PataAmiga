@@ -176,7 +176,6 @@ class Login extends Component {
             </View>
         );
     }
-
 }
 
 export default Login

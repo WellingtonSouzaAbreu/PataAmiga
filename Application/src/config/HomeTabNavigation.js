@@ -22,7 +22,7 @@ export default function HomeTabNavigation(props) {
                     }
                 }}
             >
-                <Tab.Screen name="ADOTAR" component={<Animals onNavigateToDogInfo={props.onNavigateToDogInfo} />} />
+                <Tab.Screen name="ADOTAR" component={() => <Animals onNavigateToDogInfo={props.onNavigateToDogInfo} />} /> 
                 <Tab.Screen name="ADOTADOS" component={LastAdoptions} />
             </Tab.Navigator>
         </NavigationContainer>

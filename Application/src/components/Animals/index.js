@@ -37,17 +37,15 @@ export default class Animals extends Component {
         return (
             <View style={styles.container} >
                 <TouchableOpacity onPress={this.loadAnimals} style={styles.refreshButton}>
-                    <Icon name='refresh' size={22}/>
+                    <Icon name='refresh' size={22} />
                 </TouchableOpacity>
                 {!this.state.animals && <Text>Não possui nenhum animal disponível para adoção, volte mais tarde</Text>}
-                <FlatList
-                    style={styles.flatlistDogs}
-                    data={this.state.animals}
-                    renderItem={({ item }) => <AnimalCard {...item} onNavigateToDogInfo={this.props.onNavigateToDogInfo} />}
-                    keyExtractor={item => item.id.toString()}
-                />
+                {this.state.animals
+                    && this.state.animals.map(animal => <AnimalCard {...animal} onNavigateToDogInfo={this.props.onNavigateToDogInfo} />) /*  TODO FlatList parou de funcionar */
+                }
             </View>
         )
 
     }
 }
+

@@ -23,7 +23,7 @@ module.exports = app => {
                 return res.status(200).send(collaborators)
             })
             .catch(err => {
-                showAndRegisterError(err, path.basename(__filename))
+                // showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send()
             })
     }
@@ -39,7 +39,7 @@ module.exports = app => {
             .where({ id: idCollaborator })
             .then(collaborator => res.status(200).json(collaborator))
             .catch(err => {
-                showAndRegisterError(err, path.basename(__filename))
+                // showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send('Ocorreu um erro ao obter os dados do colaborador!')
             })
     }
@@ -52,7 +52,7 @@ module.exports = app => {
                 return res.status(200).send(collaborators)
             })
             .catch(err => {
-                showAndRegisterError(err, path.basename(__filename))
+                // showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send(err)
             })
     }
@@ -71,7 +71,7 @@ module.exports = app => {
             existsOrError(collaborator.cellNumber, 'Celular não infomado!')
             existsOrError(collaborator.dateOfBirth, 'Data de nascimento não infomada!')
         } catch (err) {
-            showAndRegisterError(err, path.basename(__filename))
+            // showAndRegisterError(err, path.basename(__filename))
             return res.status(400).send(err)
         }
 
@@ -81,7 +81,7 @@ module.exports = app => {
             .insert(collaborator)
             .then(_ => res.status(204).send())
             .catch(err => {
-                showAndRegisterError(err, path.basename(__filename))
+                // showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send('Erro ao cadastrar colaborador!')
             })
     }
@@ -100,7 +100,7 @@ module.exports = app => {
             existsOrError(collaborator.cellNumber, 'Celular não infomado!')
             existsOrError(collaborator.dateOfBirth, 'Data de nascimento não infomada!')
         } catch (err) {
-            showAndRegisterError(err, path.basename(__filename))
+            // showAndRegisterError(err, path.basename(__filename))
             return res.status(400).send(err)
         }
 
@@ -111,7 +111,7 @@ module.exports = app => {
             .where({ id: collaborator.id })
             .then(_ => res.status(204).send())
             .catch(err => {
-                showAndRegisterError(err, path.basename(__filename))
+                // showAndRegisterError(err, path.basename(__filename))
                 return res.status(500).send('Erro ao Editar colaborador!')
             })
     }

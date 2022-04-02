@@ -53,10 +53,9 @@ module.exports = app => {
 
     const save = async (req, res) => {
         const { existsOrError, objectIsNull } = app.api.validation
-
         const user = !objectIsNull(req.body.user) && req.body.user
         if (!user) return res.status(400).send('Dados do usuário não informados!')
-
+        console.log(user)
         try {
             existsOrError(user.name, 'Nome não informado!')
             existsOrError(user.cellNumber, 'Celular não informado!')
@@ -65,7 +64,7 @@ module.exports = app => {
 
             if (user.password.length < 8) throw 'Senha muito curta! Ela deve ter no mínimo 8 caracteres!'
             if (user.password && user.password != user.confirmPassword) throw 'Senhas não conferem!'
-            if (!user.email.match(/\S+@\w+\.\w{2,6}(\.\w{2})?/g)) throw 'Por favor, insira um email válido!'
+            if (user.email && !user.email.match(/\S+@\w+\.\w{2,6}(\.\w{2})?/g)) throw 'Por favor, insira um email válido!'
 
             const userFromDB = await getUserFromDBbyCellNumber(user.cellNumber)
 
@@ -111,7 +110,7 @@ module.exports = app => {
 
             if (user.password && user.password.length < 8) throw 'Senha muito curta! Ela deve ter no mínimo 8 caracteres!'
             if (user.password && user.password != user.confirmPassword) throw 'Senhas não conferem!'
-            if (!user.email.match(/\S+@\w+\.\w{2,6}(\.\w{2})?/g)) throw 'Por favor, insira um email válido!'
+            if (user.email && !user.email.match(/\S+@\w+\.\w{2,6}(\.\w{2})?/g)) throw 'Por favor, insira um email válido!'
         } catch (err) {
             showAndRegisterError(err, path.basename(__filename))
             return res.status(400).send(err)

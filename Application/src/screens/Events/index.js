@@ -37,7 +37,6 @@ export default class EventScreen extends Component {
                     renderItem={({ item }) => <EventCard {...item} />}
                     keyExtractor={item => item.id.toString()}
                 >
-
                 </FlatList>
             </View>
         )

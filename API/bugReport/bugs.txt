@@ -1958,3 +1958,217 @@
 
 {"dateTime":"2022-03-19T14:55:49.844Z","file":"recoveryPassword.js","message":"Houve um erro ao enviar mensagem de recuperação para o seu celular!"}
 
+{"dateTime":"2022-04-02T13:48:54.686Z","file":"complaint.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:49:02.484Z","file":"temporaryHome.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:49:27.781Z","file":"temporaryHome.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:49:34.110Z","file":"complaint.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:49:44.140Z","file":"complaint.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:55:20.123Z","file":"user.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:55:20.314Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T13:55:20.413Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T13:55:20.471Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-04-02T13:55:20.528Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T13:55:20.593Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T13:55:20.663Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T13:55:20.731Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T13:55:25.346Z","file":"user.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:55:30.811Z","file":"user.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:56:14.329Z","file":"temporaryHome.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:56:19.209Z","file":"temporaryHome.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:56:19.339Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:56:19.387Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:56:19.430Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-04-02T13:56:19.475Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-04-02T13:56:24.325Z","file":"temporaryHome.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:56:24.598Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:56:24.655Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:56:24.709Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-04-02T13:56:24.761Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-04-02T13:56:24.824Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-04-02T13:56:29.543Z","file":"temporaryHome.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:57:06.714Z","file":"user.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:57:06.890Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T13:57:06.941Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T13:57:07.028Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-04-02T13:57:07.093Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T13:57:07.147Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T13:57:07.198Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T13:57:07.249Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T13:57:11.878Z","file":"user.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:57:17.329Z","file":"user.js","message":"Error: connect ETIMEDOUT"}
+
+{"dateTime":"2022-04-02T13:58:23.970Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T13:58:24.027Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T13:58:24.099Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-04-02T13:58:24.154Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T13:58:24.256Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T13:58:24.196Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T13:58:24.308Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T13:58:24.381Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-04-02T13:58:26.224Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T13:58:26.282Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T13:58:26.342Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T13:58:26.457Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T13:58:26.556Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T13:58:29.223Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:58:29.283Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:58:29.343Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-04-02T13:58:29.400Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-04-02T13:58:30.075Z","file":"temporaryHome.js","message":"Nome do adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:58:30.135Z","file":"temporaryHome.js","message":"Celular adotante não informado!"}
+
+{"dateTime":"2022-04-02T13:58:30.191Z","file":"temporaryHome.js","message":"Data não informada!"}
+
+{"dateTime":"2022-04-02T13:58:30.240Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-04-02T13:58:30.288Z","file":"temporaryHome.js","message":"Animal não informado!"}
+
+{"dateTime":"2022-04-02T13:58:30.399Z","file":"temporaryHome.js","message":"Error: insert into `temporary-homes` (`adopterName`, `animalId`, `cellNumber`, `date`, `id`) values ('Gabriel', 1, '69984465997', '2021-11-19 23:00:00.000', 1) - ER_DUP_ENTRY: Duplicate entry '1' for key 'temporary-homes.PRIMARY'"}
+
+{"dateTime":"2022-04-02T13:58:41.912Z","file":"complaint.js","message":"Error: insert into `complaints` (`address`, `city`, `complaintType`, `date`, `description`, `district`, `fruit`, `locale`, `verified`) values ('Av. das Flores', 'Novo Horizonte', 'Maus tratos', '2022-04-02 09:58:41.881', 'Agressão', 'Centro', 'apple', 'Casa', 0) - ER_BAD_FIELD_ERROR: Unknown column 'fruit' in 'field list'"}
+
+{"dateTime":"2022-04-02T13:58:45.474Z","file":"veterinaryCare.js","message":"Nome do veterinário não informado!"}
+
+{"dateTime":"2022-04-02T13:58:45.528Z","file":"veterinaryCare.js","message":"Custo total do tratamento não informado!"}
+
+{"dateTime":"2022-04-02T13:58:45.580Z","file":"veterinaryCare.js","message":"Data não informada!"}
+
+{"dateTime":"2022-04-02T13:58:45.633Z","file":"veterinaryCare.js","message":"Informe um valor numérico nos custos veterinários!"}
+
+{"dateTime":"2022-04-02T13:58:51.480Z","file":"rescue.js","message":"Data não informado!"}
+
+{"dateTime":"2022-04-02T13:58:51.531Z","file":"rescue.js","message":"Endereço não informado!"}
+
+{"dateTime":"2022-04-02T13:58:51.747Z","file":"rescue.js","message":"Cuidado veterinário não informado!"}
+
+{"dateTime":"2022-04-02T14:00:33.109Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T14:00:33.201Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T14:00:33.311Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-04-02T14:00:33.396Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T14:00:33.477Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T14:00:33.566Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T14:00:33.681Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T14:00:33.798Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-04-02T14:00:35.791Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T14:00:35.862Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T14:00:35.981Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T14:00:36.179Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T14:00:36.298Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T14:05:53.849Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T14:05:53.952Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T14:05:54.067Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-04-02T14:05:54.169Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T14:05:54.328Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T14:05:54.441Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T14:05:54.559Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T14:05:54.702Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-04-02T14:05:57.236Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T14:05:57.400Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T14:05:57.521Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T14:05:57.600Z","file":"user.js","message":"Senhas não conferem!"}
+
+{"dateTime":"2022-04-02T14:05:57.835Z","file":"user.js","message":"Por favor, insira um email válido!"}
+
+{"dateTime":"2022-04-02T14:29:42.520Z","file":"user.js","message":"TypeError: Cannot read property 'match' of undefined"}
+
+{"dateTime":"2022-04-02T14:33:24.859Z","file":"user.js","message":"TypeError: Cannot read property 'match' of undefined"}
+
+{"dateTime":"2022-04-02T14:34:56.685Z","file":"user.js","message":"Usuário já cadastrado!"}
+
+{"dateTime":"2022-04-02T14:36:11.435Z","file":"user.js","message":"Nome não informado!"}
+
+{"dateTime":"2022-04-02T14:36:14.674Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T14:36:19.244Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T14:36:22.933Z","file":"user.js","message":"Confirmação de senha não informada!"}
+
+{"dateTime":"2022-04-02T14:36:33.802Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T14:36:44.901Z","file":"user.js","message":"Celular não informado!"}
+
+{"dateTime":"2022-04-02T14:36:49.518Z","file":"user.js","message":"Senha não informada!"}
+
+{"dateTime":"2022-04-02T14:36:52.709Z","file":"user.js","message":"Senha muito curta! Ela deve ter no mínimo 8 caracteres!"}
+
+{"dateTime":"2022-04-02T14:36:56.323Z","file":"user.js","message":"Senhas não conferem!"}
+
